@@ -1,0 +1,235 @@
+{
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:42:35) [MSC v.1942 64 bit (AMD64)]",
+  "torch": "2.5.1+cpu",
+  "cases": [
+    {
+      "case": "task1_enabled",
+      "calls": [
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_compute_advantage_with_hooks",
+          "line": 533
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "should_use_ema_grpo",
+          "line": 295
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "observe_batch_without_ema",
+          "line": 300
+        },
+        {
+          "file": "verl/trainer/ray_trainer.py",
+          "function": "compute_advantage",
+          "line": 137
+        },
+        {
+          "file": "verl/trainer/core_algos.py",
+          "function": "compute_advantage_return",
+          "line": 120
+        },
+        {
+          "file": "verl/trainer/core_algos.py",
+          "function": "compute_grpo_outcome_advantage",
+          "line": 175
+        }
+      ],
+      "ema_updates": 0,
+      "positive_adv": 0.935412585735321,
+      "first_reward": 1.0
+    },
+    {
+      "case": "task2_enabled",
+      "calls": [
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_compute_advantage_with_hooks",
+          "line": 533
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_apply_retention_reward",
+          "line": 459
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "should_use_ema_grpo",
+          "line": 295
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "compute_grpo_advantage",
+          "line": 391
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_is_bootstrap_done",
+          "line": 388
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_group_mean_std",
+          "line": 352
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_update_ema",
+          "line": 345
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_apply_init_strategy",
+          "line": 305
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_effective_beta",
+          "line": 318
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_bias_corrected_stats",
+          "line": 329
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_apply_guard_rail",
+          "line": 365
+        }
+      ],
+      "ema_updates": 1,
+      "positive_adv": 0.9921547770500183,
+      "first_reward": 1.5
+    },
+    {
+      "case": "task2_ctan_disabled",
+      "calls": [
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_compute_advantage_with_hooks",
+          "line": 533
+        },
+        {
+          "file": "examples/baselines/_rapo_components.py",
+          "function": "_apply_retention_reward",
+          "line": 459
+        },
+        {
+          "file": "verl/trainer/ray_trainer.py",
+          "function": "compute_advantage",
+          "line": 137
+        },
+        {
+          "file": "verl/trainer/core_algos.py",
+          "function": "compute_advantage_return",
+          "line": 120
+        },
+        {
+          "file": "verl/trainer/core_algos.py",
+          "function": "compute_grpo_outcome_advantage",
+          "line": 175
+        }
+      ],
+      "ema_updates": null,
+      "positive_adv": 0.935412585735321,
+      "first_reward": 1.5
+    }
+  ],
+  "effective_configs": {
+    "image": {
+      "ctan": {
+        "enabled": true,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 2,
+        "min_std": 0.001,
+        "guard_abs_max": 5.0,
+        "bias_correction": true,
+        "beta_warmup_steps": 2,
+        "beta_warmup_init": 0.9
+      },
+      "retention": {
+        "enabled": true,
+        "lambda_coef": 0.5,
+        "kl_scale": 20.0,
+        "activate_from_task": 2
+      }
+    },
+    "video": {
+      "ctan": {
+        "enabled": true,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 2,
+        "min_std": 0.001,
+        "guard_abs_max": 5.0,
+        "bias_correction": true,
+        "beta_warmup_steps": 2,
+        "beta_warmup_init": 0.9
+      },
+      "retention": {
+        "enabled": true,
+        "lambda_coef": 0.5,
+        "kl_scale": 20.0,
+        "activate_from_task": 2
+      }
+    },
+    "det": {
+      "ctan": {
+        "enabled": true,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 2,
+        "min_std": 0.001,
+        "guard_abs_max": 5.0,
+        "bias_correction": true,
+        "beta_warmup_steps": 2,
+        "beta_warmup_init": 0.9
+      },
+      "retention": {
+        "enabled": true,
+        "lambda_coef": 0.5,
+        "kl_scale": 20.0,
+        "activate_from_task": 2
+      }
+    }
+  },
+  "absent_env_defaults": {
+    "ctan": false,
+    "retention": false
+  },
+  "explicit_ray_env_vars": {
+    "examples/baselines/img_cls_cil/image_cls_cil.py": {
+      "TOKENIZERS_PARALLELISM": "true",
+      "NCCL_DEBUG": "WARN",
+      "VLLM_LOGGING_LEVEL": "WARN",
+      "TORCH_NCCL_AVOID_RECORD_STREAMS": "1",
+      "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:False",
+      "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+      "VLLM_ALLREDUCE_USE_SYMM_MEM": "0"
+    },
+    "examples/baselines/cil_det/image_det_cil.py": {
+      "TOKENIZERS_PARALLELISM": "true",
+      "NCCL_DEBUG": "WARN",
+      "VLLM_LOGGING_LEVEL": "WARN",
+      "TORCH_NCCL_AVOID_RECORD_STREAMS": "1",
+      "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:False",
+      "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+      "VLLM_ALLREDUCE_USE_SYMM_MEM": "0"
+    }
+  },
+  "source_sha256": {
+    "verl/trainer/core_algos.py": "871cadc71a8b04295ebdc8ff516ba242697e49cb27680920d4870a8431023d71",
+    "verl/trainer/ray_trainer.py": "54b9cb7fccc78513440ed05f9c53fe80c43bf86425ae6067ea4a7d41d25017ca",
+    "examples/baselines/_rapo_components.py": "73aac97f816c124e4fbf06ab3ac0e270045fc79a91c62dc534e8d5d39f99243c",
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py": "0e06cce12ecde79a1fc965a421b6fa8910fb6dd4e39cd6fac3ce854998ead93d",
+    "examples/baselines/cil_det/image_det_cil_rapo.py": "7f36ef88964cc7b56e8e6384f49c2c3f8c570d41961b20a0e12dc82e1da6dc65"
+  },
+  "author_files_unchanged": 204,
+  "actual_ray_or_gpu_execution": false
+}

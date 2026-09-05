@@ -1,0 +1,15 @@
+{
+  "command": "& 'D:/anaconda3/envs/rapo-b01/python.exe' docs/audit/2026-09-04-author-intake/pipeline/pipeline_probe.py",
+  "observed_exit_code": 0,
+  "command_scope": "original author hook/config/algorithm functions on CPU; not a Ray/model execution",
+  "author_files_unchanged": 204,
+  "artifact_sha256": {
+    "pipeline_probe.py": "e96019ab9341bea8cff05c461a07f0e26bc7bc324f7de8fe79d14223468c1251",
+    "results.json": "95924fa82524467d4437b36c2716e1888320c8d367ec06b645c2d5ec31a8c4f7",
+    "REPORT.md": "1b04fa3ae805dbed04201f350a8330e1990c832ea2c41c77028784036adf713e"
+  },
+  "report_trailing_whitespace_check": "passed",
+  "tracked_git_diff_check_exit_code": 0,
+  "author_source_modified": false,
+  "ray_or_gpu_executed": false
+}

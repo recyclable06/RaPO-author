@@ -1,0 +1,9 @@
+tests/test_core.py: 9
+tests/test_data.py: 11
+tests/test_evaluation.py: 12
+tests/test_formal_contract.py: 25
+tests/test_integration.py: 21
+tests/test_orchestration.py: 10
+tests/test_provenance.py: 22
+tests/test_runtime.py: 3
+

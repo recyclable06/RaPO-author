@@ -1,0 +1,2211 @@
+{
+  "head": "46e7e257d65716b127187a19c19890aa70aad0b6",
+  "branch": "codex/rapo-b03-orchestration",
+  "status": "## codex/rapo-b03-orchestration...origin/codex/rapo-b03-orchestration\n M AGENTS.md\n M README.md\n M docs/remediation/batch2/BLOCKED.md\n M docs/remediation/batch3/PROGRESS.md\n M docs/remediation/batch3/decisions.md\n M docs/reproduction_spec.md\n M docs/smoke_test.md\n?? RaPO_作者整理代码.zip\n?? RaPO_作者整理代码/\n?? docs/audit/2026-09-04-author-intake/\n?? docs/remediation/batch4/",
+  "tracked_files": {
+    ".gitattributes": {
+      "bytes": 58,
+      "sha256": "69fc3adee9ba98869bf0f3b1a639e4d52a7e4cbe33dc1d3e7592093b5b56bffd"
+    },
+    ".gitignore": {
+      "bytes": 355,
+      "sha256": "06a71053e2c5efc2a1be1da1c42a7e4212741531079da6edfef2e79eae502d48"
+    },
+    "AGENTS.md": {
+      "bytes": 27812,
+      "sha256": "0acb43abc20d412db8e5e2c0248a9065b8eb5a5e161ef37745f70f3531703b1c"
+    },
+    "README.md": {
+      "bytes": 7836,
+      "sha256": "6e541639739e8ccdbde4d2965d69deaa3dae75eb071683ff58a22af5469ce643"
+    },
+    "configs/deepspeed_zero3_cpu_offload.json": {
+      "bytes": 988,
+      "sha256": "337693ce6bf5c93a034e41391fca100de224c230dc2e5eaae81eff1e90d99b80"
+    },
+    "configs/deepspeed_zero3_cpu_offload_scale10.json": {
+      "bytes": 988,
+      "sha256": "afebfe95d7db11e042d400488f13b0bddcfb1571cfb518bc8e8c120e0e4410df"
+    },
+    "configs/deepspeed_zero3_cpu_offload_scale9.json": {
+      "bytes": 987,
+      "sha256": "aa048e28113b275a29a024c594f9334de5022221c49880e4e449e0fac7055b1e"
+    },
+    "configs/deepspeed_zero3_formal_bf16.json": {
+      "bytes": 384,
+      "sha256": "d945601ce9ea6fa57ac780e1a5bf9db3cd7a044ef7c6d952e17ac67bbea44ed8"
+    },
+    "configs/formal_orchestration.json": {
+      "bytes": 753,
+      "sha256": "b8dfe4a60d06d772ee007ba805cd8cc06276248d52c4ed137907d172c18d1dba"
+    },
+    "configs/formal_profile.json": {
+      "bytes": 995,
+      "sha256": "7eb60580e4a262fbda10fbc3ff8b98a54a7ca2bf49fd212dab8630a5b34d8cd5"
+    },
+    "configs/independent_reproduction.json": {
+      "bytes": 611,
+      "sha256": "50ee4dea8231c6a46907b43c53eebdb2ba4befecc9438eb9c2b0ccbcd1375b43"
+    },
+    "configs/legacy_2080ti_profile.json": {
+      "bytes": 967,
+      "sha256": "2034048ebbeb03a959720c3109c4a7e3a05c5c5b946914482214864541649941"
+    },
+    "docs/audit/2026-07-31-independent-audit.md": {
+      "bytes": 42671,
+      "sha256": "c019b7683c0606b7cc47b4264bf9c15e1f92481c839e994e0a925614c149841a"
+    },
+    "docs/audit/BLOCKED.md": {
+      "bytes": 1505,
+      "sha256": "817a3a8b0c65bbe640afc5b0a4bee1b81edce214fef8bf88dc2d97c165ea9bd2"
+    },
+    "docs/audit/PROGRESS.md": {
+      "bytes": 1328,
+      "sha256": "120e3c1b9a892a003f6a8f87785a150df9f7010cfb4083a455212b5d85338d8a"
+    },
+    "docs/data_and_evaluation.md": {
+      "bytes": 10604,
+      "sha256": "45729b502780a36a9f258546d0e4c7ec52c9dee36510d14a5bb963a20e7ba2d4"
+    },
+    "docs/experiments/2026-07-29-2080ti-smoke.md": {
+      "bytes": 5717,
+      "sha256": "4738c6928ee78116ff9f362f2e3b7e770b3ff378fd85f96f105aabd39fd7a07d"
+    },
+    "docs/experiments/2026-07-29-2080ti-three-task-step20.md": {
+      "bytes": 4535,
+      "sha256": "1f1a9858589b485d80777e059973a77f34b31711af21a04a6044397f975bea72"
+    },
+    "docs/experiments/2026-07-29-2080ti-two-task-step20.md": {
+      "bytes": 5813,
+      "sha256": "8ebb9348e6462dc90b44db3cdeafbb1e45c07ffd4558c8b453c75a7a1a432467"
+    },
+    "docs/experiments/2026-07-29-2080ti-two-task.md": {
+      "bytes": 5122,
+      "sha256": "4e52cb870aa89f61b208f07566f85014a792bf6c4101965341d0132160010a49"
+    },
+    "docs/experiments/2026-07-30-2080ti-five-task-step20.md": {
+      "bytes": 6412,
+      "sha256": "63d91dcb5365c1da0f777f990e1abd0824271f84e9514646927c342c4e8ed3fc"
+    },
+    "docs/experiments/2026-07-30-2080ti-four-task-step20.md": {
+      "bytes": 5490,
+      "sha256": "e328295d1d931fdee3f31e679812c97c1b295f4ce1d3554cc2259df971926cdd"
+    },
+    "docs/experiments/2026-07-30-five-task-implementation-audit.md": {
+      "bytes": 5981,
+      "sha256": "3e36a312fc9dc3083e80776e16438c650f4f9e6013f74dfd544a367502be2ef2"
+    },
+    "docs/experiments/2026-07-31-2080ti-six-task-stability-boundary.md": {
+      "bytes": 8633,
+      "sha256": "7efc893e2d0e4e73a4bc386a0373b29f43661090bfbdef6ec36ee5490376a37e"
+    },
+    "docs/handoff/current_project_handoff.md": {
+      "bytes": 63072,
+      "sha256": "2dc71062b9850f5710950d242cf041ca709138136ecf6d197964e33ed29ac586"
+    },
+    "docs/remediation/batch1/BLOCKED.md": {
+      "bytes": 4090,
+      "sha256": "0324f931a97e813f3c35b339aba1c24068fcc612fa5b4afb070a86cca51b4ec6"
+    },
+    "docs/remediation/batch1/PROGRESS.md": {
+      "bytes": 4890,
+      "sha256": "028e7d63ce1c02f28400b09c47a430d252d72497b3381f7f54ffe6d34ea16f61"
+    },
+    "docs/remediation/batch1/decisions.md": {
+      "bytes": 1609,
+      "sha256": "5062c61ea49c64d473712398e0db73f9598ebbef6f9f36690cb909d3c8cfb42e"
+    },
+    "docs/remediation/batch2/BLOCKED.md": {
+      "bytes": 8010,
+      "sha256": "d2185f02cbc0ceaf13b4317edf53bf794d5cb130837eb1646653d7cf5ecffcc1"
+    },
+    "docs/remediation/batch2/PROGRESS.md": {
+      "bytes": 19559,
+      "sha256": "7ff27ee805a8b1cb699d6ff5a9e98ec65f8833ae5bac2bb3e8a835c9ad2bfaa0"
+    },
+    "docs/remediation/batch2/decisions.md": {
+      "bytes": 2620,
+      "sha256": "d0a7336350356e1014b9468266c2fcfc46d6f80340a4342d49adbc4d339f5b65"
+    },
+    "docs/remediation/batch3/BLOCKED.md": {
+      "bytes": 824,
+      "sha256": "764a93717b816af345f1407fbe52f2ba767ebba7d008b04c1fa5aee8225cc8fc"
+    },
+    "docs/remediation/batch3/PROGRESS.md": {
+      "bytes": 10179,
+      "sha256": "73550286baa930ab227277e3a879603fca9d722c4911e072493036431815e69a"
+    },
+    "docs/remediation/batch3/decisions.md": {
+      "bytes": 4068,
+      "sha256": "b0df692508d7ed9be11dfaf4c16ba34543ec439988190297ab5abcbeb29575c7"
+    },
+    "docs/reproduction_spec.md": {
+      "bytes": 3604,
+      "sha256": "52dc7ab709e1f71cc27575aea6de135e42469790685605aa6240a67cdf68adaa"
+    },
+    "docs/smoke_test.md": {
+      "bytes": 12484,
+      "sha256": "35ea1ff0e3ccf81bbe64b84dd46820ccba1f2a2d6c3c081967e4b707f531274e"
+    },
+    "docs/trainer_integration.md": {
+      "bytes": 5777,
+      "sha256": "4a908ae8529ad7242e033e0e5d3fa4ba8201994d04fc3c1e0bd2d8d13e707d21"
+    },
+    "docs/upstream.md": {
+      "bytes": 756,
+      "sha256": "01994b061ef289f3f077b87998ef7eebba2934aabd24ed74e9409abb8e16e185"
+    },
+    "environment-train.yml": {
+      "bytes": 600,
+      "sha256": "445c264dfac8e37719ce5539ebb6740ee7017f70a07360e34c83a12d99d71abd"
+    },
+    "environment.yml": {
+      "bytes": 204,
+      "sha256": "186802eab619362aa6e39131ad94ae59677e3d76f3ae367d14172745c15bee3d"
+    },
+    "patches/visual_rft_2ffad63_rapo.patch": {
+      "bytes": 19103,
+      "sha256": "a8425a7e8907089a01d7698c9e8d144e068417d98aed1d58db8164279d1352b2"
+    },
+    "pyproject.toml": {
+      "bytes": 699,
+      "sha256": "9689067e75b723fee1653235aaa9aa39ce6a1901c12c3630727b8b86b0853616"
+    },
+    "scripts/apply_visual_rft_patch.sh": {
+      "bytes": 876,
+      "sha256": "3d29ecfb96051ee3703b68e1bed1083555f3ab6b61b0eed99629886bf810e828"
+    },
+    "scripts/bootstrap_env.sh": {
+      "bytes": 756,
+      "sha256": "4708785336e37ac1954f2202de1c832f95e2ad087c48b5dbb6bb6e1831db7e6d"
+    },
+    "scripts/bootstrap_train_env.sh": {
+      "bytes": 2145,
+      "sha256": "e9a273e7755cbbe28c67eadc63173892a19768abad9281f6872ff8048c1778cc"
+    },
+    "scripts/download_qwen_model.sh": {
+      "bytes": 3131,
+      "sha256": "618d1d4f8b3adf776acacb037a9998bf10b29d7e8406fa870812292677caafad"
+    },
+    "scripts/evaluate_qwen2_vl.py": {
+      "bytes": 9333,
+      "sha256": "99afa6e211a4ee5f99c9707e12c3e6fe7efc4d11ac187591ff6748a258d2eab1"
+    },
+    "scripts/install_miniforge.sh": {
+      "bytes": 813,
+      "sha256": "382c56df68e69c47b0b9b44cd7eea497afec7eee944993260f4f6e51428ee141"
+    },
+    "scripts/probe_qwen_gpu.py": {
+      "bytes": 2272,
+      "sha256": "603fe61ff8b9d7ebaf36ac50a6e6be1d9ba0222e0ee1e2168f50d17fae22bc27"
+    },
+    "scripts/run_imagenet_r_2080ti_smoke.sh": {
+      "bytes": 1049,
+      "sha256": "05412c82c16c8c6c73d4aeb3d75408f0ac0d1db33dc0e0c0265c439c3908d727"
+    },
+    "scripts/run_imagenet_r_formal.sh": {
+      "bytes": 2244,
+      "sha256": "1b7ace9fdaf3568c7e6e9a4468156a38270dfdfef4d885abdcd9213f6cda00ef"
+    },
+    "scripts/run_imagenet_r_smoke.sh": {
+      "bytes": 14552,
+      "sha256": "9c8e5235bdc04d5c0c8bfeb691d846cb86017eb05439a0d2b82e2961bec1b034"
+    },
+    "src/rapo/__init__.py": {
+      "bytes": 1000,
+      "sha256": "ca6aa149137d1d2d8db8fbfa0b311b1fa54b99e51a0a666f15475439037183ff"
+    },
+    "src/rapo/core.py": {
+      "bytes": 7991,
+      "sha256": "2587fc36ce9753294a7249b3a7896110e314a6328b6e518a362d1a03bee6a9e2"
+    },
+    "src/rapo/data.py": {
+      "bytes": 14223,
+      "sha256": "ab9d55f4a22dfea4e43f3f3ccd0197ea975a891a2dc90f89ae7f51012c192cb5"
+    },
+    "src/rapo/evaluation.py": {
+      "bytes": 21553,
+      "sha256": "d3a4b0bb297ad4bf880a950e9a37db470ee84cf9109957a771684de11e9c12a7"
+    },
+    "src/rapo/formal_contract.py": {
+      "bytes": 8419,
+      "sha256": "664c936faf26c30884aa6152b4aedebf11b75213b8841b3a79975e07f0189d44"
+    },
+    "src/rapo/integration.py": {
+      "bytes": 12024,
+      "sha256": "452cad200b735122e7508936fc9fbedc202fb300deb38c9073d0b5fb5cf32e1b"
+    },
+    "src/rapo/orchestration.py": {
+      "bytes": 30865,
+      "sha256": "f11a37f87215065e18195bcd6c50db959f930258e49e0abae849e83d918cd5d8"
+    },
+    "src/rapo/provenance.py": {
+      "bytes": 26209,
+      "sha256": "4e8687cd29d1c62419c62160d5d5d118e3f2db3ed8572e79ee5fb79244cb83b6"
+    },
+    "src/rapo/resume.py": {
+      "bytes": 11297,
+      "sha256": "2a1db6ea3d8a5f0ead80f1db189850ba36f97f6f8c6a4da786ef9dee936549d5"
+    },
+    "src/rapo/runtime.py": {
+      "bytes": 683,
+      "sha256": "51b5e8e8f374fe202359a448cbdd8fc6b26355129ecd37c3eb27ff8d77d398d1"
+    },
+    "tests/test_core.py": {
+      "bytes": 3739,
+      "sha256": "0784fb6458b2cdcd0e8837c16820adf7d70f14b02f10d5b68b934c343ddb2828"
+    },
+    "tests/test_data.py": {
+      "bytes": 7161,
+      "sha256": "be62e0fb59a9a8fc5d3cd0c4b24452fadd07f9337dbee33d6224b9e8e09ab345"
+    },
+    "tests/test_evaluation.py": {
+      "bytes": 6659,
+      "sha256": "12815fb53cad27accb53875e99fbddba7ac1851fef8f8bb83ffb563e38e78331"
+    },
+    "tests/test_formal_contract.py": {
+      "bytes": 12951,
+      "sha256": "70f796ca74bcc7da95241b19f29d22815b8e9b47f2da33acf3e72f1abb3e0239"
+    },
+    "tests/test_integration.py": {
+      "bytes": 11502,
+      "sha256": "17c7a148f8aeef230df33a588e60b50697c47e6165eea8bcaad89db86dd5df3e"
+    },
+    "tests/test_orchestration.py": {
+      "bytes": 15474,
+      "sha256": "77171256b434f0992b419f12d8b4862dc62ba300870ee3d139ac9eb9474a1f09"
+    },
+    "tests/test_provenance.py": {
+      "bytes": 17169,
+      "sha256": "9039f8ad7124ff950fa502a71c7ee31d28066a76e5f12c3524256eeb9ae89126"
+    },
+    "tests/test_runtime.py": {
+      "bytes": 750,
+      "sha256": "c49910cec51a64228fb28f28385404698d9001618a8aea7ea4102510a2b0de70"
+    }
+  },
+  "paper_sha256": "fc48b658fd3d96980f4733cbd9672aa21be2f3b04e73958de54bf4e0e15965e0",
+  "archive_sha256": "97ac812aff1f1ff0aa049d04b43d726b714f0f8bfddd5e45cfe8027c5094c3d8",
+  "author_files": {
+    ".gitignore": {
+      "bytes": 133,
+      "sha256": "76a64b25f4ec189efbccaec7fbd6a3889279e2ad1eb6724825071650872093f2"
+    },
+    "data/create_image_cls_cil_dataset.py": {
+      "bytes": 16457,
+      "sha256": "9f9e9a288e4e519616ddfc0730d05ec1406bb26b6e773005ddb6991129bc6a57"
+    },
+    "data/create_object_det_cil_dataset.py": {
+      "bytes": 17035,
+      "sha256": "324fc5777a2c6cb693f97ceb2463dfff873b272334e8e91b1a6c67fefefc4f52"
+    },
+    "data/create_video_cls_cil_ucf101_dataset.py": {
+      "bytes": 5479,
+      "sha256": "edb11359c376d04d524ef193e40273237ef4e0171fc2ffb9082029a85a7271c6"
+    },
+    "data/DATASET.md": {
+      "bytes": 7016,
+      "sha256": "52574ada6bd21305fa63f54c61ce1e259e6eac64b7eb30c46c91a51c31531af3"
+    },
+    "data/image_cls_cil/fewshot_lists/cub_train_5shots.jsonl": {
+      "bytes": 151666,
+      "sha256": "ddcacfa1c9db442b144dd5a211106e1352f4a883757c2b39cf27772af46832c1"
+    },
+    "data/image_cls_cil/fewshot_lists/imagenet_a_train_5shots.jsonl": {
+      "bytes": 160102,
+      "sha256": "89fe6ca1a203ff4c7037def43014ebd704346f71e142a07dc1bff79904c2b26f"
+    },
+    "data/image_cls_cil/fewshot_lists/imagenet_r_train_5shots.jsonl": {
+      "bytes": 101294,
+      "sha256": "90e39742ad67b00c583f7633c973c438b268f9d2f123550d4d9d956bd0ba7d88"
+    },
+    "data/image_cls_cil/fewshot_lists/tinyimagenet_train_5shots.jsonl": {
+      "bytes": 111594,
+      "sha256": "ab6a72ba427eb32883bf9f19c9bc27256e6d6472db5250c342fe54e903d170f0"
+    },
+    "data/image_cls_cil/label_maps/cub.json": {
+      "bytes": 23546,
+      "sha256": "186dffc9a87de61c90243cd7c3182a7228e9939b7839396105a3f7bdd63e3cdc"
+    },
+    "data/image_cls_cil/label_maps/imagenet_a.json": {
+      "bytes": 25334,
+      "sha256": "058fb8ae97414131b8f01c3ebf37f8c64aeaa8944b1bfcbecc9cf55bd1730822"
+    },
+    "data/image_cls_cil/label_maps/imagenet_r.json": {
+      "bytes": 25438,
+      "sha256": "2ce57b49153a4f62e7b916de98f4c06bfafdf515515e883e5424e27490663500"
+    },
+    "data/image_cls_cil/label_maps/tinyimagenet.json": {
+      "bytes": 29709,
+      "sha256": "a64ec770ca560498f5c8a7e7e2369fee16f7ec3b7dbe3164c3e5ee43de604f2e"
+    },
+    "data/image_cls_cil/metadata.json": {
+      "bytes": 155,
+      "sha256": "cb6bf05e9cc42104df3b25208358f651a1427cb24b9d173675c884b026f93d46"
+    },
+    "data/image_cls_cil/split_lists/imagenet_a_test.jsonl": {
+      "bytes": 246628,
+      "sha256": "859986e816126edfd3694eb42ebaf7ee58a5e090556f014a42fe8f7e10339344"
+    },
+    "data/image_cls_cil/split_lists/imagenet_a_train.jsonl": {
+      "bytes": 975952,
+      "sha256": "25e498415f7e8cfbeba1179c2037c389b0436afb46dc5b696f3e08b8e8ad3913"
+    },
+    "data/image_cls_cil/split_lists/imagenet_r_test.jsonl": {
+      "bytes": 605088,
+      "sha256": "8564c0626b6dc0957a568fdcbc70d9797ba5c49d0ee3c6babf0a3e9d1147ddab"
+    },
+    "data/image_cls_cil/split_lists/imagenet_r_train.jsonl": {
+      "bytes": 2420508,
+      "sha256": "0453a226975718b13584bc0636187bb8eeaa0c9dd4a0e1045a5dc4a23a71b745"
+    },
+    "data/object_det_cil_dataset/categories.json": {
+      "bytes": 4398,
+      "sha256": "bce0b4c7e2ab32ad052574511dfdb23543b5feb20077b92d2477e47fcee0c363"
+    },
+    "data/object_det_cil_dataset/metadata.json": {
+      "bytes": 419,
+      "sha256": "ca3835853917429769fb597eed5cd7090040a6471ec896fc6d8d7325c7223f6a"
+    },
+    "data/object_det_cil_dataset/train_5shots.jsonl": {
+      "bytes": 834858,
+      "sha256": "eab08f2603eb4153b77d973ef35cd4da7f96459c6894594773de9c40bc420710"
+    },
+    "data/object_det_cil_dataset/val.jsonl": {
+      "bytes": 19413837,
+      "sha256": "10924839d427c6020e6bcd26020c3054d9584aed01b82f71a2cf1df5246c2d31"
+    },
+    "data/video_cls_cil/fewshot_lists/ucf101_split01_train_5shots.jsonl": {
+      "bytes": 66080,
+      "sha256": "1156ce8fb3d8f15037314c8f695fb01667f9bbdf51c4739318e4b1eb66f21b62"
+    },
+    "data/video_cls_cil/metadata.json": {
+      "bytes": 206,
+      "sha256": "ae260036d522fdc6b045b9aff8d560c8da0ba9c9ee8dd049828f6a74a3f41baa"
+    },
+    "data/video_cls_cil/ucf101_split01_metadata.json": {
+      "bytes": 5497,
+      "sha256": "aa7fbc5438834ff294238f9884af4f5f0f08face424272989a25026120cde881"
+    },
+    "environment.lock.yml": {
+      "bytes": 8498,
+      "sha256": "e42ae5c546ee7f7adada4e848ca2484181fdec5420fdf0e7609075e78175e9bc"
+    },
+    "environment.yml": {
+      "bytes": 114,
+      "sha256": "1da56f5c3deae85a7d7ce35fdd068c71f7e325425917ae24fecd690e9ea475e3"
+    },
+    "examples/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "examples/baselines/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "examples/baselines/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 197,
+      "sha256": "eb28ae43094fa7eb421940ebf73527646466adf032bd0abe8894abb37ce93704"
+    },
+    "examples/baselines/__pycache__/__init__.cpython-312.pyc": {
+      "bytes": 185,
+      "sha256": "0dfa3748b021e60fdf0f3cb1b4413238902b74118ab923d7779a69edf034caa5"
+    },
+    "examples/baselines/__pycache__/_rapo_components.cpython-311.pyc": {
+      "bytes": 35775,
+      "sha256": "6332a726de958ab94cdd0cb65bf3074a89f36e67e0302f046f2ae478076d17fa"
+    },
+    "examples/baselines/__pycache__/_rapo_components.cpython-312.pyc": {
+      "bytes": 33267,
+      "sha256": "1d21551a6454cbbfd6863b35eba9a46cacbcb1e07bcdf11ee02a498348b01570"
+    },
+    "examples/baselines/_rapo_components.py": {
+      "bytes": 28228,
+      "sha256": "73aac97f816c124e4fbf06ab3ac0e270045fc79a91c62dc534e8d5d39f99243c"
+    },
+    "examples/baselines/cil_det/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "examples/baselines/cil_det/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 205,
+      "sha256": "bfe4aa68ac60d08056793b94d2066c1006b27184926675a191b21ed083aaf3e4"
+    },
+    "examples/baselines/cil_det/__pycache__/image_det_cil.cpython-311.pyc": {
+      "bytes": 70094,
+      "sha256": "e2906cb4bf83cad0333a13da390055bd243edec2479cf0ac485bbc4a7702f345"
+    },
+    "examples/baselines/cil_det/__pycache__/image_det_cil.cpython-312.pyc": {
+      "bytes": 58609,
+      "sha256": "317973f13f7521f26bafb092e74842785b8d8e01349262156f3e42c8931c713e"
+    },
+    "examples/baselines/cil_det/__pycache__/image_det_cil_rapo.cpython-311.pyc": {
+      "bytes": 67202,
+      "sha256": "35ef35c1dfb2f392a6e2a17ef9e64b47a7646242345a0f87cd3f5b470f368788"
+    },
+    "examples/baselines/cil_det/__pycache__/image_det_cil_rapo.cpython-312.pyc": {
+      "bytes": 60175,
+      "sha256": "9d8d81557dbef567cb1179cf03fcc40b83f7be0758cbc7efdfad1dac7896c39c"
+    },
+    "examples/baselines/cil_det/__pycache__/sam_actor.cpython-312.pyc": {
+      "bytes": 6475,
+      "sha256": "335d492590f57c79ad7bc5fe6fc1f3f682fecf1dd3219cf9e2b56c83719489a9"
+    },
+    "examples/baselines/cil_det/image_det_cil.py": {
+      "bytes": 47657,
+      "sha256": "e253f85b081ae758ac9b57bde0ba349e71d0faa66a1902fc722ef9dd6e8ab4ad"
+    },
+    "examples/baselines/cil_det/image_det_cil_rapo.py": {
+      "bytes": 54017,
+      "sha256": "7f36ef88964cc7b56e8e6384f49c2c3f8c570d41961b20a0e12dc82e1da6dc65"
+    },
+    "examples/baselines/cil_det/sam_actor.py": {
+      "bytes": 4941,
+      "sha256": "632b36f205735704273b80303ad140e068ff08cbdae2df8f2047753ba7a9ef5b"
+    },
+    "examples/baselines/cil_misc/__init__.py": {
+      "bytes": 21,
+      "sha256": "4d3ffb25650f940541318777a6352b1923ab8485f25434009a1df3219e42c465"
+    },
+    "examples/baselines/cil_misc/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 206,
+      "sha256": "8e1923a7e783ddfca4f40fa497622cd31edc2a8ee817be9d1d33385b8ee695a6"
+    },
+    "examples/baselines/cil_misc/__pycache__/fsdp_worker_ext.cpython-311.pyc": {
+      "bytes": 2484,
+      "sha256": "216633967395f4ca692387feeceefde8ad80c5c46460364f0a37ff47ef91c7b8"
+    },
+    "examples/baselines/cil_misc/__pycache__/fsdp_worker_ext.cpython-312.pyc": {
+      "bytes": 2333,
+      "sha256": "0a8bf8702df78cbc71c0429c590c182f752794e3e0edda33448029ddea19cbd3"
+    },
+    "examples/baselines/cil_misc/fsdp_worker_ext.py": {
+      "bytes": 2112,
+      "sha256": "ba3bf3d700399220c25e5f00729d644fd8c069d804091572ead6a26dbe9e6e9c"
+    },
+    "examples/baselines/img_cls_cil/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "examples/baselines/img_cls_cil/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 209,
+      "sha256": "7ea2bc502fa63777d72bfbf7131e3dfe8bb440e0c9187ec71ca64544f4acb267"
+    },
+    "examples/baselines/img_cls_cil/__pycache__/__init__.cpython-312.pyc": {
+      "bytes": 197,
+      "sha256": "e129963b4d1dbfbdc505f206d88ceaa2af42ec316e75f54efe123d50c107397f"
+    },
+    "examples/baselines/img_cls_cil/__pycache__/image_cls_cil.cpython-311.pyc": {
+      "bytes": 37875,
+      "sha256": "e51766003b5df1956e32aff3f155cbe5f173b04a7f12b7d69212b772de291528"
+    },
+    "examples/baselines/img_cls_cil/__pycache__/image_cls_cil.cpython-312.pyc": {
+      "bytes": 32289,
+      "sha256": "6c216057fa404a26ad6ae28d0d80df422f8e74745c4bea5c50e388f0d84bd483"
+    },
+    "examples/baselines/img_cls_cil/__pycache__/image_cls_cil_rapo.cpython-311.pyc": {
+      "bytes": 51020,
+      "sha256": "9a780760c639810ce46bf3a72119d6a5df3410e329c5d04f430b9ce4f7c419cc"
+    },
+    "examples/baselines/img_cls_cil/__pycache__/image_cls_cil_rapo.cpython-312.pyc": {
+      "bytes": 46424,
+      "sha256": "903f01e6f0f39c4f5ac39978a50c9b4fe75d4ac68daaa6b270268d554234df31"
+    },
+    "examples/baselines/img_cls_cil/image_cls_cil.py": {
+      "bytes": 23183,
+      "sha256": "dce11bb12e0f3a36135e52248676a73b92701f626456ea31205a5d5f37334019"
+    },
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py": {
+      "bytes": 45529,
+      "sha256": "0e06cce12ecde79a1fc965a421b6fa8910fb6dd4e39cd6fac3ce854998ead93d"
+    },
+    "examples/baselines/video_cls_cil/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "examples/baselines/video_cls_cil/__pycache__/video_cls_cil_rapo.cpython-311.pyc": {
+      "bytes": 2594,
+      "sha256": "a463cdda7d9c24b52636695ed0c515156d3ca81219529ba081095fa2390d29fa"
+    },
+    "examples/baselines/video_cls_cil/__pycache__/video_cls_cil_rapo.cpython-312.pyc": {
+      "bytes": 2372,
+      "sha256": "a4380d149169218307399a605bcf4086fd34085393a55b52c680bf8ffc3c3982"
+    },
+    "examples/baselines/video_cls_cil/video_cls_cil_rapo.py": {
+      "bytes": 1501,
+      "sha256": "41b70819cc48b5c77042cd469ecccd785a649eb0eb9dfed0ef587f5350f9b5ab"
+    },
+    "examples/config.yaml": {
+      "bytes": 3361,
+      "sha256": "d162ec9415732087f38bfcd1c26395760c1b2c76330eee7a088c482e5e21534d"
+    },
+    "examples/config_det.yaml": {
+      "bytes": 2866,
+      "sha256": "cbd88733a97b9b8cf756d9151e3e387e46309a316ebd1247d5fa4a6af82150ba"
+    },
+    "examples/format_prompt/cls.jinja": {
+      "bytes": 515,
+      "sha256": "dc4ed5e7420936798998d7ed05d3fbd863603325411030af45e02c7b77a34323"
+    },
+    "examples/format_prompt/det.jinja": {
+      "bytes": 682,
+      "sha256": "1c9a361c1c933d82f220f9fe9fce170dd5c3ea87e8cba406582e63b05eadd849"
+    },
+    "examples/format_prompt/video_cls.jinja": {
+      "bytes": 516,
+      "sha256": "61869b9f1728bcc381e16cdde0e2f2b4a4a945dbcdf5eb1de009276f9c0a1c86"
+    },
+    "examples/reward_function/__pycache__/cls.cpython-312.pyc": {
+      "bytes": 3085,
+      "sha256": "aaaeb34b3c50625417f6450368523440c9a9359c6f3cedeb1ec97ab58937a8db"
+    },
+    "examples/reward_function/__pycache__/det.cpython-311.pyc": {
+      "bytes": 9720,
+      "sha256": "8d43c397b7babe179e938d77b91b5f3c79413bdda11f5196a86301cee2dc83b6"
+    },
+    "examples/reward_function/__pycache__/det.cpython-312.pyc": {
+      "bytes": 8364,
+      "sha256": "48b8391a665d27d893d87bf91d95ece793145926d7321f525207510306d90ca4"
+    },
+    "examples/reward_function/cls.py": {
+      "bytes": 1791,
+      "sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1"
+    },
+    "examples/reward_function/det.py": {
+      "bytes": 6124,
+      "sha256": "4a87695f519af741b6427aa688c5a8befa7f455eb9fe3c6e6346e15e379f1278"
+    },
+    "README.md": {
+      "bytes": 3325,
+      "sha256": "11f3e9423e11b7f5be7019ac0db55f46090da40f22242e205830d0c2c961d809"
+    },
+    "requirements.txt": {
+      "bytes": 593,
+      "sha256": "7d94e96db36db8719f1907dcf2ec41c71d323df588f7485ac755dcd973872ca7"
+    },
+    "scripts/det/10task.sh": {
+      "bytes": 2815,
+      "sha256": "c9a70577bd998ed97ac91c9f49337481e4d391b0751868ffd6fd724c26a780fd"
+    },
+    "scripts/det/5task.sh": {
+      "bytes": 2817,
+      "sha256": "e0f438ac05448d67d1d723dcaac94740af691abc8c1878db922bd2f7ce196283"
+    },
+    "scripts/det/rapo_cfg.json": {
+      "bytes": 439,
+      "sha256": "0e3e72bb6510cc0c176983cf46efc70d400ac6f4f79acafe2a6c5409e15df99a"
+    },
+    "scripts/image/10task.sh": {
+      "bytes": 3271,
+      "sha256": "9fe6be63a5e0d156c57cc945ca522366bb7c89e4f38f632ca185c004cbd89fea"
+    },
+    "scripts/image/20task.sh": {
+      "bytes": 3271,
+      "sha256": "c12b3f4463a860f80ea720f1303d4072e2bb3375a34320a8a74c3af25e7f8028"
+    },
+    "scripts/image/rapo_cfg.json": {
+      "bytes": 439,
+      "sha256": "0e3e72bb6510cc0c176983cf46efc70d400ac6f4f79acafe2a6c5409e15df99a"
+    },
+    "scripts/video/10task.sh": {
+      "bytes": 3029,
+      "sha256": "44ae5746736da18eea88031c825ad97f7223ded618ea88f6dfdbf08562957284"
+    },
+    "scripts/video/5task.sh": {
+      "bytes": 3028,
+      "sha256": "c054085d278ad85ac184bf85b35cd14558c8cf34349e3b58f3b9dac2d7742be2"
+    },
+    "scripts/video/rapo_cfg.json": {
+      "bytes": 439,
+      "sha256": "0e3e72bb6510cc0c176983cf46efc70d400ac6f4f79acafe2a6c5409e15df99a"
+    },
+    "verl/__init__.py": {
+      "bytes": 1122,
+      "sha256": "71e3d6e8033cdaa74d9a0e7725c838f979a89f70446e4037ad8441d06710dada"
+    },
+    "verl/models/__init__.py": {
+      "bytes": 600,
+      "sha256": "e65abd77db034b4f29eb1268c24867f84919dbce22e28d1997e563ed1d94179c"
+    },
+    "verl/models/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 190,
+      "sha256": "002ab6d38967488dc8c24db039579edde6db3ddf42262d9a1f68a34287bdc75c"
+    },
+    "verl/models/__pycache__/monkey_patch.cpython-311.pyc": {
+      "bytes": 2569,
+      "sha256": "abef380e5ac0410acad1c041a12ffd5a5a296e97504cb5fdfac04c9868d9366e"
+    },
+    "verl/models/monkey_patch.py": {
+      "bytes": 3016,
+      "sha256": "235f15787033941179df2380aa586c1de1af90444fedcf4e2ff4da3eb5d4c08b"
+    },
+    "verl/models/transformers/__init__.py": {
+      "bytes": 600,
+      "sha256": "e65abd77db034b4f29eb1268c24867f84919dbce22e28d1997e563ed1d94179c"
+    },
+    "verl/models/transformers/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 203,
+      "sha256": "acbbe020866e9a56188eb9a3b6b285c84952c07cc7c4a243aeaeb7eaf7089aa0"
+    },
+    "verl/models/transformers/__pycache__/flash_attention_utils.cpython-311.pyc": {
+      "bytes": 7947,
+      "sha256": "bfeb9ab6818739e76c3bf9298a3951cebbc1d32ec1a391ca31452213a0401a3a"
+    },
+    "verl/models/transformers/__pycache__/qwen2_vl.cpython-311.pyc": {
+      "bytes": 12429,
+      "sha256": "a399a779652f6b92028f6347d3346a365b6778aee6234e1161d74c75fcecd759"
+    },
+    "verl/models/transformers/flash_attention_utils.py": {
+      "bytes": 7268,
+      "sha256": "115ef6731be9d9220040aef4362d9c304843df907e56f5c9d118d2633cc0995e"
+    },
+    "verl/models/transformers/qwen2_vl.py": {
+      "bytes": 10627,
+      "sha256": "38ca4470f7250106a1ec24999128f6bc3b59493ffb4a794e821481aea794e06d"
+    },
+    "verl/models/transformers/qwen3_vl.py": {
+      "bytes": 12188,
+      "sha256": "84702e3f5a795e061e87ad269e48d7ec5c5061d7b852cabcced2799815b65244"
+    },
+    "verl/protocol.py": {
+      "bytes": 29146,
+      "sha256": "a634340a086a986c03c96ad27c58da3df792ad4ebd09741c9109d689e2cfebd1"
+    },
+    "verl/single_controller/__init__.py": {
+      "bytes": 600,
+      "sha256": "e65abd77db034b4f29eb1268c24867f84919dbce22e28d1997e563ed1d94179c"
+    },
+    "verl/single_controller/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 201,
+      "sha256": "e4e4d2ccde75969040e06c4421e89a8770698aed590ea617084e38d6294d6dd7"
+    },
+    "verl/single_controller/base/__init__.py": {
+      "bytes": 774,
+      "sha256": "54c1bcd50ca1c03e4e08d38208bec3db525eaaf46a987b83d032a316d488c1e4"
+    },
+    "verl/single_controller/base/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 437,
+      "sha256": "422e40a197a7792b7f4beb7165a373bcfc8c625e5a02ec7e547c6e39d329b69a"
+    },
+    "verl/single_controller/base/__pycache__/decorator.cpython-311.pyc": {
+      "bytes": 10509,
+      "sha256": "38f0c12b77ee9077a66c695006e0477ceb18519e76e4e2d9445f278de1b124de"
+    },
+    "verl/single_controller/base/__pycache__/worker.cpython-311.pyc": {
+      "bytes": 11048,
+      "sha256": "e07cef8eb1c0fcdf466f672b87e923f0c5f9e198c828cc010af13b19bf28353a"
+    },
+    "verl/single_controller/base/__pycache__/worker_group.cpython-311.pyc": {
+      "bytes": 10685,
+      "sha256": "dc2b6e635d9269cd8e9d5af9a9f28a2a046d0b913e0ea4b113bc976f481b2c00"
+    },
+    "verl/single_controller/base/decorator.py": {
+      "bytes": 7301,
+      "sha256": "2fe8e039eade8d92390d09a4fb1526183f4c110566825452b15e39843e9d3add"
+    },
+    "verl/single_controller/base/register_center/__init__.py": {
+      "bytes": 600,
+      "sha256": "e65abd77db034b4f29eb1268c24867f84919dbce22e28d1997e563ed1d94179c"
+    },
+    "verl/single_controller/base/register_center/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 222,
+      "sha256": "a1154c63004f06b8e8aa6f89123a02d198cc9ddafa47a6f0fcd2de3bee3a6e00"
+    },
+    "verl/single_controller/base/register_center/__pycache__/ray.cpython-311.pyc": {
+      "bytes": 1218,
+      "sha256": "74e18477d6c491ab7ffdc3289c43fb579936777ca12fd36012ba0c833452115c"
+    },
+    "verl/single_controller/base/register_center/ray.py": {
+      "bytes": 938,
+      "sha256": "7c0a3ea7a3f49b4bbd0a5b0f51136b160dca09cdfded5f52ed4d72aa011bce1e"
+    },
+    "verl/single_controller/base/worker.py": {
+      "bytes": 6555,
+      "sha256": "ecbbe21a48dd6133700d2028e720eb26870683a0439d8499b43a44bd6486fb99"
+    },
+    "verl/single_controller/base/worker_group.py": {
+      "bytes": 7186,
+      "sha256": "3c3ab71b7d4e18ace6e150585fe3b2134a4419059089885874067fa35962fc90"
+    },
+    "verl/single_controller/ray/__init__.py": {
+      "bytes": 807,
+      "sha256": "5fc70fda13efb9a61e43b268b93cc3ce7fd48988e34d59d9a8fd520d7aa8ec72"
+    },
+    "verl/single_controller/ray/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 407,
+      "sha256": "5dd53828d36f61efd9770080bde0e3d59c2cd5eeef03ab4d95daee75f7ce57a6"
+    },
+    "verl/single_controller/ray/__pycache__/base.cpython-311.pyc": {
+      "bytes": 31128,
+      "sha256": "d726e68a025c369c01db18b4a0c9bd6e86fcf793f0849a80fbfcbc75a6f86e10"
+    },
+    "verl/single_controller/ray/base.py": {
+      "bytes": 19989,
+      "sha256": "039982ab0d10549df648427f10b945860c1b8260195faa9552f6336c809a49ab"
+    },
+    "verl/trainer/__init__.py": {
+      "bytes": 600,
+      "sha256": "e65abd77db034b4f29eb1268c24867f84919dbce22e28d1997e563ed1d94179c"
+    },
+    "verl/trainer/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 191,
+      "sha256": "77c3f6d25301721997bf07870087b3d2cb1af1e9d0d217911f718c31d18ab768"
+    },
+    "verl/trainer/__pycache__/config.cpython-311.pyc": {
+      "bytes": 8260,
+      "sha256": "f1ff172b01e3421be94241b95c3278551e2ec8027fc7a06f7b6ebba57239307f"
+    },
+    "verl/trainer/__pycache__/core_algos.cpython-311.pyc": {
+      "bytes": 28863,
+      "sha256": "3f97f5bf7bd7db634e56c74da7dc696d452a69dbc1053e3b6692e76db22e0c39"
+    },
+    "verl/trainer/__pycache__/metrics.cpython-311.pyc": {
+      "bytes": 9868,
+      "sha256": "c139a2afd8046f2006f8f1416fe06d9c793c11008c8b57aab55a516a8b8df5a7"
+    },
+    "verl/trainer/__pycache__/ray_trainer.cpython-311.pyc": {
+      "bytes": 44362,
+      "sha256": "e8714c7d50bd70af98c2aee1ea044c76bea65005e304582469e2826e215725ff"
+    },
+    "verl/trainer/config.py": {
+      "bytes": 6531,
+      "sha256": "f17b2e61120ce69a5399e39a2eb643ce2510689eb5c1e3fe276caffffd80b99d"
+    },
+    "verl/trainer/core_algos.py": {
+      "bytes": 21906,
+      "sha256": "871cadc71a8b04295ebdc8ff516ba242697e49cb27680920d4870a8431023d71"
+    },
+    "verl/trainer/data_loader.py": {
+      "bytes": 4502,
+      "sha256": "344f1f50aff2285e5cbc8d462f8b08755b29b59efc0ce412842db63e46612391"
+    },
+    "verl/trainer/main.py": {
+      "bytes": 4603,
+      "sha256": "f6bdd143a7da3f91634e3b6816171a5abadc02e7a8079cbfd29f59402a7d3ec4"
+    },
+    "verl/trainer/metrics.py": {
+      "bytes": 5398,
+      "sha256": "5ea4351e39d3879156da3c2925dc5832381e941a1901f87d81d7fb85263d14a3"
+    },
+    "verl/trainer/ray_trainer.py": {
+      "bytes": 33623,
+      "sha256": "54b9cb7fccc78513440ed05f9c53fe80c43bf86425ae6067ea4a7d41d25017ca"
+    },
+    "verl/utils/__init__.py": {
+      "bytes": 600,
+      "sha256": "e65abd77db034b4f29eb1268c24867f84919dbce22e28d1997e563ed1d94179c"
+    },
+    "verl/utils/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 189,
+      "sha256": "c4e603421924261a587c1ad4244a96cb1a934551d1011553b01dea1d154d4237"
+    },
+    "verl/utils/__pycache__/dataset.cpython-311.pyc": {
+      "bytes": 23643,
+      "sha256": "c9c4129d7916aa25366894174c968523af24709679a5dd1d7eccbbecebf49c46"
+    },
+    "verl/utils/__pycache__/flops_counter.cpython-311.pyc": {
+      "bytes": 7075,
+      "sha256": "dfb70fd55ddb2d6d2c3ee67c4038b76f45e291e8be2bd26e47aa6c8fd7218efb"
+    },
+    "verl/utils/__pycache__/fsdp_utils.cpython-311.pyc": {
+      "bytes": 10334,
+      "sha256": "7be231e006d802542c89a7da520dee3ae8cfab55ba8b666ef82e221f4287e6da"
+    },
+    "verl/utils/__pycache__/model_utils.cpython-311.pyc": {
+      "bytes": 3160,
+      "sha256": "9de4265709f7d305e695bc859cd0b23358442129780ae2d0c92d469eabe2b4b5"
+    },
+    "verl/utils/__pycache__/py_functional.cpython-311.pyc": {
+      "bytes": 7003,
+      "sha256": "8649d021db612b028353e7a8f5f244f8c36668e4ff76f280f93d00b573110d6c"
+    },
+    "verl/utils/__pycache__/seqlen_balancing.cpython-311.pyc": {
+      "bytes": 20419,
+      "sha256": "89210401361b564027ec4197a2d90b285f98e45c96178e839f7385ae47ce9c1b"
+    },
+    "verl/utils/__pycache__/tokenizer.cpython-311.pyc": {
+      "bytes": 2482,
+      "sha256": "9f22970fc2924bad29367ec3cea7d91068f3dc9c8689bdd9f4a88d5b66a3c44b"
+    },
+    "verl/utils/__pycache__/torch_dtypes.cpython-311.pyc": {
+      "bytes": 2325,
+      "sha256": "cc9c6c8421ceaa166c2922927c0b5a3ed3436fe49a5c7d6fe54bead77d8064c3"
+    },
+    "verl/utils/__pycache__/torch_functional.cpython-311.pyc": {
+      "bytes": 20164,
+      "sha256": "22ffa49e7b7943c7a8a5947b58013718dd9541a0308db1c43a154870271980fc"
+    },
+    "verl/utils/__pycache__/ulysses.cpython-311.pyc": {
+      "bytes": 16023,
+      "sha256": "e298deda111a73de53cd293485bc3cc0f99bfc8ccac289c03ef20778ef84a7f9"
+    },
+    "verl/utils/__pycache__/vllm_utils.cpython-311.pyc": {
+      "bytes": 6186,
+      "sha256": "a1450e64d95f5cf1438d3269ec4d2ca2d679c2ebf67e6e4c0d7596d01cae09a0"
+    },
+    "verl/utils/checkpoint/__init__.py": {
+      "bytes": 771,
+      "sha256": "af3f01995bb99df376811b5674c2fa3ccc91855ce46ee71d926a1721380c3c92"
+    },
+    "verl/utils/checkpoint/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 377,
+      "sha256": "a94c213b83474672b466eacac1e7499e462556a29d41ddd2fcaf7ee2f2ef458d"
+    },
+    "verl/utils/checkpoint/__pycache__/checkpoint_manager.cpython-311.pyc": {
+      "bytes": 9267,
+      "sha256": "64d0c8f9e3494c10b8c6666434b0b93981c4af0c88e541793570917839256711"
+    },
+    "verl/utils/checkpoint/__pycache__/fsdp_checkpoint_manager.cpython-311.pyc": {
+      "bytes": 10481,
+      "sha256": "e86a3ba22c98d5cbad9a8fbb8983985161bd420d18d1f380bbdf2a28269afa12"
+    },
+    "verl/utils/checkpoint/checkpoint_manager.py": {
+      "bytes": 5641,
+      "sha256": "af20ef83b0289591dbd1ccbd91c46dc4a4aadf0094bd6f89edfd743c39f4904f"
+    },
+    "verl/utils/checkpoint/fsdp_checkpoint_manager.py": {
+      "bytes": 6975,
+      "sha256": "525fdef04dcc8aba2973407428dc6f600f064187625a892b7d39f205db199179"
+    },
+    "verl/utils/dataset.py": {
+      "bytes": 17943,
+      "sha256": "a8a47fd92215e267c042ff27774fcdb365b912ea01774551ccfd714a0952646e"
+    },
+    "verl/utils/flops_counter.py": {
+      "bytes": 7228,
+      "sha256": "0b0121aeacd46cc29d721ea738f5fa5b1dde4866418b4c6de056f7cfce7574a6"
+    },
+    "verl/utils/fsdp_utils.py": {
+      "bytes": 7178,
+      "sha256": "e3bb42cb978b313d12b264acdf4b258abe7d8bc02682e5bf4aae92f013a83ed2"
+    },
+    "verl/utils/logger/__init__.py": {
+      "bytes": 654,
+      "sha256": "1139d6b27e3b16de699fbfb62af96996929975179ca2ee8f6f7440b5592aa9aa"
+    },
+    "verl/utils/logger/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 277,
+      "sha256": "5316ce64ad30e0aae917bebe33ab1f90b51760fd95f6909f7e9095dcbb79d7cc"
+    },
+    "verl/utils/logger/__pycache__/gen_logger.cpython-311.pyc": {
+      "bytes": 7405,
+      "sha256": "24619d5703fcd713491ae01e916591bcda409fc747a08961326f7768141b6756"
+    },
+    "verl/utils/logger/__pycache__/logger.cpython-311.pyc": {
+      "bytes": 13404,
+      "sha256": "f2eacf3cb8201feed631348603e943cd09bd70fe49b30a58d494f3b8d65c7569"
+    },
+    "verl/utils/logger/gen_logger.py": {
+      "bytes": 4004,
+      "sha256": "a34fc8761b5ddc3a02c3b368f1bae8b3f0b53cfb11fda8e294fc6e844c0ea95a"
+    },
+    "verl/utils/logger/logger.py": {
+      "bytes": 6311,
+      "sha256": "bef8fddc63d378770766fdba1f39937a98359e1f1c887084d970170933d91d24"
+    },
+    "verl/utils/model_utils.py": {
+      "bytes": 2205,
+      "sha256": "fb83e18b441b1de34c04b9798d58ba8dbc49df84466aab998db0826fd2cbf316"
+    },
+    "verl/utils/py_functional.py": {
+      "bytes": 4013,
+      "sha256": "89be48d8c3a167febbf375a88a6fd5cec0f910741b1a4adeb55a40929d123c93"
+    },
+    "verl/utils/seqlen_balancing.py": {
+      "bytes": 12623,
+      "sha256": "f1319a58338d64cbdbfffb9f881e2fe484cffc2b405fe078d0835985b412169d"
+    },
+    "verl/utils/tokenizer.py": {
+      "bytes": 2491,
+      "sha256": "0e20ac39d453e7dc7a4498da91806a7e2629eb59e34c47a26edfdf6ffa6401dc"
+    },
+    "verl/utils/torch_dtypes.py": {
+      "bytes": 1792,
+      "sha256": "c3bb3c5d061b364ba412f927a82775cdca6205380d8ecbc25548f938be0fd30f"
+    },
+    "verl/utils/torch_functional.py": {
+      "bytes": 16315,
+      "sha256": "fd686c86f5e479acb39d873fef8eadc048e616f8c7a868ea50c71e925667e651"
+    },
+    "verl/utils/ulysses.py": {
+      "bytes": 11880,
+      "sha256": "9ab1d44fec1a1cb985263a87933a731bf93b818f3ce2f785079c8b0aa50837b0"
+    },
+    "verl/utils/vllm_utils.py": {
+      "bytes": 6202,
+      "sha256": "fa2bc6eb613477302c0222d75133e3121e5e2514fd007320d001b2bd426143e9"
+    },
+    "verl/workers/__init__.py": {
+      "bytes": 600,
+      "sha256": "e65abd77db034b4f29eb1268c24867f84919dbce22e28d1997e563ed1d94179c"
+    },
+    "verl/workers/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 191,
+      "sha256": "067534000f6e106d8340c10afcba8d9d92476553f4cee0047f236497d81c3707"
+    },
+    "verl/workers/__pycache__/config.cpython-311.pyc": {
+      "bytes": 2106,
+      "sha256": "ab6c2b44e11e3ef5d3f525a1cd4346c7f114944926dacab96985f8b0e09362b6"
+    },
+    "verl/workers/__pycache__/fsdp_workers.cpython-311.pyc": {
+      "bytes": 38559,
+      "sha256": "1b2e3d479f6e66b1838ce2c3ef1395f19f233042f27aef0a15c4ca198ccbb561"
+    },
+    "verl/workers/actor/__init__.py": {
+      "bytes": 820,
+      "sha256": "dd070e1e7e9a5b742a10091b0fe2cd5760107843a006055132377535210961a2"
+    },
+    "verl/workers/actor/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 424,
+      "sha256": "99c0395fa286a94e6f094efd8839799ffd7110e7d3a3f1f132498014ac16f51a"
+    },
+    "verl/workers/actor/__pycache__/base.cpython-311.pyc": {
+      "bytes": 2327,
+      "sha256": "2e790bc517f9912a28a684bb6c31994dae1b40d5994c085e7f9d45ec2db5c00a"
+    },
+    "verl/workers/actor/__pycache__/config.cpython-311.pyc": {
+      "bytes": 8191,
+      "sha256": "07e31af92d54ba113c4738984b345eb05aa3912b6a3951a33e808b122ff719cd"
+    },
+    "verl/workers/actor/__pycache__/dp_actor.cpython-311.pyc": {
+      "bytes": 14996,
+      "sha256": "7153a15aa4a9f69245437753ce218a36903ea3bfd1542d53dcd7dbb88ae97e7b"
+    },
+    "verl/workers/actor/base.py": {
+      "bytes": 1965,
+      "sha256": "d2fe132edff46e673e7c338615edd880efc7c347c16dde1cafbe063dd4318d01"
+    },
+    "verl/workers/actor/config.py": {
+      "bytes": 5426,
+      "sha256": "f95864cb05d3219296071ff13423a623c0261270e71b94c755ddd5814dafa926"
+    },
+    "verl/workers/actor/dp_actor.py": {
+      "bytes": 13433,
+      "sha256": "2e7ba59831f4a8c0d01e918103f191554cb1bb70df7ee95efddc31c36bd6ded0"
+    },
+    "verl/workers/config.py": {
+      "bytes": 1828,
+      "sha256": "00475242e75ea83b0692df09bf2ce42874d4eda35a7eedc56bc48938c0a0356c"
+    },
+    "verl/workers/critic/__init__.py": {
+      "bytes": 663,
+      "sha256": "bb434041e7522163ce3ca2bbda2ce330fd2fffad0f95524f061cd0df64a70208"
+    },
+    "verl/workers/critic/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 285,
+      "sha256": "176f75cfd009638cf3b57d72826c1315634babb2637d0dcee71b353d155e2b57"
+    },
+    "verl/workers/critic/__pycache__/config.cpython-311.pyc": {
+      "bytes": 1959,
+      "sha256": "2d00b468d58d8a1ee0c13a8a311b45e1d54210aaed5adc6c198bf1208c8b91db"
+    },
+    "verl/workers/critic/base.py": {
+      "bytes": 1161,
+      "sha256": "d3d3cddc85e8da64dbc3cd256fd50a02f518da3a9cb15d2eebd9a14894113f48"
+    },
+    "verl/workers/critic/config.py": {
+      "bytes": 1970,
+      "sha256": "79c8641a766c3f611a55110d4cf4f140b95e9f606efa214d26df45c37c4402c8"
+    },
+    "verl/workers/critic/dp_critic.py": {
+      "bytes": 9882,
+      "sha256": "7e597acdeff0082f04b64e33f797e3adbe31a1229e225d3491bff57f8b80dd8f"
+    },
+    "verl/workers/fsdp_workers.py": {
+      "bytes": 32141,
+      "sha256": "4ce08f3214b9eeaf429c789f76ea2560156cbad003ce465e2eaf48233a99bad6"
+    },
+    "verl/workers/reward/__init__.py": {
+      "bytes": 724,
+      "sha256": "4c9c55efeb8c5fc040b685b2c0a7d69f529556de344f1681453392d7e7768893"
+    },
+    "verl/workers/reward/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 360,
+      "sha256": "e50b81467622961465d979f34e6a686a940a57fad1cbfe12395543335fcd5468"
+    },
+    "verl/workers/reward/__pycache__/config.cpython-311.pyc": {
+      "bytes": 1708,
+      "sha256": "27ddf0e4b74affd00c57f045e2933c9731048729f969de453805ea55a2c38d1a"
+    },
+    "verl/workers/reward/__pycache__/function.cpython-311.pyc": {
+      "bytes": 9038,
+      "sha256": "8495569f53fd18791d49ed0820a14ea4a115ea61177b3a8b45cf5d7635644367"
+    },
+    "verl/workers/reward/config.py": {
+      "bytes": 1490,
+      "sha256": "45379894b777e130a1e881e5b5d626f8a18657aed4f066fcf8df496584c86376"
+    },
+    "verl/workers/reward/function.py": {
+      "bytes": 5997,
+      "sha256": "59fa38dda0d879d76b82bf3c37815df4ccc6c33c9e39390da8933cc310bdfc3b"
+    },
+    "verl/workers/rollout/__init__.py": {
+      "bytes": 724,
+      "sha256": "c6cb40fd12bcbf04fe8c9bef9f1669adec38f6a09956682a35cac4e6dc594560"
+    },
+    "verl/workers/rollout/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 365,
+      "sha256": "00a5dd411ac20c8f555d1879036d861d34746a36a771774886be9d85aaf159a5"
+    },
+    "verl/workers/rollout/__pycache__/base.cpython-311.pyc": {
+      "bytes": 865,
+      "sha256": "4e4ffc2defe2dcc45c2c731f177090804a77d417f16fbd56e639bd724ba2613f"
+    },
+    "verl/workers/rollout/__pycache__/config.cpython-311.pyc": {
+      "bytes": 2234,
+      "sha256": "4e15c887100965c4a4d90d66fab3e9c4e415c1f3c3aa29eef7c93f0199b53c59"
+    },
+    "verl/workers/rollout/__pycache__/vllm_rollout_spmd.cpython-311.pyc": {
+      "bytes": 13084,
+      "sha256": "4674cea75dfda86f8cacc9b319542f7ebb4f27a6f0527ec41c97ca735b78baf8"
+    },
+    "verl/workers/rollout/base.py": {
+      "bytes": 859,
+      "sha256": "7cf5fe139d23f17ef028d71fc528425de061a6842ed6f74cfe0c7db49b7fd00d"
+    },
+    "verl/workers/rollout/config.py": {
+      "bytes": 1584,
+      "sha256": "2d76cf77f02024f3326e9e24f970944ab26896e0fb00ea0af5f58a37c0e8171b"
+    },
+    "verl/workers/rollout/vllm_rollout_spmd.py": {
+      "bytes": 11380,
+      "sha256": "d2db2ec1ccc9e8e626c3a1085cf2fe75d3c098db20910fe8cfee2d9dbaf813e1"
+    },
+    "verl/workers/sharding_manager/__init__.py": {
+      "bytes": 833,
+      "sha256": "d736c2258db98c57fa97613b0128268e438cfd48ed309ebc8decdf1947d40bce"
+    },
+    "verl/workers/sharding_manager/__pycache__/__init__.cpython-311.pyc": {
+      "bytes": 470,
+      "sha256": "15f6fd9e78699e371c1950da3e2da5934f8bdc2bc122e36f9b724c3d769ec908"
+    },
+    "verl/workers/sharding_manager/__pycache__/base.cpython-311.pyc": {
+      "bytes": 1294,
+      "sha256": "719edfbfdaf53e0ad7ff8a86ba93bdc7d4ff3fefaff73b856c2c1d130c24c1f9"
+    },
+    "verl/workers/sharding_manager/__pycache__/fsdp_ulysses.cpython-311.pyc": {
+      "bytes": 3516,
+      "sha256": "4ba3f505dace62f85727dc958a51d78f19415efd5615c1e083c0a37ec8941498"
+    },
+    "verl/workers/sharding_manager/__pycache__/fsdp_vllm.cpython-311.pyc": {
+      "bytes": 13019,
+      "sha256": "4601df41db1ab93494c9d917075c07f099eeb6b439a2106020ecd9d626b92bd3"
+    },
+    "verl/workers/sharding_manager/base.py": {
+      "bytes": 988,
+      "sha256": "e7f8645a6e4b34dac2e19229bb0c18e5f1de4993fbcb7f84640ef1e6244d15c2"
+    },
+    "verl/workers/sharding_manager/fsdp_ulysses.py": {
+      "bytes": 2505,
+      "sha256": "dd3a8b3252787f3a711396e5015b24b3ea44a452db21f85c8680efa78646d64b"
+    },
+    "verl/workers/sharding_manager/fsdp_vllm.py": {
+      "bytes": 9913,
+      "sha256": "0066978584494778b7396fb4ccd20dffef557ae6ad165db39967e472b5c02308"
+    }
+  },
+  "archive_comparison": [
+    {
+      "zip_path": "RaPO/.gitignore",
+      "relative_path": ".gitignore",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/README.md",
+      "relative_path": "README.md",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/DATASET.md",
+      "relative_path": "data/DATASET.md",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/create_image_cls_cil_dataset.py",
+      "relative_path": "data/create_image_cls_cil_dataset.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/create_object_det_cil_dataset.py",
+      "relative_path": "data/create_object_det_cil_dataset.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/create_video_cls_cil_ucf101_dataset.py",
+      "relative_path": "data/create_video_cls_cil_ucf101_dataset.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/fewshot_lists/cub_train_5shots.jsonl",
+      "relative_path": "data/image_cls_cil/fewshot_lists/cub_train_5shots.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/fewshot_lists/imagenet_a_train_5shots.jsonl",
+      "relative_path": "data/image_cls_cil/fewshot_lists/imagenet_a_train_5shots.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/fewshot_lists/imagenet_r_train_5shots.jsonl",
+      "relative_path": "data/image_cls_cil/fewshot_lists/imagenet_r_train_5shots.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/fewshot_lists/tinyimagenet_train_5shots.jsonl",
+      "relative_path": "data/image_cls_cil/fewshot_lists/tinyimagenet_train_5shots.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/label_maps/cub.json",
+      "relative_path": "data/image_cls_cil/label_maps/cub.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/label_maps/imagenet_a.json",
+      "relative_path": "data/image_cls_cil/label_maps/imagenet_a.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/label_maps/imagenet_r.json",
+      "relative_path": "data/image_cls_cil/label_maps/imagenet_r.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/label_maps/tinyimagenet.json",
+      "relative_path": "data/image_cls_cil/label_maps/tinyimagenet.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/metadata.json",
+      "relative_path": "data/image_cls_cil/metadata.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/split_lists/imagenet_a_test.jsonl",
+      "relative_path": "data/image_cls_cil/split_lists/imagenet_a_test.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/split_lists/imagenet_a_train.jsonl",
+      "relative_path": "data/image_cls_cil/split_lists/imagenet_a_train.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/split_lists/imagenet_r_test.jsonl",
+      "relative_path": "data/image_cls_cil/split_lists/imagenet_r_test.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/image_cls_cil/split_lists/imagenet_r_train.jsonl",
+      "relative_path": "data/image_cls_cil/split_lists/imagenet_r_train.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/object_det_cil_dataset/categories.json",
+      "relative_path": "data/object_det_cil_dataset/categories.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/object_det_cil_dataset/metadata.json",
+      "relative_path": "data/object_det_cil_dataset/metadata.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/object_det_cil_dataset/train_5shots.jsonl",
+      "relative_path": "data/object_det_cil_dataset/train_5shots.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/object_det_cil_dataset/val.jsonl",
+      "relative_path": "data/object_det_cil_dataset/val.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/video_cls_cil/fewshot_lists/ucf101_split01_train_5shots.jsonl",
+      "relative_path": "data/video_cls_cil/fewshot_lists/ucf101_split01_train_5shots.jsonl",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/video_cls_cil/metadata.json",
+      "relative_path": "data/video_cls_cil/metadata.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/data/video_cls_cil/ucf101_split01_metadata.json",
+      "relative_path": "data/video_cls_cil/ucf101_split01_metadata.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/environment.lock.yml",
+      "relative_path": "environment.lock.yml",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/environment.yml",
+      "relative_path": "environment.yml",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/__init__.py",
+      "relative_path": "examples/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/__init__.py",
+      "relative_path": "examples/baselines/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "examples/baselines/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/__pycache__/__init__.cpython-312.pyc",
+      "relative_path": "examples/baselines/__pycache__/__init__.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/__pycache__/_rapo_components.cpython-311.pyc",
+      "relative_path": "examples/baselines/__pycache__/_rapo_components.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/__pycache__/_rapo_components.cpython-312.pyc",
+      "relative_path": "examples/baselines/__pycache__/_rapo_components.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/_rapo_components.py",
+      "relative_path": "examples/baselines/_rapo_components.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/__init__.py",
+      "relative_path": "examples/baselines/cil_det/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "examples/baselines/cil_det/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/__pycache__/image_det_cil.cpython-311.pyc",
+      "relative_path": "examples/baselines/cil_det/__pycache__/image_det_cil.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/__pycache__/image_det_cil.cpython-312.pyc",
+      "relative_path": "examples/baselines/cil_det/__pycache__/image_det_cil.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/__pycache__/image_det_cil_rapo.cpython-311.pyc",
+      "relative_path": "examples/baselines/cil_det/__pycache__/image_det_cil_rapo.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/__pycache__/image_det_cil_rapo.cpython-312.pyc",
+      "relative_path": "examples/baselines/cil_det/__pycache__/image_det_cil_rapo.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/__pycache__/sam_actor.cpython-312.pyc",
+      "relative_path": "examples/baselines/cil_det/__pycache__/sam_actor.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/image_det_cil.py",
+      "relative_path": "examples/baselines/cil_det/image_det_cil.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/image_det_cil_rapo.py",
+      "relative_path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_det/sam_actor.py",
+      "relative_path": "examples/baselines/cil_det/sam_actor.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_misc/__init__.py",
+      "relative_path": "examples/baselines/cil_misc/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_misc/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "examples/baselines/cil_misc/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_misc/__pycache__/fsdp_worker_ext.cpython-311.pyc",
+      "relative_path": "examples/baselines/cil_misc/__pycache__/fsdp_worker_ext.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_misc/__pycache__/fsdp_worker_ext.cpython-312.pyc",
+      "relative_path": "examples/baselines/cil_misc/__pycache__/fsdp_worker_ext.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/cil_misc/fsdp_worker_ext.py",
+      "relative_path": "examples/baselines/cil_misc/fsdp_worker_ext.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/__init__.py",
+      "relative_path": "examples/baselines/img_cls_cil/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "examples/baselines/img_cls_cil/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/__pycache__/__init__.cpython-312.pyc",
+      "relative_path": "examples/baselines/img_cls_cil/__pycache__/__init__.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/__pycache__/image_cls_cil.cpython-311.pyc",
+      "relative_path": "examples/baselines/img_cls_cil/__pycache__/image_cls_cil.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/__pycache__/image_cls_cil.cpython-312.pyc",
+      "relative_path": "examples/baselines/img_cls_cil/__pycache__/image_cls_cil.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/__pycache__/image_cls_cil_rapo.cpython-311.pyc",
+      "relative_path": "examples/baselines/img_cls_cil/__pycache__/image_cls_cil_rapo.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/__pycache__/image_cls_cil_rapo.cpython-312.pyc",
+      "relative_path": "examples/baselines/img_cls_cil/__pycache__/image_cls_cil_rapo.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/image_cls_cil.py",
+      "relative_path": "examples/baselines/img_cls_cil/image_cls_cil.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "relative_path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/video_cls_cil/__init__.py",
+      "relative_path": "examples/baselines/video_cls_cil/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/video_cls_cil/__pycache__/video_cls_cil_rapo.cpython-311.pyc",
+      "relative_path": "examples/baselines/video_cls_cil/__pycache__/video_cls_cil_rapo.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/video_cls_cil/__pycache__/video_cls_cil_rapo.cpython-312.pyc",
+      "relative_path": "examples/baselines/video_cls_cil/__pycache__/video_cls_cil_rapo.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/baselines/video_cls_cil/video_cls_cil_rapo.py",
+      "relative_path": "examples/baselines/video_cls_cil/video_cls_cil_rapo.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/config.yaml",
+      "relative_path": "examples/config.yaml",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/config_det.yaml",
+      "relative_path": "examples/config_det.yaml",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/format_prompt/cls.jinja",
+      "relative_path": "examples/format_prompt/cls.jinja",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/format_prompt/det.jinja",
+      "relative_path": "examples/format_prompt/det.jinja",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/format_prompt/video_cls.jinja",
+      "relative_path": "examples/format_prompt/video_cls.jinja",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/reward_function/__pycache__/cls.cpython-312.pyc",
+      "relative_path": "examples/reward_function/__pycache__/cls.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/reward_function/__pycache__/det.cpython-311.pyc",
+      "relative_path": "examples/reward_function/__pycache__/det.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/reward_function/__pycache__/det.cpython-312.pyc",
+      "relative_path": "examples/reward_function/__pycache__/det.cpython-312.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/reward_function/cls.py",
+      "relative_path": "examples/reward_function/cls.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/examples/reward_function/det.py",
+      "relative_path": "examples/reward_function/det.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/requirements.txt",
+      "relative_path": "requirements.txt",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/det/10task.sh",
+      "relative_path": "scripts/det/10task.sh",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/det/5task.sh",
+      "relative_path": "scripts/det/5task.sh",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/det/rapo_cfg.json",
+      "relative_path": "scripts/det/rapo_cfg.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/image/10task.sh",
+      "relative_path": "scripts/image/10task.sh",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/image/20task.sh",
+      "relative_path": "scripts/image/20task.sh",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/image/rapo_cfg.json",
+      "relative_path": "scripts/image/rapo_cfg.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/video/10task.sh",
+      "relative_path": "scripts/video/10task.sh",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/video/5task.sh",
+      "relative_path": "scripts/video/5task.sh",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/scripts/video/rapo_cfg.json",
+      "relative_path": "scripts/video/rapo_cfg.json",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/__init__.py",
+      "relative_path": "verl/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/__init__.py",
+      "relative_path": "verl/models/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/models/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/__pycache__/monkey_patch.cpython-311.pyc",
+      "relative_path": "verl/models/__pycache__/monkey_patch.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/monkey_patch.py",
+      "relative_path": "verl/models/monkey_patch.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/transformers/__init__.py",
+      "relative_path": "verl/models/transformers/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/transformers/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/models/transformers/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/transformers/__pycache__/flash_attention_utils.cpython-311.pyc",
+      "relative_path": "verl/models/transformers/__pycache__/flash_attention_utils.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/transformers/__pycache__/qwen2_vl.cpython-311.pyc",
+      "relative_path": "verl/models/transformers/__pycache__/qwen2_vl.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/transformers/flash_attention_utils.py",
+      "relative_path": "verl/models/transformers/flash_attention_utils.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/transformers/qwen2_vl.py",
+      "relative_path": "verl/models/transformers/qwen2_vl.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/models/transformers/qwen3_vl.py",
+      "relative_path": "verl/models/transformers/qwen3_vl.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/protocol.py",
+      "relative_path": "verl/protocol.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/__init__.py",
+      "relative_path": "verl/single_controller/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/single_controller/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/__init__.py",
+      "relative_path": "verl/single_controller/base/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/single_controller/base/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/__pycache__/decorator.cpython-311.pyc",
+      "relative_path": "verl/single_controller/base/__pycache__/decorator.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/__pycache__/worker.cpython-311.pyc",
+      "relative_path": "verl/single_controller/base/__pycache__/worker.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/__pycache__/worker_group.cpython-311.pyc",
+      "relative_path": "verl/single_controller/base/__pycache__/worker_group.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/decorator.py",
+      "relative_path": "verl/single_controller/base/decorator.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/register_center/__init__.py",
+      "relative_path": "verl/single_controller/base/register_center/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/register_center/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/single_controller/base/register_center/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/register_center/__pycache__/ray.cpython-311.pyc",
+      "relative_path": "verl/single_controller/base/register_center/__pycache__/ray.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/register_center/ray.py",
+      "relative_path": "verl/single_controller/base/register_center/ray.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/worker.py",
+      "relative_path": "verl/single_controller/base/worker.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/base/worker_group.py",
+      "relative_path": "verl/single_controller/base/worker_group.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/ray/__init__.py",
+      "relative_path": "verl/single_controller/ray/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/ray/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/single_controller/ray/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/ray/__pycache__/base.cpython-311.pyc",
+      "relative_path": "verl/single_controller/ray/__pycache__/base.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/single_controller/ray/base.py",
+      "relative_path": "verl/single_controller/ray/base.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/__init__.py",
+      "relative_path": "verl/trainer/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/trainer/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/__pycache__/config.cpython-311.pyc",
+      "relative_path": "verl/trainer/__pycache__/config.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/__pycache__/core_algos.cpython-311.pyc",
+      "relative_path": "verl/trainer/__pycache__/core_algos.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/__pycache__/metrics.cpython-311.pyc",
+      "relative_path": "verl/trainer/__pycache__/metrics.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/__pycache__/ray_trainer.cpython-311.pyc",
+      "relative_path": "verl/trainer/__pycache__/ray_trainer.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/config.py",
+      "relative_path": "verl/trainer/config.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/core_algos.py",
+      "relative_path": "verl/trainer/core_algos.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/data_loader.py",
+      "relative_path": "verl/trainer/data_loader.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/main.py",
+      "relative_path": "verl/trainer/main.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/metrics.py",
+      "relative_path": "verl/trainer/metrics.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/trainer/ray_trainer.py",
+      "relative_path": "verl/trainer/ray_trainer.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__init__.py",
+      "relative_path": "verl/utils/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/dataset.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/dataset.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/flops_counter.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/flops_counter.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/fsdp_utils.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/fsdp_utils.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/model_utils.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/model_utils.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/py_functional.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/py_functional.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/seqlen_balancing.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/seqlen_balancing.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/tokenizer.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/tokenizer.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/torch_dtypes.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/torch_dtypes.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/torch_functional.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/torch_functional.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/ulysses.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/ulysses.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/__pycache__/vllm_utils.cpython-311.pyc",
+      "relative_path": "verl/utils/__pycache__/vllm_utils.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/checkpoint/__init__.py",
+      "relative_path": "verl/utils/checkpoint/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/checkpoint/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/utils/checkpoint/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/checkpoint/__pycache__/checkpoint_manager.cpython-311.pyc",
+      "relative_path": "verl/utils/checkpoint/__pycache__/checkpoint_manager.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/checkpoint/__pycache__/fsdp_checkpoint_manager.cpython-311.pyc",
+      "relative_path": "verl/utils/checkpoint/__pycache__/fsdp_checkpoint_manager.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/checkpoint/checkpoint_manager.py",
+      "relative_path": "verl/utils/checkpoint/checkpoint_manager.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+      "relative_path": "verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/dataset.py",
+      "relative_path": "verl/utils/dataset.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/flops_counter.py",
+      "relative_path": "verl/utils/flops_counter.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/fsdp_utils.py",
+      "relative_path": "verl/utils/fsdp_utils.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/logger/__init__.py",
+      "relative_path": "verl/utils/logger/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/logger/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/utils/logger/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/logger/__pycache__/gen_logger.cpython-311.pyc",
+      "relative_path": "verl/utils/logger/__pycache__/gen_logger.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/logger/__pycache__/logger.cpython-311.pyc",
+      "relative_path": "verl/utils/logger/__pycache__/logger.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/logger/gen_logger.py",
+      "relative_path": "verl/utils/logger/gen_logger.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/logger/logger.py",
+      "relative_path": "verl/utils/logger/logger.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/model_utils.py",
+      "relative_path": "verl/utils/model_utils.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/py_functional.py",
+      "relative_path": "verl/utils/py_functional.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/seqlen_balancing.py",
+      "relative_path": "verl/utils/seqlen_balancing.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/tokenizer.py",
+      "relative_path": "verl/utils/tokenizer.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/torch_dtypes.py",
+      "relative_path": "verl/utils/torch_dtypes.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/torch_functional.py",
+      "relative_path": "verl/utils/torch_functional.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/ulysses.py",
+      "relative_path": "verl/utils/ulysses.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/utils/vllm_utils.py",
+      "relative_path": "verl/utils/vllm_utils.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/__init__.py",
+      "relative_path": "verl/workers/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/workers/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/__pycache__/config.cpython-311.pyc",
+      "relative_path": "verl/workers/__pycache__/config.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/__pycache__/fsdp_workers.cpython-311.pyc",
+      "relative_path": "verl/workers/__pycache__/fsdp_workers.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/__init__.py",
+      "relative_path": "verl/workers/actor/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/workers/actor/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/__pycache__/base.cpython-311.pyc",
+      "relative_path": "verl/workers/actor/__pycache__/base.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/__pycache__/config.cpython-311.pyc",
+      "relative_path": "verl/workers/actor/__pycache__/config.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/__pycache__/dp_actor.cpython-311.pyc",
+      "relative_path": "verl/workers/actor/__pycache__/dp_actor.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/base.py",
+      "relative_path": "verl/workers/actor/base.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/config.py",
+      "relative_path": "verl/workers/actor/config.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/actor/dp_actor.py",
+      "relative_path": "verl/workers/actor/dp_actor.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/config.py",
+      "relative_path": "verl/workers/config.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/critic/__init__.py",
+      "relative_path": "verl/workers/critic/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/critic/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/workers/critic/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/critic/__pycache__/config.cpython-311.pyc",
+      "relative_path": "verl/workers/critic/__pycache__/config.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/critic/base.py",
+      "relative_path": "verl/workers/critic/base.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/critic/config.py",
+      "relative_path": "verl/workers/critic/config.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/critic/dp_critic.py",
+      "relative_path": "verl/workers/critic/dp_critic.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/fsdp_workers.py",
+      "relative_path": "verl/workers/fsdp_workers.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/reward/__init__.py",
+      "relative_path": "verl/workers/reward/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/reward/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/workers/reward/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/reward/__pycache__/config.cpython-311.pyc",
+      "relative_path": "verl/workers/reward/__pycache__/config.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/reward/__pycache__/function.cpython-311.pyc",
+      "relative_path": "verl/workers/reward/__pycache__/function.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/reward/config.py",
+      "relative_path": "verl/workers/reward/config.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/reward/function.py",
+      "relative_path": "verl/workers/reward/function.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/__init__.py",
+      "relative_path": "verl/workers/rollout/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/workers/rollout/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/__pycache__/base.cpython-311.pyc",
+      "relative_path": "verl/workers/rollout/__pycache__/base.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/__pycache__/config.cpython-311.pyc",
+      "relative_path": "verl/workers/rollout/__pycache__/config.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/__pycache__/vllm_rollout_spmd.cpython-311.pyc",
+      "relative_path": "verl/workers/rollout/__pycache__/vllm_rollout_spmd.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/base.py",
+      "relative_path": "verl/workers/rollout/base.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/config.py",
+      "relative_path": "verl/workers/rollout/config.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/rollout/vllm_rollout_spmd.py",
+      "relative_path": "verl/workers/rollout/vllm_rollout_spmd.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/__init__.py",
+      "relative_path": "verl/workers/sharding_manager/__init__.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/__pycache__/__init__.cpython-311.pyc",
+      "relative_path": "verl/workers/sharding_manager/__pycache__/__init__.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/__pycache__/base.cpython-311.pyc",
+      "relative_path": "verl/workers/sharding_manager/__pycache__/base.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/__pycache__/fsdp_ulysses.cpython-311.pyc",
+      "relative_path": "verl/workers/sharding_manager/__pycache__/fsdp_ulysses.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/__pycache__/fsdp_vllm.cpython-311.pyc",
+      "relative_path": "verl/workers/sharding_manager/__pycache__/fsdp_vllm.cpython-311.pyc",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/base.py",
+      "relative_path": "verl/workers/sharding_manager/base.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/fsdp_ulysses.py",
+      "relative_path": "verl/workers/sharding_manager/fsdp_ulysses.py",
+      "matches": true
+    },
+    {
+      "zip_path": "RaPO/verl/workers/sharding_manager/fsdp_vllm.py",
+      "relative_path": "verl/workers/sharding_manager/fsdp_vllm.py",
+      "matches": true
+    }
+  ],
+  "python_compile": {
+    "count": 83,
+    "errors": []
+  },
+  "python_import_roots": [
+    "PIL",
+    "__future__",
+    "abc",
+    "accelerate",
+    "argparse",
+    "codetiming",
+    "collections",
+    "contextlib",
+    "copy",
+    "cv2",
+    "dataclasses",
+    "datasets",
+    "einops",
+    "enum",
+    "examples",
+    "filelock",
+    "flash_attn",
+    "functools",
+    "gc",
+    "heapq",
+    "importlib",
+    "inspect",
+    "io",
+    "itertools",
+    "jinja2",
+    "json",
+    "logging",
+    "math",
+    "mlflow",
+    "modelscope",
+    "msgspec",
+    "numpy",
+    "omegaconf",
+    "os",
+    "packaging",
+    "pathlib",
+    "peft",
+    "pickle",
+    "psutil",
+    "pycocotools",
+    "qwen_vl_utils",
+    "random",
+    "ray",
+    "re",
+    "safetensors",
+    "scipy",
+    "segment_anything",
+    "shutil",
+    "signal",
+    "socket",
+    "string",
+    "swanlab",
+    "sys",
+    "tempfile",
+    "tensordict",
+    "threading",
+    "time",
+    "torch",
+    "torchdata",
+    "tqdm",
+    "transformers",
+    "types",
+    "typing",
+    "unittest",
+    "uuid",
+    "verl",
+    "vllm",
+    "wandb",
+    "yaml"
+  ],
+  "private_policy": {
+    "whole_sha256": "1f179d85af0db59b9245f0494dd9b72b74db4f7f49cf3a8e969f3857900154e0",
+    "primary_text_sha256": "0eaae5e205e9b5a6c35a68e2e179270fa0c251c8e6705f6a98f98743919804c8",
+    "notes_text_sha256": "da4674741521a05cdd50cfcc8cdd5a65df928bbcea2f88f38a21524544832a5b",
+    "boundary": "RaPO 私有操作补充（2026-08-03）",
+    "content_published": false
+  }
+}

@@ -1,3 +1,7 @@
+> **Active reproduction workspace (2026-09-05).** The immutable author drop is tag `author-drop-20260904`; identity is in [`docs/BASELINE.json`](docs/BASELINE.json). Two P1 findings remain open, so this repository is not yet cleared for paper-faithful experiments. Read [`docs/AUTHOR_CODE_STATUS.md`](docs/AUTHOR_CODE_STATUS.md) before using the launchers. The author-provided README begins below and is preserved verbatim in the baseline tag.
+
+---
+
 # RaPO
 
 Retention-aware Policy Optimization for class-incremental learning with vision-language models.

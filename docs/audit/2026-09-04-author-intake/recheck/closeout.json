@@ -1,0 +1,26 @@
+{
+  "head": "46e7e257d65716b127187a19c19890aa70aad0b6",
+  "tracked_changes_this_recheck": [
+    "AGENTS.md"
+  ],
+  "outside_tracked_allowlist": [],
+  "author_files": 204,
+  "author_unchanged": true,
+  "paper_unchanged": true,
+  "archive_unchanged": true,
+  "private_policy_unchanged": true,
+  "missing_document_links": [],
+  "git_diff_check": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "warning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/data_and_evaluation.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/remediation/batch2/BLOCKED.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/remediation/batch3/PROGRESS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/remediation/batch3/decisions.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/reproduction_spec.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/smoke_test.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/trainer_integration.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/upstream.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  "recheck_probe_sha256": "97af393e7eb0ef7ae0c0dff20c0b58e086eb522302c0d582097bcbd8f977a65a",
+  "results_sha256": "bfee7e913df021ec2995bb2c6d04877b99699636daf3d30d3a8e32ecbccf7910",
+  "audit_document_edits": [
+    "REPORT.md",
+    "PROGRESS.md",
+    "BLOCKED.md"
+  ],
+  "gpu_or_model_run": false
+}

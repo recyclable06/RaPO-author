@@ -1,0 +1,55 @@
+{
+  "latest": {
+    "ema_mean": 1.5,
+    "ema_std": 0.5037820031344891,
+    "update_count": 24,
+    "beta": 0.999,
+    "eps": 1e-06,
+    "bootstrap_steps": 0,
+    "activate_from_task": 2,
+    "min_std": 0.001,
+    "guard_abs_max": 5.0,
+    "bias_correction": true,
+    "beta_warmup_steps": 2,
+    "beta_warmup_init": 0.9,
+    "last_batch_reward_mean": 1.625,
+    "last_batch_reward_std": 0.3333333432674408,
+    "task": 2
+  },
+  "task_history": [
+    {
+      "ema_mean": 0.0,
+      "ema_std": 1.0,
+      "update_count": 0,
+      "beta": 0.999,
+      "eps": 1e-06,
+      "bootstrap_steps": 0,
+      "activate_from_task": 2,
+      "min_std": 0.001,
+      "guard_abs_max": 5.0,
+      "bias_correction": true,
+      "beta_warmup_steps": 2,
+      "beta_warmup_init": 0.9,
+      "last_batch_reward_mean": 1.5,
+      "last_batch_reward_std": 0.5039526224136353,
+      "task": 1
+    },
+    {
+      "ema_mean": 1.5,
+      "ema_std": 0.5037820031344891,
+      "update_count": 24,
+      "beta": 0.999,
+      "eps": 1e-06,
+      "bootstrap_steps": 0,
+      "activate_from_task": 2,
+      "min_std": 0.001,
+      "guard_abs_max": 5.0,
+      "bias_correction": true,
+      "beta_warmup_steps": 2,
+      "beta_warmup_init": 0.9,
+      "last_batch_reward_mean": 1.625,
+      "last_batch_reward_std": 0.3333333432674408,
+      "task": 2
+    }
+  ]
+}

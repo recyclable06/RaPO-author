@@ -1,0 +1,1464 @@
+=== PDF PAGE 1 ===
+Overcoming Catastrophic Forgetting in Visual
+Continual Learning with Reinforcement Fine-Tuning
+Meng Lou1, Hanzhong Guo1, Linwei Chen1,2,3, Yizhou Yu1
+1The University of Hong Kong 2The Hong Kong University of Science and Technology
+3Hong Kong Generative AI Research and Development Center
+{loumeng@connect.hku.hk,hanzhong@connect.hku.hk,
+chenlinwei.ai@gmail.com,yizhouy@acm.org}
+Abstract
+Recent studies suggest that Reinforcement Fine-Tuning (RFT) is inherently more
+resilient to catastrophic forgetting than Supervised Fine-Tuning (SFT). However,
+whether RFT (e.g., GRPO) can effectively overcome forgetting in challenging
+visual continual learning settings, such as class-incremental learning (CIL) and
+domain-incremental learning (DIL), remains an open problem. Through a pilot
+study, we confirm that while RFT consistently outperforms SFT, it still suffers from
+non-negligible forgetting. We empirically trace this bottleneck to Trajectory-level
+Drift Agnosticism: among candidate rollouts achieving identical task rewards, the
+KL divergence from the preceding-task policy varies substantially, which strongly
+correlates with catastrophic forgetting across sequential tasks. Motivated by this
+insight, we propose Retention-aware Policy Optimization (RaPO), a simple yet
+effective RFT method that explicitly mitigates forgetting through trajectory-level
+reward shaping. Specifically, RaPO comprises two core components: (1) Retention
+Reward that converts trajectory-level distribution drift into a continuous reward
+signal, preferentially reinforcing knowledge-preserving rollouts within each group;
+(2) Cross-Task Advantage Normalization (CTAN), which maintains a persistent
+exponential moving average of reward statistics across task boundaries to stabilize
+the optimization progress during continual learning. Leveraging the free-form
+textual generalization of MLLMs, we comprehensively evaluate RaPO across five
+visual continual learning settings. Extensive experiments demonstrate that RaPO
+achieves leading performance, substantially reducing catastrophic forgetting while
+preserving strong plasticity. To the best of our knowledge, this work represents the
+first systematic exploration of RFT in visual continual learning, offering insights
+that we hope will inspire future research. Code will be publicly available at:
+https://github.com/LMMMEng/RaPO.
+1 Introduction
+Reinforcement Fine-Tuning (RFT) with verifiable rewards [1, 2, 3, 4, 5, 6] has demonstrated remark-
+able progress in eliciting reasoning capabilities in Multi-modal Large Language Models (MLLMs),
+outperforming classical Supervised Fine-Tuning (SFT). GRPO [7] stands as a representative work that
+leverages verifiable RFT to train powerful large reasoning models [8, 9]. Motivated by this success,
+several subsequent works [10, 11, 12, 13] have demonstrated that RFT can effectively improve vision
+tasks even under few-shot training regimes.
+However, real-world applications frequently encounter streaming data within continuously evolving
+environments [14], requiring large models to continually adapt to newly arriving data without suffering
+from catastrophic forgetting [15]. Although numerous SFT-centered approaches [16, 17, 18] have
+been developed for continual learning, recent studies [19, 20] have revealed that RFT is naturally more
+resilient to catastrophic forgetting than SFT. This property stems from the fact that on-policy learning
+arXiv:2605.09640v1  [cs.CV]  10 May 2026
+
+=== PDF PAGE 2 ===
+(a) (b)
+Figure 1:(a)RFT clearly outperforms SFT in rehearsal-free CIL, but still suffers from significant
+forgetting.(b)Among equally-rewarded rollouts, KL divergence from the policy in the preceding
+task varies substantially, and this difference enlarges as tasks progress.
+in RFT implicitly biases the optimization toward solutions residing in low-drift distribution spaces,
+whereas SFT is prone to converge on solutions within arbitrary distribution drift [19]. Nevertheless,
+the efficacy of RFT in challenging visual continual learning, such as class-incremental learning (CIL)
+[21] and domain-incremental learning (DIL) [22], remains an open problem.
+To investigate this, we conduct a pilot study on a challenging rehearsal-free few-shot CIL setting
+on the widely adopted ImageNet-R dataset [23]. Specifically, 200 image classes are randomly split
+over 10 non-overlapping tasks, with 20 classes and only 5 labeled examples per class at each task.
+We compare GRPO and SFT based on the Qwen2-VL-2B model [24], together with a joint-training
+upper bound. As shown in Figure 1 (a), GRPO consistently outperforms SFT, confirming that the
+forgetting resilience of RFT [19, 20] successfully transfers to visual tasks. Nevertheless,GRPO still
+suffers from non-negligible forgetting, demonstrating that it remains insufficient to mitigate
+stability-plasticity tension in challenging visual continual learning.
+To further explore the rationale of this phenomenon, we analyze the trajectory-level learning patterns
+of GRPO during CIL. Specifically, we measure the distribution drift of each rollout generated by
+the current policy πt as its token-level KL divergence from the frozen preceding-task policy πt−1.
+We focus only on rollout groups with maximal task reward so that the comparison isolates drift
+differences among equal-reward trajectories. As illustrated in Figure 1 (b),candidate rollouts
+achieving the same task reward exhibit vastly different KL divergence values, a phenomenon
+we termtrajectory-level drift agnosticism. For instance, two distinct trajectories generated from
+the same input can solve the current task equally well, but exhibit entirely different magnitudes of
+distributional drift. This discrepancy is increasingly pronounced as the task sequence progresses,
+which clearly correlates with the accuracy degradation trend shown in Figure 1 (a). This suggests that
+purely task-reward-driven behavior leads to drift-agnostic credit assignment, which may contribute to
+severe forgetting.
+To validate this hypothesis, we design two simple GRPO variants that intervene on all-correct rollout
+groups in the later tasks, when forgetting becomes pronounced. Specifically, Variant#1 assigns zero
+reward to any rollout whose KL exceeds the group mean, thereby retaining positive reinforcement only
+for low-drift trajectories. Conversely, Variant#2 mirrors this operation, preserving positive rewards
+solely for heavily drifted rollouts. As demonstrated in Figure 1 (a), these variants exhibit opposed
+behaviors: Variant#1 effectively mitigates forgetting, whereas Variant#2 significantly exacerbates it.
+Collectively, these results validate trajectory-level drift agnosticism as a key empirical phenomenon in
+vanilla GRPO, i.e.,trajectory-level drift with respect to the preceding-task policy is an actionable
+signal closely tied to forgetting. However, these hard-thresholding variants are impractical. First,
+binary gating collapses fine-grained credit assignment required for complex tasks such as dense
+predictions. Second, it is unstable under small rollout numbers, where even marginal KL differences
+may trigger winner-take-all updates.
+Driven by the above observations, we propose Retention-aware Policy Optimization (RaPO), a
+simple yet effective RFT method that mitigates catastrophic forgetting through trajectory-level reward
+shaping. RaPO consists of two complementary components. First, a Retention Reward converts the
+trajectory-level drift from the preceding-task policy into a dense reward signal: rollouts that stay closer
+to the preceding policy receive proportionally higher rewards. This design differs fundamentally
+from standard GRPO, i.e., when two rollouts achieve comparable task rewards but exhibit different
+2
+
+=== PDF PAGE 3 ===
+degrees of drift, RaPO explicitly reinforces the knowledge-preserving one, steering the policy toward
+regions that adapt to new data while remaining anchored to previously acquired knowledge. Second,
+Cross-Task Advantage Normalization (CTAN) maintains a persistent smoother of the reward scale,
+preventing the abrupt advantage fluctuations that arise from sharp reward-distribution shifts at task
+boundaries. Together, the Retention Reward directs credit assignment toward low-drift trajectories,
+while CTAN smoothly stabilizes its scale across the continual learning stream.
+Leveraging the free-form textual generalization capabilities of MLLMs, our method has been com-
+prehensively evaluated across a diverse suite of visual continual learning tasks, including class-
+incremental image classification, domain-incremental image classification, class-incremental object
+detection, domain-incremental object detection, and class-incremental video classification. Extensive
+experimental results in Section 4 demonstrate the promising performance and generalization capacity
+of RaPO. Overall, our goal is not to chase state-of-the-art performance on different benchmarks, but
+to systematically explore the potential of verifier-based RFT for visual continual learning. We hope
+this work will stimulate further research on RFT-based continual learning.
+2 Related Work
+Reinforcement Fine-Tuning (RFT)has demonstrated a superior capacity to incentivize reasoning
+capabilities in LLMs [25]. A foundational paradigm is reinforcement learning with human feedback,
+which aligns model outputs with human preferences [ 26, 27, 28, 29]. Recently, the research has
+increasingly shifted toward reinforcement learning with verifiable rewards. In particular, the remark-
+able success of Group Relative Policy Optimization (GRPO) [7, 8] has motivated a surge of research
+exploring this paradigm further, such as Dr.GRPO [30], DAPO [31], and GSPO [32]. Subsequently,
+many works [10, 12, 13, 33] have also demonstrated that RFT can significantly improve visual tasks
+over SFT by activating reasoning capabilities. Additionally, recent studies [19, 20] suggest that RFT
+is naturally more resistant to catastrophic forgetting than SFT when adapting to new data.
+Visual Continual Learningis a long-standing problem that aims to adapt models to non-stationary
+visual streams without catastrophic forgetting [ 22]. Among its various paradigms, rehearsal-free
+class-incremental learning (CIL) [34, 35] stands out as one of the most representative and challenging
+settings, which requires a model to continuously adapt to incrementally arriving classes without
+accessing any historical training data, while simultaneously preserving its recognition capabilities on
+all observed classes. During CIL, the label spaces across different tasks are strictly disjoint. Another
+prominent setting is rehearsal-free domain-incremental learning (DIL) [36, 37], which aims to enable
+a model to sequentially adapt to new domains while ensuring its previously acquired knowledge is
+not catastrophically degraded by domain shifts. Unlike CIL, different tasks in DIL share the same
+label space but exhibit distinct domain distributions. Existing progress [38] has been driven primarily
+by SFT-based adaptation of vision-centric models. One of the most prevalent paradigms involves
+incrementally appending parameter-efficient modules [39, 40, 41, 42, 43, 44] into pre-trained models
+such as ViT [ 45] and CLIP [ 46], demonstrating promising results. However, these methods are
+typically centered on a single scenario, such as class-incremental image classification, rather than
+a unified model that is able to handle diverse settings simultaneously, including class-incremental
+image/video classification and dense predictions. On the other hand, since real-world scenarios
+frequently lack abundant, high-quality annotations for each incremental task, vision models with SFT
+may be prone to overfitting under data-scarce conditions.
+In this work, we explore the untapped potential of RFT for challenging visual continual learning
+paradigms. Without bells and whistles, our proposed RaPO achieves leading performance and strong
+generalizability compared with different baselines. To the best of our knowledge, this work is the
+first to systematically explore the potential of RFT in visual continual learning.
+3 Method
+3.1 Preliminaries
+GRPO[ 7] optimizes a policy πθ using group-relative advantages instead of a learned value function.
+For a given textual prompt x, GRPO samples a rollout group G(x) ={y 1, . . . , yn} of n trajectories
+from the current policy πθ. Each rollout yi receives a task-specific verifiable rewardRtask(yi). These
+rewards are centered and rescaled within the group to produce the group-relative advantageA i:
+Ai = Rtask(yi)−µ group
+σgroup +ϵ (1)
+3
+
+=== PDF PAGE 4 ===
+where µgroup and σgroup are the mean and standard deviation of the rewards withinG(x), respectively.
+Then, the policy is updated using the clipped surrogate objective [26], where the standard advantage
+based on the value-function is replaced by the group-relative advantageA i.
+RFT in Vision.To address visual continual learning, the input is defined as a multi-modal signal
+x= (v, l) , where v is a visual input (image or video) and l is a textual instruction template specifying
+the task. The output yi is a textual response generated by MLLM. Following the recent paradigm [10],
+we employ diverse verifiable reward functionsRtask depending on the task type, such as accuracy
+reward for image/video classification and IoU reward for object detection. More details concerning
+prompt templates and reward formulations are provided in Appendix B.
+3.2 Retention-aware Policy Optimization
+3.2.1 Overview
+We study rehearsal-free visual continual learning (i.e., CIL and DIL) across a sequential stream of
+tasks {T1, . . . ,TN }. For an arriving task Tt, the learner is optimized using only the training data
+from Tt, with no access to historical training data from T1 to Tt−1. The overall learning pipeline
+is simple. Specifically, at the onset of task Tt, we initialize the actor policy πt using the weights
+saved at the end of Tt−1, while simultaneously maintaining a frozen copy of it to serve as the anchor
+policy πt−1. During each optimization iteration, the actor πt generates a group of candidate rollouts
+for a given multi-modal input x= (v, l) . Each rollout is then evaluated across two aspects: 1) The
+primary task reward is computed by a task-specific verifier. 2) A new retention reward is estimated
+with a trajectory-level drift metric against the anchor πt−1. These two signals are aggregated into a
+unified objective to update πt, explicitly steering the policy to explore parameter spaces that jointly
+maximize proficiency in new tasks and historical knowledge preservation. Concurrently, to counter
+the optimization instability caused by abrupt reward-distribution shifts when transitioning across
+task boundaries, a simple Cross-Task Advantage Normalization (CTAN) mechanism is introduced to
+regulate the scale of the credit assignment.
+3.2.2 Retention Reward
+As empirically validated in the Section 1, vanilla GRPO suffers from trajectory-level drift agnosticism.
+When the actor policy πt adapts to a new task, the trajectory-level distribution drift from the anchor
+policy πt−1 is strongly correlated with the catastrophic forgetting of previously acquired knowledge.
+This inspires us to explicitly formulate this trajectory-level drift into a continuous reward signal.
+Specifically, let yi = (yi,1, . . . , yi,mi) denote a rollout sample of length mi sampled from πt, where
+i∈ {1, . . . , n} indexes the rollouts within the group ands∈ {1, . . . , m i} indexes the token positions.
+Suppose yi,<s = (yi,1, . . . , yi,s−1) represent the generated prefix up to step s, the trajectory-level
+distribution drift is calculated as:
+¯Ddrift(yi) = max( 1
+mi
+miX
+s=1
+[logπ t(yi,s |x, y i,<s)−logπ t−1(yi,s |x, y i,<s)],0 )(2)
+There are two remarks on Equation (2) that warrant highlighting. First, the bracketed term computes
+the per-token log-probability ratio between the actorπt and the anchor πt−1. Averaging this ratio over
+the mi generated tokens provides a length-normalized Monte Carlo estimate of the trajectory-level
+distribution drift evaluated along the sampled trajectory. This length normalization is crucial, as
+it ensures that ¯Ddrift(yi) remains strictly comparable across candidate rollouts of varying lengths.
+Second, the outer max(·,0) applies a one-sided truncation. Specifically, a negative pre-truncation
+value indicates that the actor πt has become less confident in the generated trajectory than the
+anchor πt−1, signifying that πt has not specialized toward this trajectory relative to πt−1. Therefore,
+clamping these negative values to zero explicitly prevents reward hacking in the subsequent reward
+formulation (Equation (3)), as the actor πt is possible to intentionally generate low-confidence outputs
+to inflate its reward.
+To seamlessly incorporate this forgetting measurement into the RFT objective, we stop the gradient
+of ¯Ddrift(yi) and convert it into a bounded and positive reward score using an exponentially decaying
+mapping:
+Rret(yi) = exp
+ 
+−α ¯Ddrift(yi)
+
+∈(0,1](3)
+where α >0 is a scaling hyperparameter that controls the sensitivity to distribution drift. Rollouts
+that remain closer to the anchor πt−1 yield a lower ¯Ddrift, thereby translating into a higher Rret score
+approaching 1.0. Since this reward directly measures the retention of previously learned knowledge,
+4
+
+=== PDF PAGE 5 ===
+it is termed the retention reward. Afterwards, the retention reward is seamlessly integrated with the
+task-specific reward via an additive formulation:
+Rtotal(yi) =R task(yi) +λ R ret(yi)(4)
+where λ >0 balances task adaptation and retention. Crucially, Rret enters the composite reward
+before the group-relative advantage computation. This explicitly changes the rollout ranking inside
+G(x): among candidate trajectories that achieve comparable task rewards on Tt, those remaining
+closer to the anchorπ t−1 are assigned larger advantages.
+Despite its simplicity, this formulation provides three properties:Continuous:within a similar-
+Rtask sub-group, the assigned advantage is an increasing function of the Rret, ensuring that the
+anchor-closer rollout is always reinforced more strongly.Disentangled:The weighted-additive form
+limits the influence of retention relative to task reward. Since Rret is strictly bounded, the retention
+term can change the total reward by at most λ, so its effect remains controlled and is most relevant
+when candidate trajectories have similar task rewards.General:The retention reward can be easily
+combined with any task reward, such as a binary accuracy reward for image classification and a
+continuous IoU reward for object detection. Note that retention reward differs fundamentally from
+standard loss-level KL regularization, as discussed in Section 3.3.
+3.2.3 Cross-Task Advantage Normalization
+During continual learning, abrupt changes in reward statistics may occur at task transitions. Specifi-
+cally, near the end of Tt−1, many rollouts are similarly correct and the within-batch reward spread
+σbatch becomes small, which inflates normalized advantages. At the start of Tt, rewards typically
+become lower and more variable, compressing advantages precisely when fast adaptation is required.
+This oscillation destabilizes GRPO training across task boundaries.
+To stabilize the optimization scale, we replace the per-batch reward standard deviation with a running
+exponential moving average (EMA) ˆσthat is persistent across optimization steps and across task
+boundaries. At every optimization step, after computing the batch-level reward standard deviation
+σbatch from the current batch of rollout rewards, we perform the update:
+ˆσ←βˆσ+ (1−β)σ batch (5)
+whereβis the smoothing coefficient (e.g.,β= 0.99). We then compute the advantage as:
+Ai = Rtotal(yi)−µ group
+ˆσ+ϵ (6)
+where µgroup is still the mean total reward within the rollout group for the same prompt. The
+numerator preserves within-group ranking, while the denominator is stabilized across batches and
+across tasks. CTAN is persistent at task boundaries: the state ˆσis saved at the end of Tt−1 and
+loaded as the initial EMA value at the beginning of Tt, so the normalization scale does not reset
+abruptly when a new task arrives. As shown in Figure 2, CTAN exhibits a smoother advantage scale
+and steadier reward acquisition during continual learning by stabilizing the reward scale across task
+boundaries.
+We have provided more in-depth analysis regarding optimization properties of RaPO in Appendix A.
+Briefly, the retention reward is compatible with the standard score-function policy-gradient update
+when treated as detached scalar feedback. The resulting reward and CTAN-normalized advantage
+remain bounded. Under the usual smoothness, bounded-variance, and score-function moment
+assumptions, the idealized detached surrogate inherits the standard stationary-point convergence
+behavior of stochastic policy-gradient methods.
+3.3 Discussions of RaPO
+Retention Reward vs. Standard KL Loss.Although both our retention reward and the KL loss
+exploit a divergence signal, they intervene at different stages of optimization. The standard loss-level
+KL term in GRPO, KL(πt ∥π ref), is a regularizer added to the training objective L (with πref a fixed
+reference model) that globally constrains the magnitude of the policy update. However, its gradient
+contribution is independent of the task reward received by each rollout, and it cannot distinguish the
+degree of forgetting within a group of rollouts that share comparable task rewards. In contrast, our
+retention reward is injected before the group-relative advantage computation, i.e., it lives insideRtotal
+rather than inside L. Consequently, RaPO can change the ranking of rollouts within a group, whereas
+5
+
+=== PDF PAGE 6 ===
+Reward StdReward (Train)
+Reward (Eval)
+(a) (b)
+(c) (d)
+Advantage Magnitude
+Figure 2:(a)GRPO relies on the instantaneous reward standard deviation, which fluctuates sharply
+across task boundaries, whereas CTAN maintains a persistent EMA normalizer (β=0.99).(b)CTAN
+produces a smoother advantage magnitude (sum of the absolute values of advantages) across the
+continual learning stream.(c)The stabilized advantage scale is accompanied by smoother acquisition
+of training reward.(d)Evaluation reward trends further reflect more robust continual learning
+behavior, with Initial Task denoting evaluation on task#1 and Current Task denoting evaluation on the
+task currently being learned.Overall, CTAN stabilizes cross-task reward normalization, leading to
+smoother credit assignment, steadier reward acquisition, and stronger continual learning capability.
+a standard KL loss term primarily controls the scale of policy movement and cannot differentiate
+rollouts that receive the same reward. Experimental results in Appendix C.4 confirm that the standard
+loss-level KL has only a modest effect on continual learning performance.
+Relation to On-policy Distillation.On-policy Distillation (OPD) [ 47, 48] trains a student policy on
+its own sampled trajectories using dense token-level KL supervision from a superior external teacher.
+This mechanism is inherently tailored to a single-task knowledge transfer paradigm: every generated
+token contributes an independent gradient that uniformly pulls the student’s per-token distribution
+toward that of the teacher. In visual continual learning, however, none of these premises hold. At task
+Tt, there is no stronger teacher for the incoming data, while the only available reference is the policy
+in the preceding task (i.e., πt−1). Consequently, enforcing a dense, token-level KL penalty against
+πt−1 on the data of Tt can inject an independent gradient term that actively pushes πt’s per-token
+distribution back toward πt−1 at every position. This suppresses the plasticity required to learn Tt,
+transforming a retention mechanism into an obstacle for adaptation to new tasks.
+4 Experiments
+We conduct a comprehensive experimental evaluation on challenging visual continual learning
+problems across different visual modalities and task formulations. Specifically, we focus on class-
+incremental image classification, domain-incremental image classification, class-incremental video
+classification, class-incremental object detection, and domain-incremental object detection. The
+default hyperparameters of RaPO are n= 8 (Section 3.1), α= 20 (Section 3.2.2), λ= 0.5 (Section
+3.2.2), and β= 0.999 (Section 3.2.3). The retention reward is activated starting from task 2, since
+the pre-trained base model lacks domain-specific knowledge, while anchor π1 is obtained only after
+the model has been adapted to task 1. All experiments are conducted on 8 NVIDIA H100 GPUs. Due
+to page limits, more experimental results are provided in Appendix C.
+4.1 Class-Incremental Image Classification
+We first evaluate RaPO under class-incremental image classification, a representative and challenging
+continual learning setting. The model receives a sequence of tasks, each introducing a disjoint subset
+6
+
+=== PDF PAGE 7 ===
+Table 1: A comparison of different methods on class-incremental image classification.
+Method
+ImageNet-R ImageNet-A
+10 Tasks 20 Tasks 10 Tasks 20 Tasks
+A ↑ F ↓ A ↑ F ↓ A ↑ F ↓ A ↑ F ↓
+Joint TrainingSFT 89.55 - 89.55 - 67.61 - 67.61 -GRPO 91.50 - 91.50 - 69.81 - 69.81 -
+Continual LearningSFT 64.49 ±2.44 39.83±4.99 57.84±4.87 41.91±4.96 28.18±4.97 66.92±2.80 14.20±5.99 79.71±6.78
+L2 60.99 ±3.50 39.39±4.59 54.09±4.05 45.74±7.38 28.22±2.57 66.97±3.65 12.16±4.86 82.30±5.43
+EWC 62.47 ±2.69 37.75±4.65 56.97±3.49 42.74±3.67 30.37±6.56 64.24±2.96 12.64±3.43 81.75±4.21
+LwF 69.81 ±1.63 26.82±2.36 57.83±2.97 40.40±6.81 23.00±3.18 68.53±3.25 11.39±3.56 81.85±3.69
+GRPO 74.67 ±1.27 20.02±4.91 73.18±3.32 17.40±5.04 37.37±2.68 28.88±4.43 22.80±3.21 48.14±5.37
+RaPO (Ours)85.92±1.82 4.69±1.71 81.97±2.88 9.54±3.44 44.61±2.36 20.16±4.62 32.15±0.92 35.19±2.09
+Method
+TinyImageNet CUB-200
+10 Tasks 20 Tasks 10 Tasks 20 Tasks
+A ↑ F ↓ A ↑ F ↓ A ↑ F ↓ A ↑ F ↓
+Joint TrainingSFT 34.71 - 34.71 - 48.79 - 48.79 -GRPO 71.51 - 71.51 - 52.16 - 52.16 -
+Continual LearningSFT 15.94 ±5.93 43.29±6.74 8.71±1.82 53.68±5.15 19.09±2.72 71.29±2.07 15.78±3.55 72.46±3.19
+L2 15.18 ±3.83 44.10±4.22 8.60±3.26 53.98±4.51 18.39±3.56 71.56±2.63 16.70±2.66 71.72±3.48
+EWC 17.17 ±6.40 41.55±6.77 11.41±0.29 51.02±0.95 18.40±2.80 71.73±1.69 14.15±4.08 74.38±3.29
+LwF 15.07 ±3.13 36.41±4.10 12.51±3.40 45.82±3.26 23.05±2.22 54.49±2.70 12.28±2.10 71.80±1.12
+GRPO 46.84 ±2.80 36.24±3.74 42.08±4.49 40.85±5.25 28.67±1.54 45.50±2.15 24.67±4.59 47.04±1.79
+RaPO (Ours)62.36±2.26 16.94±3.94 62.20±3.63 14.68±4.56 45.15±1.20 19.10±1.79 37.33±2.05 25.40±1.13
+of novel classes without access to previous training data. At test time, the model is evaluated on all
+classes observed so far.
+Datasets.Experiments are presented on four commonly used image classification datasets: ImageNet-
+R [23], ImageNet-A [49], TinyImageNet [50], and CUB-200 [51]. For each dataset, we employ two
+task settings: 10 tasks with 20 classes per task and 20 tasks with 10 classes per task. All results
+are averaged over three random class orders to reduce the influence of any particular ordering. In
+practice, we adopt a 5-shot training protocol: only five labeled samples per class are available at each
+task. This scarce-annotation regime mirrors the constraints of real-world deployment, which lacks
+large and high-quality per-task annotation budgets, and poses a technical challenge that demands
+efficient few-shot adaptation while retaining prior knowledge [52]. This is also the standard setup in
+recent vision-centric RFT works [10, 12, 13], where learning under limited annotations is central to
+the problem formulation.
+Evaluation Metrics.Two standard metrics for continual learning [ 21, 22, 53] are reported.
+Specifically, Last Accuracy ( A) is defined as the accuracy over the test set of all observed
+classes after the model finishes learning the final task. This metric evaluates the overall recog-
+nition ability retained by the final model. Forgetting ( F) measures the average performance
+drop from the historical best accuracy on previous tasks to their final accuracy after learn-
+ing all tasks, which reflects the degree of forgetting throughout the continual learning process.
+Table 2: A comparison of different methods
+on class-incremental object detection using the
+COCO 2017 dataset.
+Method 5 Tasks 10 Tasks
+Ab ↑ F b ↓ A b ↑ F b ↓
+Joint TrainingSFT 20.39 - 20.39 -GRPO 23.48 - 23.48 -
+Continual LearningSFT 7.09 ±0.28 13.37±1.04 7.41±3.37 12.51±4.36
+L2 7.64 ±0.56 14.24±1.50 7.82±3.95 13.72±4.67
+EWC 7.14 ±0.52 14.51±0.43 7.87±4.01 13.91±4.79
+LwF 13.93 ±0.50 7.31±0.07 13.41±2.25 7.34±1.91
+GRPO 14.64 ±2.18 6.67±2.71 14.30±3.02 6.73±3.51
+RaPO (Ours)19.31±1.08 1.39±1.20 19.12±0.09 1.37±0.56
+Baselines.We employ Qwen2-VL-2B [ 24] as
+the base MLLM. This choice is motivated by two
+considerations. First, stronger frontier MLLMs
+(e.g., Qwen3 series [ 4, 54]) may already pos-
+sess sufficient recognition ability on these bench-
+marks, making the gains from continual learning
+difficult to observe. Second, image classification
+is a relatively simple visual task. A relatively
+small-scale model is sufficiently expressive for
+continual image classification, while larger mod-
+els risk overfitting. We have conducted experi-
+ments on a diverse set of baselines. As an upper
+bound, we jointly train the model on the entire
+dataset using both SFT and GRPO. For standard
+continual training, we sequentially apply SFT and GRPO, i.e., each method is used to train the
+model task by task. We also compare three representative SFT-based baselines tailored for continual
+learning: 1) A simple L2 regularizer pulls the current policy parameters toward the previous -task
+7
+
+=== PDF PAGE 8 ===
+Table 3: A comparison of different methods on class-incremental video classification.
+Method
+UCF-101 Kinetics-200
+5 Tasks 10 Tasks 5 Tasks 10 Tasks
+A ↑ F ↓ A ↑ F ↓ A ↑ F ↓ A ↑ F ↓
+Joint Training
+SFT 79.54 - 79.54 - 75.41 - 75.41 -
+GRPO 81.39 - 81.39 - 72.37 - 72.37 -
+Continual Learning
+SFT 72.57 ±2.57 26.00±8.07 62.96±2.65 27.35±4.38 66.29±1.05 53.28±2.61 33.89±4.10 61.53±3.59
+L2 72.27 ±2.50 26.65±8.40 63.80±1.73 25.80±3.19 66.32±1.21 53.95±3.20 33.81±3.85 61.21±3.88
+EWC 72.43 ±2.98 27.01±9.37 63.76±1.96 25.92±3.23 66.62±0.91 51.59±3.41 34.67±3.62 60.67±2.90
+LwF 74.07 ±0.70 17.28±2.57 65.00±0.30 21.63±0.92 68.56±0.14 30.89±1.20 42.14±3.76 49.27±3.24
+GRPO 77.62 ±0.52 13.81±2.15 68.12±1.72 16.94±4.48 70.33±1.92 30.37±5.35 50.67±2.09 34.65±3.21
+RaPO (Ours)79.57±0.77 11.19±2.63 71.79±1.84 10.92±0.15 74.18±2.36 16.76±3.73 54.85±2.81 27.28±1.38
+policy during training on each new task; 2) EWC [55] slows down updates on parameters that are
+important for previous tasks with Fisher information matrices; 3) LwF [56] uses the previous-task
+model as a teacher and distills its output distributions on the current task data into the current model.
+In practice, we train all models for 2 epochs, since more epochs do not improve performance and may
+lead to overfitting. Note that our goal is not to exhaustively benchmark existing continual learning
+algorithms, many of which rely on architecture- or task-specific mechanisms, but to isolate whether
+RFT can serve as a visual continual learning paradigm and whether our design further improves it.
+We therefore compare representative SFT-based continual-learning baselines and a GRPO-based RFT
+baseline.
+Results.Table 1 summarizes the results on four class-incremental image classification benchmarks.
+RaPO consistently achieves the best performance across all datasets and task splits. For example, on
+ImageNet-R with 10 tasks, RaPO improves accuracy from 74.67% to 85.92% and reduces forgetting
+from 20.02% to 4.69% over the strongest baseline, GRPO. Similar trends hold on ImageNet-A, where
+accuracy rises from 37.37% to 44.61% and forgetting drops from 28.88% to 20.16%. RaPO also
+delivers clear gains on the more challenging TinyImageNet and CUB-200 benchmarks. In contrast,
+classical continual learning methods such as L2, EWC, and LwF provide only marginal or even
+detrimental benefits, while GRPO already serves as a strong RFT baseline that RaPO further improves
+by a large margin.
+4.2 Class-Incremental Object Detection
+Setup.We further evaluate RaPO on class-incremental object detection on the COCO 2017
+dataset [ 57], which contains 80 object categories. We design two task splits: a 5-task setting
+with 16 classes per task and a 10-task setting with 8 classes per task. Since an image may contain
+instances from multiple categories, we enforce a strict task partition: each training image is assigned
+to only one task, and there is no training sample overlap across tasks. For each class, at most five
+training images are selected, resulting in a few-shot detection setting. On the other hand, different
+from image classification, object detection requires fine-grained spatial perception and structured
+output generation. Hence, we use Qwen2-VL-7B [24] as the base MLLM. We train each task for 5
+epochs so that the model can sufficiently adapt to the detection objective while avoiding overfitting.
+For evaluation, we follow the metric definitions in Section 4.1, while replacing classification accuracy
+with box average precision (AP) under the standard COCO protocol [57, 58]. Accordingly, we report
+last box APA b and box forgettingF b.
+Results.As listed in Table 2, RaPO achieves the best Ab and the lowest Fb in both task settings.
+Compared with GRPO, it improves Ab from 14.64% to 19.31% and reduces Fb from 6.67% to 1.39%
+in the 5-task setting, and further improves Ab from 14.30% to 19.12% while reducing Fb from 6.73%
+to 1.37% in the 10-task setting. Unlike in image classification, LwF becomes competitive with GRPO
+in object detection, suggesting that distilling predictions from the preceding-task model is particularly
+useful for preserving structured localization behavior. Nevertheless, RaPO remains clearly superior
+to all baselines.
+4.3 Class-Incremental Video Classification
+Setup.We extend the evaluation to class-incremental video classification, where the model se-
+quentially learns new classes from a stream of video clips. The primary difference from image
+classification is the modality shift from images to video, which introduces temporal cues across
+tasks. We conduct experiments on two commonly used video recognition datasets: UCF-101 [59]
+and Kinetics-200 [60, 61]. Due to the substantial computational cost of video training and limited
+8
+
+=== PDF PAGE 9 ===
+Table 4: A comparison of Domain-Incremental Learning (DIL) across image classification and object
+detection.
+Method
+Image Classification Object Detection
+DomainNet (6 Domains) OfficeHome (4 Domains) Pascal Series (4 Domains)
+A ↑ F ↓ A ↑ F ↓ ¯Ab ↑ F b ↓
+Joint TrainingSFT 67.76 - 93.84 - 35.40 -GRPO 68.46 - 94.65 - 39.13 -
+Continual LearningSFT 63.09 ±0.21 1.34±0.33 91.07±1.13 1.02±1.02 34.55±2.16 0.55±0.73
+L2 63.90 ±1.55 2.36±1.49 91.62±0.63 2.29±0.67 33.45±2.98 1.07±1.14
+EWC 63.08 ±1.60 1.28±1.33 91.29±1.19 2.52±0.86 33.52±2.21 0.61±0.70
+LwF 62.63 ±4.15 1.75±1.90 88.33±1.40 2.82±1.55 33.86±1.41 0.63±0.81
+GRPO 64.54 ±1.03 0.31±0.26 92.80±0.28 0.55±0.09 34.58±1.75 1.18±1.44
+RaPO (Ours)66.27±0.62 0.17±0.27 93.63±0.14 0.45±0.49 37.18±1.44 0.84±0.62
+hardware resources, we adopt 5-task and 10-task settings for both datasets. All other experimental
+settings follow the configuration described in Section 4.1.
+Results.As listed in Table 3, our method achieves leading performance on both datasets. On
+UCF-101 under the 10-task setting, RaPO attains an A of 71.79% with only 10.92% F, compared
+to 68.12% and 16.94% for GRPO. On Kinetics-200 under the 5-task setting, RaPO improves A
+from 70.33% to 74.18% and reduces F from 30.37% to 16.76%. These results demonstrate that
+RaPO generalizes effectively to the video domain, preserving both spatial and temporal knowledge
+throughout the incremental learning process.
+4.4 Domain-Incremental Image Classification and Object Detection
+Setup.We evaluate RaPO under domain-incremental learning (DIL), where the model sequentially
+adapts to new visual domains while the label space remains fixed and no data replay from previous
+domains is allowed. For image classification, we use DomainNet [62] with 6 domains and Office-
+Home [63] with 4 domains. All remaining settings follow Section 4.1. For domain-incremental
+object detection, we use the four Pascal Series domains [ 64], including Pascal VOC [65], Clipart,
+Watercolor, and Comic. All four domains share 6 common object classes, ensuring a consistent label
+space throughout the task sequence. Since the four domains have test sets of vastly different sizes,
+a direct all-sample AP is dominated by the largest domain. Therefore, we compute the AP of each
+domain separately and then average these four values after the model finishes the last task, termed
+¯Ab. All other training and evaluation protocols remain identical to those in Section 4.2.
+Results.Table 4 shows that RaPO consistently improves performance across domain-incremental
+classification and detection. For example, RaPO improves A from 64.54% to 66.27% and reduces F
+from 0.31% to 0.17% on DomainNet compared with GRPO. For domain-incremental object detection,
+RaPO achieves the best ¯Ab among all continual learners at 37.18%, improving over GRPO by 2.60%.
+This result is also higher than joint-training SFT at 35.40% and remains close to joint-training GRPO
+at 39.13%. Although RaPO exhibits a slightly higher Fb than plain SFT, the accompanying boost in
+absolute detection performance is substantial, confirming that RaPO learns to preserve both location
+and category knowledge more effectively rather than merely resisting change. Compared with CIL,
+we also observe that DIL exhibits intrinsically lower forgetting. This is because DIL maintains a
+fixed label space across distribution shifts, which inherently avoids the severe inter-task confusion
+that drives catastrophic forgetting when learning disjoint novel classes in CIL [66].
+5 Conclusion
+In this work, we investigate the potential of RFT for visual continual learning. Through a pilot
+study, we empirically confirm that RFT is more resilient to catastrophic forgetting than SFT, yet
+still suffers from non-negligible forgetting, due to trajectory-level drift agnosticism. To this end, we
+proposeRaPO, which addresses catastrophic forgetting through two complementary components: a
+Retention Reward that preferentially reinforces low-drift, knowledge-preserving rollouts within each
+group, and CTAN that stabilizes the optimization scale across task-wise boundaries. Extensive results
+across diverse visual continual learning settings demonstrate that RaPO consistently achieves leading
+performance. As the first systematic exploration of RFT in visual continual learning, we hope this
+work will stimulate further research in this area.
+9
+
+=== PDF PAGE 10 ===
+A Policy-Gradient Compatibility and Optimization Stability of RaPO
+We provide a standard reinforcement-learning view of RaPO. This analysis does not claim global
+optimality or a formal no-forgetting guarantee. Instead, it focuses on three optimization properties
+of the proposed retention reward: compatibility with the score-function policy-gradient estima-
+tor under a detached-reward surrogate view, bounded reward and advantage magnitudes, and the
+standard stationary-point guarantee inherited under idealized non-convex stochastic policy-gradient
+assumptions.
+Policy-gradient compatibility.At optimization step k, let θk denote the policy used to sample
+rollouts and compute the retention reward. For a sampled trajectory y= (y 1, . . . , ym), define the
+length-normalized pre-truncation log-ratio drift as
+dθk(y) = 1
+m
+mX
+s=1
+[logπ θk(ys |x, y <s)−logπ t−1(ys |x, y <s)].(7)
+This quantity is the trajectory-level counterpart of the drift proxy used in Equation (2). Under
+on-policy sampling from πθk, its expectation corresponds to a token-averaged forward log-ratio
+contribution of πθk relative to the anchor πt−1, whereas a single sampled value can be negative and
+should not be interpreted as a non-negative KL value. RaPO therefore uses the one-sided truncation
+[dθk(y)]+ inside the reward, but does not optimize this signal as an explicit differentiable regularizer.
+As in standard PPO/GRPO implementations, the reward value assigned to each sampled rollout is
+treated as stop-gradient scalar feedback when forming the policy-gradient update. Concretely, after
+rollouts are collected atθ k, RaPO constructs the detached shaped reward
+eRk(y) =R task(y) +λexp
+ 
+−α[d θk(y)]+
+
+,(8)
+where the subscript k emphasizes that the scalar reward is fixed during the subsequent gradient
+computation. This distinction is important: if the log-ratio inside Rret were differentiated directly,
+it would become a loss-level KL-style regularizer. RaPO instead uses the drift only to shape the
+sampled rollout’s reward, so the policy-gradient term remains a likelihood-ratio update weighted by a
+scalar return.
+To make this precise, consider the prompt-conditioned local detached objective
+Jk(θ;x) =E y∼πθ(·|x)
+h
+eRk(y)
+i
+.(9)
+This objective is an analysis device for a single update: eRk is fixed while differentiating with
+respect to θ, although the detached reward rule is recomputed after new rollouts are collected at later
+optimization steps. Refer to [30], for any baseline b(x) that does not depend on the sampled trajectory
+y, the score-function identity gives
+Ey∼πθk (·|x)
+"
+eRk(y)−b(x)
+
+∇θ logπ θ(y|x)
+
+θ=θk
+#
+=∇ θJk(θ;x)
+
+θ=θk
+.(10)
+The equality follows because eRk(y) is detached: the gradient acts only on logπ θ(y|x) , while
+the reward is treated exactly like a verifier-provided return. Therefore, in the ideal score-function
+form, adding the retention reward does not introduce an additional pathwise gradient term; it simply
+changes the scalar credit assigned to each sampled trajectory. In practical GRPO, clipping and
+finite-group normalization make the estimator an approximation to this ideal identity, and the group
+mean is a sample-dependent baseline rather than a fixedb(x). The key point is narrower: the retention
+term itself does not add a separate token-level distillation gradient that directly pulls every token
+distribution toward the anchor.
+Bounded reward and advantage.Assume the task verifier is bounded, i.e.,
+0≤R task(y)≤R max.(11)
+Since the retention reward is defined as
+Rret(y) = exp(−α ¯Ddrift(y)),(12)
+and ¯Ddrift(y)≥0, we have
+0< R ret(y)≤1.(13)
+10
+
+=== PDF PAGE 11 ===
+Therefore, the total reward used by RaPO is bounded as
+0≤R total(y) =R task(y) +λR ret(y)≤R max +λ.(14)
+Let B=R max +λ . For a rollout group, the group mean reward also lies in [0, B], and CTAN
+computes the advantage with denominator ˆσ+ϵ. Since ˆσis an EMA of non-negative batch standard
+deviations,ˆσ≥0whenever it is initialized non-negatively. Thus,
+|ARaPO
+i |=
+
+Rtotal(yi)−µ group
+ˆσ+ϵ
+ ≤ B
+ϵ .(15)
+This shows that the retention reward can enlarge the reward range by at most λ, while CTAN
+keeps the normalization denominator lower-bounded by ϵ. Consequently, RaPO does not intro-
+duce unbounded advantages. To connect this bound to the usual bounded-gradient condition,
+we additionally require the standard score-function moment assumption: the trajectory score
+∇θ logπ θ(y|x) = P
+s ∇θ logπ θ(ys |x, y <s) has bounded second moment. Under this assumption,
+the score-function estimator weighted byA RaPO
+i also has a bounded second moment.
+Idealized convergence to a stationary point and proof.The practical RaPO update uses clipped
+GRPO, finite rollout groups, and a detached reward that is recomputed from the current sampling
+policy. A complete convergence theorem for this exact time-varying procedure would need to track
+the clipping bias and sample-dependent group normalization. Here we state the standard idealized
+stochastic policy-gradient result that RaPO inherits once its shaped reward is viewed as a bounded
+detached scalar feedback signal.
+Let JRaPO(θ) denote a fixed detached shaped surrogate objective over the analysis window, where
+verifier rewards and retention rewards are treated as stop-gradient scalar feedback when forming the
+score-function estimator. Suppose that:
+(i)J RaPO isL-smooth and upper bounded byJ ⋆;
+(ii) the stochastic policy-gradient estimator gk is unbiased for this surrogate, i.e., E[gk |θ k] =
+∇JRaPO(θk);
+(iii) its variance is bounded, i.e., E[∥gk − ∇J RaPO(θk)∥2 |θ k]≤σ 2
+g. These assumptions are
+standard in non-convex stochastic policy-gradient analyses. Assumption (i) is a local smoothness
+and bounded-objective condition on the detached surrogate. Assumption (ii) follows from the score-
+function identity in Equation (10) before practical approximations such as clipping and finite-group
+normalization are applied. Assumption (iii) is supported by the bounded reward-and-advantage result
+above: if the trajectory score has a bounded second moment, i.e.,
+E
+h
+∥∇θ logπ θ(y|x)∥ 2 |θ
+i
+≤C score,(16)
+Then, Equation (15) implies that the idealized score-function estimator has a bounded second moment,
+E
+hARaPO∇θ logπ θ(y|x)
+2
+|θ
+i
+≤
+ B
+ϵ
+2
+Cscore,(17)
+which in turn yields a bounded variance termσ 2
+g.
+Then stochastic gradient ascent withθ k+1 =θ k +ηg k andη≤1/Lsatisfies
+min
+0≤k<K
+E
+h
+∥∇JRaPO(θk)∥2
+i
+≤ 2(J ⋆ − JRaPO(θ0))
+ηK +Lησ 2
+g.(18)
+Choosingη=O(K −1/2)yields
+min
+0≤k<K
+E
+h
+∥∇JRaPO(θk)∥2
+i
+=O(K −1/2).(19)
+To prove this statement, use the smoothness ofJ RaPO. One step of stochastic gradient ascent gives
+JRaPO(θk+1)≥ J RaPO(θk) +η⟨∇J RaPO(θk), gk⟩ − Lη2
+2 ∥gk∥2.(20)
+11
+
+=== PDF PAGE 12 ===
+Taking the conditional expectation and using the unbiasedness assumption,
+E[J RaPO(θk+1)− J RaPO(θk)|θ k]≥η∥∇J RaPO(θk)∥2− Lη2
+2
+
+∥∇JRaPO(θk)∥2 +σ 2
+g
+
+.(21)
+Whenη≤1/L, this implies
+E[J RaPO(θk+1)− J RaPO(θk)]≥ η
+2 E
+h
+∥∇JRaPO(θk)∥2
+i
+− Lη2
+2 σ2
+g.(22)
+Summing the above inequality from k= 0 to K−1 and using the upper bound J ⋆ gives Equa-
+tion (18).
+B More Detailed Implementations
+B.1 Prompt Template and Output Format
+Image and Video Classification.As shown in Figure 3, at task Tt, let ∆Yt denote the set of
+novel class names introduced by the current classification task, and let Y≤t =Y ≤t−1 ∪∆Y t be the
+cumulative vocabulary of all class names observed so far. The prompt explicitly lists every class
+in Y≤t as the candidate answer space and never exposes future-task class names, so the model is
+evaluated strictly on its ability to recognize and retain classes that have already been introduced.
+The final answer is constrained to a closed-set prediction over this predefined vocabulary, while the
+reasoning span remains free-form and unconstrained. Video classification follows the same template,
+with the image placeholder replaced by a video placeholder. Note that in domain-incremental learning,
+the class vocabulary remains unchanged across all tasks since only the visual domain varies. Although
+we acknowledge the practical importance of open-set recognition in real-world applications, our
+primary goal is to investigate the potential of RFT in visual continual learning, where the central
+challenge lies in balancing plasticity to newly introduced classes against the stability of previously
+acquired ones. Allowing fully open-set generation may introduce confounding factors such as
+synonyms, hypernyms, or explanatory paraphrases that fall outside the evaluation taxonomy, making
+it difficult to isolate whether performance changes stem from genuine recognition gains or merely
+from naming variability.
+Object Detection.For object detection, let ∆Ct denote the novel class names introduced by the
+current task, and let C≤t =C ≤t−1 ∪∆C t be the cumulative seen class vocabulary up to task Tt. As
+shown in Figure 4, the model is required to output a JSON list of detected instances, where the
+"category" field of each entry is restricted to a closed-set prediction over C≤t. This constraint
+ensures that the evaluation faithfully reflects the model’s ability to recognize and retain previously
+learned object classes, consistent with the closed-set protocol adopted in classification. At the same
+time, the model freely predicts the number of instances and their spatial locations. Bounding box
+coordinates are expressed as integer values normalized to the range [0,1000] , making the verifier
+independent of the original image resolutions.
+B.2 Task Reward Function Design
+For the reward definitions below, yi denotes the i-th response sampled for visual input v within a
+rollout group.
+Classification Reward.For image and video classification, the task reward combines answer
+correctness and format compliance:
+Rtask(yi) =R acc(yi) +R fmt(yi).(23)
+Here, Racc ∈ {0,1} is an exact-match reward for the final class name extracted from the <answer>
+span. The prediction and the ground-truth class name are normalized by lower-casing and by mapping
+underscores, hyphens, and periods to spaces before matching, making the verifier robust to superficial
+formatting variation while preserving class identity. The format term Rfmt ∈ {0,1} checks the
+complete<think></think> <answer></answer>structure.
+Detection Reward.For object detection, the task reward combines localization quality, class-name
+accuracy, and format compliance:
+Rtask(yi) =R iou(yi) +R cls(yi) +R fmt(yi).(24)
+12
+
+=== PDF PAGE 13 ===
+A More Detailed Implementations553
+A.1 Prompt Template and Output Format554
+Image and Video Classification.At taskTt, let ∆Y t denote the set of novel class names introduced555
+by the current classification task, and letY≤t =Y ≤t−1∪∆Yt be the cumulative vocabulary of all556
+class names observed so far. The prompt explicitly lists every class inY≤t as the candidate answer557
+space and never exposes future-task class names, so the model is evaluated strictly on its ability to558
+recognize and retain classes that have already been introduced. The final answer is constrained to a559
+closed-set prediction over this predefined vocabulary, while the preceding reasoning span remains free-560
+form and unconstrained. Video classification follows the same template, with the image placeholder561
+replaced by a video placeholder. Note that in domain-incremental learning, the class vocabulary562
+remains unchanged across all tasks since only the visual domain varies. Although we acknowledge563
+the practical importance of open-set recognition in real-world applications, our primary goal is to564
+investigate the potential of RFT in visual continual learning, where the central challenge lies in565
+balancing adaptation to newly introduced classes against the retention of previously acquired ones.566
+Allowing fully open-set generation may introduce confounding factors such as synonyms, hypernyms,567
+or explanatory paraphrases that fall outside the evaluation taxonomy, making it difficult to isolate568
+whether performance changes stem from genuine recognition gains or merely from naming variability.569
+Input.Visual inputvand cumulative class-name vocabularyY ≤t.
+Prompt Template.
+<image>or<video>
+Perform image/video classification on the given visual input.
+You MUST choose exactly one class name from this list:
+{class names inY ≤t}
+Output the reasoning process in <think> </think>
+and final answer in <answer> </answer>.
+Your answer MUST be one class name from the list,
+character-for-character. No extra words.
+Required Output.
+<think> reasoning process </think>
+<answer> one class name fromY ≤t </answer>
+570
+Object Detection.For object detection, let ∆C t denote the novel class names introduced by the571
+current task, and let C≤t =C ≤t−1∪∆Ct be the cumulative seen class vocabulary up to task Tt.572
+The model is required to output a JSON list of detected instances, where the "category" field573
+of each entry is restricted to a closed-set prediction over C≤t. This constraint ensures that the574
+evaluation faithfully reflects the model’s ability to recognize and retain previously learned object575
+classes, consistent with the closed-set protocol adopted in classification. At the same time, the model576
+freely predicts the number of instances and their spatial locations. Bounding box coordinates are577
+expressed as integer values normalized to the range [0,1000] , making the verifier independent of the578
+original image resolution and thus applicable across datasets with varying image sizes.579
+15
+Figure 3: Prompt template and required output format for image and video classification.
+Input.Imagevand cumulative class-name vocabularyC ≤t.
+Prompt Template.
+<image>
+Detect all objects in the image that belong to:
+{class names inC ≤t}
+For each detected object, provide its class name
+in the "category" field and its bounding box
+as [x1, y1, x2, y2],
+with coordinates normalized to 0-1000.
+Output reasoning in <think> </think>
+and detection results in <answer> </answer>.
+Required Output.
+<think> reasoning process </think>
+<answer>[
+{"category": "cat_name", "bbox": [x1, y1, x2, y2]}, ...
+]</answer>
+Use <answer>[]</answer> if no listed category is detected.
+580
+A.2 Task Reward Design581
+For the reward definitions below,yi denotes thei-th response sampled for visual input v within a582
+rollout group.583
+Classification Reward.For image and video classification, the task reward combines answer584
+correctness and format compliance:585
+Rtask(yi) =R acc(yi) +R fmt(yi).(7)
+Here,Racc∈{0,1}is an exact-match reward for the final class name extracted from the <answer>586
+span. The prediction and the ground-truth class name are normalized by lower-casing and by mapping587
+underscores, hyphens, and periods to spaces before matching, making the verifier robust to superficial588
+formatting variation while preserving class identity. The format term Rfmt∈{0,1}checks the589
+complete<think></think><answer></answer>structure.590
+Detection Reward.For object detection, the task reward combines localization quality, class-name591
+accuracy, and format compliance:592
+Rtask(yi) =R iou(yi) +R cls(yi) +R fmt(yi).(8)
+The verifier first parses the JSON output from the <answer> span into a set of predicted boxes.593
+Class names are lower-cased, coordinates are rounded to the nearest integer and clipped to [0,1000] ,594
+and degenerate boxes (e.g., those with zero area) are discarded. Following DETR [64], we construct595
+a bipartite matching score matrix where same-class pairs are scored by their IoU and mismatched596
+pairs receive zero score. The Hungarian algorithm then finds an optimal one-to-one assignment597
+between predictions and ground truth. This matching is critical for meaningful reward computation:598
+it ensures each ground-truth instance is associated with at most one prediction, preventing the policy599
+from inflating its reward by outputting multiple near-identical boxes for the same object. Based600
+on the matching, Riou is the sum of IoU values from all assigned same-class pairs divided by601
+max(Ngt,N pred), whereNgt andNpred denote the number of ground-truth and predicted instances,602
+respectively. This denominator normalizes the reward by the larger of the two counts, penalizing603
+both missed detections and excessive false positives in a single term.Rcls is the fraction of assigned604
+same-class pairs whose IoU meets or exceeds 0.5, computed under the same denominator. The605
+format termRfmt verifies both the output tag structure and JSON schema. Outputs with valid tags606
+but unparsable JSON receive partial format credit, whileR iou andR cls are set to zero.607
+B Ablation Studies608
+Setup.We provide a comprehensive ablation analysis of different components and hyperparameters609
+in RaPO. Experiments are conducted on class-incremental image classification using the 10-task610
+setting with ImageNet-R, and on class-incremental object detection using the 5-task setting with611
+COCO 2017. All other experimental settings follow the configurations described in Sections 4.1612
+16
+Figure 4: Prompt template and required output format for object detection.
+The verifier first parses the JSON output from the <answer> span into a set of predicted boxes.
+Class names are lower-cased, coordinates are rounded to the nearest integer and clipped to [0,1000] ,
+and degenerate boxes (e.g., those with zero area) are discarded. Following DETR [67], we construct
+a bipartite matching score matrix where same-class pairs are scored by their IoU and mismatched
+pairs receive zero score. The Hungarian algorithm then finds an optimal one-to-one assignment
+between predictions and ground truth. This matching is critical for meaningful reward computation:
+it ensures each ground-truth instance is associated with at most one prediction, preventing the policy
+from inflating its reward by outputting multiple near-identical boxes for the same object. Based
+on the matching, Riou is the sum of IoU values from all assigned same-class pairs divided by
+max(Ngt, Npred), where Ngt and Npred denote the number of ground-truth and predicted instances,
+respectively. This denominator normalizes the reward by the larger of the two counts, penalizing
+both missed detections and excessive false positives in a single term. Rcls is the fraction of assigned
+same-class pairs whose IoU meets or exceeds 0.5, computed under the same denominator. The
+format term Rfmt verifies both the output tag structure and JSON schema. Outputs with valid tags
+but unparsable JSON receive partial format credit, whileR iou andR cls are set to zero.
+C Ablation Studies
+We provide a comprehensive ablation analysis of different components and hyperparameters in RaPO.
+Experiments are conducted on class-incremental image classification using the 10-task setting with
+13
+
+=== PDF PAGE 14 ===
+(a)
+(b)
+Retention RewardRetention Reward
+Figure 5: Retention reward dynamics on (a) ImageNet-R 10-task class-incremental classification
+and (b) COCO 5-task class-incremental detection.
+ImageNet-R, and on class-incremental object detection using the 5-task setting with COCO 2017.
+All other experimental settings follow the configurations described in Sections 4.1 and 4.2. Unless
+otherwise specified, RaPO uses the default hyperparameters: rollout group size n= 8 (Section 3.1),
+retention reward scaleα= 20(Section 3.2.2), retention reward weightλ= 0.5(Section 3.2.2), and
+smoothing coefficientβ= 0.999(Section 3.2.3).
+C.1 Analysis of Core Components in RaPO
+We first verify the contribution of the two core components, Retention Reward (Section 3.2.2) and
+CTAN (Section 3.2.3), by gradually adding them to the vanilla GRPO baseline. As shown in Table 5,
+both components individually improve performance on the two benchmarks. Adding CTAN alone
+raises A from 74.67 to 79.43 and Ab from 14.64 to 16.27, while reducing F from 20.02 to 13.17 and
+Fb from 6.67 to 4.73. This demonstrates that stabilizing the advantage scale across task boundaries
+already benefits both task adaptation and knowledge retention. Incorporating the Retention Reward
+provides a substantially larger gain, pushing A to 82.57 and Ab to 18.11, with forgetting rates
+dropping to 8.38 and 2.61, respectively. Combining both components yields the best results across
+all metrics, achieving A of 85.92 and F of 4.69 on ImageNet-R, and Ab of 19.31 and Fb of 1.39 on
+COCO. These results confirm that CTAN and the Retention Reward play complementary roles: CTAN
+stabilizes the update magnitude across tasks while the Retention Reward steers credit assignment
+toward low-drift trajectories that preserve previously acquired knowledge.
+On the other hand, we further analyze the retention-reward dynamics. For RaPO, Rret is optimized
+with the default coefficient λ= 0.5 . For a controlled diagnostic comparison, we also attach the same
+retention-reward estimator to vanilla GRPO while fixing its coefficient to λ= 0 . Therefore, the
+computed Rret for GRPO is used only for measurement: it is not used in the advantage computation,
+and never contributes to policy updates. As shown in Figure 5, RaPO consistently maintains higher
+retention rewards than GRPO after task transitions on both datasets. Specifically, the GRPO curves
+reveal that task-reward-only optimization can move toward high-drift trajectories, even though
+it adapts to the current task. In contrast, RaPO preserves higher Rret throughout the continual
+14
+
+=== PDF PAGE 15 ===
+Table 5: Ablation study of core components in RaPO.
+Method ImageNet-R (10 Tasks) COCO (5 Tasks)
+A ↑ F ↓ A b ↑ F b ↓
+GRPO 74.67 ±1.27 20.02±4.91 14.64±2.18 6.67±2.71
+GRPO + CTAN 79.43 ±1.68 13.17±3.26 16.27±1.63 4.73±1.92
+GRPO + Retention Reward 82.57±1.74 8.38±2.42 18.11±1.31 2.61±1.37
+RaPO (Ours) 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+Table 6: Effect of retention anchor strategy.
+Anchor Policy ImageNet-R (10 Tasks) COCO (5 Tasks)
+A ↑ F ↓ A b ↑ F b ↓
+πt−1 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+πema 84.86±2.01 5.65±2.78 18.61±1.27 2.11±1.32
+π1 83.88±1.93 7.24±2.34 17.34±1.48 2.82±1.57
+πp 82.68±2.17 9.43±2.66 16.88±1.51 3.58±1.93
+sequence, showing that the retention reward continuously reshapes credit assignment toward low-drift,
+knowledge-preserving trajectories.
+C.2 Effect of Anchor Policy
+We further evaluate the effect of different anchor models used for computing the retention reward,
+as described in Section 3.2.2. By default, RaPO uses the immediate preceding-task policy πt−1 as
+the anchor. We compare this against three alternatives: an EMA of historical policies πema (with
+a decay factor of 0.1), the fixed policy from the first task π1, and the pre-trained base model πp
+without any fine-tuning. As reported in Table 6, the preceding-task anchor achieves the best results
+on both classification and detection. Replacing it with the EMA anchor πema slightly reduces A from
+85.92 to 84.86 on ImageNet-R and Ab from 19.31 to 18.61 on COCO. Further reverting to the task#1
+anchor π1 drops A to 83.88 and Ab to 17.34, with corresponding increases in forgetting. Using the
+pre-trained model πp as an anchor leads to the most degradation, decreasing A to 82.68 and Ab to
+16.88. This trend is expected: the preceding-task policy provides a tighter and more recent reference
+for measuring distribution drift. While the EMA incorporates historical information, it responds
+slowly to abrupt distribution shifts at task boundaries, making it less effective at constraining the large
+distribution changes that cause forgetting. Meanwhile, static anchors like π1 or πp are progressively
+less informative about the accumulated knowledge that should be preserved as the task sequence
+progresses. Nevertheless, even with the weakest anchor, RaPO still outperforms vanilla GRPO by a
+clear margin on both benchmarks.
+C.3 Hyperparameter Sensitivity
+We further examine the sensitivity of RaPO to its three key hyperparameters: the retention weight
+λ, the retention sensitivity α, and the CTAN smoothing coefficient β. In each experiment, only
+one hyperparameter is varied while the other two are held fixed. As reported in Table 7, varyingλ
+from 0.2 to 1.0, α from 10 to 40, and β from 0.9 to 0.9999 all produce comparable results on both
+benchmarks. Across all tested configurations, the last accuracy on ImageNet-R stays within a ~1.7%
+range and the forgetting rate within a ~2.6% range. Similarly, on COCO, Ab varies by at most ~1.2%
+and Fb by at most ~1.1%. These results indicate that RaPO is robust to hyperparameter choice and
+does not rely on delicate tuning.
+C.4 Impact of Standard Loss-level KL Regularization
+We evaluate the effect of the standard KL regularization term by removing it from both GRPO and
+RaPO during training. As shown in Table 8, removing the KL term does not lead to a large drop
+in performance for both methods. This suggests that the loss-level KL penalty does not play the
+primary role of stronger resistance to catastrophic forgetting in RFT, which aligns with the findings
+of [19, 20].
+15
+
+=== PDF PAGE 16 ===
+Table 7: Hyperparameter sensitivity in RaPO.
+Hyperparameter ImageNet-R (10 Tasks) COCO (5 Tasks)
+A ↑ F ↓ A b ↑ F b ↓
+λ= 0.284.23 ±1.64 7.28±2.47 18.13±1.39 2.48±1.52
+λ= 0.5 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+λ= 0.885.37 ±1.84 5.14±1.83 18.78±1.21 1.76±1.29
+λ= 1.084.43 ±2.12 6.47±2.16 18.09±1.44 2.34±1.58
+α= 1084.73 ±1.79 5.86±2.11 18.29±1.32 2.39±1.47
+α= 20 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+α= 4085.18 ±1.97 5.31±1.96 18.68±1.27 1.92±1.33
+β= 0.984.58 ±2.03 6.27±2.36 18.14±1.41 2.53±1.62
+β= 0.9985.33 ±1.81 5.27±1.91 18.82±1.22 1.89±1.31
+β= 0.999 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+β= 0.999985.63 ±1.87 4.91±1.78 19.07±1.12 1.56±1.24
+Table 8: Effect of loss-level KL regularization.
+Method ImageNet-R (10 Tasks) COCO (5 Tasks)
+A ↑ F ↓ A b ↑ F b ↓
+GRPO (w/o KL Loss) 73.63±1.73 22.87±4.37 13.08±1.66 8.17±2.52
+GRPO (w/ KL Loss) 74.67±1.27 20.02±4.91 14.64±2.18 6.67±2.71
+RaPO (w/o KL Loss) 84.38±1.86 6.13±1.94 17.89±1.28 2.72±1.36
+RaPO (w/ KL Loss) 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+C.5 Effect of Reasoning and Number of Rollouts
+We further examine two practical factors: the effect of removing the reasoning step before answering,
+and the number of rollouts per prompt. For the reasoning ablation, the default prompt forces the
+model to reason before outputting the final answer, while the ablated version directly requests the
+answer without intermediate reasoning. As listed in Table 9, removing reasoning degrades both
+accuracy and forgetting for GRPO and RaPO. On class-incremental image classification, GRPO
+drops from 74.67 to 72.83 in A and RaPO from 85.92 to 83.87 in A, a similar absolute decline of
+roughly 2% for both methods. On class-incremental object detection, however, the gap is much
+larger for GRPO: Ab falls from 14.64 to 9.82, and forgetting nearly doubles. RaPO also declines
+on detection, but to a far lesser extent (Ab from 19.31 to 17.64, Fb from 1.39 to 2.46). We attribute
+this asymmetry to the retention reward mechanism. During training, the model naturally learns to
+produce implicit reasoning traces to maximize the task reward without an explicit chain-of-thought.
+RaPO then preferentially reinforces rollouts that remain close to the preceding-task policy, which
+anchors the policy to these already learned implicit reasoning patterns. Consequently, even when
+the prompt omits the explicit reasoning instruction, the retention signal continues to guide the policy
+toward trajectories that exhibit a similar expressive pattern. In contrast, GRPO’s behavior is fully
+prompt-dependent and changes sharply when reasoning is removed.
+For the rollout experiments, we vary the number of sampled responses per prompt from 4 to 10.
+Both GRPO and RaPO improve steadily as the number of rollouts increases from 4 to 8. Beyond 8,
+the gains become marginal. For RaPO on ImageNet-R, moving from 8 to 10 rollouts improves A
+from 85.92 to 86.07 and F from 4.69 to 4.53. On COCO, Ab changes from 19.31 to 19.36 and Fb
+from 1.39 to 1.34. These differences are small, suggesting that 8 rollouts already provide sufficient
+diversity for stable advantage estimation, and further increasing the rollout count yields negligible
+improvement with additional computational overhead.
+16
+
+=== PDF PAGE 17 ===
+Table 9: Ablation study on reasoning capacity and number of rollouts (n).
+Method ImageNet-R (10 Tasks) COCO (5 Tasks)
+A ↑ F ↓ A b ↑ F b ↓
+GRPO (w/ Reasoning) 74.67±1.27 20.02±4.91 14.64±2.18 6.67±2.71
+GRPO (w/o Reasoning) 72.83±1.96 22.14±5.27 9.82±2.21 13.05±2.96
+RaPO (w/ Reasoning) 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+RaPO (w/o Reasoning) 83.87 ±2.04 6.84±2.17 17.64±1.41 2.46±1.62
+GRPO (n= 4) 72.93 ±2.01 23.24±5.42 13.73±2.27 7.48±2.82
+GRPO (n= 6) 74.12 ±1.62 21.07±5.11 14.28±2.16 6.92±2.77
+GRPO (n= 8) 74.67±1.27 20.02±4.91 14.64±2.18 6.67±2.71
+GRPO (n= 10) 74.88 ±1.59 19.73±4.76 14.78±2.23 6.48±2.68
+RaPO (n= 4) 83.82 ±2.09 7.16±2.31 17.83±1.42 2.78±1.67
+RaPO (n= 6) 85.13 ±1.86 5.36±1.91 18.83±1.23 1.82±1.32
+RaPO (n= 8) 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+RaPO (n= 10) 86.07 ±1.77 4.53±1.68 19.36±1.11 1.34±1.18
+Table 10: Effect of RaPO components applied to SAPO.
+Method ImageNet-R (10 Tasks) COCO (5 Tasks)
+A ↑ F ↓ A b ↑ F b ↓
+SAPO 76.83 ±1.94 18.07±4.24 15.28±1.84 6.13±2.38
+SAPO+Ours 84.46±1.72 6.52±2.14 18.43±1.33 2.07±1.42
+D Analytics Experiments
+D.1 Impact of Different Policy Optimization Methods
+To examine whether RaPO is tied to GRPO, we integrate its two core components, the retention
+reward and CTAN, into SAPO [68], a recent policy optimization algorithm. As shown in Table 10,
+SAPO alone yields an A of 76.83% and F of 18.07% on ImageNet-R, together with an Ab of 15.28%
+and Fb of 6.13% on COCO. After equipping SAPO with the retention reward and CTAN, accuracy
+rises to 84.46% on classification and 18.43% on detection, while forgetting drops to 6.52% and 2.07%,
+respectively. These improvements indicate that the retention mechanism and advantage normalization
+are not specific to a single optimizer. Rather, they serve as generic components that can strengthen
+different policy optimization algorithms for visual continual learning.
+D.2 Impact of Different MLLMs
+We assess both GRPO and RaPO on a more powerful Qwen2.5-VL model (3B for classification and
+7B for detection). As shown in Table 11, both GRPO and RaPO gain accuracy from the stronger
+base models, while forgetting also increases slightly. This is because more capable MLLMs reach
+higher accuracy on early tasks, resulting in a higher performance ceiling from which any subsequent
+degradation is measured. Since forgetting captures the absolute drop from historical best accuracy, a
+stronger starting point naturally amplifies the measured forgetting for both methods.
+D.3 Qualitative Results
+We present qualitative examples of class-incremental image classification on ImageNet-R, ImageNet-
+A, CUB-200-2011, and TinyImageNet. For each input image, we present the model response after
+learning the first task and the response on the same validation image after the model finishes learning
+the final task. As shown in Figure 6, at the initial task, both GRPO and RaPO correctly recognize
+the target class. After the full continual learning sequence, however, GRPO often changes its final
+answer to a semantically related category, which reflects forgetting of previously learned classes. In
+contrast, our RaPO preserves the correct class more consistently. The reasoning process and final
+answer further make this difference clear: RaPO continues to rely on the visual cues that support the
+old class, whereas GRPO becomes more susceptible to partial cues that lead to inaccurate decisions
+17
+
+=== PDF PAGE 18 ===
+Table 11: Performance comparison across different MLLM backbones (Qwen2-VL vs. Qwen2.5-VL).
+RaPO consistently mitigates forgetting and improves overall accuracy regardless of the underlying
+model version.
+Method ImageNet-R (10 Tasks) COCO (5 Tasks)
+A ↑ F ↓ A b ↑ F b ↓
+Qwen2-VL
+GRPO 74.67 ±1.27 20.02±4.91 14.64±2.18 6.67±2.71
+RaPO (Ours) 85.92±1.82 4.69±1.71 19.31±1.08 1.39±1.20
+Qwen2.5-VL
+GRPO 76.41 ±1.38 20.73±4.82 16.89±2.31 7.52±2.58
+RaPO (Ours) 88.27±1.72 5.22±1.68 21.68±1.19 2.11±1.09
+Sooty Albatross
+<think>The photo shows a bird with visible plumage, 
+beak shape, body outline, and perch context. Those 
+fine-grained bird cues are most consistent with sooty 
+albatross.</think>
+<answer>sooty albatross</answer>
+<think>The photo shows a bird with patterned 
+feathers, a compact body, and a clear head profile. The 
+visible species cues look close to "laysan albatross".
+</think>
+<answer>laysan albatross</answer>
+<think> The image shows a bird with clear plumage 
+details, distinct beak shape, a defined body outline, and a 
+visible perch. These overall identifying characteristics 
+confirm the bird as a sooty albatross. </think>
+<answer> sooty albatross </answer>
+<think>The photo displays a bird with clear plumage, 
+distinct beak shape, defined body outline, and visible 
+perching context. The "sooty albatross" is the most 
+appropriate choice. </think>
+<answer> sooty albatross </answer>
+Initial TaskLast Task
+GRPO RaPO
+<think> A small flame sits on top of a narrow vertical 
+object. The flame is small but visually bright, sitting 
+above the narrow candle body. </think> 
+<answer> candle </answer>
+<think> The curved dark outline creates a bird-like 
+silhouette. The label that best describes this image is 
+"bald eagle". </think> 
+<answer> bald eagle </answer>
+<think> The bright flame and wick-like shape indicate a 
+candle. The flame is small but visually bright, sitting above 
+the narrow candle body. </think> 
+<answer> candle </answer>
+<think> The flame on the upright object is the defining 
+cue. The flame is small but visually bright, sitting above 
+the narrow candle body. </think> 
+<answer> candle </answer>
+Initial TaskLast Task
+GRPO RaPOCandle
+<think>The image centers a Bell Pepper, and the 
+visible shape, color, texture, and surrounding scene 
+support that category. The strongest visual evidence 
+points to bell pepper.</think>
+<answer>bell pepper</answer>
+<think>The image has object shape, color, and scene 
+cues that can resemble Cauliflower. Based on those 
+visible cues, I choose Cauliflower. </think>
+<answer>cauliflower</answer>
+<think>The image centers a Bell Pepper, and the visible 
+shape, color, texture, and surrounding scene support that 
+category. The strongest visual evidence points to bell 
+pepper.</think>
+<answer>bell pepper</answer>
+<think> The image shows a bell pepper, which is a type 
+of pepper. Bell peppers are typically found in a garden or 
+on a farm. </think>
+<answer> bell pepper </answer>
+Initial TaskLast Task
+GRPO RaPOBell Pepper
+Pomegranate
+<think>The image shows a Pomegranate. The visible 
+rounded produce form, surface texture, rind or peel cues, 
+and plant or food context support this category, and the 
+object appearance is most consistent with 
+Pomegranate.</think>
+<answer>pomegranate</answer>
+<think>The image has rounded produce form, surface 
+texture, rind or peel cues, and plant or food context. I 
+choose Cucumber.</think>
+<answer>cucumber</answer>
+<think> The visible bright red seeds, their rounded form, 
+and the surrounding bento context are consistent with 
+pomegranate.</think>
+<answer>pomegranate</answer>
+<think> The visible bright red, rounded seeds, presented 
+within a bento-style meal, are consistent with pomegranate. 
+</think>
+<answer> pomegranate </answer>
+Initial TaskLast Task
+GRPO RaPO
+Figure 6: Qualitative class-incremental image classification examples from different datasets.
+after more tasks are learned. Meanwhile, Figure 7 follows the same protocol for class-incremental
+object detection on COCO. We show the model response on the same validation image after learning
+the initial task that first introduces the earlier category, and again after the model finishes learning
+the final task. At the initial task, both GRPO and RaPO correctly localize the bicycle. After the
+full continual learning sequence, GRPO detects later categories such as traffic light, person, and car,
+but misses the bicycle learned earlier. This behavior reflects forgetting in continual detection: the
+bicycle is small and visually coupled with the rider, so its response is more easily dominated by
+newly introduced categories after later-task training. Conversely, RaPO still locates the bicycle while
+18
+
+=== PDF PAGE 19 ===
+<think>
+The surfboard occupies a large
+region beneath the standing
+person . The box follow s the
+elongated board edges.
+</think>
+<answer>
+[{"category" : "surfboard",
+"bbox": [0, 210, 961, 958]}]
+</answer>
+<think>
+A surfboard runs through the
+frame under the surfer and has
+a clear long board shape. The
+board outline should be boxed
+along its narrow length.
+</think>
+<answer>
+[{"category" : "surfboard",
+"bbox": [90, 153, 962, 938]}]
+</answer>
+<think>
+The image shows a person on a 
+surfboard. I mark the person by 
+the standing body and the 
+surfboard by its long narrow 
+shape below.
+</think>
+<answer>[{“category”: 
+“person”, “bbox”: [149, 144, 840, 
+987]}, {“category”: “surfboard”, 
+"bbox": [33, 202, 1000, 
+1000]}]</answer>
+<think>
+A person is standing over the 
+surfboard, with the body visible 
+above the water. The detection 
+follows the surfer's torso, legs, 
+and overall human silhouette.
+</think>
+<answer>
+[{"category": "person", "bbox": 
+[189, 68, 833, 1000]}]
+</answer>
+Task 1:
+"category": "surfboard",
+"bbox": [0, 214, 1000, 998]
+Task 4:
+"category": "person",
+"bbox": [128, 142, 865, 1000]
+GRPO (Initial Task) RaPO (Initial Task) GRPO (Last Task) RaPO (Last Task)Ground-Truth
+<think> The target cues for 
+bicycle stand out through shape, 
+contact points, and local 
+contrast. </think>
+<answer>
+[{"category": "bicycle", "bbox": 
+[311, 771, 416, 864]}]
+</answer>
+<think> I scan the visible 
+objects named bicycle. The 
+clearest evidence is a small 
+bicycle in the lower center. 
+</think>
+<answer>
+[{"category": "bicycle", "bbox": 
+[320, 767, 426, 855]}]
+</answer>
+<think>The image contains a medium 
+traffic light in the upper left; a small 
+bus in the middle right; a small car near 
+the center; a small bicycle in the lower 
+center, and two persons are also visible. 
+</think>
+<answer> [{"category": "bicycle", 
+"bbox": [313, 761, 414, 856]}, 
+{"category": "bus", "bbox": [668, 423, 
+816, 540]}, {"category": "car", "bbox": 
+[481, 583, 606, 707]}, {"category": 
+"person", "bbox": [56, 879, 136, 1000]}, 
+{"category": "person", "bbox": [306, 
+684, 381, 813]}, {"category": "traffic 
+light", "bbox": [228, 62, 340, 477]}] 
+</answer>
+<think> A traffic light in the upper 
+left; a small bus in the middle right; 
+a small car near the center; two 
+persons in the lower left. </think>
+<answer> [{"category": "bus", 
+"bbox": [656, 421, 799, 528]}, 
+{"category": "car", "bbox": [465, 
+571, 597, 706]}, {"category": 
+"person", "bbox": [51, 891, 142, 
+997]}, {"category": "person", "bbox": 
+[302, 679, 376, 818]}, {"category": 
+"traffic light", "bbox": [238, 65, 338, 
+503]}] </answer>
+Task 1:
+"category": "bicycle",
+"bbox": [316, 765, 420, 858]
+Task 3:
+"category": "traffic light",
+"bbox": [229, 78, 342, 478]
+Task 4:
+"category": "person",
+"bbox": [[52, 885, 133, 1000], [310, 
+689, 384, 809]]
+Task 5:
+"category": "bus",
+"bbox": [660, 425, 812, 539],
+"category": "car",
+"bbox": [480, 578, 601, 702]
+Figure 7: Qualitative class-incremental object detection examples on COCO 2017 dataset.
+also recognizing the later categories, showing stronger retention of earlier knowledge throughout
+continual learning.
+E Limitations
+Although RaPO demonstrates broad effectiveness across diverse visual continual learning settings,
+several limitations suggest promising directions for future work. First, RFT-based MLLM training is
+computationally expensive, and our hardware budget limits us from scaling to longer task sequences.
+Second, this study focuses on CIL and DIL with Qwen2-VL at the 2B and 7B scales, leaving open
+whether RaPO extends to larger MLLMs and more complex task formulations. Third, to isolate the
+properties of RFT in visual continual learning, we adopt closed-world settings with explicit task
+boundaries and verifiable rewards. Extending RaPO to open-world streams without such boundaries
+is an important direction for future work. However, these limitations do not weaken the central
+contribution: RaPO is the first systematic study of RFT for visual continual learning and offers a
+simple yet effective strategy that consistently suppresses catastrophic forgetting phenomenon across
+diverse settings.
+F Impact Statement
+This work proposes a reinforcement fine-tuning method for visual continual learning. All experiments
+rely on publicly available datasets and open-source pre-trained models, which ensures that no private
+19
+
+=== PDF PAGE 20 ===
+or sensitive data is involved. Our research is domain-agnostic, not tailored towards potentially harmful
+applications such as surveillance or misinformation dissemination, and therefore poses no ethical
+concerns.
+References
+[1] Kimi Team, Angang Du, Bofei Gao, Bowei Xing, Changjiu Jiang, Cheng Chen, Cheng Li, Chenjun Xiao,
+Chenzhuang Du, Chonghua Liao, et al. Kimi k1.5: Scaling reinforcement learning with llms.arXiv
+preprint arXiv:2501.12599, 2025.
+[2] Shuai Bai, Yuxuan Cai, Ruizhe Chen, Keqin Chen, Xionghui Chen, Zesen Cheng, Lianghao Deng, Wei
+Ding, Chang Gao, Chunjiang Ge, et al. Qwen3-vl technical report.arXiv preprint arXiv:2511.21631, 2025.
+[3] Dong Guo, Faming Wu, Feida Zhu, Fuxing Leng, Guang Shi, Haobin Chen, Haoqi Fan, Jian Wang, Jianyu
+Jiang, Jiawei Wang, et al. Seed1.5-vl technical report.arXiv preprint arXiv:2505.07062, 2025.
+[4] Qwen Team. Qwen3.5-omni technical report.arXiv preprint arXiv:2604.15804, 2026.
+[5] Kaiyan Zhang, Yuxin Zuo, Bingxiang He, Youbang Sun, Runze Liu, Che Jiang, Yuchen Fan, Kai Tian,
+Guoli Jia, Pengfei Li, et al. A survey of reinforcement learning for large reasoning models.arXiv preprint
+arXiv:2509.08827, 2025.
+[6] Hanzhong Guo, Jie Wu, Jie Liu, Yu Gao, Zilyu Ye, Linxiao Yuan, Xionghui Wang, Yizhou Yu, and Weilin
+Huang. Leveraging verifier-based reinforcement learning in image editing. InIEEE/CVF Conference on
+Computer Vision and Pattern Recognition, 2026.
+[7] Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan
+Zhang, YK Li, Yang Wu, et al. Deepseekmath: Pushing the limits of mathematical reasoning in open
+language models.arXiv preprint arXiv:2402.03300, 2024.
+[8] Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Peiyi Wang, Qihao Zhu, Runxin Xu, Ruoyu Zhang,
+Shirong Ma, Xiao Bi, et al. Deepseek-r1 incentivizes reasoning in llms through reinforcement learning.
+Nature, 645(8081):633–638, 2025.
+[9] Aixin Liu, Aoxue Mei, Bangcai Lin, Bing Xue, Bingxuan Wang, Bingzheng Xu, Bochao Wu, Bowei
+Zhang, Chaofan Lin, Chen Dong, et al. Deepseek-v3.2: Pushing the frontier of open large language models.
+arXiv preprint arXiv:2512.02556, 2025.
+[10] Ziyu Liu, Zeyi Sun, Yuhang Zang, Xiaoyi Dong, Yuhang Cao, Haodong Duan, Dahua Lin, and Jiaqi Wang.
+Visual-rft: Visual reinforcement fine-tuning. InProceedings of the IEEE/CVF International Conference on
+Computer Vision, pages 2034–2044, 2025.
+[11] Ming Li, Jike Zhong, Shitian Zhao, Yuxiang Lai, Haoquan Zhang, Wang Bill Zhu, and Kaipeng Zhang. To
+think or not to think: A study of thinking in rule-based visual reinforcement fine-tuning. InAdvances in
+Neural Information Processing Systems, 2025.
+[12] Huajie Tan, Yuheng Ji, Xiaoshuai Hao, Xiansheng Chen, Pengwei Wang, Zhongyuan Wang, and Shanghang
+Zhang. Reason-rft: Reinforcement fine-tuning for visual reasoning of vision language models. InAdvances
+in Neural Information Processing Systems, 2025.
+[13] Hulingxiao He, Zijun Geng, and Yuxin Peng. Fine-r1: Make multi-modal llms excel in fine-grained visual
+recognition by chain-of-thought reasoning. InInternational Conference on Learning Representations,
+2026.
+[14] Heitor Murilo Gomes, Jean Paul Barddal, Fabrício Enembreck, and Albert Bifet. A survey on ensemble
+learning for data stream classification.ACM Computing Surveys, 50(2):1–36, 2017.
+[15] Junhao Zheng, Shengjie Qiu, Chengming Shi, and Qianli Ma. Towards lifelong learning of large language
+models: A survey.ACM Computing Surveys, 57(8):1–35, 2025.
+[16] Haizhou Shi, Zihao Xu, Hengyi Wang, Weiyi Qin, Wenyuan Wang, Yibin Wang, Zifeng Wang, Sayna
+Ebrahimi, and Hao Wang. Continual learning of large language models: A comprehensive survey.ACM
+Computing Surveys, 58(5):1–42, 2025.
+[17] Yutao Yang, Jie Zhou, Xuanwen Ding, Tianyu Huai, Shunyu Liu, Qin Chen, Yuan Xie, and Liang He.
+Recent advances of foundation language models-based continual learning: A survey.ACM Computing
+Surveys, 57(5):1–38, 2025.
+20
+
+=== PDF PAGE 21 ===
+[18] Jinghan He, Haiyun Guo, Kuan Zhu, Ming Tang, and Jinqiao Wang. Continual instruction tuning for large
+multimodal models.IEEE Transactions on Image Processing, 2026.
+[19] Song Lai, Haohan Zhao, Rong Feng, Changyi Ma, Wenzhuo Liu, Hongbo Zhao, Xi Lin, Dong Yi,
+Qingfu Zhang, Hongbin Liu, et al. Reinforcement fine-tuning naturally mitigates forgetting in continual
+post-training.arXiv preprint arXiv:2507.05386, 2025.
+[20] Idan Shenfeld, Jyothish Pari, and Pulkit Agrawal. RL’s razor: Why online reinforcement learning forgets
+less. InInternational Conference on Learning Representations, 2026.
+[21] Da-Wei Zhou, Qi-Wei Wang, Zhi-Hong Qi, Han-Jia Ye, De-Chuan Zhan, and Ziwei Liu. Class-incremental
+learning: A survey.IEEE Transactions on Pattern Analysis and Machine Intelligence, 46(12):9851–9873,
+2024.
+[22] Liyuan Wang, Xingxing Zhang, Hang Su, and Jun Zhu. A comprehensive survey of continual learning:
+Theory, method and application.IEEE Transactions on Pattern Analysis and Machine Intelligence,
+46(8):5362–5383, 2024.
+[23] Dan Hendrycks, Steven Basart, Norman Mu, Saurav Kadavath, Frank Wang, Evan Dorundo, Rahul Desai,
+Tyler Zhu, Samyak Parajuli, Mike Guo, et al. The many faces of robustness: A critical analysis of
+out-of-distribution generalization. InProceedings of the IEEE/CVF International Conference on Computer
+Vision, pages 8340–8349, 2021.
+[24] Peng Wang, Shuai Bai, Sinan Tan, Shijie Wang, Zhihao Fan, Jinze Bai, Keqin Chen, Xuejing Liu, Jialin
+Wang, Wenbin Ge, et al. Qwen2-vl: Enhancing vision-language model’s perception of the world at any
+resolution.arXiv preprint arXiv:2409.12191, 2024.
+[25] Aaron Jaech, Adam Kalai, Adam Lerer, Adam Richardson, Ahmed El-Kishky, Aiden Low, Alec Hel-
+yar, Aleksander Madry, Alex Beutel, Alex Carney, et al. Openai o1 system card.arXiv preprint
+arXiv:2412.16720, 2024.
+[26] John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov. Proximal policy
+optimization algorithms.arXiv preprint arXiv:1707.06347, 2017.
+[27] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang,
+Sandhini Agarwal, Katarina Slama, Alex Ray, et al. Training language models to follow instructions with
+human feedback.Advances in neural information processing systems, 35:27730–27744, 2022.
+[28] Rafael Rafailov, Archit Sharma, Eric Mitchell, Christopher D Manning, Stefano Ermon, and Chelsea Finn.
+Direct preference optimization: Your language model is secretly a reward model.Advances in neural
+information processing systems, 36:53728–53741, 2023.
+[29] Josef Dai, Xuehai Pan, Ruiyang Sun, Jiaming Ji, Xinbo Xu, Mickel Liu, Yizhou Wang, and Yaodong Yang.
+Safe rlhf: Safe reinforcement learning from human feedback. InInternational Conference on Learning
+Representations, 2024.
+[30] Zichen Liu, Changyu Chen, Wenjun Li, Penghui Qi, Tianyu Pang, Chao Du, Wee Sun Lee, and Min Lin.
+Understanding r1-zero-like training: A critical perspective. InSecond Conference on Language Modeling,
+2025.
+[31] Qiying Yu, Zheng Zhang, Ruofei Zhu, Yufeng Yuan, Xiaochen Zuo, Yu Yue, Weinan Dai, Tiantian Fan,
+Gaohong Liu, Lingjun Liu, et al. Dapo: An open-source llm reinforcement learning system at scale.arXiv
+preprint arXiv:2503.14476, 2025.
+[32] Chujie Zheng, Shixuan Liu, Mingze Li, Xiong-Hui Chen, Bowen Yu, Chang Gao, Kai Dang, Yuqiong Liu,
+Rui Men, An Yang, et al. Group sequence policy optimization.arXiv preprint arXiv:2507.18071, 2025.
+[33] Kaituo Feng, Manyuan Zhang, Hongyu Li, Kaixuan Fan, Shuang Chen, Yilei Jiang, Dian Zheng, Peiwen
+Sun, Yiyuan Zhang, Haoze Sun, et al. Onethinker: All-in-one reasoning model for image and video. In
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2026.
+[34] Zifeng Wang, Zizhao Zhang, Chen-Yu Lee, Han Zhang, Ruoxi Sun, Xiaoqi Ren, Guolong Su, Vincent
+Perot, Jennifer Dy, and Tomas Pfister. Learning to prompt for continual learning. InProceedings of the
+IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 139–149, 2022.
+[35] Da-Wei Zhou, Zi-Wen Cai, Han-Jia Ye, De-Chuan Zhan, and Ziwei Liu. Revisiting class-incremental
+learning with pre-trained models: Generalizability and adaptivity are all you need.International Journal
+of Computer Vision, 133(3):1012–1032, 2025.
+21
+
+=== PDF PAGE 22 ===
+[36] Yabin Wang, Zhiwu Huang, and Xiaopeng Hong. S-prompts learning with pre-trained transformers: An
+occam’s razor for domain incremental learning.Advances in Neural Information Processing Systems,
+35:5682–5695, 2022.
+[37] Qiang Wang, Yuhang He, Songlin Dong, Xinyuan Gao, Shaokun Wang, and Yihong Gong. Non-exemplar
+domain incremental learning via cross-domain concept integration. InEuropean Conference on Computer
+Vision, pages 144–162. Springer, 2024.
+[38] Da-Wei Zhou, Hai-Long Sun, Jingyi Ning, Han-Jia Ye, and De-Chuan Zhan. Continual learning with
+pre-trained models: a survey. InInternational Joint Conference on Artificial Intelligence, pages 8363–8371,
+2024.
+[39] Meng Lou, Yunxiang Fu, and Yizhou Yu. Scaling continual learning to 300+ tasks with bi-level routing
+mixture-of-experts. InInternational Conference on Machine Learning, 2026.
+[40] Yan-Shuo Liang and Wu-Jun Li. Inflora: Interference-free low-rank adaptation for continual learning. In
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 23638–
+23647, 2024.
+[41] Jiazuo Yu, Yunzhi Zhuge, Lu Zhang, Ping Hu, Dong Wang, Huchuan Lu, and You He. Boosting continual
+learning of vision-language models via mixture-of-experts adapters. InProceedings of the IEEE/CVF
+Conference on Computer Vision and Pattern Recognition, pages 23219–23230, 2024.
+[42] Yan Wang, Da-Wei Zhou, and Han-Jia Ye. Integrating task-specific and universal adapters for pre-trained
+model-based class-incremental learning. InProceedings of the IEEE/CVF International Conference on
+Computer Vision, pages 806–816, 2025.
+[43] Hai-Long Sun, Da-Wei Zhou, Hanbin Zhao, Le Gan, De-Chuan Zhan, and Han-Jia Ye. Mos: Model
+surgery for pre-trained model-based class-incremental learning. InProceedings of the AAAI Conference on
+Artificial Intelligence, volume 39, pages 20699–20707, 2025.
+[44] Da-Wei Zhou, Zi-Wen Cai, Han-Jia Ye, Lijun Zhang, and De-Chuan Zhan. Dual consolidation for pre-
+trained model-based domain-incremental learning. InProceedings of the Computer Vision and Pattern
+Recognition Conference, pages 20547–20557, 2025.
+[45] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas
+Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit,
+and Neil Houlsby. An image is worth 16x16 words: Transformers for image recognition at scale. In
+International Conference on Learning Representations, 2021.
+[46] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish
+Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from
+natural language supervision. InInternational Conference on Machine Learning, pages 8748–8763. PMLR,
+2021.
+[47] Rishabh Agarwal, Nino Vieillard, Yongchao Zhou, Piotr Stanczyk, Sabela Ramos Garea, Matthieu Geist,
+and Olivier Bachem. On-policy distillation of language models: Learning from self-generated mistakes. In
+International Conference on Learning Representations, 2024.
+[48] Wenkai Yang, Weijie Liu, Ruobing Xie, Kai Yang, Saiyong Yang, and Yankai Lin. Learning beyond
+teacher: Generalized on-policy distillation with reward extrapolation.arXiv preprint arXiv:2602.12125,
+2026.
+[49] Dan Hendrycks, Kevin Zhao, Steven Basart, Jacob Steinhardt, and Dawn Song. Natural adversarial
+examples. InProceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition,
+pages 15262–15271, 2021.
+[50] Yann Le, Xuan Yang, et al. Tiny imagenet visual recognition challenge.CS 231N, 7(7):3, 2015.
+[51] Catherine Wah, Steve Branson, Peter Welinder, Pietro Perona, and Serge Belongie. The caltech-ucsd
+birds-200-2011 dataset. 2011.
+[52] Jinghua Zhang, Li Liu, Olli Silvén, Matti Pietikäinen, and Dewen Hu. Few-shot class-incremental learning
+for classification and object detection: A survey.IEEE Transactions on Pattern Analysis and Machine
+Intelligence, 47(4):2924–2945, 2025.
+[53] Arslan Chaudhry, Puneet K Dokania, Thalaiyasingam Ajanthan, and Philip HS Torr. Riemannian walk
+for incremental learning: Understanding forgetting and intransigence. InProceedings of the European
+Conference on Computer Vision, pages 532–547, 2018.
+22
+
+=== PDF PAGE 23 ===
+[54] An Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao,
+Chengen Huang, Chenxu Lv, et al. Qwen3 technical report.arXiv preprint arXiv:2505.09388, 2025.
+[55] James Kirkpatrick, Razvan Pascanu, Neil Rabinowitz, Joel Veness, Guillaume Desjardins, Andrei A Rusu,
+Kieran Milan, John Quan, Tiago Ramalho, Agnieszka Grabska-Barwinska, et al. Overcoming catastrophic
+forgetting in neural networks.Proceedings of the National Academy of Sciences, 114(13):3521–3526,
+2017.
+[56] Zhizhong Li and Derek Hoiem. Learning without forgetting.IEEE Transactions on Pattern Analysis and
+Machine Intelligence, 40(12):2935–2947, 2017.
+[57] Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva Ramanan, Piotr Dollár,
+and C Lawrence Zitnick. Microsoft coco: Common objects in context. InEuropean Conference on
+Computer Vision, pages 740–755. Springer, 2014.
+[58] Tsung-Yi Lin, Piotr Dollár, Ross Girshick, Kaiming He, Bharath Hariharan, and Serge Belongie. Feature
+pyramid networks for object detection. InProceedings of the IEEE Conference on Computer Vision and
+Pattern Recognition, pages 2117–2125, 2017.
+[59] Khurram Soomro, Amir Roshan Zamir, and Mubarak Shah. Ucf101: A dataset of 101 human actions
+classes from videos in the wild.arXiv preprint arXiv:1212.0402, 2012.
+[60] Will Kay, Joao Carreira, Karen Simonyan, Brian Zhang, Chloe Hillier, Sudheendra Vijayanarasimhan,
+Fabio Viola, Tim Green, Trevor Back, Paul Natsev, et al. The kinetics human action video dataset.arXiv
+preprint arXiv:1705.06950, 2017.
+[61] Saining Xie, Chen Sun, Jonathan Huang, Zhuowen Tu, and Kevin Murphy. Rethinking spatiotemporal
+feature learning: Speed-accuracy trade-offs in video classification. InProceedings of the European
+conference on computer vision (ECCV), pages 305–321, 2018.
+[62] Xingchao Peng, Qinxun Bai, Xide Xia, Zijun Huang, Kate Saenko, and Bo Wang. Moment matching for
+multi-source domain adaptation. InProceedings of the IEEE/CVF International Conference on Computer
+Vision, 2019.
+[63] Hemanth Venkateswara, Jose Eusebio, Shayok Chakraborty, and Sethuraman Panchanathan. Deep hashing
+network for unsupervised domain adaptation. InProceedings of the IEEE conference on computer vision
+and pattern recognition, pages 5018–5027, 2017.
+[64] Naoto Inoue, Ryosuke Furuta, Toshihiko Yamasaki, and Kiyoharu Aizawa. Cross-domain weakly-
+supervised object detection through progressive domain adaptation. InProceedings of the IEEE Conference
+on Computer Vision and Pattern Recognition, June 2018.
+[65] Mark Everingham, SM Ali Eslami, Luc Van Gool, Christopher KI Williams, John Winn, and Andrew
+Zisserman. The pascal visual object classes challenge: A retrospective.International Journal of Computer
+Vision, 111(1):98–136, 2015.
+[66] Gido M Van de Ven, Tinne Tuytelaars, and Andreas S Tolias. Three types of incremental learning.Nature
+Machine Intelligence, 4(12):1185–1197, 2022.
+[67] Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey
+Zagoruyko. End-to-end object detection with transformers. InEuropean Conference on Computer Vision,
+pages 213–229, 2020.
+[68] Chang Gao, Chujie Zheng, Xiong-Hui Chen, Kai Dang, Shixuan Liu, Bowen Yu, An Yang, Shuai Bai,
+Jingren Zhou, and Junyang Lin. Soft adaptive policy optimization.arXiv preprint arXiv:2511.20347, 2025.
+23

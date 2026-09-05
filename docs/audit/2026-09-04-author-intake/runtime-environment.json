@@ -1,0 +1,19 @@
+{
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:42:35) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages_present": {
+    "torch": true,
+    "numpy": true,
+    "scipy": true,
+    "pycocotools": false,
+    "torchdata": false,
+    "datasets": false,
+    "omegaconf": false,
+    "ray": false,
+    "vllm": false,
+    "transformers": false,
+    "yaml": false
+  },
+  "gpu_runtime_tested": false,
+  "dependencies_installed": false
+}

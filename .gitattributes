@@ -1,0 +1,3 @@
+# Preserve raw evidence without treating binary/PDF or extracted text as source diffs.
+references/**/*.pdf binary
+docs/audit/**/*.txt -diff

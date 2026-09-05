@@ -1,0 +1,170 @@
+{
+  "python_for_syntax_check": "3.10.20 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:42:35) [MSC v.1942 64 bit (AMD64)]",
+  "author_preservation": {
+    "files": 204,
+    "changed": []
+  },
+  "archive_unchanged": true,
+  "paper_unchanged": true,
+  "private_policy_unchanged": true,
+  "tracked_changes_since_intake": [
+    "AGENTS.md",
+    "README.md",
+    "docs/data_and_evaluation.md",
+    "docs/reproduction_spec.md",
+    "docs/smoke_test.md",
+    "docs/trainer_integration.md",
+    "docs/upstream.md"
+  ],
+  "outside_document_allowlist": [],
+  "python_syntax": {
+    "count": 83,
+    "errors": []
+  },
+  "shell_syntax": [
+    {
+      "command": [
+        "D:/Git/bin/bash.exe",
+        "-n",
+        "RaPO_作者整理代码/scripts/det/10task.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:/Git/bin/bash.exe",
+        "-n",
+        "RaPO_作者整理代码/scripts/det/5task.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:/Git/bin/bash.exe",
+        "-n",
+        "RaPO_作者整理代码/scripts/image/10task.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:/Git/bin/bash.exe",
+        "-n",
+        "RaPO_作者整理代码/scripts/image/20task.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:/Git/bin/bash.exe",
+        "-n",
+        "RaPO_作者整理代码/scripts/video/10task.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:/Git/bin/bash.exe",
+        "-n",
+        "RaPO_作者整理代码/scripts/video/5task.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "cpu_probes": {
+    "command": [
+      "D:/anaconda3/envs/rapo-b01/python.exe",
+      "C:\\Users\\Administrator\\Desktop\\RaPO\\docs\\audit\\2026-09-04-author-intake\\cpu_probes.py"
+    ],
+    "exit_code": 0,
+    "stdout": "See cpu-probes-stdout.txt and cpu-probes.json",
+    "stderr": ""
+  },
+  "legacy_inventory": {
+    "src": {
+      "files": 40,
+      "bytes": 378213,
+      "errors": [],
+      "symlinks_followed": false
+    },
+    "tests": {
+      "files": 38,
+      "bytes": 381872,
+      "errors": [],
+      "symlinks_followed": false
+    },
+    "scripts": {
+      "files": 14,
+      "bytes": 59593,
+      "errors": [],
+      "symlinks_followed": false
+    },
+    "configs": {
+      "files": 8,
+      "bytes": 6673,
+      "errors": [],
+      "symlinks_followed": false
+    },
+    "patches": {
+      "files": 1,
+      "bytes": 19103,
+      "errors": [],
+      "symlinks_followed": false
+    },
+    "tmp": {
+      "files": 1364,
+      "bytes": 306329476,
+      "errors": [],
+      "symlinks_followed": false
+    },
+    ".venv": {
+      "files": 2186,
+      "bytes": 29446127,
+      "errors": [],
+      "symlinks_followed": false
+    },
+    ".pytest_cache": {
+      "files": 0,
+      "bytes": 0,
+      "errors": [
+        "[WinError 5] 拒绝访问。: 'C:\\\\Users\\\\Administrator\\\\Desktop\\\\RaPO\\\\.pytest_cache'"
+      ],
+      "symlinks_followed": false
+    }
+  },
+  "git_diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "warning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/data_and_evaluation.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/remediation/batch2/BLOCKED.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/remediation/batch3/PROGRESS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/remediation/batch3/decisions.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/reproduction_spec.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/smoke_test.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/trainer_integration.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/upstream.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  "git_status": {
+    "command": [
+      "git",
+      "-c",
+      "core.quotepath=false",
+      "status",
+      "--short",
+      "--branch"
+    ],
+    "exit_code": 0,
+    "stdout": "## codex/rapo-b03-orchestration...origin/codex/rapo-b03-orchestration\n M AGENTS.md\n M README.md\n M docs/data_and_evaluation.md\n M docs/remediation/batch2/BLOCKED.md\n M docs/remediation/batch3/PROGRESS.md\n M docs/remediation/batch3/decisions.md\n M docs/reproduction_spec.md\n M docs/smoke_test.md\n M docs/trainer_integration.md\n M docs/upstream.md\n?? RaPO_作者整理代码.zip\n?? RaPO_作者整理代码/\n?? docs/PROJECT_MAP.md\n?? docs/audit/2026-09-04-author-intake/\n?? docs/remediation/batch4/\n",
+    "stderr": "warning: unable to access 'C:\\Users\\Administrator/.config/git/ignore': Permission denied\nwarning: unable to access 'C:\\Users\\Administrator/.config/git/ignore': Permission denied\n"
+  }
+}

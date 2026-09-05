@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "author_drop_date": "2026-09-04",
+  "repository_created": "2026-09-05",
+  "baseline_commit": "7fe2a73291f208ad9784a8333523825718881907",
+  "baseline_tag": "author-drop-20260904",
+  "author_file_count": 204,
+  "author_zip_sha256": "97ac812aff1f1ff0aa049d04b43d726b714f0f8bfddd5e45cfe8027c5094c3d8",
+  "paper_sha256": "fc48b658fd3d96980f4733cbd9672aa21be2f3b04e73958de54bf4e0e15965e0",
+  "source_archive": "C:/Users/Administrator/Desktop/RaPO/RaPO_作者整理代码.zip",
+  "legacy_repository": "C:/Users/Administrator/Desktop/RaPO",
+  "legacy_head": "46e7e257d65716b127187a19c19890aa70aad0b6",
+  "baseline_archive_roundtrip": "204/204 files SHA256-identical"
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-09-05",
+  "scope": "repository bootstrap and approximate step-4 readiness; no Ray, GPU, model, training, inference, or resume run",
+  "baseline": {
+    "tag": "author-drop-20260904",
+    "commit": "7fe2a73291f208ad9784a8333523825718881907",
+    "tracked_files": 204,
+    "git_archive_roundtrip_sha256": "204/204 identical to verified source directory"
+  },
+  "static_checks": {
+    "author_python_files": 83,
+    "author_python_compile_errors": 0,
+    "copied_audit_python_helpers": 5,
+    "copied_audit_python_compile_errors": 0,
+    "shell_entrypoints": 6,
+    "shell_syntax_errors": 0,
+    "markdown_files": 12,
+    "relative_markdown_links_checked": 32,
+    "missing_relative_markdown_links": 0
+  },
+  "provenance": {
+    "paper_sha256": "fc48b658fd3d96980f4733cbd9672aa21be2f3b04e73958de54bf4e0e15965e0",
+    "author_zip_sha256": "97ac812aff1f1ff0aa049d04b43d726b714f0f8bfddd5e45cfe8027c5094c3d8",
+    "source_zip_retained": true,
+    "legacy_repository_retained": true
+  },
+  "separation": {
+    "active_repository": "C:/Users/Administrator/Desktop/RaPO-author",
+    "legacy_repository": "C:/Users/Administrator/Desktop/RaPO",
+    "changes_after_baseline_limited_to": [
+      ".gitattributes",
+      ".gitignore",
+      "README.md",
+      "AGENTS.md",
+      "docs/",
+      "references/"
+    ],
+    "outside_allowlist": []
+  },
+  "readiness": {
+    "baseline_identity": "passed",
+    "static_syntax": "passed",
+    "documentation_links": "passed",
+    "git_separation": "passed",
+    "runtime_and_distributed_execution": "pending",
+    "legacy_directory_rename": "pending until Codex/IDE working directory is switched away from the legacy repository"
+  }
+}
