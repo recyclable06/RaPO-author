@@ -150,3 +150,8 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 独立[v8 REPORT](acceptance/FRESH-PROCESS-PROC-IDENTITY-V8-20260915/REPORT.md)为READY_FOR_BOUNDED_GPU。协调者核对验收清单5文件31351 bytes一致，HASHES.json自身SHA256 `65482518dfa90e27bdfaaefe54ec71083c61dc0e093ff3c112c27a4a8e924949`。真实/proc direct与零GPU Ray身份、负例、28项AST及launcher接线通过；v7物理映射按冻结字节复用，不再以当前时间填进程启动身份。
 
 已续派71a6执行者在新本地 `docs/diagnostics/FRESH-PROCESS-V8-GPU-20260915/` 及新短唯一个人远端根，现场选同机两张空闲3090，部署冻结v8并运行继承run_v6入口（实际gpu_preflight_v8）。C/A/B预算、8ac5生产、模型/输入和状态/指标协议不变。必须记录本次路径绑定身份、各腿真实更新与A边界前后清单、全部日志/退出/释放及完整交付hash；失败不现场修包。当前只确认已派发，未声称实际训练或恢复完成。
+### 2026-09-15：v8执行前资源阻塞
+
+71a6执行任务回报BLOCKED_GPU_PREFLIGHT_RESOURCES_BUSY。协调者核对 `FRESH-PROCESS-V8-GPU-20260915/DELIVERY_MANIFEST-r8.json` 自身SHA256 `b5ea0681a12759d504ee2f6b8e9337867892fd58369400beb1b94c131772e80e`，18文件15390 bytes全部一致，并读取两台主机的原始资源输出。211在08:28:40（+08:00）没有合格空闲3090，207在08:29:00只有index2一张（5 MiB）；无同机双卡组合。两台可用磁盘约1.70 TB。
+
+本轮仅检查现场资源、路径/所有权及本地冻结身份；未部署、未做远端模型/输入全量hash、未创建新远端根、未启动Ray/模型/训练。C/A/B更新数均为0，trajectory/judge未运行。v8独立就绪仍有效，资源变化后重新检查并用新根执行；不新增修复、不重跑未变验收，也不恢复用户禁用的定时轮询。

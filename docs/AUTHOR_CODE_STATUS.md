@@ -15,7 +15,7 @@
 
 当前恢复诊断采用同机两张RTX3090，比较连续运行C与退出后恢复A/B，每任务两次真实更新。要求边界完整状态精确恢复，后续奖励、优势、retention指标按预先冻结容差比较；不要求后续随机轨迹逐张量相等。
 
-v6实际启动前暴露GPU映射检查错误；v7物理映射已通过独立复核，其进程启动身份问题由v8局部修复。2026-09-15的[v8独立增量验收](acceptance/FRESH-PROCESS-PROC-IDENTITY-V8-20260915/REPORT.md)为READY_FOR_BOUNDED_GPU，已续派现场复查及有限C/A/B执行，尚无实际恢复结果。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。诊断代码与科学训练代码分开维护。
+v6实际启动前暴露GPU映射检查错误；v7物理映射已通过独立复核，其进程启动身份问题由v8局部修复。2026-09-15的[v8独立增量验收](acceptance/FRESH-PROCESS-PROC-IDENTITY-V8-20260915/REPORT.md)为READY_FOR_BOUNDED_GPU。随后08:28–08:29（+08:00）现场复查：211没有合格空闲卡，207只有一张，因此本轮C/A/B均未开始；当前受双卡资源阻塞，就绪结论继续有效。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。诊断代码与科学训练代码分开维护。
 
 ## 后续门槛
 
