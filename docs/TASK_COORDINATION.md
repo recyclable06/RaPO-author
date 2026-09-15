@@ -12,6 +12,8 @@
 
 用户另要求正式复现启动前整理根目录并尝试上传 `https://github.com/recyclable06/RaPO-author.git`，覆盖本次整合、提交和push。协调者在 `codex/repository-publication-20260914` 整理根目录，精确复制8ac5已验收生产/测试字节，原工作树和作者标签保留；记录见 [INTEGRATION_HANDOFF.md](INTEGRATION_HANDOFF.md)。此授权不扩大正式规模训练范围。
 
+2026-09-15：根目录整理已完成，整合提交 `a9b7caed3fd506fab4de1f621d0fd75d49ec6fba` 和作者基线标签均已推送指定GitHub仓库并核对远端身份。本地根目录回到main并跟踪origin/main；诊断执行仍使用8ac5/14c8的既有冻结路径，不因上传改变运行身份。后续状态文档以实际任务回报更新。
+
 | 角色 | 任务标识 | 工作区与状态 |
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
