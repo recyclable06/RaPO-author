@@ -1,0 +1,129 @@
+{
+  "acceptance_root": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-PROC-IDENTITY-V8-20260915",
+  "candidate": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v8",
+  "cpu": {
+    "ast": {
+      "errors": [],
+      "python_file_count": 28,
+      "status": "PASS_V8_AST"
+    },
+    "launcher_contract": {
+      "returncode": 0,
+      "script": "launcher_contract_probe_v6.py",
+      "stderr": "",
+      "stdout": "PASS_V6_LAUNCHER_C_AB_CONTRACT\n"
+    },
+    "process_identity_fixtures": {
+      "returncode": 0,
+      "script": "test_process_identity_v8.py",
+      "stderr": "",
+      "stdout": "DEFERRED_NON_LINUX\nPASS_V8_PROCESS_IDENTITY_FIXTURES\n"
+    }
+  },
+  "direct_raw": {
+    "child": {
+      "pid": 1284541,
+      "process_start": "55870070",
+      "process_stat_comm": "python",
+      "process_stat_path": "/proc/1284541/stat",
+      "process_stat_state": "R"
+    },
+    "exit_codes": {
+      "fixture.exit.txt": "0",
+      "identity-probe.exit.txt": "0",
+      "probe.exit.txt": "0"
+    },
+    "fixture_pass": true,
+    "same_process": {
+      "pid": 1284540,
+      "process_start": "55870051",
+      "process_stat_comm": "python",
+      "process_stat_path": "/proc/1284540/stat",
+      "process_stat_state": "R"
+    },
+    "status": "PASS_V8_DIRECT_PROC_IDENTITY_RAW_RECHECK"
+  },
+  "inherited_v7": {
+    "coordinator_acceptance_reference_unchanged": true,
+    "hashes_self_sha256": "6e17de365bd2905fb821f37c88a4c441e4d2440d92437fdbf0d6729c962c2e38",
+    "package_file_count": 116,
+    "package_manifest_sha256": "4606990ad442783ae08ff2149ac6d71a46236a660630bbaf8d2d41c60acf9fbb",
+    "package_total_bytes": 4393404,
+    "raw_file_count": 65,
+    "raw_manifest_sha256": "57945f80de9a53d5e137ce83bc299a08c0122b82696def0c724af1bf2a2919b3",
+    "raw_total_bytes": 4117257
+  },
+  "package": {
+    "declared_manifest_sha256": "7dbfe1ea8666fed036ae9d59d0b1697ec0d0f2b265d4869e643859bde494b34b",
+    "file_count": 150,
+    "manifest_sha256": "7dbfe1ea8666fed036ae9d59d0b1697ec0d0f2b265d4869e643859bde494b34b",
+    "raw_file_count": 88,
+    "raw_manifest_sha256": "8b1dd4f3bc0fd81dee612c78aaff6b4dee50f3830c4149657dc574dde9025358",
+    "raw_total_bytes": 4125939,
+    "self_sha256": "abd4ccad8d3f2159cd636505b3c78bcafb14e4890e31d1cc81656d97ddc41420",
+    "total_bytes": 4471333
+  },
+  "ray_raw": {
+    "exit_codes": {
+      "probe.exit.txt": "0",
+      "release-check.exit.txt": "0"
+    },
+    "gpu_mapping_rerun": false,
+    "node_id": "2cccaacbcb1c441643dcec419b0bfbaf8d79f604f5098ae5de3b1e0a",
+    "release_process_section_empty": true,
+    "status": "PASS_V8_RAY_PROC_IDENTITY_RAW_RECHECK",
+    "worker_count": 2,
+    "worker_ids": [
+      "4f68ad5e2afcb75c285559ba1df1eabfcf20b073df48e220d6048eb7",
+      "dd35b81deb084444a9a72c973b6c85eafc7f02e82edf06b548384551"
+    ],
+    "workers": [
+      {
+        "pid": 1297623,
+        "process_start": "55917572",
+        "process_stat_comm": "ray::IdentityAc",
+        "process_stat_path": "/proc/1297623/stat",
+        "process_stat_state": "R"
+      },
+      {
+        "pid": 1297621,
+        "process_start": "55917571",
+        "process_stat_comm": "ray::IdentityAc",
+        "process_stat_path": "/proc/1297621/stat",
+        "process_stat_state": "R"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "scope": {
+    "c_ab_run": false,
+    "model_constructed": false,
+    "paper_faithful_claim": false,
+    "physical_gpu_mapping_rerun": false,
+    "physical_gpu_mapping_reused_byte_exact": true,
+    "training_started": false
+  },
+  "source_hashes": {
+    "files": {
+      "gpu_preflight_v8.py": "c723be90fa81c0d322ed7d759a459717bc47aab621c10264c81d54150b3c905a",
+      "process_identity_probe_v8.py": "180e4a8713122aaa5b960b88e1b660134ec5812d4bbba54e1d628774f7a44d12",
+      "ray_process_identity_probe_v8.py": "8f1be4e25a5877ce704da388a273423a5ca8e6ea3a11a54e4a43e04df0f97aba",
+      "test_process_identity_v8.py": "559e07f099d394e465e702712082d303dcbebabd7f9695cf60e2153a1711d7aa"
+    },
+    "status": "PASS_V8_REMOTE_SOURCE_HASHES"
+  },
+  "static": {
+    "inherited_v7_raw_byte_exact": true,
+    "only_inherited_v7_difference": [
+      "run_v6.py"
+    ],
+    "preflight_before_production_popen": true,
+    "production_argv_unchanged": true,
+    "schema_version": 6,
+    "stale_hash_manifest_reference": false,
+    "status": "PASS_V8_STATIC_PROCESS_IDENTITY_WIRING",
+    "v7_common_file_count": 116,
+    "wall_clock_process_fallback": false
+  },
+  "verdict": "READY_FOR_BOUNDED_GPU"
+}

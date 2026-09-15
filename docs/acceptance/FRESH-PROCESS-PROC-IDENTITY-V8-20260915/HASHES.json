@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "acceptance_manifest_self_excluded",
+  "self_excluded": "HASHES.json",
+  "file_count": 5,
+  "total_bytes": 31351,
+  "manifest_sha256": "22faf043ef149927fe53d9251d6b6019fa362b6002781f20e6e1b83c96a61e48",
+  "files": [
+    {
+      "path": "PROGRESS.md",
+      "bytes": 834,
+      "sha256": "c10b4579e86631139a38c167fbd00c29fcb6a2c58c6a12424bbee447bdec86d2"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 6131,
+      "sha256": "394bfec821b6753ee8c0e64149d89b35dbfda21c6d3fa4375eca00cade98ecb2"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 1408,
+      "sha256": "8ecd8136ea0ff5721e43dde7b07d4eb02a510f1af73051f44f34d3849ba01cd9"
+    },
+    {
+      "path": "acceptance_probe.py",
+      "bytes": 18305,
+      "sha256": "10c0a2e0f4b44d63d2d132ec19c76a05c95a53c10f221d041cb78a31ec1835e3"
+    },
+    {
+      "path": "raw/acceptance_probe.stdout.json",
+      "bytes": 4673,
+      "sha256": "82208e1bce4e90ca832f1f94d76fcd5f475ece55ca86a478349fea1c34fe0955"
+    }
+  ]
+}

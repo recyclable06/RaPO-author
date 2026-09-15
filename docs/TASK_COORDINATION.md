@@ -18,9 +18,9 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（v7仅进程身份阻断） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `docs/acceptance/FRESH-PROCESS-GPU-MAPPING-V7-20260914/` 结论NEEDS_PROTOCOL_REVISION/FPP-V7-001；真实CUDA/Ray物理映射、launcher与释放通过，报告时间不能替代OS启动时间。协调者5文件35270 bytes一致，清单self `6f3e0f1a11aff3dd06f8a2f741df8d54940532cb20384c55de907e9d83a88749` |
-| 专用诊断准备（进程身份最小修复已派发） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 原v7保持冻结；新v8或自包含supplement只修真实OS启动时间采集/不同PID-worker校验及相关正负例，优先无GPU真实Linux增量probe，复用已通过物理映射。生产/C/A/B配置/指标不变 |
-| 专用诊断执行（r2映射门失败，已结束） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | `C:/Users/Administrator/.codex/worktrees/71a6/RaPO-author`；211确认index2/3/4空闲，仅选2/3，两次preflight均被诊断映射断言拒绝，C/A/B均未开始，私有Ray已释放。`docs/diagnostics/FRESH-PROCESS-V6-GPU-20260914-r2/` 37文件56608 bytes协调者核对一致；清单self `3d3ab9f61a9dbce1c416267c99acfd66a56bf0df84330b6977b28a98f3d3095e` |
+| 独立验收（v8就绪通过） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `docs/acceptance/FRESH-PROCESS-PROC-IDENTITY-V8-20260915/` 为READY_FOR_BOUNDED_GPU，协调者5文件31351 bytes一致，HASHES.json self `65482518dfa90e27bdfaaefe54ec71083c61dc0e093ff3c112c27a4a8e924949`；仅就绪，不代表GPU恢复通过 |
+| 专用诊断准备（v8已冻结） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | v8进程身份修复已交付，协调者150文件4471333 bytes一致，HASHES_v8 self `abd4ccad8d3f2159cd636505b3c78bcafb14e4890e31d1cc81656d97ddc41420`。真实零GPU direct/Ray身份probe报告PASS，生产/C/A/B配置/指标不变；已派独立增量验收 |
+| 专用诊断执行（已续派v8有限GPU） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | `C:/Users/Administrator/.codex/worktrees/71a6/RaPO-author`；新输出 `docs/diagnostics/FRESH-PROCESS-V8-GPU-20260915/`。重新检查211/207同机两张空闲3090、部署冻结v8后执行既定C/A/B；原r2失败证据保留，不改科学协议，尚无新实际结果 |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
 
@@ -57,7 +57,7 @@ R3.1独立验收接收：验收HASHES.json自hash `7c595a7d3d5744307fab722750f75
 
 - 一步有效更新：`docs/acceptance/GPU-ONE-STEP-20260909/REPORT.md`，有限通过且有 checkpoint 范围偏差记录。
 - 同进程 Task 1→Task 2：`docs/acceptance/CONTINUOUS-TASK12-20260909/REPORT.md`，有限通过；retention 是聚合证据、actor/anchor 是采样证据，执行日志归档范围有限。
-- 下一步：修正现场发现的GPU映射检查错误并做独立增量验收 → 现场复查后恢复限定GPU C/A/B → 独立验收实际结果。v6历史就绪结论保留，但现场门缺陷现已阻断执行；不修改训练协议或把诊断问题升级为生产finding。
+- 下一步：现场复查后执行v8限定GPU C/A/B → 协调者核对冻结结果 → 独立验收实际运行。GPU映射和进程身份增量已通过独立就绪复核，仍不等于实际恢复或正式实验通过。
 - 旧诊断 model-only outputs 约 19.6 GB，新连续诊断两份完整 checkpoint 约 36.3 GB，均保留；清理不是当前技术前置。
 
 ## 自动跟进

@@ -140,3 +140,13 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 独立v7验收为NEEDS_PROTOCOL_REVISION/FPP-V7-001，协调者5文件35270 bytes逐项核实，验收HASHES.json自身 `6f3e0f1a11aff3dd06f8a2f741df8d54940532cb20384c55de907e9d83a88749`。真实物理映射、UUID/PCI/count、fixture、launcher与资源释放均已独立通过，可复用。阻断限于gpu_preflight_v7.py用当前time_ns填process_start，却以(pid,process_start)集合证明不同worker；同PID不同报告时间可绕过。协调者已读源码确认。
 
 已派14c8准备者在新v8或自包含supplement仅恢复Linux真实OS start采集并拒绝读取失败、缺失/损坏身份及同PID伪不同时间，要求同机不同PID与worker身份；保留可复算原始/proc字段，不能靠数字长度或来源标签代替真实性。优先零GPU实际Linux进程增量probe，复用未变物理映射及其他已验收范围，不重复全GPU/全parser/42CPU。原v7与验收原件不改，交付冻结后独立增量复核，再恢复71a6执行；科学配置/指标不变。
+### 2026-09-15：v8进程身份修复冻结并交独立增量复核
+
+协调者核对14c8准备目录v8的150文件4471333 bytes全部一致，HASHES_v8.json自身SHA256 `abd4ccad8d3f2159cd636505b3c78bcafb14e4890e31d1cc81656d97ddc41420`；package manifest `7dbfe1ea8666fed036ae9d59d0b1697ec0d0f2b265d4869e643859bde494b34b`，raw88文件4125939 bytes、manifest `8b1dd4f3bc0fd81dee612c78aaff6b4dee50f3830c4149657dc574dde9025358`交独立复算。原v7保持冻结。
+
+准备者报告实际/proc字段采集稳定、真实子进程不同PID，零GPU Ray两个worker的原始启动tick和worker ID完整，已退出释放；未重跑GPU映射或C/A/B。新gpu_preflight_v8与run_v6必要接线仅修FPP-V7-001，其余v7映射证据复用。已派独立验收到主目录 `docs/acceptance/FRESH-PROCESS-PROC-IDENTITY-V8-20260915/`，检查原始proc重算/拒绝缺失与伪时间/真实身份/负例以及入口接线。根目录GitHub整合不改变8ac5冻结运行身份。独立就绪通过后71a6继续有限GPU对照。
+### 2026-09-15：v8独立就绪接收，续派有限GPU执行
+
+独立[v8 REPORT](acceptance/FRESH-PROCESS-PROC-IDENTITY-V8-20260915/REPORT.md)为READY_FOR_BOUNDED_GPU。协调者核对验收清单5文件31351 bytes一致，HASHES.json自身SHA256 `65482518dfa90e27bdfaaefe54ec71083c61dc0e093ff3c112c27a4a8e924949`。真实/proc direct与零GPU Ray身份、负例、28项AST及launcher接线通过；v7物理映射按冻结字节复用，不再以当前时间填进程启动身份。
+
+已续派71a6执行者在新本地 `docs/diagnostics/FRESH-PROCESS-V8-GPU-20260915/` 及新短唯一个人远端根，现场选同机两张空闲3090，部署冻结v8并运行继承run_v6入口（实际gpu_preflight_v8）。C/A/B预算、8ac5生产、模型/输入和状态/指标协议不变。必须记录本次路径绑定身份、各腿真实更新与A边界前后清单、全部日志/退出/释放及完整交付hash；失败不现场修包。当前只确认已派发，未声称实际训练或恢复完成。
