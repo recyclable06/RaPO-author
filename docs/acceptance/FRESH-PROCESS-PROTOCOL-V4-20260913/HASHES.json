@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "finding": "FRESH-PROCESS-PROTOCOL-V4-20260913",
+  "role": "independent_acceptance",
+  "acceptance_root": "C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/FRESH-PROCESS-PROTOCOL-V4-20260913",
+  "self_excluded": true,
+  "file_count": 6,
+  "total_bytes": 38488,
+  "files": [
+    {
+      "path": "probes/v4_acceptance_probe.py",
+      "bytes": 20167,
+      "sha256": "c8599cc51e847ba60f398bd1a0c4e8a13b93a2d6acc0445d643caf9ce1024b89"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 1696,
+      "sha256": "fbdbfc20d3b793ccafe9ac2a57d2f8718fa4f190ace9b361a58fd719e29c5362"
+    },
+    {
+      "path": "raw/01_v4_acceptance_probe.exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "raw/01_v4_acceptance_probe.stdout.json",
+      "bytes": 7022,
+      "sha256": "79b966e44863ac9d27026822e7171f7046bbc41d5532b3883852f362360f0e33"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 8039,
+      "sha256": "5caadee0803da939b2f7dadaae299ddb9ac0caa0a7b010ab7b98ccd4f72bd4f9"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 1562,
+      "sha256": "d52fdabd1d7a19db4469d9c664ca9a7e1208197aff9237e347ee21413920d335"
+    }
+  ],
+  "verdict": "LIMITED_ACCEPTANCE_NOT_GPU_READY",
+  "findings": [
+    "FPP-V4-001",
+    "FPP-V4-002"
+  ],
+  "exclusions": [
+    "HASHES.json is self-excluded to avoid circular identity.",
+    "GPU/Ray/SSH/installation/model construction/training/inference were not run by this acceptance.",
+    "No v4, v3 supplement, v3, production or test files were modified by this acceptance."
+  ]
+}

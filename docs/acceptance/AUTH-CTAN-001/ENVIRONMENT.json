@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-06",
+  "acceptance_workspace": "C:\\Users\\Administrator\\Desktop\\RaPO-author",
+  "target_worktree": "C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.10.20",
+  "python_executable": "D:\\anaconda3\\envs\\rapo-b01\\python.exe",
+  "torch": "2.5.1+cpu",
+  "numpy": "1.26.4",
+  "pytest": "8.4.2",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "available_dependencies": {
+    "torch": true,
+    "numpy": true,
+    "scipy": true,
+    "pytest": true,
+    "jinja2": true,
+    "ray": false,
+    "datasets": false,
+    "transformers": false,
+    "vllm": false
+  },
+  "gpu_or_model_run": false,
+  "dependencies_installed": false
+}

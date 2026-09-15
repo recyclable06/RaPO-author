@@ -1,0 +1,68 @@
+{
+  "ast": {
+    "count": 19,
+    "status": "PASS_V5_AST"
+  },
+  "candidate": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v5",
+  "fixtures": {
+    "launcher_contract": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS_V5_LAUNCHER_C_AB_CONTRACT"
+    },
+    "test_v5": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS_V5_PROCESS_ASSOCIATION_FIXTURES"
+    }
+  },
+  "history_manifest": {
+    "bytes": 744350,
+    "count": 99,
+    "manifest": "21e8c73a617795a062536a647effbf01b3b6a2b6fae003d733bbbdf1fc59926d",
+    "matches_packaged": true
+  },
+  "loader_recipe": {
+    "actual_length_from_frozen_samples": 1,
+    "candidate_expected_length": 2,
+    "candidate_expected_updates": 2,
+    "drop_last_true_in_actual_builder": true,
+    "mini_rollout_batch_size": 2,
+    "production_uses_total_epochs_times_loader_length": true,
+    "recipe_mismatch": true,
+    "task2_manifest_samples": 2
+  },
+  "judge_negative_probes": {
+    "call_before_install_association_passed": true,
+    "call_before_install_reasons": [],
+    "call_before_install_sequence_valid": true,
+    "equal_actor_anchor_hashes_rejected": true,
+    "fake_writer_association_passed": true,
+    "fake_writer_reasons": [],
+    "fake_writer_sequence_valid": true,
+    "same_means_different_group_digests_trajectory_passed": true
+  },
+  "package": {
+    "bytes": 186444,
+    "count": 36,
+    "declared_match": true,
+    "manifest": "dc8c703f3facf86d19ca40e80a56f45b7ad21a4cf4c8c007b22aaeb3da27168e"
+  },
+  "raw": {
+    "bytes": 19141,
+    "count": 4,
+    "declared_match": true,
+    "manifest": "768648a7650f5df39b3bd6af0f0cf4bba98e111d5879374f99ff0b21bd57c14c"
+  },
+  "schema_version": 5,
+  "scope": {
+    "gpu_used": false,
+    "model_constructed": false,
+    "production_imported": false,
+    "ray_started": false
+  },
+  "target_identity": {
+    "source_match": true,
+    "test_match": true
+  }
+}

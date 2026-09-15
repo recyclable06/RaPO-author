@@ -1,0 +1,219 @@
+{
+  "probe": "independent_probe.py",
+  "mode": "identity-only",
+  "identity": {
+    "target_source": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "bytes": 102269,
+      "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+    },
+    "target_test": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\tests\\author_fixes\\test_cil_resume.py",
+      "bytes": 24215,
+      "sha256": "2bb64dccbce91409840d04344a30a58b76265ae77145ab33b4819a3613b4aadf"
+    },
+    "expected_source": {
+      "bytes": 102269,
+      "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+    },
+    "expected_test": {
+      "bytes": 24215,
+      "sha256": "2bb64dccbce91409840d04344a30a58b76265ae77145ab33b4819a3613b4aadf"
+    },
+    "target_files_match_expected": {
+      "source": true,
+      "test": true
+    },
+    "r3_manifest": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\docs\\remediation\\CAND-RESUME-CIL-001\\r3\\HASHES.json",
+      "declared_round": "r3",
+      "declared_role": "independent_remediation",
+      "actual_sha256": "ce058c0a2e9485ba027c2a6c7356f02ef99a3b0d1a283674d8a2e418f4a75271",
+      "expected_sha256": "ce058c0a2e9485ba027c2a6c7356f02ef99a3b0d1a283674d8a2e418ef4a75271",
+      "self_hash_matches": false,
+      "artifact_results": [
+        {
+          "path": "CAND-RESUME-CIL-001-r3-vs-5ced.patch",
+          "declared": {
+            "bytes": 100701,
+            "sha256": "1711e418bf1a7c5acc49fb1187432199a09cf1eaa71465c7458315fb89973b4a"
+          },
+          "actual": {
+            "bytes": 100701,
+            "sha256": "1711e418bf1a7c5acc49fb1187432199a09cf1eaa71465c7458315fb89973b4a"
+          },
+          "match": true
+        },
+        {
+          "path": "CAND-RESUME-CIL-001-r3-vs-r2.patch",
+          "declared": {
+            "bytes": 24914,
+            "sha256": "87c633344492d0187043546c22b465e2f39048eb4f8ffdf15c69ba01250a3e18"
+          },
+          "actual": {
+            "bytes": 24914,
+            "sha256": "87c633344492d0187043546c22b465e2f39048eb4f8ffdf15c69ba01250a3e18"
+          },
+          "match": true
+        },
+        {
+          "path": "CASE_MAPPING.md",
+          "declared": {
+            "bytes": 2868,
+            "sha256": "ec7866862229da70e4628812724e7309dc82a93e93ab298d2a857b2b4b7d4a45"
+          },
+          "actual": {
+            "bytes": 2868,
+            "sha256": "ec7866862229da70e4628812724e7309dc82a93e93ab298d2a857b2b4b7d4a45"
+          },
+          "match": true
+        },
+        {
+          "path": "inputs/image_cls_cil_rapo.py",
+          "declared": {
+            "bytes": 99349,
+            "sha256": "ba8a5da9341785178bd444112c4fc78dd352b52fe359b768218f4a4a6f5f7863"
+          },
+          "actual": {
+            "bytes": 99349,
+            "sha256": "ba8a5da9341785178bd444112c4fc78dd352b52fe359b768218f4a4a6f5f7863"
+          },
+          "match": true
+        },
+        {
+          "path": "inputs/test_cil_resume.py",
+          "declared": {
+            "bytes": 14217,
+            "sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64"
+          },
+          "actual": {
+            "bytes": 14217,
+            "sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64"
+          },
+          "match": true
+        },
+        {
+          "path": "PRE_HASHES.md",
+          "declared": {
+            "bytes": 1456,
+            "sha256": "ced825300e0cd9733c8aecf9b530177780910cc711a221289d5c9ef77940c4c4"
+          },
+          "actual": {
+            "bytes": 1456,
+            "sha256": "ced825300e0cd9733c8aecf9b530177780910cc711a221289d5c9ef77940c4c4"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/01_ast.exit.txt",
+          "declared": {
+            "bytes": 2,
+            "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          },
+          "actual": {
+            "bytes": 2,
+            "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/01_ast.meta.json",
+          "declared": {
+            "bytes": 564,
+            "sha256": "824c5e46da68ecca49d662a0b59caa26f29624f25f5215a84ca0858f0f5b9d09"
+          },
+          "actual": {
+            "bytes": 564,
+            "sha256": "824c5e46da68ecca49d662a0b59caa26f29624f25f5215a84ca0858f0f5b9d09"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/01_ast.stderr.txt",
+          "declared": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "actual": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/01_ast.stdout.txt",
+          "declared": {
+            "bytes": 99,
+            "sha256": "1006c1595fe610911f17d6a2715e058688cb82c262e4f259a3b38d3785b62b6f"
+          },
+          "actual": {
+            "bytes": 99,
+            "sha256": "1006c1595fe610911f17d6a2715e058688cb82c262e4f259a3b38d3785b62b6f"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/02_combined.exit.txt",
+          "declared": {
+            "bytes": 2,
+            "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          },
+          "actual": {
+            "bytes": 2,
+            "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/02_combined.meta.json",
+          "declared": {
+            "bytes": 892,
+            "sha256": "3bb645cb9e1649178c1a335191bacb3c485a046a5b280ac7c9e40c752e902b9b"
+          },
+          "actual": {
+            "bytes": 892,
+            "sha256": "3bb645cb9e1649178c1a335191bacb3c485a046a5b280ac7c9e40c752e902b9b"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/02_combined.stderr.txt",
+          "declared": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "actual": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/02_combined.stdout.txt",
+          "declared": {
+            "bytes": 5804,
+            "sha256": "8a29efc47fb08be7116f793fd7eb58fb9a06032f52872f33c405ab5d1ac8363f"
+          },
+          "actual": {
+            "bytes": 5804,
+            "sha256": "8a29efc47fb08be7116f793fd7eb58fb9a06032f52872f33c405ab5d1ac8363f"
+          },
+          "match": true
+        },
+        {
+          "path": "REPORT.md",
+          "declared": {
+            "bytes": 3394,
+            "sha256": "ca48d2f73a83090a0dd6ebec67e7fd02d0729d811798dc4df9c2862ed754be0b"
+          },
+          "actual": {
+            "bytes": 3394,
+            "sha256": "ca48d2f73a83090a0dd6ebec67e7fd02d0729d811798dc4df9c2862ed754be0b"
+          },
+          "match": true
+        }
+      ],
+      "all_artifacts_match": true
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-11",
+  "role": "independent_acceptance",
+  "verdict": "NEEDS_PROTOCOL_REVISION",
+  "prep_root": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v2",
+  "target_root": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "target_entry": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+  "target_entry_bytes": 102269,
+  "target_entry_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+  "prep_declared_file_count": 16,
+  "prep_declared_total_bytes": 145020,
+  "prep_declared_hashes_verified": true,
+  "runtime_source_manifest_file_count": 91,
+  "runtime_source_manifest_sha256": "947de3842eadb716d241eb4bb4f2fff62f2cfe39305cf03ffd0fbe35abd052e1",
+  "commands": [
+    "D:/anaconda3/envs/rapo-b01/python.exe -B probes/static_probe.py",
+    "D:/anaconda3/envs/rapo-b01/python.exe -B probes/judge_probe.py"
+  ],
+  "gpu_executed": false,
+  "ray_executed": false,
+  "ssh_executed": false,
+  "installation_executed": false,
+  "training_executed": false,
+  "inference_executed": false,
+  "production_files_modified": false,
+  "prep_files_modified": false,
+  "acceptance_root": "C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/FRESH-PROCESS-PROTOCOL-V2-20260911"
+}

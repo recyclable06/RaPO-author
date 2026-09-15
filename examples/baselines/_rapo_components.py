@@ -2,7 +2,7 @@
 ===============================================================================
 Shared components for the RaPO training path (class-incremental learning).
 
-Fixed main-result behaviour (matches the logged paper runs):
+Standard reproduction behaviour:
 
     * standard GRPO with loss-level KL to a frozen reference
     * the KL reference is always the original pretrained base model
@@ -10,8 +10,9 @@ Fixed main-result behaviour (matches the logged paper runs):
       ``rapo_activate_from_task`` (default 2) onward
     * CTAN advantage normalisation (EMA of cross-task reward statistics) is
       enabled when ``--ctan_enable`` is passed. The compute path is fixed:
-      post-group-norm, scale by EMA std only, seed from the previous task's
-      last batch (task ≥ 2). These three choices are not config knobs.
+      center by prompt-group mean and scale by continuous EMA std from task 1.
+      First-batch initialization and sample std are frozen implementation
+      conventions; see docs/remediation/AUTH-CTAN-001/SPEC.md.
 
 Architecture note
 -----------------
@@ -29,6 +30,7 @@ in ``img_cls_cil/``, ``cil_det/`` and ``video_cls_cil/``.
 
 import argparse
 import json
+import math
 import os
 from dataclasses import dataclass
 from typing import Any, Optional
@@ -192,19 +194,20 @@ class EMAAdvConfig:
     """CTAN hyperparameters.
 
     Position, norm target, and init strategy are not fields: the normaliser
-    always does post-group-norm, scales by EMA std only, and seeds from the
-    previous task's last batch on task ≥ 2.
+    centers by group mean, scales by EMA std, and preserves cross-task history.
+    Defaults implement the frozen reproduction specification; explicitly
+    enabled stabilization variants are outside that specification.
     """
 
     enabled: bool = False
     beta: float = 0.999
     eps: float = 1e-6
     bootstrap_steps: int = 0
-    activate_from_task: int = 2
-    min_std: float = 1e-3
-    guard_abs_max: float = 5.0
-    bias_correction: bool = True
-    beta_warmup_steps: int = 2
+    activate_from_task: int = 1
+    min_std: float = 0.0
+    guard_abs_max: float = 0.0
+    bias_correction: bool = False
+    beta_warmup_steps: int = 0
     beta_warmup_init: float = 0.9
 
     @staticmethod
@@ -213,11 +216,11 @@ class EMAAdvConfig:
         beta = float(os.environ.get("EMA_ADV_BETA", "0.999"))
         eps = float(os.environ.get("EMA_ADV_EPS", "1e-6"))
         bootstrap_steps = int(os.environ.get("EMA_ADV_BOOTSTRAP_STEPS", "0"))
-        activate_from_task = int(os.environ.get("EMA_ADV_ACTIVATE_FROM_TASK", "2"))
-        min_std = float(os.environ.get("EMA_ADV_MIN_STD", "1e-3"))
-        guard_abs_max = float(os.environ.get("EMA_ADV_GUARD_ABS_MAX", "5.0"))
-        bias_correction = os.environ.get("EMA_ADV_BIAS_CORRECTION", "1").lower() in {"1", "true", "yes"}
-        beta_warmup_steps = int(os.environ.get("EMA_ADV_BETA_WARMUP_STEPS", "2"))
+        activate_from_task = int(os.environ.get("EMA_ADV_ACTIVATE_FROM_TASK", "1"))
+        min_std = float(os.environ.get("EMA_ADV_MIN_STD", "0.0"))
+        guard_abs_max = float(os.environ.get("EMA_ADV_GUARD_ABS_MAX", "0.0"))
+        bias_correction = os.environ.get("EMA_ADV_BIAS_CORRECTION", "0").lower() in {"1", "true", "yes"}
+        beta_warmup_steps = int(os.environ.get("EMA_ADV_BETA_WARMUP_STEPS", "0"))
         beta_warmup_init = float(os.environ.get("EMA_ADV_BETA_WARMUP_INIT", "0.9"))
         return EMAAdvConfig(
             enabled=enabled,
@@ -250,6 +253,23 @@ class EMAAdvNormalizer:
         self._last_batch_reward_std: Optional[float] = None
         self._task_start_update_count: int = 0
         self._fresh_start: bool = True
+        needs_history = (
+            config.enabled and task_id is not None
+            and task_id > int(config.activate_from_task)
+        )
+        if initial_state or needs_history:
+            if (
+                not isinstance(initial_state, dict)
+                or not isinstance(initial_state.get("ema_std"), (int, float))
+                or not math.isfinite(initial_state["ema_std"])
+                or initial_state["ema_std"] < 0
+                or type(initial_state.get("update_count")) is not int
+                or initial_state["update_count"] <= 0
+            ):
+                raise ValueError(
+                    f"CTAN task {task_id} requires valid EMA history "
+                    "(finite nonnegative ema_std and positive update_count)."
+                )
         if initial_state:
             self.ema_mean = float(initial_state.get("ema_mean", self.ema_mean))
             self.ema_std = float(initial_state.get("ema_std", self.ema_std))
@@ -263,16 +283,6 @@ class EMAAdvNormalizer:
                 self._last_batch_reward_std = float(last_std)
             self._task_start_update_count = self.update_count
             self._fresh_start = False
-            # task1_last_batch: task ≥ 2 reseeds from the previous task's last batch.
-            if (
-                self.task_id is not None
-                and self.task_id >= 2
-                and self._last_batch_reward_mean is not None
-                and self._last_batch_reward_std is not None
-            ):
-                self.ema_mean = float(self._last_batch_reward_mean)
-                self.ema_std = float(self._last_batch_reward_std)
-                self._initialized = True
 
     def state_dict(self) -> dict[str, Any]:
         return {
@@ -303,16 +313,11 @@ class EMAAdvNormalizer:
         self._last_batch_reward_std = float(scores.std().item())
 
     def _apply_init_strategy(self, current_mean: float, current_std: float) -> None:
-        # task1_last_batch: seed EMA from the previous task's final batch stats
-        # when available, otherwise from the current batch.
+        # Frozen convention: initialize from the first active rollout batch.
         if self._initialized:
             return
-        if self._last_batch_reward_mean is not None and self._last_batch_reward_std is not None:
-            self.ema_mean = float(self._last_batch_reward_mean)
-            self.ema_std = float(self._last_batch_reward_std)
-        else:
-            self.ema_mean = float(current_mean)
-            self.ema_std = float(current_std)
+        self.ema_mean = float(current_mean)
+        self.ema_std = float(current_std)
         self._initialized = True
 
     def _effective_beta(self) -> float:

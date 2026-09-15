@@ -1,0 +1,88 @@
+{
+  "source_manifest_files": 265,
+  "source_manifest_sha256": "1c2365642756bb24c37e2e12fbd734e3d29d5d30863ce0dfe55a44cb7351c0ef",
+  "manifest_files_matching_excluding_AGENTS": 263,
+  "manifest_mismatches_excluding_AGENTS": [
+    "examples/baselines/cil_det/image_det_cil_rapo.py"
+  ],
+  "governance_agents": {
+    "source_sha256": "ea219982348cf89432058fc6be6c3cd78d93b5a47c39c6eb24e6f84c6f0ce411",
+    "target_sha256": "ea219982348cf89432058fc6be6c3cd78d93b5a47c39c6eb24e6f84c6f0ce411",
+    "same_as_latest": true
+  },
+  "inherited_ctan_production": {
+    "examples/baselines/_rapo_components.py": {
+      "source_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+      "target_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+      "same": true
+    },
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py": {
+      "source_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+      "target_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+      "same": true
+    },
+    "examples/baselines/cil_det/image_det_cil_rapo.py": {
+      "source_sha256": "01b298fc5fefb56f40c5d0c3b13e44dfb04f6b34a938f0c56bd7109a19cbbb18",
+      "target_sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+      "same": false
+    },
+    "scripts/image/rapo_cfg.json": {
+      "source_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "target_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "same": true
+    },
+    "scripts/video/rapo_cfg.json": {
+      "source_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "target_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "same": true
+    },
+    "scripts/det/rapo_cfg.json": {
+      "source_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "target_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "same": true
+    }
+  },
+  "inherited_ctan_tests": {
+    "tests/author_fixes/run_evidence.py": {
+      "source_sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+      "target_sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+      "same": true
+    },
+    "tests/author_fixes/source_loader.py": {
+      "source_sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+      "target_sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+      "same": true
+    },
+    "tests/author_fixes/test_ctan.py": {
+      "source_sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2",
+      "target_sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2",
+      "same": true
+    }
+  },
+  "coco_production_diff_vs_ctan_source": {
+    "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+    "unified_diff": "--- ctan-source\n+++ coco-target\n@@ -886,7 +886,7 @@\n                 val_progress=not known_args.no_val_progress,\n                 val_write_predictions=known_args.val_write_predictions,\n                 val_output_dir=known_args.val_output_dir,\n-                allowed_classes=ordered_task_class_names,\n+                allowed_classes=seen_class_names if known_args.prompt_seen_labels else ordered_task_class_names,\n                 val_allowed_classes=seen_class_names,\n                 allowed_class_order=prompt_label_list or ordered_task_class_names,\n                 extra_val_splits=eval_plan,\n"
+  },
+  "data_sha256": {
+    "data/object_det_cil_dataset/categories.json": "bce0b4c7e2ab32ad052574511dfdb23543b5feb20077b92d2477e47fcee0c363",
+    "data/object_det_cil_dataset/metadata.json": "ca3835853917429769fb597eed5cd7090040a6471ec896fc6d8d7325c7223f6a",
+    "data/object_det_cil_dataset/train_5shots.jsonl": "eab08f2603eb4153b77d973ef35cd4da7f96459c6894594773de9c40bc420710",
+    "data/object_det_cil_dataset/val.jsonl": "10924839d427c6020e6bcd26020c3054d9584aed01b82f71a2cf1df5246c2d31"
+  },
+  "source_preservation": {
+    "image_det_cil.py": "e253f85b081ae758ac9b57bde0ba349e71d0faa66a1902fc722ef9dd6e8ab4ad",
+    "det_reward.py": "4a87695f519af741b6427aa688c5a8befa7f455eb9fe3c6e6346e15e379f1278"
+  },
+  "status": [
+    "## codex/auth-coco-001",
+    " M AGENTS.md",
+    " M examples/baselines/_rapo_components.py",
+    " M examples/baselines/cil_det/image_det_cil_rapo.py",
+    " M examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+    " M scripts/det/rapo_cfg.json",
+    " M scripts/image/rapo_cfg.json",
+    " M scripts/video/rapo_cfg.json",
+    "?? docs/remediation/",
+    "?? tests/"
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "ast_checks": {
+    "all_pass": true,
+    "files": {
+      "argv_validate_v4.py": "PASS",
+      "child_bootstrap_v4.py": "PASS",
+      "child_observer_v4.py": "PASS",
+      "event_writer_v4.py": "PASS",
+      "judge_v4.py": "PASS",
+      "parser_probe_v4.py": "PASS",
+      "ray_probe_v4.py": "PASS",
+      "run_v4.py": "PASS",
+      "sitecustomize.py": "PASS",
+      "test_v4.py": "PASS"
+    }
+  },
+  "event_checks": {
+    "all_observed_original_calls_once": true,
+    "all_required_labels_installed": true,
+    "all_required_modules_installed": true,
+    "call_failures": [],
+    "each_rank_has_required_called_labels": false,
+    "event_count": 63,
+    "event_file_count": 12,
+    "install_labels": [
+      "FSDPCheckpointManager.load_checkpoint",
+      "FSDPWorker.__init__",
+      "FSDPWorker.update_actor",
+      "PersistentCILTrainer._load_checkpoint",
+      "PersistentCILTrainer.fit",
+      "PersistentCILTrainer.reinit_for_task",
+      "PersistentRefFSDPWorker.__init__",
+      "PersistentRefFSDPWorker.copy_actor_to_anchor",
+      "PersistentRunner.__init__",
+      "PersistentRunner.init",
+      "PersistentRunner.run_task"
+    ],
+    "install_modules": [
+      "examples.baselines.img_cls_cil.image_cls_cil_rapo",
+      "verl.utils.checkpoint.fsdp_checkpoint_manager",
+      "verl.workers.fsdp_workers"
+    ],
+    "rank_call_labels": {
+      "0": [
+        "FSDPCheckpointManager.load_checkpoint",
+        "FSDPWorker.update_actor",
+        "PersistentCILTrainer._load_checkpoint",
+        "PersistentCILTrainer.fit",
+        "PersistentCILTrainer.reinit_for_task",
+        "PersistentRefFSDPWorker.copy_actor_to_anchor",
+        "PersistentRunner.init",
+        "PersistentRunner.run_task"
+      ],
+      "1": [
+        "FSDPCheckpointManager.load_checkpoint",
+        "FSDPWorker.update_actor",
+        "PersistentCILTrainer._load_checkpoint",
+        "PersistentCILTrainer.fit",
+        "PersistentCILTrainer.reinit_for_task",
+        "PersistentRefFSDPWorker.copy_actor_to_anchor",
+        "PersistentRunner.init",
+        "PersistentRunner.run_task"
+      ]
+    },
+    "rank_install_labels": {
+      "0": [
+        "FSDPCheckpointManager.load_checkpoint",
+        "FSDPWorker.__init__",
+        "FSDPWorker.update_actor",
+        "PersistentCILTrainer._load_checkpoint",
+        "PersistentCILTrainer.fit",
+        "PersistentCILTrainer.reinit_for_task",
+        "PersistentRefFSDPWorker.__init__",
+        "PersistentRefFSDPWorker.copy_actor_to_anchor",
+        "PersistentRunner.__init__",
+        "PersistentRunner.init",
+        "PersistentRunner.run_task"
+      ],
+      "1": [
+        "FSDPCheckpointManager.load_checkpoint",
+        "FSDPWorker.__init__",
+        "FSDPWorker.update_actor",
+        "PersistentCILTrainer._load_checkpoint",
+        "PersistentCILTrainer.fit",
+        "PersistentCILTrainer.reinit_for_task",
+        "PersistentRefFSDPWorker.__init__",
+        "PersistentRefFSDPWorker.copy_actor_to_anchor",
+        "PersistentRunner.__init__",
+        "PersistentRunner.init",
+        "PersistentRunner.run_task"
+      ]
+    },
+    "ray_result_gpu_requested": false,
+    "ray_result_model_imported": false,
+    "ray_result_production_entry_imported": true,
+    "ray_result_status": "PASS_ZERO_GPU_RAY_REAL_CHILD_OBSERVER",
+    "ray_result_worker_report_count": 2,
+    "ray_result_worker_reports_are_raw_child_probe": true,
+    "recorded_judge_pass": true,
+    "recorded_judge_status": "PASS_V4_REAL_CHILD_OBSERVER",
+    "runner_error_is_expected_inert_failure": true,
+    "sequence_failures": [],
+    "sequence_ok": true,
+    "worker_ranks": [
+      "0",
+      "1"
+    ],
+    "writer_identity_and_writer_seq": true
+  },
+  "identity_checks": {
+    "target_entry_bytes": 102269,
+    "target_entry_matches_v4_expected": true,
+    "target_entry_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "v3_frozen_self_matches": true,
+    "v3_frozen_self_sha256_expected": "85ecc63edfac12d151ec83c391a70eee932f610de128b14208c9c308bf27d6bd",
+    "v3_hash_file_sha256": "85ecc63edfac12d151ec83c391a70eee932f610de128b14208c9c308bf27d6bd",
+    "v4_actual_file_count": 30,
+    "v4_actual_total_bytes": 218524,
+    "v4_declared_file_count": 30,
+    "v4_declared_total_bytes": 218524,
+    "v4_files_exactly_match_declared": true,
+    "v4_package_manifest_reproduced": true,
+    "v4_raw_file_count": 17,
+    "v4_raw_manifest_reproduced": true,
+    "v4_raw_total_bytes": 143656
+  },
+  "judge_concat_negative": {
+    "finding": "judge aggregates observed labels globally instead of requiring each role/rank to cover required calls",
+    "judge_pass": true,
+    "judge_reasons": [],
+    "judge_status": "PASS_V4_REAL_CHILD_OBSERVER",
+    "synthetic_labels_split_across_ranks": true
+  },
+  "parser_checks": {
+    "author_total_epochs_declared_int": true,
+    "identity_same_across_legs": true,
+    "identity_sha256_values": {
+      "A": "8459ab72f1185ba4fa275455d9743b05cdac48bd97a54a45c60f260b1993aa13",
+      "B": "8459ab72f1185ba4fa275455d9743b05cdac48bd97a54a45c60f260b1993aa13",
+      "C": "8459ab72f1185ba4fa275455d9743b05cdac48bd97a54a45c60f260b1993aa13"
+    },
+    "missing_cil_cfg_rejected": true,
+    "model_constructed": false,
+    "negative_content_rejected": true,
+    "parser_only_max_steps": 2,
+    "parser_only_total_epochs": 1,
+    "positive_legs": [
+      "A",
+      "B",
+      "C"
+    ],
+    "positive_legs_exactly_CAB": true,
+    "production_entry_imported": true,
+    "ray_started": false,
+    "runner_multiplies_epochs_by_loader_length": true,
+    "status": "PASS_PARSER_ONLY",
+    "v4_report_explicitly_parser_only": true
+  },
+  "scope": {
+    "gpu_executed": false,
+    "inference_executed": false,
+    "installation_executed": false,
+    "model_constructed_by_acceptance": false,
+    "prep_files_modified": false,
+    "production_files_modified": false,
+    "ray_executed_by_acceptance": false,
+    "ssh_executed": false,
+    "training_executed": false
+  },
+  "status": "PASS_LIMITED_REVIEW_WITH_FINDINGS",
+  "supplement_checks": {
+    "actual_raw_file_count": 99,
+    "actual_raw_total_bytes": 744350,
+    "actual_runner_wrapper_event_count": 0,
+    "computed_v4_style_raw_manifest_sha256": "21e8c73a617795a062536a647effbf01b3b6a2b6fae003d733bbbdf1fc59926d",
+    "declared_raw_file_count": 99,
+    "declared_raw_manifest_sha256": "271e28a876cbe6734463aabd5738cd44f549da8cbe463e507b3ee3db6cadbc78",
+    "declared_raw_total_bytes": 744350,
+    "fresh_child_all_required_methods_have_no_marker": true,
+    "fresh_child_method_count": 4,
+    "key_files": {
+      "all_match": true,
+      "count": 9,
+      "mismatches": []
+    },
+    "raw_aggregate_reproduced_by_declared_schema": false,
+    "raw_aggregate_reproducibility": "NOT_REPRODUCIBLE_WITHOUT_PER_FILE_MANIFEST_OR_ALGORITHM",
+    "raw_count_and_bytes_match": true,
+    "raw_event_child_bootstrap_count": 99,
+    "raw_event_child_observer_install_count": 1,
+    "raw_event_count": 106,
+    "serialized_wrapper_event_count": 0,
+    "supplement_status": "NOT_INSTALLED_FRESH_RAY_CHILD"
+  }
+}

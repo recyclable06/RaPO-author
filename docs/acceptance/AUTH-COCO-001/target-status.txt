@@ -1,0 +1,10 @@
+## codex/auth-coco-001
+ M AGENTS.md
+ M examples/baselines/_rapo_components.py
+ M examples/baselines/cil_det/image_det_cil_rapo.py
+ M examples/baselines/img_cls_cil/image_cls_cil_rapo.py
+ M scripts/det/rapo_cfg.json
+ M scripts/image/rapo_cfg.json
+ M scripts/video/rapo_cfg.json
+?? docs/remediation/
+?? tests/

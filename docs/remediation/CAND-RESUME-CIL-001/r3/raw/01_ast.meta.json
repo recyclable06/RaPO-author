@@ -1,0 +1,15 @@
+{
+  "case": "ast_parse",
+  "command": "D:/anaconda3/envs/rapo-b01/python.exe -B -c <AST parse two target files>",
+  "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "start": "2026-09-10T00:01:59.5584014+08:00",
+  "end": "2026-09-10T00:01:59.9679731+08:00",
+  "exit_code": 0,
+  "stdout": "01_ast.stdout.txt",
+  "stderr": "01_ast.stderr.txt",
+  "stdout_bytes": 99,
+  "stderr_bytes": 0,
+  "python_version": "Python 3.10.20",
+  "branch": "codex/remediate-cil-resume-001",
+  "head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647"
+}

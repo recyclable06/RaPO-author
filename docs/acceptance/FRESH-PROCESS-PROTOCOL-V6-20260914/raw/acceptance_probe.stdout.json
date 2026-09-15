@@ -1,0 +1,332 @@
+{
+  "ast": {
+    "errors": [],
+    "python_file_count": 20
+  },
+  "blockers": [],
+  "candidate": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v6",
+  "cpu_runs": {
+    "fixture_checks": {
+      "equal_label_state_digest": true,
+      "equal_label_value_digest": true,
+      "late_install_rejected": true,
+      "normal_sequence_accepted": true,
+      "unequal_state_digest_rejected": true,
+      "unequal_value_digest_rejected": true,
+      "wrong_writer_rejected": true
+    },
+    "launcher_contract": {
+      "command": [
+        "C:\\Program Files\\Python313\\python.exe",
+        "-B",
+        "launcher_contract_probe_v6.py"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS_V6_LAUNCHER_C_AB_CONTRACT"
+    },
+    "test_v6": {
+      "command": [
+        "C:\\Program Files\\Python313\\python.exe",
+        "-B",
+        "test_v6.py",
+        "--result",
+        "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rapo-v6-acceptance-v6gscj7p\\test-result.json"
+      ],
+      "result": {
+        "complete_group_positive": true,
+        "duplicate_sequence_rejected": true,
+        "equal_label_digest_positive": true,
+        "incomplete_pair_rejected": true,
+        "schema_version": 6,
+        "split_rank_rejected": true,
+        "status": "PASS_V6_PROCESS_AND_DIGEST_FIXTURES",
+        "unequal_content_digest_negative": true,
+        "valid_sequence": true
+      },
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS_V6_PROCESS_AND_DIGEST_FIXTURES"
+    }
+  },
+  "observations": [
+    "The preserved worker bootstrap subreport carries schema_version=5 inside a schema-v6 event stream; event-level schema/writer/judge checks pass, so this is recorded as metadata drift rather than a GPU gate failure."
+  ],
+  "package_hash_check": {
+    "file_count": 59,
+    "files_equal": true,
+    "manifest_sha256": "60e5d5ee5b161f212466976af1f7689a632dbeffb0911615a27440115365ce54",
+    "reported_file_count": 59,
+    "reported_manifest_sha256": "60e5d5ee5b161f212466976af1f7689a632dbeffb0911615a27440115365ce54",
+    "reported_total_bytes": 4268936,
+    "total_bytes": 4268936
+  },
+  "parser_raw": {
+    "argv_A_boundary_flags": [
+      "--publish_task_boundary",
+      "--stop_after_task_boundary"
+    ],
+    "argv_A_flags_present": true,
+    "argv_B_boundary_flag": "--resume_task_boundary",
+    "argv_B_flag_present": true,
+    "batch_size": 2,
+    "config_max_steps": 2,
+    "config_rollout_n": 4,
+    "config_save_model_only": false,
+    "config_total_epochs": 2,
+    "config_world": [
+      1,
+      2
+    ],
+    "drop_last": true,
+    "identity_hashes": {
+      "A": "06cb3fe8c6f78b46a37c6f36703a48e65a87f838f7d66b8734a86cd81500a7a3",
+      "B": "06cb3fe8c6f78b46a37c6f36703a48e65a87f838f7d66b8734a86cd81500a7a3",
+      "C": "06cb3fe8c6f78b46a37c6f36703a48e65a87f838f7d66b8734a86cd81500a7a3"
+    },
+    "identity_hashes_equal": true,
+    "legs": [
+      "A",
+      "B",
+      "C"
+    ],
+    "loader_length_task1": 1,
+    "loader_length_task2": 1,
+    "no_model_ray_or_training": true,
+    "pass": true,
+    "result_probe_equal": true,
+    "status": "PASS_PARSER_CONFIG_LOADER_ONLY",
+    "task1_updates": 2,
+    "task2_updates": 2,
+    "total_epochs": 2
+  },
+  "raw_hash_check": {
+    "file_count": 26,
+    "files_equal": true,
+    "manifest_sha256": "0cf3c8256e0b0797fc48ba20fa7fa7eb7dc5296296a709a14b8258c59229f1ef",
+    "reported_file_count": 26,
+    "reported_manifest_sha256": "0cf3c8256e0b0797fc48ba20fa7fa7eb7dc5296296a709a14b8258c59229f1ef",
+    "reported_total_bytes": 4068026,
+    "total_bytes": 4068026
+  },
+  "schema_version": 6,
+  "scope": {
+    "full_c_ab_run": false,
+    "gpu_preflight_run": false,
+    "model_constructed": false,
+    "paper_scale_or_coco_ap": false,
+    "training_started": false
+  },
+  "status": "PASS_V6_INDEPENDENT_ACCEPTANCE",
+  "target": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "target_identity": {
+    "entry": {
+      "bytes": 102269,
+      "expected": {
+        "bytes": 102269,
+        "relative_path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+        "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+      },
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+    },
+    "runtime_source_manifest": {
+      "expected": {
+        "file_count": 91,
+        "manifest_sha256": "947de3842eadb716d241eb4bb4f2fff62f2cfe39305cf03ffd0fbe35abd052e1"
+      },
+      "file_count": 91,
+      "manifest_sha256": "947de3842eadb716d241eb4bb4f2fff62f2cfe39305cf03ffd0fbe35abd052e1"
+    },
+    "test_reference": {
+      "bytes": 24215,
+      "expected": {
+        "bytes": 24215,
+        "relative_path": "tests/author_fixes/test_cil_resume.py",
+        "sha256": "2bb64dccbce91409840d04344a30a58b76265ae77145ab33b4819a3613b4aadf"
+      },
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\tests\\author_fixes\\test_cil_resume.py",
+      "sha256": "2bb64dccbce91409840d04344a30a58b76265ae77145ab33b4819a3613b4aadf"
+    }
+  },
+  "verdict": "READY_FOR_BOUNDED_GPU",
+  "zero_gpu_raw": {
+    "all_module_hashes_match_target": true,
+    "each_worker_has_eleven_calls": true,
+    "each_worker_has_four_installs": true,
+    "event_summary": {
+      "event_count": 129,
+      "event_files": [
+        "3272732",
+        "3273325",
+        "3273326",
+        "3273671",
+        "3273698",
+        "3273700",
+        "3273731",
+        "3273732",
+        "3273733",
+        "3274064",
+        "3274629",
+        "3274630"
+      ],
+      "kind_counts": {
+        "child_bootstrap_install": 16,
+        "child_observer_install": 16,
+        "observer_hook_ready": 17,
+        "ray_init_runtime_env": 1,
+        "ray_init_wrapper_install": 15,
+        "ray_kill_wrapper_install": 15,
+        "runner_release_requested": 1,
+        "target_wrapper_call_after": 24,
+        "target_wrapper_call_before": 24
+      },
+      "ray_worker_processes": [
+        {
+          "call_label_count": 11,
+          "call_labels": [
+            "FSDPCheckpointManager.load_checkpoint",
+            "FSDPCheckpointManager.save_checkpoint",
+            "FSDPWorker.load_checkpoint",
+            "FSDPWorker.save_checkpoint",
+            "FSDPWorker.update_actor",
+            "PersistentCILTrainer.fit",
+            "PersistentCILTrainer.reinit_for_task",
+            "PersistentCILTrainer.restore_boundary_checkpoint",
+            "PersistentRefFSDPWorker.copy_actor_to_anchor",
+            "PersistentRunner.init",
+            "PersistentRunner.run_task"
+          ],
+          "event_count": 36,
+          "install_module_count": 4,
+          "install_modules": [
+            "examples.baselines.img_cls_cil.image_cls_cil",
+            "examples.baselines.img_cls_cil.image_cls_cil_rapo",
+            "verl.utils.checkpoint.fsdp_checkpoint_manager",
+            "verl.workers.fsdp_workers"
+          ],
+          "process": "3274629:3274629:43231334",
+          "roles": [
+            "production_driver",
+            "ray_worker"
+          ]
+        },
+        {
+          "call_label_count": 11,
+          "call_labels": [
+            "FSDPCheckpointManager.load_checkpoint",
+            "FSDPCheckpointManager.save_checkpoint",
+            "FSDPWorker.load_checkpoint",
+            "FSDPWorker.save_checkpoint",
+            "FSDPWorker.update_actor",
+            "PersistentCILTrainer.fit",
+            "PersistentCILTrainer.reinit_for_task",
+            "PersistentCILTrainer.restore_boundary_checkpoint",
+            "PersistentRefFSDPWorker.copy_actor_to_anchor",
+            "PersistentRunner.init",
+            "PersistentRunner.run_task"
+          ],
+          "event_count": 36,
+          "install_module_count": 4,
+          "install_modules": [
+            "examples.baselines.img_cls_cil.image_cls_cil",
+            "examples.baselines.img_cls_cil.image_cls_cil_rapo",
+            "verl.utils.checkpoint.fsdp_checkpoint_manager",
+            "verl.workers.fsdp_workers"
+          ],
+          "process": "3274630:3274630:43231335",
+          "roles": [
+            "production_driver",
+            "ray_worker"
+          ]
+        }
+      ],
+      "role_counts": {
+        "production_driver": 69,
+        "ray_runner": 4,
+        "ray_worker": 56
+      }
+    },
+    "independent_replay": {
+      "event_count": 129,
+      "pass": true,
+      "process_association_ok": true,
+      "processes": [
+        "3272732:3272732:43225461",
+        "3273325:3273325:43228419",
+        "3273326:3273326:43228432",
+        "3273671:3273671:43228711",
+        "3273698:3273698:43228712",
+        "3273700:3273700:43228712",
+        "3273731:3273731:43228715",
+        "3273732:3273732:43228715",
+        "3273733:3273733:43228715",
+        "3274064:3274064:43228946",
+        "3274629:3274629:43231334",
+        "3274630:3274630:43231335"
+      ],
+      "reasons": [],
+      "schema_version": 6,
+      "sequence_ok": true,
+      "status": "PASS_V6_ZERO_GPU_PREP"
+    },
+    "local_recheck": {
+      "event_count": 129,
+      "pass": true,
+      "process_association_ok": true,
+      "processes": [
+        "3272732:3272732:43225461",
+        "3273325:3273325:43228419",
+        "3273326:3273326:43228432",
+        "3273671:3273671:43228711",
+        "3273698:3273698:43228712",
+        "3273700:3273700:43228712",
+        "3273731:3273731:43228715",
+        "3273732:3273732:43228715",
+        "3273733:3273733:43228715",
+        "3274064:3274064:43228946",
+        "3274629:3274629:43231334",
+        "3274630:3274630:43231335"
+      ],
+      "reasons": [],
+      "schema_version": 6,
+      "sequence_ok": true,
+      "status": "PASS_V6_ZERO_GPU_PREP"
+    },
+    "module_matches": {
+      "examples.baselines.img_cls_cil.image_cls_cil": true,
+      "examples.baselines.img_cls_cil.image_cls_cil_rapo": true,
+      "verl.utils.checkpoint.fsdp_checkpoint_manager": true,
+      "verl.workers.fsdp_workers": true
+    },
+    "pass": true,
+    "reported_judge": {
+      "event_count": 129,
+      "pass": true,
+      "process_association_ok": true,
+      "processes": [
+        "3272732:3272732:43225461",
+        "3273325:3273325:43228419",
+        "3273326:3273326:43228432",
+        "3273671:3273671:43228711",
+        "3273698:3273698:43228712",
+        "3273700:3273700:43228712",
+        "3273731:3273731:43228715",
+        "3273732:3273732:43228715",
+        "3273733:3273733:43228715",
+        "3274064:3274064:43228946",
+        "3274629:3274629:43231334",
+        "3274630:3274630:43231335"
+      ],
+      "reasons": [],
+      "schema_version": 6,
+      "sequence_ok": true,
+      "status": "PASS_V6_ZERO_GPU_PREP"
+    },
+    "worker_count": 2,
+    "writer_value_count": 1,
+    "writer_values": [
+      "{\"bytes\":4007,\"module\":\"event_writer_v6\",\"path\":\"/mnt/conda/zhenglifeng/t/rapo-author-v6c-no-model-20260913-unique/event_writer_v6.py\",\"sha256\":\"c3800b2db60bbfa197659e803cb72e09718cf699d1342d146f134ef76267eb83\"}"
+    ]
+  }
+}

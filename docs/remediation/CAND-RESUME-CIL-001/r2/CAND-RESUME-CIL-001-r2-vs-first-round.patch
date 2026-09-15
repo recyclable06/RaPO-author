@@ -1,0 +1,481 @@
+diff --git "a/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\first\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py" "b/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\current\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py"
+index cc38f8d..ab332e5 100644
+--- "a/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\first\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py"
++++ "b/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\current\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py"
+@@ -79,13 +79,24 @@ from examples.baselines.cil_misc.fsdp_worker_ext import _FSDPWorkerColocBase
+ _BOUNDARY_SCHEMA_VERSION = 1
+ _BOUNDARY_MARKER_NAME = "task1-complete.json"
+ _BOUNDARY_STATE_DIR = "boundary_state"
++_BOUNDARY_SOURCE_ROOTS = (
++    # These roots are the production Python implementation that controls the
++    # CIL loader, trainer, native checkpoint manager, workers, actor, reward,
++    # and sharding/RNG paths.  Only .py files are included; caches and logs are
++    # deliberately outside the identity contract.
++    "examples/baselines/cil_misc",
++    "examples/baselines/img_cls_cil",
++    "verl/single_controller",
++    "verl/trainer",
++    "verl/utils",
++    "verl/workers",
++)
+ _BOUNDARY_SOURCE_FILES = (
+-    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+-    "examples/baselines/img_cls_cil/image_cls_cil.py",
++    # Production entry/config files outside the roots above.
+     "examples/baselines/_rapo_components.py",
+-    "verl/trainer/ray_trainer.py",
+-    "verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+-    "verl/workers/sharding_manager/fsdp_vllm.py",
++    "examples/config.yaml",
++    "scripts/image/rapo_cfg.json",
++    "verl/protocol.py",
+ )
+ 
+ 
+@@ -168,6 +179,11 @@ def _path_within(path: str, root: str) -> bool:
+         return False
+ 
+ 
++def _path_overlaps_roots(path: str, roots: Iterable[str]) -> bool:
++    """Return whether a candidate path is an ancestor/descendant of a root."""
++    return any(_path_within(path, root) or _path_within(root, path) for root in roots)
++
++
+ def _artifact_manifest(root: str) -> list[dict[str, Any]]:
+     root = os.path.abspath(root)
+     if not os.path.isdir(root):
+@@ -214,6 +230,58 @@ def _validate_artifact_manifest(root: str, entries: Any, *, label: str) -> str:
+     actual = _artifact_manifest(root)
+     if actual != expected:
+         raise CILBoundaryError(f"{label} manifest does not cover the complete artifact root")
++
++    if label == "checkpoint":
++        relative_paths = {item["path"] for item in expected}
++        if "dataloader.pt" not in relative_paths:
++            raise CILBoundaryError("full boundary checkpoint is missing dataloader.pt")
++
++        required_roles = {"model", "optim", "extra"}
++        shard_roles: dict[tuple[int, int], set[str]] = {}
++        prefixes = (
++            ("model", "model_world_size_"),
++            ("optim", "optim_world_size_"),
++            ("extra", "extra_state_world_size_"),
++        )
++        for relative in sorted(relative_paths):
++            if not relative.startswith("actor/"):
++                continue
++            filename = relative[len("actor/"):]
++            if "/" in filename or not filename.endswith(".pt"):
++                continue
++            for role, prefix in prefixes:
++                if not filename.startswith(prefix):
++                    continue
++                token = filename[len(prefix):-3]
++                if "_rank_" not in token:
++                    continue
++                world_text, rank_text = token.split("_rank_", 1)
++                if world_text.isdigit() and rank_text.isdigit():
++                    key = (int(world_text), int(rank_text))
++                    shard_roles.setdefault(key, set()).add(role)
++                break
++
++        if not shard_roles:
++            raise CILBoundaryError("full boundary checkpoint has no native actor rank shards")
++        world_sizes = {world_size for world_size, _ in shard_roles}
++        if len(world_sizes) != 1:
++            raise CILBoundaryError("full boundary checkpoint mixes native world sizes")
++        world_size = next(iter(world_sizes))
++        if world_size <= 0:
++            raise CILBoundaryError("full boundary checkpoint has an invalid world size")
++        expected_ranks = set(range(world_size))
++        actual_ranks = {rank for _, rank in shard_roles}
++        if actual_ranks != expected_ranks:
++            raise CILBoundaryError(
++                "full boundary checkpoint does not contain every native rank "
++                f"for world_size={world_size}"
++            )
++        for rank in sorted(expected_ranks):
++            if shard_roles[(world_size, rank)] != required_roles:
++                missing = sorted(required_roles - shard_roles[(world_size, rank)])
++                raise CILBoundaryError(
++                    f"full boundary checkpoint rank {rank} is missing native state: {missing}"
++                )
+     return _manifest_hash(expected)
+ 
+ 
+@@ -269,8 +337,20 @@ def _repo_root() -> str:
+ 
+ def _source_identity() -> dict[str, Any]:
+     root = _repo_root()
++    relative_paths = set(_BOUNDARY_SOURCE_FILES)
++    for source_root in _BOUNDARY_SOURCE_ROOTS:
++        source_root_path = os.path.join(root, source_root.replace("/", os.sep))
++        if not os.path.isdir(source_root_path):
++            raise CILBoundaryError(f"source identity root is missing: {source_root}")
++        for current, dirs, names in os.walk(source_root_path):
++            dirs[:] = sorted(name for name in dirs if name != "__pycache__" and not name.startswith("."))
++            for name in sorted(names):
++                if name.endswith(".py") and not name.startswith("."):
++                    path = os.path.join(current, name)
++                    relative_paths.add(os.path.relpath(path, root).replace(os.sep, "/"))
++
+     files: list[dict[str, Any]] = []
+-    for relative in _BOUNDARY_SOURCE_FILES:
++    for relative in sorted(relative_paths):
+         path = os.path.join(root, relative.replace("/", os.sep))
+         if not os.path.isfile(path):
+             raise CILBoundaryError(f"source identity file is missing: {relative}")
+@@ -321,18 +401,22 @@ def _model_identity(config: PPOConfig) -> dict[str, Any]:
+     model_path = str(model_cfg.model_path)
+     revision = getattr(model_cfg, "revision", None) or getattr(model_cfg, "model_revision", None)
+     identity: dict[str, Any] = {"path": os.path.abspath(os.path.expanduser(model_path))}
+-    if revision:
+-        identity["revision"] = str(revision)
+-    if os.path.isdir(identity["path"]):
+-        metadata = []
+-        for name in ("config.json", "generation_config.json", "tokenizer_config.json"):
+-            candidate = os.path.join(identity["path"], name)
+-            if os.path.isfile(candidate):
+-                metadata.append({"path": name, "bytes": os.path.getsize(candidate), "sha256": _sha256_file(candidate)})
+-        if metadata:
+-            identity["metadata"] = metadata
+-    if "revision" not in identity and "metadata" not in identity:
+-        raise CILBoundaryError("model identity needs an immutable revision or local model metadata")
++    if os.path.exists(identity["path"]):
++        content_manifest = _path_identity(identity["path"], label="model", include_contents=True)
++        if content_manifest.get("kind") == "directory" and not content_manifest.get("files"):
++            raise CILBoundaryError("model identity cannot bind an empty local model directory")
++        identity["content_manifest"] = content_manifest
++    else:
++        # A remote model reference is accepted only when pinned to a commit-like
++        # immutable revision.  A branch/tag or path string alone cannot prove
++        # that the weights, index, config and tokenizer are unchanged.
++        revision_text = str(revision or "")
++        hex_digits = set("0123456789abcdefABCDEF")
++        if len(revision_text) != 40 or any(char not in hex_digits for char in revision_text):
++            raise CILBoundaryError(
++                "model identity needs a local content manifest or a 40-hex immutable revision"
++            )
++        identity["revision"] = revision_text
+     identity["anchor_provenance"] = "reconstructed_from_task1_actor"
+     identity["hash"] = _sha256_bytes(_canonical_json_bytes(identity))
+     return identity
+@@ -573,6 +657,8 @@ def _load_task_boundary(path: str) -> dict[str, Any]:
+     manifest_hash = _validate_artifact_manifest(checkpoint_root, checkpoint.get("files"), label="checkpoint")
+     if manifest_hash != checkpoint.get("manifest_sha256"):
+         raise CILBoundaryError("checkpoint manifest hash mismatch")
++    if "dataloader.pt" not in {item["path"] for item in checkpoint["files"]}:
++        raise CILBoundaryError("full boundary checkpoint is missing dataloader.pt")
+     if not any(
+         f["path"].startswith("actor/") and "optim_world_size_" in f["path"]
+         for f in checkpoint["files"]
+@@ -726,6 +812,7 @@ def _publish_task_boundary(
+         for item in checkpoint_files
+     ):
+         raise CILBoundaryError("boundary publication requires worker RNG state")
++    _validate_artifact_manifest(checkpoint_path, checkpoint_files, label="checkpoint")
+ 
+     state_dir = os.path.join(boundary_root, _BOUNDARY_STATE_DIR)
+     os.makedirs(state_dir, exist_ok=True)
+@@ -1494,6 +1581,8 @@ def _run_cil(
+         if known_args.publish_task_boundary:
+             raise CILBoundaryError("a fresh resume run cannot also publish a Task-1 boundary")
+         resume_boundary = _load_task_boundary(known_args.resume_task_boundary)
++    if known_args.stop_after_task_boundary and not known_args.publish_task_boundary:
++        raise CILBoundaryError("--stop_after_task_boundary requires --publish_task_boundary")
+     if known_args.publish_task_boundary and known_args.save_task_ckpt == "none":
+         raise CILBoundaryError("save_task_ckpt=none cannot publish a resumable boundary")
+ 
+@@ -1573,7 +1662,8 @@ def _run_cil(
+ 
+     # Precompute per-task sample counts
+     task_samples_info: list[dict[str, Any]] = []
+-    for idx, ids in enumerate(class_splits):
++    for idx in range(len(class_splits)):
++        ids = class_splits[idx]
+         ordered_class_names = [class_names[i] for i in ids]
+         allowed_norm = {base._normalize_label_name(name) for name in ordered_class_names}
+         train_samples = base._count_class_samples(ppo_config.data.train_files, allowed_norm)
+@@ -1605,6 +1695,11 @@ def _run_cil(
+     start_task_idx = 1 if resume_boundary is not None else 0
+     seen_class_ids: list[int] = list(class_splits[0]) if resume_boundary is not None else []
+     task_acc_matrix: list[list[float]] = []
++    protected_boundary_roots: list[str] = []
++    if resume_boundary is not None:
++        protected_boundary_roots.append(resume_boundary["_boundary_root"])
++    published_boundary_root: Optional[str] = None
++    stopped_after_boundary = False
+ 
+     # ── Wandb ──────────────────────────────────────────────────────────
+     wandb_available = False
+@@ -1716,6 +1811,14 @@ def _run_cil(
+ 
+         extra_eval_results = result.get("extra_eval_results", {}) if isinstance(result, dict) else {}
+         last_checkpoint = result.get("last_checkpoint_path") if isinstance(result, dict) else None
++        boundary_marker_path = result.get("boundary_marker_path") if isinstance(result, dict) else None
++        if boundary_marker_path:
++            published_boundary_root = os.path.dirname(os.path.abspath(boundary_marker_path))
++            protected_boundary_roots.append(published_boundary_root)
++            if known_args.stop_after_task_boundary and task_id != 1:
++                raise CILBoundaryError("stop-after-boundary mode may only publish Task 1")
++        elif known_args.stop_after_task_boundary and task_id == 1:
++            raise CILBoundaryError("stop-after-boundary mode returned without a published boundary marker")
+ 
+         # ── CIL metrics (identical to original) ────────────────────────
+         single_acc = extra_eval_results.get(f"task{task_id}", {}).get(
+@@ -1801,8 +1904,8 @@ def _run_cil(
+                     if not os.path.isdir(full_path):
+                         continue
+                     if entry.startswith("global_step_") and entry != ckpt_dirname:
+-                        if resume_boundary and _path_within(full_path, resume_boundary["_boundary_root"]):
+-                            raise CILBoundaryError("refusing to prune the read-only source boundary root")
++                        if _path_overlaps_roots(full_path, protected_boundary_roots):
++                            raise CILBoundaryError("refusing to prune a protected boundary path")
+                         shutil.rmtree(full_path)
+             except CILBoundaryError:
+                 raise
+@@ -1814,8 +1917,8 @@ def _run_cil(
+                 for entry in os.listdir(previous_task_dir):
+                     full_path = os.path.join(previous_task_dir, entry)
+                     if os.path.isdir(full_path) and entry.startswith("global_step_"):
+-                        if resume_boundary and _path_within(full_path, resume_boundary["_boundary_root"]):
+-                            raise CILBoundaryError("refusing to prune the read-only source boundary root")
++                        if _path_overlaps_roots(full_path, protected_boundary_roots):
++                            raise CILBoundaryError("refusing to prune a protected boundary path")
+                         shutil.rmtree(full_path)
+             except CILBoundaryError:
+                 raise
+@@ -1842,13 +1945,21 @@ def _run_cil(
+             except Exception as exc:
+                 print(f"Warning: wandb log failed at task {task_id}: {exc}")
+ 
++        if known_args.stop_after_task_boundary and task_id == 1:
++            stopped_after_boundary = True
++            print(
++                "[CIL] Task-1 completion boundary published and validated; "
++                "stopping normally before Task 2."
++            )
++            break
++
+     if known_args.save_task_ckpt == "none" and previous_task_dir:
+         try:
+             for entry in os.listdir(previous_task_dir):
+                 full_path = os.path.join(previous_task_dir, entry)
+                 if os.path.isdir(full_path) and entry.startswith("global_step_"):
+-                    if resume_boundary and _path_within(full_path, resume_boundary["_boundary_root"]):
+-                        raise CILBoundaryError("refusing to prune the read-only source boundary root")
++                    if _path_overlaps_roots(full_path, protected_boundary_roots):
++                        raise CILBoundaryError("refusing to prune a protected boundary path")
+                     shutil.rmtree(full_path)
+         except CILBoundaryError:
+             raise
+@@ -1857,7 +1968,10 @@ def _run_cil(
+ 
+     # ── Clean up ───────────────────────────────────────────────────────
+     ray.kill(runner)
+-    print(f"[CIL] All {total_tasks} tasks completed.")
++    if stopped_after_boundary:
++        print("[CIL] Exited normally after publishing the Task-1 boundary; Task 2 was not run.")
++    else:
++        print(f"[CIL] All {total_tasks} tasks completed.")
+ 
+ 
+ # =========================================================================
+@@ -1906,6 +2020,15 @@ def _parse_args() -> "tuple[argparse.Namespace, list[str]]":
+         default=False,
+         help="Publish a full Task-1 completion boundary after all post-training validation.",
+     )
++    parser.add_argument(
++        "--stop_after_task_boundary",
++        action="store_true",
++        default=False,
++        help=(
++            "After successful Task-1 boundary publication, cleanly exit before Task 2; "
++            "requires --publish_task_boundary."
++        ),
++    )
+ 
+     # ── CTAN args ──────────────────────────────────────────────────────
+     parser.add_argument("--ctan_enable", dest="ema_adv_enable", action="store_true")
+diff --git "a/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\first\\tests\\author_fixes\\test_cil_resume.py" "b/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\current\\tests\\author_fixes\\test_cil_resume.py"
+index 44489af..c6eea39 100644
+--- "a/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\first\\tests\\author_fixes\\test_cil_resume.py"
++++ "b/docs\\remediation\\CAND-RESUME-CIL-001\\r2\\generation\\current\\tests\\author_fixes\\test_cil_resume.py"
+@@ -36,7 +36,7 @@ def _load_production_protocol() -> dict[str, Any]:
+     tree = ast.parse(SOURCE.read_bytes(), filename=str(SOURCE))
+     wanted_functions = {
+         "_canonical_json_bytes", "_sha256_bytes", "_sha256_file", "_atomic_write_json",
+-        "_read_json", "_safe_join", "_path_within", "_artifact_manifest",
++        "_read_json", "_safe_join", "_path_within", "_path_overlaps_roots", "_artifact_manifest",
+         "_manifest_hash", "_validate_artifact_manifest", "_encode_pickle", "_decode_pickle",
+         "_capture_driver_rng_state", "_restore_driver_rng_state", "_validate_driver_rng_payload",
+         "_repo_root", "_source_identity", "_path_identity", "_model_identity", "_input_identity",
+@@ -54,7 +54,7 @@ def _load_production_protocol() -> dict[str, Any]:
+             targets = [target.id for target in node.targets if isinstance(target, ast.Name)]
+             if any(target.startswith("_BOUNDARY_") for target in targets):
+                 nodes.append(node)
+-    assert len(nodes) == len(wanted_functions) + 1 + 4
++    assert len(nodes) == len(wanted_functions) + 1 + 5
+     namespace: dict[str, Any] = {
+         "__file__": str(SOURCE),
+         "Any": Any,
+@@ -139,14 +139,21 @@ def _fixture_context() -> dict[str, Any]:
+     }
+ 
+ 
+-def _make_fixture(tmp_path: Path) -> tuple[dict[str, Any], Path, Path]:
++def _make_fixture(tmp_path: Path, *, world_size: int = 1) -> tuple[dict[str, Any], Path, Path]:
+     root = tmp_path / "task_1"
+     checkpoint = root / "global_step_3"
+     actor = checkpoint / "actor"
+     actor.mkdir(parents=True)
+-    (actor / "model_world_size_1_rank_0.pt").write_bytes(b"model-shard")
+-    (actor / "optim_world_size_1_rank_0.pt").write_bytes(b"optimizer-shard")
+-    (actor / "extra_state_world_size_1_rank_0.pt").write_bytes(b"worker-rng")
++    for rank in range(world_size):
++        (actor / f"model_world_size_{world_size}_rank_{rank}.pt").write_bytes(
++            f"model-shard-{rank}".encode()
++        )
++        (actor / f"optim_world_size_{world_size}_rank_{rank}.pt").write_bytes(
++            f"optimizer-shard-{rank}".encode()
++        )
++        (actor / f"extra_state_world_size_{world_size}_rank_{rank}.pt").write_bytes(
++            f"worker-rng-{rank}".encode()
++        )
+     (checkpoint / "dataloader.pt").write_bytes(b"task1-cursor")
+     tracker = root / "checkpoint_tracker.json"
+     tracker.write_text(json.dumps({
+@@ -173,6 +180,21 @@ def _make_fixture(tmp_path: Path) -> tuple[dict[str, Any], Path, Path]:
+     return context, root, Path(marker)
+ 
+ 
++def _refresh_state_fingerprint(payload: dict[str, Any]) -> None:
++    payload["state_fingerprint"] = N["_sha256_bytes"](N["_canonical_json_bytes"]({
++        "plan": payload["plan"]["hash"],
++        "config": payload["config"]["hash"],
++        "source": payload["source"]["manifest_sha256"],
++        "model": payload["model"]["hash"],
++        "input": payload["input"]["hash"],
++        "loader_policy": payload["loader_policy"],
++        "checkpoint": payload["checkpoint"]["manifest_sha256"],
++        "ema": payload["ema"]["sha256"],
++        "driver": payload["rng"]["driver"]["sha256"],
++        "vllm": payload["rng"]["vllm"],
++    }))
++
++
+ def test_valid_boundary_fixture_is_production_serialized_and_validated(tmp_path):
+     _, root, marker = _make_fixture(tmp_path)
+     boundary = N["_load_task_boundary"](str(marker))
+@@ -218,13 +240,110 @@ def test_model_only_marker_fails_closed(tmp_path):
+         N["_load_task_boundary"](str(marker))
+ 
+ 
++def test_multi_rank_native_checkpoint_fixture_is_accepted(tmp_path):
++    _, _, marker = _make_fixture(tmp_path, world_size=2)
++    boundary = N["_load_task_boundary"](str(marker))
++    files = {item["path"] for item in boundary["checkpoint"]["files"]}
++    assert "dataloader.pt" in files
++    for rank in (0, 1):
++        assert f"actor/model_world_size_2_rank_{rank}.pt" in files
++        assert f"actor/optim_world_size_2_rank_{rank}.pt" in files
++        assert f"actor/extra_state_world_size_2_rank_{rank}.pt" in files
++
++
++def test_missing_dataloader_fails_closed_even_with_refreshed_manifest(tmp_path):
++    _, root, marker = _make_fixture(tmp_path)
++    checkpoint = root / "global_step_3"
++    (checkpoint / "dataloader.pt").unlink()
++    payload = json.loads(marker.read_text(encoding="utf-8"))
++    entries = N["_artifact_manifest"](str(checkpoint))
++    payload["checkpoint"]["files"] = entries
++    payload["checkpoint"]["manifest_sha256"] = N["_manifest_hash"](entries)
++    _refresh_state_fingerprint(payload)
++    marker.write_text(json.dumps(payload), encoding="utf-8")
++    with pytest.raises(N["CILBoundaryError"], match="dataloader.pt"):
++        N["_load_task_boundary"](str(marker))
++
++
++def test_missing_native_rank_state_fails_closed_even_with_refreshed_manifest(tmp_path):
++    _, root, marker = _make_fixture(tmp_path, world_size=2)
++    checkpoint = root / "global_step_3"
++    (checkpoint / "actor" / "optim_world_size_2_rank_1.pt").unlink()
++    payload = json.loads(marker.read_text(encoding="utf-8"))
++    entries = N["_artifact_manifest"](str(checkpoint))
++    payload["checkpoint"]["files"] = entries
++    payload["checkpoint"]["manifest_sha256"] = N["_manifest_hash"](entries)
++    _refresh_state_fingerprint(payload)
++    marker.write_text(json.dumps(payload), encoding="utf-8")
++    with pytest.raises(N["CILBoundaryError"], match="rank 1"):
++        N["_load_task_boundary"](str(marker))
++
++
++def test_model_identity_binds_all_local_model_content(tmp_path):
++    model_dir = tmp_path / "model"
++    model_dir.mkdir()
++    (model_dir / "config.json").write_text('{"model_type":"fixture"}', encoding="utf-8")
++    (model_dir / "tokenizer.json").write_text('{"tokenizer":"fixture"}', encoding="utf-8")
++    (model_dir / "tokenizer_config.json").write_text('{"padding_side":"right"}', encoding="utf-8")
++    (model_dir / "model.safetensors.index.json").write_text('{"weight_map":{}}', encoding="utf-8")
++    (model_dir / "model.safetensors").write_bytes(b"weights-A")
++    config = SimpleNamespace(
++        worker=SimpleNamespace(
++            actor=SimpleNamespace(
++                model=SimpleNamespace(model_path=str(model_dir), revision=None, model_revision=None)
++            )
++        )
++    )
++
++    first = N["_model_identity"](config)
++    assert first["content_manifest"]["kind"] == "directory"
++    assert {item["path"] for item in first["content_manifest"]["files"]} == {
++        "config.json",
++        "model.safetensors",
++        "model.safetensors.index.json",
++        "tokenizer.json",
++        "tokenizer_config.json",
++    }
++    (model_dir / "model.safetensors").write_bytes(b"weights-B")
++    second = N["_model_identity"](config)
++    assert second["hash"] != first["hash"]
++    assert second["content_manifest"]["manifest_sha256"] != first["content_manifest"]["manifest_sha256"]
++
++
++def test_source_identity_covers_dynamic_production_roots_and_config():
++    identity = N["_source_identity"]()
++    paths = {item["path"] for item in identity["files"]}
++    assert len(paths) > 20
++    assert "verl/workers/fsdp_workers.py" in paths
++    assert "verl/workers/actor/dp_actor.py" in paths
++    assert "verl/workers/sharding_manager/fsdp_vllm.py" in paths
++    assert "verl/utils/checkpoint/fsdp_checkpoint_manager.py" in paths
++    assert "examples/config.yaml" in paths
++    assert "scripts/image/rapo_cfg.json" in paths
++    assert not any("__pycache__" in path or path.endswith(".log") for path in paths)
++
++
++def test_pruning_guard_protects_boundary_children_and_parent(tmp_path):
++    boundary_root = tmp_path / "task_1"
++    checkpoint = boundary_root / "global_step_3"
++    unrelated = tmp_path / "task_2" / "global_step_1"
++    assert N["_path_overlaps_roots"](str(checkpoint), [str(boundary_root)])
++    assert N["_path_overlaps_roots"](str(boundary_root), [str(checkpoint)])
++    assert not N["_path_overlaps_roots"](str(unrelated), [str(boundary_root)])
++
++
+ def test_source_guards_preserve_continuous_path_and_restore_order():
+     source = SOURCE.read_text(encoding="utf-8")
+     assert "--resume_task_boundary" in source
+     assert "--publish_task_boundary" in source
++    assert "--stop_after_task_boundary" in source
++    assert "stop-after-boundary mode may only publish Task 1" in source
+     assert "fresh_boundary_resume" in source
+     assert "restore_boundary_checkpoint" in source
+     assert "load_checkpoint_path = None" in source
+     assert source.index("trainer.restore_boundary_checkpoint") < source.index("trainer.actor_rollout_ref_wg.copy_actor_to_anchor()")
+     assert "Task-2 boundary loader cursor must be zero" in source
+-    assert "refusing to prune the read-only source boundary root" in source
++    assert "protected_boundary_roots" in source
++    assert "_path_overlaps_roots" in source
++    assert "refusing to prune a protected boundary path" in source
++    assert "stopping normally before Task 2" in source

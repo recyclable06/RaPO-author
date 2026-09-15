@@ -1,0 +1,12 @@
+{
+  "command": "D:\\anaconda3\\envs\\rapo-b01\\python.exe -B -m pytest tests/author_fixes/test_coco.py tests/author_fixes/test_ctan.py -p no:cacheprovider -v --tb=short",
+  "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\1449\\RaPO-author",
+  "exit_code": 0,
+  "python": "Python 3.10.20",
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "stdout_file": "C:\\Users\\Administrator\\.codex\\worktrees\\0b06\\RaPO-author\\docs\\acceptance\\AUTH-COCO-001\\public-regression.stdout.txt",
+  "stderr_file": "C:\\Users\\Administrator\\.codex\\worktrees\\0b06\\RaPO-author\\docs\\acceptance\\AUTH-COCO-001\\public-regression.stderr.txt"
+}

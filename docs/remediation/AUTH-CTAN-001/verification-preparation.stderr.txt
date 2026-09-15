@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\Administrator\.codex\worktrees\b7ae\RaPO-author\docs\remediation\AUTH-CTAN-001\verify_scope.py", line 129, in <module>
+    assert main_pdf_hash == json.loads((ROOT / "docs/BASELINE.json").read_text())["paper_sha256"]
+  File "D:\anaconda3\envs\rapo-b01\lib\pathlib.py", line 1135, in read_text
+    return f.read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0x80 in position 486: illegal multibyte sequence

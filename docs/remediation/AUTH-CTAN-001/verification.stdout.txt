@@ -1,0 +1,23 @@
+{
+  "result": "PASS: local scope/syntax/preservation only",
+  "baseline_file_count": 204,
+  "baseline_unchanged_count": 196,
+  "production_changes": [
+    "examples/baselines/_rapo_components.py",
+    "examples/baselines/cil_det/image_det_cil_rapo.py",
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+    "scripts/det/rapo_cfg.json",
+    "scripts/image/rapo_cfg.json",
+    "scripts/video/rapo_cfg.json"
+  ],
+  "python_syntax": [
+    "examples/baselines/_rapo_components.py",
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+    "examples/baselines/cil_det/image_det_cil_rapo.py",
+    "tests/author_fixes/run_evidence.py",
+    "tests/author_fixes/source_loader.py",
+    "tests/author_fixes/test_ctan.py",
+    "docs/remediation/AUTH-CTAN-001/verify_scope.py"
+  ],
+  "shell_count": 6
+}

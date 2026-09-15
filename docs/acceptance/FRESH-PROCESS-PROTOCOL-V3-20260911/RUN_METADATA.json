@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-11",
+  "role": "independent_acceptance",
+  "verdict": "NEEDS_REVISION",
+  "prep_root": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v3",
+  "target_root": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "target_entry": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+  "target_entry_bytes": 102269,
+  "target_entry_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+  "prep_declared_file_count": 24,
+  "prep_declared_total_bytes": 183476,
+  "prep_declared_hashes_verified": true,
+  "probe": "probes/v3_targeted_probe.py",
+  "probe_status": "PASS_TARGETED_PROBE_WITH_FINDINGS",
+  "commands": [
+    "python -B probes/v3_targeted_probe.py"
+  ],
+  "gpu_executed": false,
+  "ray_executed": false,
+  "ssh_executed": false,
+  "installation_executed": false,
+  "training_executed": false,
+  "inference_executed": false,
+  "production_imported": false,
+  "production_files_modified": false,
+  "prep_files_modified": false,
+  "acceptance_root": "C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/FRESH-PROCESS-PROTOCOL-V3-20260911"
+}

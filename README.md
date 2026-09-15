@@ -1,4 +1,8 @@
-> **Active reproduction workspace (2026-09-05).** The immutable author drop is tag `author-drop-20260904`; identity is in [`docs/BASELINE.json`](docs/BASELINE.json). Two P1 findings remain open, so this repository is not yet cleared for paper-faithful experiments. Read [`docs/AUTHOR_CODE_STATUS.md`](docs/AUTHOR_CODE_STATUS.md) before using the launchers. The author-provided README begins below and is preserved verbatim in the baseline tag.
+> **作者代码复现工作区 · 2026-09-14**
+>
+> 根目录已整合 CTAN、COCO 局部修复及图像任务边界恢复 R3.1，代码与已独立通过 CPU 验收的版本一致。小规模 GPU 有效更新、同进程跨任务已有有限通过证据；**新进程恢复对照、完整论文规模实验和 COCO AP 尚未通过**。
+>
+> 从 [当前状态](docs/AUTHOR_CODE_STATUS.md)、[复现计划](docs/REPRODUCTION_NEXT_STEPS.md) 和 [整合说明](docs/INTEGRATION_HANDOFF.md) 开始。作者原始 204 文件基线保留在 `author-drop-20260904` 标签，身份见 [BASELINE.json](docs/BASELINE.json)，论文只保留在 [references/](references/2605.09640v1.pdf)。以下是作者提供的使用说明；其中关于论文环境与实验设置的说法属于作者声明，不能代替独立验证。
 
 ---
 

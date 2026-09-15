@@ -4,11 +4,11 @@
     "beta": 0.999,
     "eps": 1e-06,
     "bootstrap_steps": 0,
-    "activate_from_task": 2,
-    "min_std": 0.001,
-    "guard_abs_max": 5.0,
-    "bias_correction": true,
-    "beta_warmup_steps": 2,
+    "activate_from_task": 1,
+    "min_std": 0.0,
+    "guard_abs_max": 0.0,
+    "bias_correction": false,
+    "beta_warmup_steps": 0,
     "beta_warmup_init": 0.9
   },
   "retention_reward": {

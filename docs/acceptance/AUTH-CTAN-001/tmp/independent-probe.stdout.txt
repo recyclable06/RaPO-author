@@ -1,0 +1,28 @@
+{
+  "target_root": "C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author",
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:42:35) [MSC v.1942 64 bit (AMD64)]",
+  "torch": "2.5.1+cpu",
+  "source_sha256": {
+    "examples/baselines/_rapo_components.py": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155"
+  },
+  "checks": [
+    {
+      "id": "noncontiguous_string_groups_and_padding",
+      "status": "passed",
+      "sample_std": 2.588435821108957,
+      "rows": 6,
+      "tokens": 4
+    },
+    {
+      "id": "missing_json_loader_requires_task2_history",
+      "status": "passed",
+      "loader_result": null
+    },
+    {
+      "id": "valid_zero_history_uses_updated_ema_without_floor",
+      "status": "passed",
+      "updated_ema_std": 0.0026299555301666283,
+      "update_count": 8
+    }
+  ]
+}

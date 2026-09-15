@@ -1,0 +1,44 @@
+{
+  "target_root": "C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author",
+  "checks": {
+    "hook_retention_then_ctan": [
+      585,
+      591
+    ],
+    "fit_installs_hook_before_super_and_restores": [
+      598,
+      600,
+      602
+    ],
+    "driver_advantage_before_update_actor": [
+      643,
+      661
+    ],
+    "worker_forwards_batch_to_actor": [
+      551,
+      566
+    ],
+    "actor_reads_advantages_for_policy_loss": [
+      254,
+      262
+    ],
+    "image_runner_loads_passes_and_saves_ema": [
+      444,
+      455,
+      471
+    ],
+    "det_runner_loads_passes_and_saves_ema": [
+      582,
+      592,
+      611
+    ]
+  },
+  "source_sha256": {
+    "examples/baselines/_rapo_components.py": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+    "examples/baselines/cil_det/image_det_cil_rapo.py": "01b298fc5fefb56f40c5d0c3b13e44dfb04f6b34a938f0c56bd7109a19cbbb18",
+    "verl/trainer/ray_trainer.py": "54b9cb7fccc78513440ed05f9c53fe80c43bf86425ae6067ea4a7d41d25017ca",
+    "verl/workers/fsdp_workers.py": "4ce08f3214b9eeaf429c789f76ea2560156cbad003ce465e2eaf48233a99bad6",
+    "verl/workers/actor/dp_actor.py": "2e7ba59831f4a8c0d01e918103f191554cb1bb70df7ee95efddc31c36bd6ded0"
+  }
+}

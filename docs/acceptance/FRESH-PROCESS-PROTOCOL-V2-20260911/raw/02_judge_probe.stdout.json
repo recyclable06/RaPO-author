@@ -1,0 +1,11 @@
+{
+  "effective_variation_zero_fixture_passed": true,
+  "effective_variation_zero_reasons": [],
+  "gpu_executed": false,
+  "interpretation": "judge checks raw_variation but does not require effective_variation > 0; this is a protocol/judge coverage gap, not GPU evidence",
+  "negative_missing_digest_rejected": true,
+  "negative_one_step_rejected": true,
+  "status": "PASS_CPU_JUDGE_PROBE",
+  "training_executed": false,
+  "valid_fixture_pass": true
+}

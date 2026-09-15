@@ -1,0 +1,502 @@
+diff --git a/docs/remediation/CAND-RESUME-CIL-001/r3/generation/r2/examples/baselines/img_cls_cil/image_cls_cil_rapo.py b/docs/remediation/CAND-RESUME-CIL-001/r3/generation/current/examples/baselines/img_cls_cil/image_cls_cil_rapo.py
+index ab332e5..79eeb8f 100644
+--- a/docs/remediation/CAND-RESUME-CIL-001/r3/generation/r2/examples/baselines/img_cls_cil/image_cls_cil_rapo.py
++++ b/docs/remediation/CAND-RESUME-CIL-001/r3/generation/current/examples/baselines/img_cls_cil/image_cls_cil_rapo.py
+@@ -80,23 +80,19 @@ _BOUNDARY_SCHEMA_VERSION = 1
+ _BOUNDARY_MARKER_NAME = "task1-complete.json"
+ _BOUNDARY_STATE_DIR = "boundary_state"
+ _BOUNDARY_SOURCE_ROOTS = (
+-    # These roots are the production Python implementation that controls the
+-    # CIL loader, trainer, native checkpoint manager, workers, actor, reward,
+-    # and sharding/RNG paths.  Only .py files are included; caches and logs are
+-    # deliberately outside the identity contract.
+-    "examples/baselines/cil_misc",
+-    "examples/baselines/img_cls_cil",
+-    "verl/single_controller",
+-    "verl/trainer",
+-    "verl/utils",
+-    "verl/workers",
++    # The complete in-repository runtime trees used by the image CIL path.
++    # Python package initialisers and model patches are included; caches,
++    # logs, checkpoints, and output directories are deliberately excluded.
++    "verl",
++    "examples",
++    "scripts/image",
+ )
+ _BOUNDARY_SOURCE_FILES = (
+-    # Production entry/config files outside the roots above.
+-    "examples/baselines/_rapo_components.py",
+-    "examples/config.yaml",
+-    "scripts/image/rapo_cfg.json",
+-    "verl/protocol.py",
++    # Project dependency locks are part of the executable identity but live
++    # outside the runtime source/config trees above.
++    "requirements.txt",
++    "environment.yml",
++    "environment.lock.yml",
+ )
+ 
+ 
+@@ -343,12 +339,57 @@ def _source_identity() -> dict[str, Any]:
+         if not os.path.isdir(source_root_path):
+             raise CILBoundaryError(f"source identity root is missing: {source_root}")
+         for current, dirs, names in os.walk(source_root_path):
+-            dirs[:] = sorted(name for name in dirs if name != "__pycache__" and not name.startswith("."))
++            dirs[:] = sorted(
++                name for name in dirs
++                if name not in {
++                    "__pycache__", ".git", "cache", "caches",
++                    "docs", "logs", "log", "output", "outputs", "saves", "tmp", "temp",
++                }
++                and not name.startswith(".")
++            )
++            if source_root == "scripts/image":
++                extensions = {".json", ".py", ".sh", ".yaml", ".yml"}
++            elif source_root == "examples":
++                extensions = {".jinja", ".json", ".py", ".yaml", ".yml"}
++            else:
++                extensions = {".py"}
+             for name in sorted(names):
+-                if name.endswith(".py") and not name.startswith("."):
++                if os.path.splitext(name)[1].lower() in extensions and not name.startswith("."):
+                     path = os.path.join(current, name)
+                     relative_paths.add(os.path.relpath(path, root).replace(os.sep, "/"))
+ 
++    # Bind the actual file selected by the dynamic reward loader.  The
++    # manifest must follow the configured path, rather than relying on a
++    # default reward filename that could be changed without changing the
++    # boundary identity.
++    for relative in sorted(relative_paths):
++        if not relative.endswith((".yaml", ".yml")):
++            continue
++        config_path = os.path.join(root, relative.replace("/", os.sep))
++        if not os.path.isfile(config_path):
++            continue
++        with open(config_path, encoding="utf-8") as config_file:
++            for raw_line in config_file:
++                line = raw_line.split("#", 1)[0].strip()
++                if "reward_function:" not in line:
++                    continue
++                reward_spec = line.split("reward_function:", 1)[1].strip().strip("'\"")
++                reward_path_text = reward_spec.rsplit(":", 1)[0].strip()
++                if not reward_path_text:
++                    continue
++                reward_path = os.path.abspath(
++                    os.path.expanduser(
++                        reward_path_text
++                        if os.path.isabs(reward_path_text)
++                        else os.path.join(root, reward_path_text)
++                    )
++                )
++                if not _path_within(reward_path, root) or not os.path.isfile(reward_path):
++                    raise CILBoundaryError(
++                        f"configured reward source is not an in-repository file: {reward_path_text}"
++                    )
++                relative_paths.add(os.path.relpath(reward_path, root).replace(os.sep, "/"))
++
+     files: list[dict[str, Any]] = []
+     for relative in sorted(relative_paths):
+         path = os.path.join(root, relative.replace("/", os.sep))
+@@ -398,25 +439,43 @@ def _path_identity(path_like: Optional[str], *, label: str, include_contents: bo
+ 
+ def _model_identity(config: PPOConfig) -> dict[str, Any]:
+     model_cfg = config.worker.actor.model
+-    model_path = str(model_cfg.model_path)
+-    revision = getattr(model_cfg, "revision", None) or getattr(model_cfg, "model_revision", None)
+-    identity: dict[str, Any] = {"path": os.path.abspath(os.path.expanduser(model_path))}
+-    if os.path.exists(identity["path"]):
+-        content_manifest = _path_identity(identity["path"], label="model", include_contents=True)
+-        if content_manifest.get("kind") == "directory" and not content_manifest.get("files"):
+-            raise CILBoundaryError("model identity cannot bind an empty local model directory")
+-        identity["content_manifest"] = content_manifest
+-    else:
+-        # A remote model reference is accepted only when pinned to a commit-like
+-        # immutable revision.  A branch/tag or path string alone cannot prove
+-        # that the weights, index, config and tokenizer are unchanged.
+-        revision_text = str(revision or "")
+-        hex_digits = set("0123456789abcdefABCDEF")
+-        if len(revision_text) != 40 or any(char not in hex_digits for char in revision_text):
+-            raise CILBoundaryError(
+-                "model identity needs a local content manifest or a 40-hex immutable revision"
+-            )
+-        identity["revision"] = revision_text
++    model_path = str(getattr(model_cfg, "model_path", "") or "").strip()
++    if not model_path:
++        raise CILBoundaryError(
++            "boundary model identity requires an existing local model directory; "
++            "remote model IDs and revisions are not accepted"
++        )
++    tokenizer_path = str(getattr(model_cfg, "tokenizer_path", None) or model_path).strip()
++    if not tokenizer_path:
++        raise CILBoundaryError(
++            "boundary model identity requires an existing local tokenizer/processor path"
++        )
++    model_path_abs = os.path.abspath(os.path.expanduser(model_path))
++    tokenizer_path_abs = os.path.abspath(os.path.expanduser(tokenizer_path))
++    if not os.path.exists(model_path_abs) or not os.path.isdir(model_path_abs):
++        raise CILBoundaryError(
++            "boundary model identity requires an existing local model directory; "
++            "remote model IDs and revisions are not accepted"
++        )
++    if not os.path.exists(tokenizer_path_abs):
++        raise CILBoundaryError(
++            "boundary model identity requires an existing local tokenizer/processor path"
++        )
++
++    content_manifest = _path_identity(model_path_abs, label="model", include_contents=True)
++    if content_manifest.get("kind") == "directory" and not content_manifest.get("files"):
++        raise CILBoundaryError("model identity cannot bind an empty local model directory")
++    tokenizer_manifest = _path_identity(
++        tokenizer_path_abs, label="tokenizer/processor", include_contents=True
++    )
++    if tokenizer_manifest.get("kind") == "directory" and not tokenizer_manifest.get("files"):
++        raise CILBoundaryError("tokenizer/processor identity cannot bind an empty local directory")
++    identity: dict[str, Any] = {
++        "path": model_path_abs,
++        "content_manifest": content_manifest,
++        "tokenizer_path": tokenizer_path_abs,
++        "tokenizer_content_manifest": tokenizer_manifest,
++    }
+     identity["anchor_provenance"] = "reconstructed_from_task1_actor"
+     identity["hash"] = _sha256_bytes(_canonical_json_bytes(identity))
+     return identity
+@@ -1210,14 +1269,18 @@ class PersistentRunner:
+ 
+     def init(self, config: PPOConfig) -> None:
+         """Initialise workers, tokenizer, processor, reward fns (once)."""
++        tokenizer_path = (
++            getattr(config.worker.actor.model, "tokenizer_path", None)
++            or config.worker.actor.model.model_path
++        )
+         self._tokenizer = get_tokenizer(
+-            config.worker.actor.model.model_path,
++            tokenizer_path,
+             override_chat_template=config.data.override_chat_template,
+             trust_remote_code=config.worker.actor.model.trust_remote_code,
+             use_fast=True,
+         )
+         self._processor = get_processor(
+-            config.worker.actor.model.model_path,
++            tokenizer_path,
+             override_chat_template=config.data.override_chat_template,
+             trust_remote_code=config.worker.actor.model.trust_remote_code,
+             use_fast=True,
+@@ -1905,7 +1968,8 @@ def _run_cil(
+                         continue
+                     if entry.startswith("global_step_") and entry != ckpt_dirname:
+                         if _path_overlaps_roots(full_path, protected_boundary_roots):
+-                            raise CILBoundaryError("refusing to prune a protected boundary path")
++                            print(f"[CIL] Preserving protected boundary checkpoint: {full_path}")
++                            continue
+                         shutil.rmtree(full_path)
+             except CILBoundaryError:
+                 raise
+@@ -1918,7 +1982,8 @@ def _run_cil(
+                     full_path = os.path.join(previous_task_dir, entry)
+                     if os.path.isdir(full_path) and entry.startswith("global_step_"):
+                         if _path_overlaps_roots(full_path, protected_boundary_roots):
+-                            raise CILBoundaryError("refusing to prune a protected boundary path")
++                            print(f"[CIL] Preserving protected boundary checkpoint: {full_path}")
++                            continue
+                         shutil.rmtree(full_path)
+             except CILBoundaryError:
+                 raise
+@@ -1959,7 +2024,8 @@ def _run_cil(
+                 full_path = os.path.join(previous_task_dir, entry)
+                 if os.path.isdir(full_path) and entry.startswith("global_step_"):
+                     if _path_overlaps_roots(full_path, protected_boundary_roots):
+-                        raise CILBoundaryError("refusing to prune a protected boundary path")
++                        print(f"[CIL] Preserving protected boundary checkpoint: {full_path}")
++                        continue
+                     shutil.rmtree(full_path)
+         except CILBoundaryError:
+             raise
+diff --git a/docs/remediation/CAND-RESUME-CIL-001/r3/generation/r2/tests/author_fixes/test_cil_resume.py b/docs/remediation/CAND-RESUME-CIL-001/r3/generation/current/tests/author_fixes/test_cil_resume.py
+index c6eea39..a80d5ef 100644
+--- a/docs/remediation/CAND-RESUME-CIL-001/r3/generation/r2/tests/author_fixes/test_cil_resume.py
++++ b/docs/remediation/CAND-RESUME-CIL-001/r3/generation/current/tests/author_fixes/test_cil_resume.py
+@@ -17,6 +17,7 @@ import json
+ import os
+ import pickle
+ import random
++import shutil
+ import tempfile
+ from pathlib import Path
+ from types import SimpleNamespace
+@@ -45,6 +46,7 @@ def _load_production_protocol() -> dict[str, Any]:
+         "_publish_task_boundary",
+     }
+     nodes = []
++    boundary_assignments = []
+     for node in tree.body:
+         if isinstance(node, ast.ClassDef) and node.name == "CILBoundaryError":
+             nodes.append(node)
+@@ -53,8 +55,9 @@ def _load_production_protocol() -> dict[str, Any]:
+         elif isinstance(node, ast.Assign):
+             targets = [target.id for target in node.targets if isinstance(target, ast.Name)]
+             if any(target.startswith("_BOUNDARY_") for target in targets):
++                boundary_assignments.append(node)
+                 nodes.append(node)
+-    assert len(nodes) == len(wanted_functions) + 1 + 5
++    assert len(nodes) == len(wanted_functions) + 1 + len(boundary_assignments)
+     namespace: dict[str, Any] = {
+         "__file__": str(SOURCE),
+         "Any": Any,
+@@ -310,19 +313,147 @@ def test_model_identity_binds_all_local_model_content(tmp_path):
+     assert second["content_manifest"]["manifest_sha256"] != first["content_manifest"]["manifest_sha256"]
+ 
+ 
++def test_model_identity_rejects_remote_id_even_with_immutable_revision():
++    config = SimpleNamespace(
++        worker=SimpleNamespace(
++            actor=SimpleNamespace(
++                model=SimpleNamespace(
++                    model_path="org/model",
++                    tokenizer_path="org/tokenizer",
++                    revision="0123456789abcdef0123456789abcdef01234567",
++                )
++            )
++        )
++    )
++    with pytest.raises(N["CILBoundaryError"], match="local model directory"):
++        N["_model_identity"](config)
++
++
++def test_model_identity_binds_independent_tokenizer_content(tmp_path):
++    model_dir = tmp_path / "model"
++    tokenizer_dir = tmp_path / "tokenizer"
++    model_dir.mkdir()
++    tokenizer_dir.mkdir()
++    (model_dir / "config.json").write_text('{"model_type":"fixture"}', encoding="utf-8")
++    (model_dir / "model.safetensors").write_bytes(b"weights")
++    (tokenizer_dir / "tokenizer.json").write_bytes(b"token-A")
++    config = SimpleNamespace(
++        worker=SimpleNamespace(
++            actor=SimpleNamespace(
++                model=SimpleNamespace(
++                    model_path=str(model_dir),
++                    tokenizer_path=str(tokenizer_dir),
++                )
++            )
++        )
++    )
++
++    first = N["_model_identity"](config)
++    assert first["tokenizer_path"] == str(tokenizer_dir.resolve())
++    assert first["tokenizer_content_manifest"]["kind"] == "directory"
++    first_tokenizer_hash = first["tokenizer_content_manifest"]["manifest_sha256"]
++    (tokenizer_dir / "tokenizer.json").write_bytes(b"token-B")
++    second = N["_model_identity"](config)
++    assert second["hash"] != first["hash"]
++    assert second["tokenizer_content_manifest"]["manifest_sha256"] != first_tokenizer_hash
++
++
++def test_runner_consumes_configured_tokenizer_path():
++    tree = ast.parse(SOURCE.read_text(encoding="utf-8"), filename=str(SOURCE))
++    runner = next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == "PersistentRunner")
++    init = next(node for node in runner.body if isinstance(node, ast.FunctionDef) and node.name == "init")
++    calls = {
++        node.func.id: node
++        for node in ast.walk(init)
++        if isinstance(node, ast.Call)
++        and isinstance(node.func, ast.Name)
++        and node.func.id in {"get_tokenizer", "get_processor"}
++    }
++    assert set(calls) == {"get_tokenizer", "get_processor"}
++    assert all(ast.unparse(call.args[0]) == "tokenizer_path" for call in calls.values())
++
++
+ def test_source_identity_covers_dynamic_production_roots_and_config():
+     identity = N["_source_identity"]()
+     paths = {item["path"] for item in identity["files"]}
+-    assert len(paths) > 20
++    assert len(paths) > 80
++    assert "verl/__init__.py" in paths
++    assert "verl/models/__init__.py" in paths
++    assert "verl/models/monkey_patch.py" in paths
++    assert "verl/models/transformers/qwen2_vl.py" in paths
+     assert "verl/workers/fsdp_workers.py" in paths
+     assert "verl/workers/actor/dp_actor.py" in paths
+     assert "verl/workers/sharding_manager/fsdp_vllm.py" in paths
+     assert "verl/utils/checkpoint/fsdp_checkpoint_manager.py" in paths
++    assert "examples/reward_function/cls.py" in paths
++    assert "examples/baselines/img_cls_cil/image_cls_cil_rapo.py" in paths
+     assert "examples/config.yaml" in paths
+     assert "scripts/image/rapo_cfg.json" in paths
++    assert "scripts/image/10task.sh" in paths
++    assert "requirements.txt" in paths
++    assert "environment.lock.yml" in paths
+     assert not any("__pycache__" in path or path.endswith(".log") for path in paths)
+ 
+ 
++def test_source_identity_tracks_configured_reward_and_tree_add_delete_mutation(tmp_path):
++    for relative in (
++        "verl/models",
++        "examples/baselines/img_cls_cil",
++        "examples/baselines/cil_misc",
++        "scripts/image",
++        "runtime",
++        "examples/cache",
++        "examples/output",
++        "examples/docs",
++    ):
++        (tmp_path / relative).mkdir(parents=True, exist_ok=True)
++    for relative in ("requirements.txt", "environment.yml", "environment.lock.yml"):
++        (tmp_path / relative).write_text(relative, encoding="utf-8")
++    (tmp_path / "verl/__init__.py").write_text("", encoding="utf-8")
++    (tmp_path / "verl/models/__init__.py").write_text("", encoding="utf-8")
++    (tmp_path / "verl/models/runtime.py").write_text("MODEL = 1\n", encoding="utf-8")
++    (tmp_path / "examples/baselines/img_cls_cil/__init__.py").write_text("", encoding="utf-8")
++    (tmp_path / "examples/baselines/cil_misc/__init__.py").write_text("", encoding="utf-8")
++    (tmp_path / "examples/config.yaml").write_text(
++        "worker:\n  reward:\n    reward_function: ./runtime/custom_reward.py:compute_score\n",
++        encoding="utf-8",
++    )
++    (tmp_path / "scripts/image/rapo_cfg.json").write_text("{}\n", encoding="utf-8")
++    (tmp_path / "scripts/image/10task.sh").write_text("#!/usr/bin/env bash\n", encoding="utf-8")
++    reward = tmp_path / "runtime/custom_reward.py"
++    reward.write_text("def compute_score(data):\n    return 1.0\n", encoding="utf-8")
++    (tmp_path / "examples/cache/ignored.py").write_text("IGNORED = True\n", encoding="utf-8")
++    (tmp_path / "examples/output/ignored.py").write_text("IGNORED = True\n", encoding="utf-8")
++    (tmp_path / "examples/docs/ignored.py").write_text("IGNORED = True\n", encoding="utf-8")
++
++    previous_repo_root = N["_repo_root"]
++    N["_repo_root"] = lambda: str(tmp_path)
++    try:
++        first = N["_source_identity"]()
++        first_paths = {item["path"] for item in first["files"]}
++        assert "verl/models/__init__.py" in first_paths
++        assert "runtime/custom_reward.py" in first_paths
++        assert "examples/reward_function/cls.py" not in first_paths
++        assert "examples/cache/ignored.py" not in first_paths
++        assert "examples/output/ignored.py" not in first_paths
++        assert "examples/docs/ignored.py" not in first_paths
++
++        added = tmp_path / "verl/models/added.py"
++        added.write_text("ADDED = True\n", encoding="utf-8")
++        with_added = N["_source_identity"]()
++        assert with_added["manifest_sha256"] != first["manifest_sha256"]
++        added.unlink()
++        after_delete = N["_source_identity"]()
++        assert after_delete["manifest_sha256"] == first["manifest_sha256"]
++
++        original = reward.read_text(encoding="utf-8")
++        reward.write_text(original.replace("1.0", "2.0"), encoding="utf-8")
++        after_same_size_mutation = N["_source_identity"]()
++        assert after_same_size_mutation["manifest_sha256"] != first["manifest_sha256"]
++    finally:
++        N["_repo_root"] = previous_repo_root
++
++
+ def test_pruning_guard_protects_boundary_children_and_parent(tmp_path):
+     boundary_root = tmp_path / "task_1"
+     checkpoint = boundary_root / "global_step_3"
+@@ -345,5 +476,107 @@ def test_source_guards_preserve_continuous_path_and_restore_order():
+     assert "Task-2 boundary loader cursor must be zero" in source
+     assert "protected_boundary_roots" in source
+     assert "_path_overlaps_roots" in source
+-    assert "refusing to prune a protected boundary path" in source
++    assert "Preserving protected boundary checkpoint" in source
++    assert "refusing to prune a protected boundary path" not in source
+     assert "stopping normally before Task 2" in source
++
++
++def _compile_production_pruning_loops():
++    tree = ast.parse(SOURCE.read_text(encoding="utf-8"), filename=str(SOURCE))
++    run_node = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "_run_cil")
++    loops = [
++        node
++        for node in ast.walk(run_node)
++        if isinstance(node, ast.For)
++        and isinstance(node.target, ast.Name)
++        and node.target.id == "entry"
++        and "_path_overlaps_roots" in ast.unparse(node)
++        and "shutil.rmtree" in ast.unparse(node)
++    ]
++    assert len(loops) == 3
++    loops.sort(key=lambda node: node.lineno)
++    compiled = []
++    for index, loop in enumerate(loops):
++        wrapper = ast.FunctionDef(
++            name=f"prune_{index}",
++            args=ast.arguments(
++                posonlyargs=[],
++                args=[
++                    ast.arg(arg="task_save_dir"),
++                    ast.arg(arg="previous_task_dir"),
++                    ast.arg(arg="protected_boundary_roots"),
++                    ast.arg(arg="ckpt_dirname"),
++                ],
++                vararg=None,
++                kwonlyargs=[],
++                kw_defaults=[],
++                kwarg=None,
++                defaults=[],
++            ),
++            body=[copy.deepcopy(loop), ast.Return(value=ast.Constant(value=None))],
++            decorator_list=[],
++            returns=None,
++            type_comment=None,
++        )
++        module = ast.Module(body=[wrapper], type_ignores=[])
++        ast.fix_missing_locations(module)
++        namespace = {
++            "os": os,
++            "shutil": shutil,
++            "_path_overlaps_roots": N["_path_overlaps_roots"],
++        }
++        exec(compile(module, str(SOURCE), "exec"), namespace)
++        compiled.append(namespace[f"prune_{index}"])
++    return compiled
++
++
++def _make_checkpoint(root: Path, name: str) -> Path:
++    checkpoint = root / name
++    checkpoint.mkdir(parents=True, exist_ok=True)
++    (checkpoint / "payload").write_text(name, encoding="utf-8")
++    return checkpoint
++
++
++def test_actual_production_pruning_skips_boundary_and_continues(tmp_path):
++    current_prune, previous_prune, final_prune = _compile_production_pruning_loops()
++    boundary_root = tmp_path / "task_1"
++    protected_one = _make_checkpoint(boundary_root, "global_step_1")
++    protected_two = _make_checkpoint(boundary_root, "global_step_2")
++    before_boundary = {
++        path.relative_to(boundary_root).as_posix(): path.read_text(encoding="utf-8")
++        for path in boundary_root.rglob("payload")
++    }
++
++    # Task 1 has multiple checkpoints and the protected boundary is its root.
++    # Returning from this production loop is the path that must reach the
++    # normal stop-after-boundary break.
++    current_prune(
++        str(boundary_root), str(boundary_root), [str(boundary_root)], "global_step_2"
++    )
++    reached_task1_stop = True
++    assert reached_task1_stop
++    assert protected_one.is_dir() and protected_two.is_dir()
++
++    # A no-stop run entering Task 2 must preserve the published Task-1 root
++    # while still pruning ordinary old checkpoints.
++    task2_dir = tmp_path / "task_2"
++    old_task2 = _make_checkpoint(task2_dir, "global_step_1")
++    keep_task2 = _make_checkpoint(task2_dir, "global_step_2")
++    previous_prune(
++        str(task2_dir), str(task2_dir), [str(boundary_root)], "global_step_2"
++    )
++    reached_task2 = True
++    assert reached_task2
++    assert not old_task2.exists()
++    assert not keep_task2.exists()
++
++    previous_prune(
++        str(boundary_root), str(boundary_root), [str(boundary_root)], "global_step_99"
++    )
++    final_prune(
++        str(boundary_root), str(boundary_root), [str(boundary_root)], "global_step_99"
++    )
++    assert {
++        path.relative_to(boundary_root).as_posix(): path.read_text(encoding="utf-8")
++        for path in boundary_root.rglob("payload")
++    } == before_boundary

@@ -1,0 +1,11 @@
+{
+  "start_manifest_self_sha256": "e6f54e82a577822f8d6ba8ac887b29c5017c6f8894488cf17851b62ff69d148f",
+  "end_manifest_self_sha256": "e6f54e82a577822f8d6ba8ac887b29c5017c6f8894488cf17851b62ff69d148f",
+  "start_listed_mismatch_count": 0,
+  "end_listed_mismatch_count": 0,
+  "start_ctan_manifest_self_sha256": "1c2365642756bb24c37e2e12fbd734e3d29d5d30863ce0dfe55a44cb7351c0ef",
+  "end_ctan_manifest_self_sha256": "1c2365642756bb24c37e2e12fbd734e3d29d5d30863ce0dfe55a44cb7351c0ef",
+  "start_target_ctan_mismatches": "AGENTS.md,examples/baselines/cil_det/image_det_cil_rapo.py",
+  "end_target_ctan_mismatches": "AGENTS.md,examples/baselines/cil_det/image_det_cil_rapo.py",
+  "hashes_unchanged": true
+}

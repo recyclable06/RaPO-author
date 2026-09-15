@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "purpose": "Independent acceptance start/end manifest comparison for the bounded continuous Task 1 -> Task 2 diagnostic",
+  "decision": "PASS_LIMITED_CONTINUOUS_RUNTIME_WITH_SCOPE_NOTES",
+  "target_diagnostic": {
+    "root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\cross-task-resume-20260909",
+    "manifest": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\cross-task-resume-20260909\\HASHES.json",
+    "declared_file_count": 12,
+    "start": {
+      "manifest_sha256": "0814e7fe716c112aac078fae45f2b5962f838e53a1d2043b237627caddf0aae8",
+      "all_files_match": true
+    },
+    "end": {
+      "manifest_sha256": "0814e7fe716c112aac078fae45f2b5962f838e53a1d2043b237627caddf0aae8",
+      "all_files_match": true
+    },
+    "unchanged": true
+  },
+  "runtime_evidence": {
+    "root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909",
+    "manifest": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\HASHES.json",
+    "declared_file_count": 45,
+    "start": {
+      "manifest_sha256": "21e57f9d6c0432fbad0a7c8d11080251353d8f2f1b8ee6dc2b2d9f452490465f",
+      "all_files_match": true
+    },
+    "end": {
+      "manifest_sha256": "21e57f9d6c0432fbad0a7c8d11080251353d8f2f1b8ee6dc2b2d9f452490465f",
+      "all_files_match": true
+    },
+    "unchanged": true
+  },
+  "runtime_result": {
+    "path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\raw\\run\\continuous-probe-result-rejudged.json",
+    "sha256": "d9397499c7d7f66fadfd334be12c3fc340bab718c3f06e6d786e3f8c1832ef34"
+  },
+  "acceptance_artifacts_at_write": {
+    "independent_probe_sha256": "0d3925e6919f57049fc936cdd6e17597f19ac2d3e4627511790527b839db2dce",
+    "independent_evidence_sha256": "f4fa42ff34fc2078414caaaf4f3d001287b30fa5f3920cd7754370fc0ce2e495"
+  },
+  "scope_notes": [
+    "The manifest comparison covers the frozen target diagnostic and fixed runtime evidence only.",
+    "The runtime evidence has no archived standalone shell exitcode, stdout, stderr, or explicit Ray shutdown result.",
+    "This comparison does not establish cross-process exact resume or full-parameter equality."
+  ]
+}

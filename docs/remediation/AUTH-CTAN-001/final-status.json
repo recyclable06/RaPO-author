@@ -1,0 +1,12 @@
+{
+  "command": [
+    "git",
+    "status",
+    "--short",
+    "--branch"
+  ],
+  "exit_code": 0,
+  "stdout": "## codex/auth-ctan-001\n M examples/baselines/_rapo_components.py\n M examples/baselines/cil_det/image_det_cil_rapo.py\n M examples/baselines/img_cls_cil/image_cls_cil_rapo.py\n M scripts/det/rapo_cfg.json\n M scripts/image/rapo_cfg.json\n M scripts/video/rapo_cfg.json\n?? docs/remediation/\n?? tests/\n",
+  "stderr": "warning: unable to access 'C:\\Users\\Administrator/.config/git/ignore': Permission denied\nwarning: unable to access 'C:\\Users\\Administrator/.config/git/ignore': Permission denied\n",
+  "diff_check_exit_code": 0
+}

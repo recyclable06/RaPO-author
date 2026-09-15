@@ -1,0 +1,2157 @@
+{
+  "schema_version": 1,
+  "probe": "independent_probe.py",
+  "diagnostic_root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\cross-task-resume-20260909",
+  "source_root": "C:\\Users\\Administrator\\.codex\\worktrees\\5ced\\RaPO-author",
+  "evidence_root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909",
+  "runtime_result_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\raw\\run\\continuous-probe-result-rejudged.json",
+  "runtime_result_bytes": 49996,
+  "runtime_result_sha256": "d9397499c7d7f66fadfd334be12c3fc340bab718c3f06e6d786e3f8c1832ef34",
+  "evidence_manifest_start": {
+    "status": "pass",
+    "manifest_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\HASHES.json",
+    "manifest_sha256": "21e57f9d6c0432fbad0a7c8d11080251353d8f2f1b8ee6dc2b2d9f452490465f",
+    "self_excluded": "HASHES.json",
+    "declared_file_count": 45,
+    "all_files_match": true,
+    "mismatches": []
+  },
+  "evidence_manifest_end": {
+    "status": "pass",
+    "manifest_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\HASHES.json",
+    "manifest_sha256": "21e57f9d6c0432fbad0a7c8d11080251353d8f2f1b8ee6dc2b2d9f452490465f",
+    "self_excluded": "HASHES.json",
+    "declared_file_count": 45,
+    "all_files_match": true,
+    "mismatches": []
+  },
+  "evidence_manifest_unchanged": true,
+  "target_manifest_start": {
+    "status": "pass",
+    "manifest_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\cross-task-resume-20260909\\HASHES.json",
+    "manifest_sha256": "0814e7fe716c112aac078fae45f2b5962f838e53a1d2043b237627caddf0aae8",
+    "self_excluded": true,
+    "declared_file_count": 12,
+    "all_files_match": true,
+    "mismatches": [],
+    "unexpected_non_cache_files": []
+  },
+  "target_manifest_end": {
+    "status": "pass",
+    "manifest_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\cross-task-resume-20260909\\HASHES.json",
+    "manifest_sha256": "0814e7fe716c112aac078fae45f2b5962f838e53a1d2043b237627caddf0aae8",
+    "self_excluded": true,
+    "declared_file_count": 12,
+    "all_files_match": true,
+    "mismatches": [],
+    "unexpected_non_cache_files": []
+  },
+  "target_manifest_unchanged": true,
+  "source_inventory": {
+    "status": "pass",
+    "manifest_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+    "manifest_sha256_expected": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+    "manifest_hash_ok": true,
+    "target_branch": "codex/integrate-accepted-fixes",
+    "target_head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+    "target_head_ok": true,
+    "algorithm_file_count": 6,
+    "test_file_count": 4,
+    "key_files_all_match": true,
+    "key_files": [
+      {
+        "path": "examples/baselines/_rapo_components.py",
+        "exists": true,
+        "expected_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+        "actual_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+        "exists": true,
+        "expected_sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+        "actual_sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+        "exists": true,
+        "expected_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+        "actual_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "scripts/image/rapo_cfg.json",
+        "exists": true,
+        "expected_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "actual_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "scripts/video/rapo_cfg.json",
+        "exists": true,
+        "expected_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "actual_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "scripts/det/rapo_cfg.json",
+        "exists": true,
+        "expected_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "actual_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/run_evidence.py",
+        "exists": true,
+        "expected_sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+        "actual_sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/source_loader.py",
+        "exists": true,
+        "expected_sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+        "actual_sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/test_coco.py",
+        "exists": true,
+        "expected_sha256": "7052ecc16f4c0a31689010238bb5848f578bea4d423db05f90c7cf449227e9a9",
+        "actual_sha256": "7052ecc16f4c0a31689010238bb5848f578bea4d423db05f90c7cf449227e9a9",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/test_ctan.py",
+        "exists": true,
+        "expected_sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2",
+        "actual_sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2",
+        "source_match_recorded": true,
+        "ok": true
+      }
+    ]
+  },
+  "source_git_status": {
+    "returncode": 128,
+    "stdout": "",
+    "stderr": "fatal: detected dubious ownership in repository at 'C:/Users/Administrator/.codex/worktrees/5ced/RaPO-author'\n'C:/Users/Administrator/.codex/worktrees/5ced/RaPO-author/.git' is owned by:\n\tBUILTIN/Administrators (S-1-5-32-544)\nbut the current user is:\n\tDESKTOP-NLE7LS7/CodexSandboxOffline (S-1-5-21-3608632088-1722975990-1934252663-1001)\nTo add an exception for this directory, call:\n\n\tgit config --global --add safe.directory C:/Users/Administrator/.codex/worktrees/5ced/RaPO-author"
+  },
+  "static_source_audit": {
+    "status": "pass",
+    "probe_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\cross-task-resume-20260909\\continuous_task_probe.py",
+    "probe_sha256": "37b5f5c31b5fbf322ea192887be12646d50c728e90c49f253cd994c1488ebd28",
+    "production_entry_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+    "parse_error": null,
+    "checks": {
+      "probe_parses": true,
+      "probe_uses_production_runner_actor_class": true,
+      "probe_calls_production_cil_entry": true,
+      "probe_calls_original_runner_run_task": true,
+      "probe_calls_unchanged_production_run_task": true,
+      "probe_transparently_wraps_reinit": true,
+      "probe_transparently_wraps_anchor_copy": true,
+      "probe_transparently_wraps_advantage": true,
+      "probe_does_not_call_load_weights_directly": true,
+      "production_runner_created_once": true,
+      "production_runner_worker_init_once": true,
+      "production_task_loop_calls_run_task": true,
+      "production_task2_checkpoint_path_passed": true,
+      "production_task2_skip_dataloader_state": true,
+      "production_anchor_actions_are_task_gated": true,
+      "production_task_reinit": true,
+      "production_task_fit": true,
+      "production_ema_save": true,
+      "production_task2_uses_in_memory_state": true,
+      "production_reinit_presets_step": true,
+      "production_reinit_clears_task2_load": true,
+      "checkpoint_manager_saves_model_optimizer_extra": true,
+      "checkpoint_manager_saves_tracker": true,
+      "checkpoint_manager_saves_optimizer_scheduler_rng": true,
+      "checkpoint_manager_loads_optimizer_scheduler_rng": true,
+      "checkpoint_base_rng_components": true,
+      "dataloader_is_stateful_and_seeded": true,
+      "production_update_path": true,
+      "production_rapo_hook_path": true
+    }
+  },
+  "runtime_result_compact": {
+    "schema_version": 2,
+    "probe": "continuous_task_probe",
+    "status": "pass_limited_continuous_runtime",
+    "gates": {
+      "same_runner_pid": true,
+      "same_worker_group": true,
+      "worker_mapping_stable": true,
+      "task_boundary_paths": true,
+      "global_steps_continuous": true,
+      "task1_actor_updated": true,
+      "task2_actor_updated": true,
+      "actor_continuity_at_task_boundary": true,
+      "anchor_copy_and_freeze": true,
+      "four_completion_groups": true,
+      "group_reward_variation": true,
+      "raw_reward_finite_and_varied": true,
+      "advantages_finite_and_nonzero": true,
+      "retention_formula_and_anchor_observed": true,
+      "second_task2_retention_varies": true,
+      "ema_recurrence_and_task_continuity": true,
+      "optimizer_scheduler_continuity": true,
+      "production_weight_actions": true
+    },
+    "identity": {
+      "source_root": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/source",
+      "input_root": "/mnt/conda/zhenglifeng/t/eu-p1-20260908/inputs",
+      "model_path": "/home/zhenglifeng/models/Qwen2-VL-2B-Instruct-895c3a4",
+      "output_root": "/mnt/conda/zhenglifeng/rapo-author-cross-task-resume-20260909-attempt3",
+      "config_path": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/source/examples/config.yaml",
+      "class_order": [
+        "n02085620",
+        "n03930630",
+        "n04266014",
+        "n07734744"
+      ],
+      "verified_inputs": [
+        {
+          "relative_path": "n02085620/misc_0.jpg",
+          "class": "n02085620",
+          "bytes": 84738,
+          "sha256": "efb94e5bccf1f851dac05bfd6cc710beae12806eaf2be45782a41eece6b28601"
+        },
+        {
+          "relative_path": "n03930630/art_0.jpg",
+          "class": "n03930630",
+          "bytes": 67838,
+          "sha256": "4486e26a7f599e5dfddbe9df193a323b014abcd4f846ea679ae42d14480bf606"
+        },
+        {
+          "relative_path": "n04266014/art_0.jpg",
+          "class": "n04266014",
+          "bytes": 126734,
+          "sha256": "96f3314007fa42e65849a0bcf8d88e6840c59f2555af65e3e3c7391dd3b4ea8c"
+        },
+        {
+          "relative_path": "n07734744/art_0.jpg",
+          "class": "n07734744",
+          "bytes": 43266,
+          "sha256": "ab9210c83732fbb5c4de3ad14a17e87c9f4051203346331d9447b9239e7d3bf1"
+        }
+      ],
+      "source_entry_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+      "diagnostic_config_sha256": "6093d4d72cef88b07d3a1b16cc8f49ba7c51163fdd01e05daab9cd7236eef0ab",
+      "input_manifest_sha256": "eccd0dfe6c159eaca002ad016bb3a7bfe36578b4212957321f3c4ee41975e2af",
+      "source_identity": {
+        "file_count": 14,
+        "all_match": true,
+        "files": [
+          {
+            "path": "examples/baselines/_rapo_components.py",
+            "exists": true,
+            "bytes": 28358,
+            "expected_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+            "actual_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+            "match": true
+          },
+          {
+            "path": "examples/baselines/cil_det/image_det_cil.py",
+            "exists": true,
+            "bytes": 47657,
+            "expected_sha256": "e253f85b081ae758ac9b57bde0ba349e71d0faa66a1902fc722ef9dd6e8ab4ad",
+            "actual_sha256": "e253f85b081ae758ac9b57bde0ba349e71d0faa66a1902fc722ef9dd6e8ab4ad",
+            "match": true
+          },
+          {
+            "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+            "exists": true,
+            "bytes": 54072,
+            "expected_sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+            "actual_sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+            "match": true
+          },
+          {
+            "path": "examples/baselines/img_cls_cil/image_cls_cil.py",
+            "exists": true,
+            "bytes": 23183,
+            "expected_sha256": "dce11bb12e0f3a36135e52248676a73b92701f626456ea31205a5d5f37334019",
+            "actual_sha256": "dce11bb12e0f3a36135e52248676a73b92701f626456ea31205a5d5f37334019",
+            "match": true
+          },
+          {
+            "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+            "exists": true,
+            "bytes": 45529,
+            "expected_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+            "actual_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+            "match": true
+          },
+          {
+            "path": "examples/config.yaml",
+            "exists": true,
+            "bytes": 3361,
+            "expected_sha256": "d162ec9415732087f38bfcd1c26395760c1b2c76330eee7a088c482e5e21534d",
+            "actual_sha256": "d162ec9415732087f38bfcd1c26395760c1b2c76330eee7a088c482e5e21534d",
+            "match": true
+          },
+          {
+            "path": "scripts/image/10task.sh",
+            "exists": true,
+            "bytes": 3271,
+            "expected_sha256": "9fe6be63a5e0d156c57cc945ca522366bb7c89e4f38f632ca185c004cbd89fea",
+            "actual_sha256": "9fe6be63a5e0d156c57cc945ca522366bb7c89e4f38f632ca185c004cbd89fea",
+            "match": true
+          },
+          {
+            "path": "scripts/image/rapo_cfg.json",
+            "exists": true,
+            "bytes": 438,
+            "expected_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+            "actual_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+            "match": true
+          },
+          {
+            "path": "verl/trainer/config.py",
+            "exists": true,
+            "bytes": 6531,
+            "expected_sha256": "f17b2e61120ce69a5399e39a2eb643ce2510689eb5c1e3fe276caffffd80b99d",
+            "actual_sha256": "f17b2e61120ce69a5399e39a2eb643ce2510689eb5c1e3fe276caffffd80b99d",
+            "match": true
+          },
+          {
+            "path": "verl/trainer/data_loader.py",
+            "exists": true,
+            "bytes": 4502,
+            "expected_sha256": "344f1f50aff2285e5cbc8d462f8b08755b29b59efc0ce412842db63e46612391",
+            "actual_sha256": "344f1f50aff2285e5cbc8d462f8b08755b29b59efc0ce412842db63e46612391",
+            "match": true
+          },
+          {
+            "path": "verl/trainer/ray_trainer.py",
+            "exists": true,
+            "bytes": 33623,
+            "expected_sha256": "54b9cb7fccc78513440ed05f9c53fe80c43bf86425ae6067ea4a7d41d25017ca",
+            "actual_sha256": "54b9cb7fccc78513440ed05f9c53fe80c43bf86425ae6067ea4a7d41d25017ca",
+            "match": true
+          },
+          {
+            "path": "verl/utils/checkpoint/checkpoint_manager.py",
+            "exists": true,
+            "bytes": 5641,
+            "expected_sha256": "af20ef83b0289591dbd1ccbd91c46dc4a4aadf0094bd6f89edfd743c39f4904f",
+            "actual_sha256": "af20ef83b0289591dbd1ccbd91c46dc4a4aadf0094bd6f89edfd743c39f4904f",
+            "match": true
+          },
+          {
+            "path": "verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+            "exists": true,
+            "bytes": 6975,
+            "expected_sha256": "525fdef04dcc8aba2973407428dc6f600f064187625a892b7d39f205db199179",
+            "actual_sha256": "525fdef04dcc8aba2973407428dc6f600f064187625a892b7d39f205db199179",
+            "match": true
+          },
+          {
+            "path": "verl/workers/fsdp_workers.py",
+            "exists": true,
+            "bytes": 32141,
+            "expected_sha256": "4ce08f3214b9eeaf429c789f76ea2560156cbad003ce465e2eaf48233a99bad6",
+            "actual_sha256": "4ce08f3214b9eeaf429c789f76ea2560156cbad003ce465e2eaf48233a99bad6",
+            "match": true
+          }
+        ]
+      },
+      "output_root_bootstrap": {
+        "precreated": true,
+        "status": "approved_bootstrap",
+        "probe_files": [
+          "CHECKPOINT_ESTIMATE.json",
+          "CONTINUOUS_PROTOCOL.md",
+          "DIAGNOSTIC_CONFIG.json",
+          "INPUT_MANIFEST.json",
+          "PROTOCOL.md",
+          "continuous_task_probe.py"
+        ]
+      },
+      "resource_preflight": {
+        "status": "pass",
+        "hostname": "gpu-211",
+        "requested_physical_gpu_ids": [
+          4,
+          6
+        ],
+        "selected": [
+          {
+            "index": 4,
+            "name": "NVIDIA GeForce RTX 3090",
+            "uuid": "GPU-4bd5a062-f6e3-e8bf-83d1-a44675314850",
+            "memory_used_mib": 1,
+            "memory_total_mib": 24576,
+            "utilization_gpu_percent": 0,
+            "compute_apps": []
+          },
+          {
+            "index": 6,
+            "name": "NVIDIA GeForce RTX 3090",
+            "uuid": "GPU-75d3fddd-06bf-785d-4ac3-41074b52d00d",
+            "memory_used_mib": 1,
+            "memory_total_mib": 24576,
+            "utilization_gpu_percent": 0,
+            "compute_apps": []
+          }
+        ],
+        "expected_uuid_by_physical_id": {
+          "4": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "6": "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+        },
+        "inventory": {
+          "hostname": "gpu-211",
+          "gpu_query": {
+            "returncode": 0,
+            "stderr": "",
+            "gpus": [
+              {
+                "index": 0,
+                "name": "NVIDIA GeForce RTX 3090",
+                "uuid": "GPU-1ca900cc-ca37-5d77-c037-f0535326ab72",
+                "memory_used_mib": 5000,
+                "memory_total_mib": 24576,
+                "utilization_gpu_percent": 27
+              },
+              {
+                "index": 1,
+                "name": "NVIDIA GeForce RTX 3090",
+                "uuid": "GPU-412027df-8ec0-d9e1-c201-cb7a690811c6",
+                "memory_used_mib": 5000,
+                "memory_total_mib": 24576,
+                "utilization_gpu_percent": 10
+              },
+              {
+                "index": 2,
+                "name": "NVIDIA GeForce RTX 3090",
+                "uuid": "GPU-f32f2674-753c-cd20-7606-34a0e5804687",
+                "memory_used_mib": 5002,
+                "memory_total_mib": 24576,
+                "utilization_gpu_percent": 9
+              },
+              {
+                "index": 3,
+                "name": "NVIDIA GeForce RTX 3090",
+                "uuid": "GPU-d4babf14-b743-2673-4344-311c2f561214",
+                "memory_used_mib": 5002,
+                "memory_total_mib": 24576,
+                "utilization_gpu_percent": 12
+              },
+              {
+                "index": 4,
+                "name": "NVIDIA GeForce RTX 3090",
+                "uuid": "GPU-4bd5a062-f6e3-e8bf-83d1-a44675314850",
+                "memory_used_mib": 1,
+                "memory_total_mib": 24576,
+                "utilization_gpu_percent": 0
+              },
+              {
+                "index": 5,
+                "name": "NVIDIA GeForce RTX 3090",
+                "uuid": "GPU-ad2d5d4b-c278-e728-c742-6913c7a3437d",
+                "memory_used_mib": 1,
+                "memory_total_mib": 24576,
+                "utilization_gpu_percent": 0
+              },
+              {
+                "index": 6,
+                "name": "NVIDIA GeForce RTX 3090",
+                "uuid": "GPU-75d3fddd-06bf-785d-4ac3-41074b52d00d",
+                "memory_used_mib": 1,
+                "memory_total_mib": 24576,
+                "utilization_gpu_percent": 0
+              }
+            ]
+          },
+          "compute_apps_query": {
+            "returncode": 0,
+            "stderr": "",
+            "apps": [
+              {
+                "gpu_uuid": "GPU-1ca900cc-ca37-5d77-c037-f0535326ab72",
+                "pid": 429650,
+                "used_memory_mib": 4990,
+                "process_name": "/home/huangxiang/anaconda3/envs/gmspatialLMseg/bin/python"
+              },
+              {
+                "gpu_uuid": "GPU-412027df-8ec0-d9e1-c201-cb7a690811c6",
+                "pid": 429651,
+                "used_memory_mib": 4990,
+                "process_name": "/home/huangxiang/anaconda3/envs/gmspatialLMseg/bin/python"
+              },
+              {
+                "gpu_uuid": "GPU-f32f2674-753c-cd20-7606-34a0e5804687",
+                "pid": 429652,
+                "used_memory_mib": 4992,
+                "process_name": "/home/huangxiang/anaconda3/envs/gmspatialLMseg/bin/python"
+              },
+              {
+                "gpu_uuid": "GPU-d4babf14-b743-2673-4344-311c2f561214",
+                "pid": 429653,
+                "used_memory_mib": 4992,
+                "process_name": "/home/huangxiang/anaconda3/envs/gmspatialLMseg/bin/python"
+              }
+            ]
+          }
+        },
+        "disk": {
+          "path": "/mnt/conda/zhenglifeng",
+          "total_bytes": 13194139533312,
+          "used_bytes": 7118419947520,
+          "free_bytes": 6075719585792,
+          "required_minimum_bytes": 60000000000,
+          "preferred_bytes": 68719476736,
+          "preferred_threshold_met": true
+        }
+      }
+    },
+    "driver_actions": [
+      {
+        "task_id": 1,
+        "actions": {
+          "copy_actor_to_anchor": false,
+          "enable_anchor": false
+        }
+      },
+      {
+        "task_id": 2,
+        "actions": {
+          "copy_actor_to_anchor": true,
+          "enable_anchor": true
+        }
+      }
+    ],
+    "runner": {
+      "same_pid": true,
+      "same_group_object": true,
+      "worker_names_match": true,
+      "world_sizes": [
+        2,
+        2
+      ]
+    },
+    "task_boundary": {
+      "task1_global_step_after": 2,
+      "task2_global_step_before": 2,
+      "task2_global_step_after": 4,
+      "task2_reinit_last_global_step": 2,
+      "task2_config_checkpoint_path": "/mnt/conda/zhenglifeng/rapo-author-cross-task-resume-20260909-attempt3/2026-09-09-143138/task_1/global_step_2",
+      "task1_production_checkpoint_path": "/mnt/conda/zhenglifeng/rapo-author-cross-task-resume-20260909-attempt3/2026-09-09-143138/task_1/global_step_2",
+      "task2_reinit_load_path": null,
+      "task1_actor_changed": true,
+      "task1_actor_equals_task2_before": true,
+      "task2_actor_changed": true,
+      "optimizer_scheduler_continuity": true
+    },
+    "worker_mapping": {
+      "status": "pass",
+      "pre_model_mapping_observed": false,
+      "expected_physical_gpu_ids": [
+        4,
+        6
+      ],
+      "expected_uuid_by_physical_id": {
+        "4": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+        "6": "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+      },
+      "checks": [
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        }
+      ],
+      "representative_by_rank": [
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_uuids": [],
+          "torch_device_count": 1,
+          "current_mapping_valid": true,
+          "pre_model_mapping_observed": false,
+          "pre_model_mapping_valid": null,
+          "status": "pass"
+        }
+      ]
+    },
+    "anchor": {
+      "task2_copy_before_matches_task1_actor": true,
+      "copy_after_actor_and_anchor_match": true,
+      "anchor_stable_during_task2": true
+    },
+    "ctan_and_retention": {
+      "task1_calls": 2,
+      "task2_calls": 2,
+      "group_sizes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "all_groups_are_four": true,
+      "group_reward_variation": true,
+      "raw_reward_varies": true,
+      "advantages_finite_and_nonzero": true,
+      "retention_anchor_log_probs_and_reward_observed": true,
+      "retention_formula_observed_direct": false,
+      "retention_log_observation": {
+        "status": "pass",
+        "source": "task_2/experiment_log.jsonl",
+        "lambda_coef": 0.5,
+        "checks": [
+          {
+            "step": 3,
+            "batch_size": 8,
+            "retention_drift": 0.0,
+            "retention_reward": 1.0,
+            "expected_delta_sum": 4.0,
+            "actual_delta_sum": 4.0,
+            "status": "pass"
+          },
+          {
+            "step": 4,
+            "batch_size": 8,
+            "retention_drift": 0.0023381866049021482,
+            "retention_reward": 0.9593130350112915,
+            "expected_delta_sum": 3.837252140045166,
+            "actual_delta_sum": 3.837252140045166,
+            "status": "pass"
+          }
+        ]
+      },
+      "second_task2_retention_delta_varies": true,
+      "advantage_calls": [
+        {
+          "task_id": 1,
+          "group_counts": {
+            "91f19da6-d471-4a92-b8b8-848a5097ae23": 4,
+            "fb1bda92-5dec-4548-b759-ecf815c5426b": 4
+          },
+          "group_rewards": [
+            {
+              "uid": "91f19da6-d471-4a92-b8b8-848a5097ae23",
+              "count": 4,
+              "mean": 0.25,
+              "std_population": 0.4330126941204071,
+              "min": 0.0,
+              "max": 1.0
+            },
+            {
+              "uid": "fb1bda92-5dec-4548-b759-ecf815c5426b",
+              "count": 4,
+              "mean": 0.5,
+              "std_population": 0.5,
+              "min": 0.0,
+              "max": 1.0
+            }
+          ],
+          "raw_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 3,
+            "mean": 0.375,
+            "std_population": 0.4841229319572449,
+            "max_abs": 1.0,
+            "sum": 3.0
+          },
+          "raw_reward_sample_std": 0.5175491571426392,
+          "post_hook_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 3,
+            "mean": 0.375,
+            "std_population": 0.4841229319572449,
+            "max_abs": 1.0,
+            "sum": 3.0
+          },
+          "post_hook_reward_sample_std": 0.5175491571426392,
+          "retention_delta": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 0,
+            "mean": 0.0,
+            "std_population": 0.0,
+            "max_abs": 0.0,
+            "sum": 0.0
+          },
+          "retention_delta_sum": 0.0,
+          "retention_observation": {
+            "status": "not_available"
+          },
+          "retention_formula_match": null,
+          "retention_formula_error": null,
+          "has_anchor_log_probs_after_hook": false,
+          "advantages": {
+            "count": 768,
+            "finite_count": 768,
+            "nonzero_count": 475,
+            "mean": -0.058493729680776596,
+            "std_population": 0.7156522274017334,
+            "max_abs": 1.4491348266601562,
+            "sum": -44.92318344116211
+          },
+          "advantages_all_finite": true,
+          "ema_observation": {
+            "score_mean": 0.375,
+            "score_std_sample": 0.5175491571426392
+          },
+          "ema_before": {
+            "ema_mean": 0.0,
+            "ema_std": 1.0,
+            "update_count": 0,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": null,
+            "last_batch_reward_std": null,
+            "_initialized": false,
+            "_task_start_update_count": 0,
+            "_fresh_start": true
+          },
+          "ema_after": {
+            "ema_mean": 0.375,
+            "ema_std": 0.5175491571426392,
+            "update_count": 1,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": 0.375,
+            "last_batch_reward_std": 0.5175491571426392,
+            "_initialized": true,
+            "_task_start_update_count": 0,
+            "_fresh_start": true
+          }
+        },
+        {
+          "task_id": 1,
+          "group_counts": {
+            "a2b30492-712f-4f69-8238-a61784f79fd2": 4,
+            "ba6b3e28-3461-4788-b683-6dcadbaec2a2": 4
+          },
+          "group_rewards": [
+            {
+              "uid": "a2b30492-712f-4f69-8238-a61784f79fd2",
+              "count": 4,
+              "mean": 0.25,
+              "std_population": 0.4330126941204071,
+              "min": 0.0,
+              "max": 1.0
+            },
+            {
+              "uid": "ba6b3e28-3461-4788-b683-6dcadbaec2a2",
+              "count": 4,
+              "mean": 0.5,
+              "std_population": 0.5,
+              "min": 0.0,
+              "max": 1.0
+            }
+          ],
+          "raw_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 3,
+            "mean": 0.375,
+            "std_population": 0.4841229319572449,
+            "max_abs": 1.0,
+            "sum": 3.0
+          },
+          "raw_reward_sample_std": 0.5175491571426392,
+          "post_hook_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 3,
+            "mean": 0.375,
+            "std_population": 0.4841229319572449,
+            "max_abs": 1.0,
+            "sum": 3.0
+          },
+          "post_hook_reward_sample_std": 0.5175491571426392,
+          "retention_delta": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 0,
+            "mean": 0.0,
+            "std_population": 0.0,
+            "max_abs": 0.0,
+            "sum": 0.0
+          },
+          "retention_delta_sum": 0.0,
+          "retention_observation": {
+            "status": "not_available"
+          },
+          "retention_formula_match": null,
+          "retention_formula_error": null,
+          "has_anchor_log_probs_after_hook": false,
+          "advantages": {
+            "count": 768,
+            "finite_count": 768,
+            "nonzero_count": 515,
+            "mean": -0.07799164205789566,
+            "std_population": 0.7165518403053284,
+            "max_abs": 1.4491348266601562,
+            "sum": -59.897579193115234
+          },
+          "advantages_all_finite": true,
+          "ema_observation": {
+            "score_mean": 0.375,
+            "score_std_sample": 0.5175491571426392
+          },
+          "ema_before": {
+            "ema_mean": 0.375,
+            "ema_std": 0.5175491571426392,
+            "update_count": 1,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": 0.375,
+            "last_batch_reward_std": 0.5175491571426392,
+            "_initialized": true,
+            "_task_start_update_count": 0,
+            "_fresh_start": true
+          },
+          "ema_after": {
+            "ema_mean": 0.375,
+            "ema_std": 0.5175491571426392,
+            "update_count": 2,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": 0.375,
+            "last_batch_reward_std": 0.5175491571426392,
+            "_initialized": true,
+            "_task_start_update_count": 0,
+            "_fresh_start": true
+          }
+        },
+        {
+          "task_id": 2,
+          "group_counts": {
+            "8c8b6d92-c4f7-4ce5-bef6-d4a2a60bae0c": 4,
+            "efe5a3df-c562-4552-ab3f-fdad869f86c3": 4
+          },
+          "group_rewards": [
+            {
+              "uid": "8c8b6d92-c4f7-4ce5-bef6-d4a2a60bae0c",
+              "count": 4,
+              "mean": 1.0,
+              "std_population": 0.7071067690849304,
+              "min": 0.0,
+              "max": 2.0
+            },
+            {
+              "uid": "efe5a3df-c562-4552-ab3f-fdad869f86c3",
+              "count": 4,
+              "mean": 0.25,
+              "std_population": 0.4330126941204071,
+              "min": 0.0,
+              "max": 1.0
+            }
+          ],
+          "raw_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 4,
+            "mean": 0.625,
+            "std_population": 0.6959705352783203,
+            "max_abs": 2.0,
+            "sum": 5.0
+          },
+          "raw_reward_sample_std": 0.7440237998962402,
+          "post_hook_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 8,
+            "mean": 1.125,
+            "std_population": 0.6959704756736755,
+            "max_abs": 2.499999761581421,
+            "sum": 9.0
+          },
+          "post_hook_reward_sample_std": 0.7440237402915955,
+          "retention_delta": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 8,
+            "mean": 0.5,
+            "std_population": 6.495265836292674e-08,
+            "max_abs": 0.5000001192092896,
+            "sum": 4.0
+          },
+          "retention_delta_sum": 4.0,
+          "retention_observation": {
+            "status": "not_available"
+          },
+          "retention_formula_match": null,
+          "retention_formula_error": null,
+          "has_anchor_log_probs_after_hook": true,
+          "advantages": {
+            "count": 768,
+            "finite_count": 768,
+            "nonzero_count": 369,
+            "mean": -0.013202473521232605,
+            "std_population": 0.803796648979187,
+            "max_abs": 1.9313348531723022,
+            "sum": -10.13949966430664
+          },
+          "advantages_all_finite": true,
+          "ema_observation": {
+            "score_mean": 1.125,
+            "score_std_sample": 0.7440237402915955
+          },
+          "ema_before": {
+            "ema_mean": 0.375,
+            "ema_std": 0.5175491571426392,
+            "update_count": 2,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": 0.375,
+            "last_batch_reward_std": 0.5175491571426392,
+            "_initialized": true,
+            "_task_start_update_count": 2,
+            "_fresh_start": false
+          },
+          "ema_after": {
+            "ema_mean": 0.375,
+            "ema_std": 0.5177756317257881,
+            "update_count": 3,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": 1.125,
+            "last_batch_reward_std": 0.7440237402915955,
+            "_initialized": true,
+            "_task_start_update_count": 2,
+            "_fresh_start": false
+          }
+        },
+        {
+          "task_id": 2,
+          "group_counts": {
+            "7c761f47-6790-4940-9372-e3e82c7e5b8b": 4,
+            "fdf3a648-3bf0-4634-b565-1b607dd502ec": 4
+          },
+          "group_rewards": [
+            {
+              "uid": "7c761f47-6790-4940-9372-e3e82c7e5b8b",
+              "count": 4,
+              "mean": 0.5,
+              "std_population": 0.5,
+              "min": 0.0,
+              "max": 1.0
+            },
+            {
+              "uid": "fdf3a648-3bf0-4634-b565-1b607dd502ec",
+              "count": 4,
+              "mean": 0.75,
+              "std_population": 0.4330126941204071,
+              "min": 0.0,
+              "max": 1.0
+            }
+          ],
+          "raw_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 5,
+            "mean": 0.625,
+            "std_population": 0.4841229319572449,
+            "max_abs": 1.0,
+            "sum": 5.0
+          },
+          "raw_reward_sample_std": 0.5175491571426392,
+          "post_hook_reward": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 8,
+            "mean": 1.104656457901001,
+            "std_population": 0.47029468417167664,
+            "max_abs": 1.500000238418579,
+            "sum": 8.837251663208008
+          },
+          "post_hook_reward_sample_std": 0.5027661919593811,
+          "retention_delta": {
+            "count": 8,
+            "finite_count": 8,
+            "nonzero_count": 8,
+            "mean": 0.47965651750564575,
+            "std_population": 0.045383911579847336,
+            "max_abs": 0.5,
+            "sum": 3.837252140045166
+          },
+          "retention_delta_sum": 3.837252140045166,
+          "retention_observation": {
+            "status": "not_available"
+          },
+          "retention_formula_match": null,
+          "retention_formula_error": null,
+          "has_anchor_log_probs_after_hook": true,
+          "advantages": {
+            "count": 768,
+            "finite_count": 768,
+            "nonzero_count": 393,
+            "mean": 0.12067023664712906,
+            "std_population": 0.5750230550765991,
+            "max_abs": 1.3816300630569458,
+            "sum": 92.67474365234375
+          },
+          "advantages_all_finite": true,
+          "ema_observation": {
+            "score_mean": 1.104656457901001,
+            "score_std_sample": 0.5027661919593811
+          },
+          "ema_before": {
+            "ema_mean": 0.375,
+            "ema_std": 0.5177756317257881,
+            "update_count": 3,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": 1.125,
+            "last_batch_reward_std": 0.7440237402915955,
+            "_initialized": true,
+            "_task_start_update_count": 2,
+            "_fresh_start": false
+          },
+          "ema_after": {
+            "ema_mean": 0.375,
+            "ema_std": 0.5177606222860217,
+            "update_count": 4,
+            "beta": 0.999,
+            "eps": 1e-06,
+            "bootstrap_steps": 0,
+            "activate_from_task": 1,
+            "min_std": 0.0,
+            "guard_abs_max": 0.0,
+            "bias_correction": false,
+            "beta_warmup_steps": 0,
+            "beta_warmup_init": 0.9,
+            "last_batch_reward_mean": 1.104656457901001,
+            "last_batch_reward_std": 0.5027661919593811,
+            "_initialized": true,
+            "_task_start_update_count": 2,
+            "_fresh_start": false
+          }
+        }
+      ]
+    },
+    "ema": {
+      "task1_end": {
+        "ema_mean": 0.375,
+        "ema_std": 0.5175491571426392,
+        "update_count": 2,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 1,
+        "min_std": 0.0,
+        "guard_abs_max": 0.0,
+        "bias_correction": false,
+        "beta_warmup_steps": 0,
+        "beta_warmup_init": 0.9,
+        "last_batch_reward_mean": 0.375,
+        "last_batch_reward_std": 0.5175491571426392,
+        "_initialized": true,
+        "_task_start_update_count": 0,
+        "_fresh_start": true
+      },
+      "task1_save_events": [],
+      "task2_load_events": [],
+      "task2_reinit": {
+        "ema_mean": 0.375,
+        "ema_std": 0.5175491571426392,
+        "update_count": 2,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 1,
+        "min_std": 0.0,
+        "guard_abs_max": 0.0,
+        "bias_correction": false,
+        "beta_warmup_steps": 0,
+        "beta_warmup_init": 0.9,
+        "last_batch_reward_mean": 0.375,
+        "last_batch_reward_std": 0.5175491571426392,
+        "_initialized": true,
+        "_task_start_update_count": 2,
+        "_fresh_start": false
+      },
+      "task2_end": {
+        "ema_mean": 0.375,
+        "ema_std": 0.5177606222860217,
+        "update_count": 4,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 1,
+        "min_std": 0.0,
+        "guard_abs_max": 0.0,
+        "bias_correction": false,
+        "beta_warmup_steps": 0,
+        "beta_warmup_init": 0.9,
+        "last_batch_reward_mean": 1.104656457901001,
+        "last_batch_reward_std": 0.5027661919593811,
+        "_initialized": true,
+        "_task_start_update_count": 2,
+        "_fresh_start": false
+      },
+      "task2_reinit_loaded_task1_save": true,
+      "task2_reinit_matches_task1_end": true,
+      "sidecar": {
+        "path": "ema_online_stats.json",
+        "latest": {
+          "ema_mean": 0.375,
+          "ema_std": 0.5177606222860217,
+          "update_count": 4,
+          "beta": 0.999,
+          "eps": 1e-06,
+          "bootstrap_steps": 0,
+          "activate_from_task": 1,
+          "min_std": 0.0,
+          "guard_abs_max": 0.0,
+          "bias_correction": false,
+          "beta_warmup_steps": 0,
+          "beta_warmup_init": 0.9,
+          "last_batch_reward_mean": 1.104656457901001,
+          "last_batch_reward_std": 0.5027661919593811,
+          "task": 2
+        },
+        "valid": true
+      },
+      "recurrence": {
+        "status": "pass",
+        "checks": [
+          {
+            "call_index": 0,
+            "before_update_count": 0,
+            "after_update_count": 1,
+            "observed_score_std_sample": 0.5175491571426392,
+            "expected_ema_std": 0.5175491571426392,
+            "actual_ema_std": 0.5175491571426392,
+            "status": "pass"
+          },
+          {
+            "call_index": 1,
+            "before_update_count": 1,
+            "after_update_count": 2,
+            "observed_score_std_sample": 0.5175491571426392,
+            "expected_ema_std": 0.5175491571426392,
+            "actual_ema_std": 0.5175491571426392,
+            "status": "pass"
+          },
+          {
+            "call_index": 2,
+            "before_update_count": 2,
+            "after_update_count": 3,
+            "observed_score_std_sample": 0.7440237402915955,
+            "expected_ema_std": 0.5177756317257881,
+            "actual_ema_std": 0.5177756317257881,
+            "status": "pass"
+          },
+          {
+            "call_index": 3,
+            "before_update_count": 3,
+            "after_update_count": 4,
+            "observed_score_std_sample": 0.5027661919593811,
+            "expected_ema_std": 0.5177606222860217,
+            "actual_ema_std": 0.5177606222860217,
+            "status": "pass"
+          }
+        ]
+      },
+      "continues_without_reset": true
+    },
+    "optimizer_scheduler": [
+      {
+        "rank": "0",
+        "optimizer_object_same": true,
+        "optimizer_state_same_at_boundary": true,
+        "optimizer_has_moments": true,
+        "optimizer_step_increased": true,
+        "scheduler_object_same": true,
+        "scheduler_state_same_at_boundary": true,
+        "scheduler_step_increased": true,
+        "pass": true
+      },
+      {
+        "rank": "1",
+        "optimizer_object_same": true,
+        "optimizer_state_same_at_boundary": true,
+        "optimizer_has_moments": true,
+        "optimizer_step_increased": true,
+        "scheduler_object_same": true,
+        "scheduler_state_same_at_boundary": true,
+        "scheduler_step_increased": true,
+        "pass": true
+      }
+    ],
+    "checkpoints": [
+      {
+        "task": 1,
+        "tracker": {
+          "best_global_step": 2,
+          "best_val_reward_score": 0.5,
+          "last_global_step": 2,
+          "last_actor_path": "/mnt/conda/zhenglifeng/rapo-author-cross-task-resume-20260909-attempt3/2026-09-09-143138/task_1/global_step_2/actor"
+        },
+        "checkpoint_relative_path": "task_1/global_step_2",
+        "files": {
+          "type": "array",
+          "length": 18,
+          "head": [
+            {
+              "path": "task_1/global_step_2/actor/extra_state_world_size_2_rank_0.pt",
+              "bytes": 14696,
+              "sha256": "b3b0d84dba213eafc1ebca5fa9f15fbf977c6eb78fd0dfe5340c34a6737ac59f"
+            },
+            {
+              "path": "task_1/global_step_2/actor/extra_state_world_size_2_rank_1.pt",
+              "bytes": 14696,
+              "sha256": "32f5ef2702fb66238e9c7f25bf396914c6a263a9e44049c6c870dcb7b1fd69c6"
+            },
+            {
+              "path": "task_1/global_step_2/actor/huggingface/added_tokens.json",
+              "bytes": 392,
+              "sha256": "7fa54985b58718a8fdb4f4d97484c4bd908db114847675e4bf3afe3e1d5d7bd4"
+            }
+          ]
+        },
+        "total_bytes": 18157120496
+      },
+      {
+        "task": 2,
+        "tracker": {
+          "best_global_step": 4,
+          "best_val_reward_score": 1.5,
+          "last_global_step": 4,
+          "last_actor_path": "/mnt/conda/zhenglifeng/rapo-author-cross-task-resume-20260909-attempt3/2026-09-09-143138/task_2/global_step_4/actor"
+        },
+        "checkpoint_relative_path": "task_2/global_step_4",
+        "files": {
+          "type": "array",
+          "length": 18,
+          "head": [
+            {
+              "path": "task_2/global_step_4/actor/extra_state_world_size_2_rank_0.pt",
+              "bytes": 14696,
+              "sha256": "00642be54fb22bce218b40ff68ea44338bdf2a4c5be4f2052298c6a076c2c5cc"
+            },
+            {
+              "path": "task_2/global_step_4/actor/extra_state_world_size_2_rank_1.pt",
+              "bytes": 14696,
+              "sha256": "56bcbfc7b9923015952f92ca8f2479a5a3739d759a51863c478db5fc67a85c81"
+            },
+            {
+              "path": "task_2/global_step_4/actor/huggingface/added_tokens.json",
+              "bytes": 392,
+              "sha256": "7fa54985b58718a8fdb4f4d97484c4bd908db114847675e4bf3afe3e1d5d7bd4"
+            }
+          ]
+        },
+        "total_bytes": 18157120496
+      }
+    ],
+    "limits": [
+      "This result covers one same-process two-task workload only.",
+      "It does not establish cross-process Task1->Task2 resume.",
+      "It does not establish formal paper-scale training, AP, or original experiment identity."
+    ]
+  },
+  "runtime_evaluation": {
+    "decision": "PASS_LIMITED_CONTINUOUS_RUNTIME_WITH_SCOPE_NOTES",
+    "gates": {
+      "runtime_result_status_is_pass_limited": true,
+      "runtime_identity_matches_frozen_source_config_inputs": true,
+      "same_runner_pid": true,
+      "same_worker_group": true,
+      "worker_mapping_expected_physical_4_6": true,
+      "task_boundary_steps_and_checkpoint_path": true,
+      "production_weight_actions": true,
+      "task1_actor_updated": true,
+      "task2_actor_updated": true,
+      "actor_continuity_at_boundary": true,
+      "initial_actor_anchor_match": true,
+      "anchor_copy_and_freeze": true,
+      "four_completion_groups": true,
+      "group_reward_variation": true,
+      "raw_reward_finite_and_varied": true,
+      "advantages_finite_and_nonzero": true,
+      "retention_observed_with_limited_basis": true,
+      "second_task2_retention_varies": true,
+      "ema_recurrence_and_continuity": true,
+      "optimizer_scheduler_continuity": true,
+      "checkpoints_complete": true,
+      "logs_exit_and_cleanup": true,
+      "static_production_chain": true
+    },
+    "runtime_identity": {
+      "source_entry_sha256_seen": true,
+      "diagnostic_config_sha256_seen": true,
+      "input_manifest_sha256_seen": true,
+      "model_token_seen": true,
+      "input_root_seen": true
+    },
+    "record_sources": {
+      "task_1": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\raw\\run\\task_1\\continuous-task-probe.json",
+      "task_2": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\raw\\run\\task_2\\continuous-task-probe.json"
+    },
+    "task_boundary": {
+      "task1_global_step_after": 2,
+      "task2_global_step_before": 2,
+      "task2_global_step_after": 4,
+      "task2_reinit_last_global_step": 2,
+      "task1_checkpoint": "/mnt/conda/zhenglifeng/rapo-author-cross-task-resume-20260909-attempt3/2026-09-09-143138/task_1/global_step_2",
+      "task2_config_checkpoint": "/mnt/conda/zhenglifeng/rapo-author-cross-task-resume-20260909-attempt3/2026-09-09-143138/task_1/global_step_2",
+      "task2_reinit_load_checkpoint": null
+    },
+    "runner": {
+      "same_runner_pid": true,
+      "same_worker_group": true
+    },
+    "worker_mapping": {
+      "status": "pass",
+      "expected_physical_gpu_ids": [
+        4,
+        6
+      ],
+      "checks": [
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 0,
+          "pid": 559285,
+          "expected_physical_gpu": 4,
+          "expected_uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "worker_cvd": [
+            4
+          ],
+          "ray_gpu_ids": [
+            "4"
+          ],
+          "actual_uuids": [
+            "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        },
+        {
+          "rank": 1,
+          "pid": 559527,
+          "expected_physical_gpu": 6,
+          "expected_uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d",
+          "worker_cvd": [
+            6
+          ],
+          "ray_gpu_ids": [
+            "6"
+          ],
+          "actual_uuids": [
+            "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          ],
+          "pre_model_mapping_observed": false,
+          "status": "pass"
+        }
+      ],
+      "pre_model_mapping_observed": false
+    },
+    "algorithm": {
+      "call_count": 4,
+      "four_groups": true,
+      "group_reward_variation": true,
+      "raw_reward_finite_and_varied": true,
+      "advantages_finite_and_nonzero": true,
+      "retention": {
+        "direct_tensor_formula_observed": false,
+        "aggregate_log_reconciliation": true,
+        "log_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\raw\\run\\task_2\\experiment_log.jsonl",
+        "checks": [
+          {
+            "step": 3,
+            "batch_size": 8,
+            "retention_reward": 1.0,
+            "retention_drift": 0.0,
+            "expected_delta_sum": 4.0,
+            "actual_delta_sum": 4.0,
+            "status": "pass"
+          },
+          {
+            "step": 4,
+            "batch_size": 8,
+            "retention_reward": 0.9593130350112915,
+            "retention_drift": 0.0023381866049021482,
+            "expected_delta_sum": 3.837252140045166,
+            "actual_delta_sum": 3.837252140045166,
+            "status": "pass"
+          }
+        ],
+        "second_task2_batch_varies": true,
+        "limited_basis": true
+      }
+    },
+    "actor_anchor": {
+      "initial_actor_anchor_match": true,
+      "task1_actor_changed": true,
+      "task2_actor_changed": true,
+      "actor_boundary": true,
+      "copy_before_matches": true,
+      "copy_after_matches": true,
+      "anchor_stable": true,
+      "full_parameter_equality_proven": false
+    },
+    "ema": {
+      "recurrence": [
+        {
+          "call_index": 0,
+          "before_count": 0,
+          "after_count": 1,
+          "expected_std": 0.5175491571426392,
+          "actual_std": 0.5175491571426392,
+          "status": "pass"
+        },
+        {
+          "call_index": 1,
+          "before_count": 1,
+          "after_count": 2,
+          "expected_std": 0.5175491571426392,
+          "actual_std": 0.5175491571426392,
+          "status": "pass"
+        },
+        {
+          "call_index": 2,
+          "before_count": 2,
+          "after_count": 3,
+          "expected_std": 0.5177756317257881,
+          "actual_std": 0.5177756317257881,
+          "status": "pass"
+        },
+        {
+          "call_index": 3,
+          "before_count": 3,
+          "after_count": 4,
+          "expected_std": 0.5177606222860217,
+          "actual_std": 0.5177606222860217,
+          "status": "pass"
+        }
+      ],
+      "recurrence_pass": true,
+      "task1_end": {
+        "ema_mean": 0.375,
+        "ema_std": 0.5175491571426392,
+        "update_count": 2,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 1,
+        "min_std": 0.0,
+        "guard_abs_max": 0.0,
+        "bias_correction": false,
+        "beta_warmup_steps": 0,
+        "beta_warmup_init": 0.9,
+        "last_batch_reward_mean": 0.375,
+        "last_batch_reward_std": 0.5175491571426392,
+        "_initialized": true,
+        "_task_start_update_count": 0,
+        "_fresh_start": true
+      },
+      "task2_reinit_payload_matches_task1_end": true,
+      "task2_reinit": {
+        "ema_mean": 0.375,
+        "ema_std": 0.5175491571426392,
+        "update_count": 2,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 1,
+        "min_std": 0.0,
+        "guard_abs_max": 0.0,
+        "bias_correction": false,
+        "beta_warmup_steps": 0,
+        "beta_warmup_init": 0.9,
+        "last_batch_reward_mean": 0.375,
+        "last_batch_reward_std": 0.5175491571426392,
+        "_initialized": true,
+        "_task_start_update_count": 2,
+        "_fresh_start": false
+      },
+      "task2_end": {
+        "ema_mean": 0.375,
+        "ema_std": 0.5177606222860217,
+        "update_count": 4,
+        "beta": 0.999,
+        "eps": 1e-06,
+        "bootstrap_steps": 0,
+        "activate_from_task": 1,
+        "min_std": 0.0,
+        "guard_abs_max": 0.0,
+        "bias_correction": false,
+        "beta_warmup_steps": 0,
+        "beta_warmup_init": 0.9,
+        "last_batch_reward_mean": 1.104656457901001,
+        "last_batch_reward_std": 0.5027661919593811,
+        "_initialized": true,
+        "_task_start_update_count": 2,
+        "_fresh_start": false
+      },
+      "expected_counts": {
+        "task1_end": 2,
+        "task2_reinit": 2,
+        "task2_end": 4
+      },
+      "sidecar": {
+        "path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\raw\\run\\ema_online_stats.json",
+        "latest": {
+          "ema_mean": 0.375,
+          "ema_std": 0.5177606222860217,
+          "update_count": 4,
+          "beta": 0.999,
+          "eps": 1e-06,
+          "bootstrap_steps": 0,
+          "activate_from_task": 1,
+          "min_std": 0.0,
+          "guard_abs_max": 0.0,
+          "bias_correction": false,
+          "beta_warmup_steps": 0,
+          "beta_warmup_init": 0.9,
+          "last_batch_reward_mean": 1.104656457901001,
+          "last_batch_reward_std": 0.5027661919593811,
+          "task": 2
+        },
+        "valid": true
+      },
+      "status": "pass"
+    },
+    "optimizer_scheduler": {
+      "status": "pass",
+      "checks": [
+        {
+          "rank": "0",
+          "optimizer_object_same": true,
+          "optimizer_state_same_at_boundary": true,
+          "optimizer_state_nonempty": true,
+          "optimizer_step_increased": true,
+          "scheduler_object_same": true,
+          "scheduler_state_same_at_boundary": true,
+          "scheduler_step_increased": true,
+          "status": "pass"
+        },
+        {
+          "rank": "1",
+          "optimizer_object_same": true,
+          "optimizer_state_same_at_boundary": true,
+          "optimizer_state_nonempty": true,
+          "optimizer_step_increased": true,
+          "scheduler_object_same": true,
+          "scheduler_state_same_at_boundary": true,
+          "scheduler_step_increased": true,
+          "status": "pass"
+        }
+      ]
+    },
+    "checkpoints": {
+      "status": "pass",
+      "checks": [
+        {
+          "task": 1,
+          "file_count": 18,
+          "total_bytes": 18157120496,
+          "declared_total_bytes": 18157120496,
+          "required_payloads": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tracker_step": 2,
+          "status": "pass",
+          "paths": [
+            "task_1/global_step_2/actor/extra_state_world_size_2_rank_0.pt",
+            "task_1/global_step_2/actor/extra_state_world_size_2_rank_1.pt",
+            "task_1/global_step_2/actor/huggingface/added_tokens.json",
+            "task_1/global_step_2/actor/huggingface/chat_template.jinja",
+            "task_1/global_step_2/actor/huggingface/config.json",
+            "task_1/global_step_2/actor/huggingface/generation_config.json",
+            "task_1/global_step_2/actor/huggingface/merges.txt",
+            "task_1/global_step_2/actor/huggingface/preprocessor_config.json",
+            "task_1/global_step_2/actor/huggingface/special_tokens_map.json",
+            "task_1/global_step_2/actor/huggingface/tokenizer.json",
+            "task_1/global_step_2/actor/huggingface/tokenizer_config.json",
+            "task_1/global_step_2/actor/huggingface/video_preprocessor_config.json",
+            "task_1/global_step_2/actor/huggingface/vocab.json",
+            "task_1/global_step_2/actor/model_world_size_2_rank_0.pt",
+            "task_1/global_step_2/actor/model_world_size_2_rank_1.pt",
+            "task_1/global_step_2/actor/optim_world_size_2_rank_0.pt",
+            "task_1/global_step_2/actor/optim_world_size_2_rank_1.pt",
+            "task_1/global_step_2/dataloader.pt"
+          ]
+        },
+        {
+          "task": 2,
+          "file_count": 18,
+          "total_bytes": 18157120496,
+          "declared_total_bytes": 18157120496,
+          "required_payloads": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tracker_step": 4,
+          "status": "pass",
+          "paths": [
+            "task_2/global_step_4/actor/extra_state_world_size_2_rank_0.pt",
+            "task_2/global_step_4/actor/extra_state_world_size_2_rank_1.pt",
+            "task_2/global_step_4/actor/huggingface/added_tokens.json",
+            "task_2/global_step_4/actor/huggingface/chat_template.jinja",
+            "task_2/global_step_4/actor/huggingface/config.json",
+            "task_2/global_step_4/actor/huggingface/generation_config.json",
+            "task_2/global_step_4/actor/huggingface/merges.txt",
+            "task_2/global_step_4/actor/huggingface/preprocessor_config.json",
+            "task_2/global_step_4/actor/huggingface/special_tokens_map.json",
+            "task_2/global_step_4/actor/huggingface/tokenizer.json",
+            "task_2/global_step_4/actor/huggingface/tokenizer_config.json",
+            "task_2/global_step_4/actor/huggingface/video_preprocessor_config.json",
+            "task_2/global_step_4/actor/huggingface/vocab.json",
+            "task_2/global_step_4/actor/model_world_size_2_rank_0.pt",
+            "task_2/global_step_4/actor/model_world_size_2_rank_1.pt",
+            "task_2/global_step_4/actor/optim_world_size_2_rank_0.pt",
+            "task_2/global_step_4/actor/optim_world_size_2_rank_1.pt",
+            "task_2/global_step_4/dataloader.pt"
+          ]
+        }
+      ],
+      "checkpoint_count": 2,
+      "note": "Checkpoint hashes are verified from the archived manifest; large checkpoint tensors are not copied into the local acceptance tree."
+    },
+    "logs_cleanup": {
+      "run_exitcode": null,
+      "stderr_error_like_lines": [],
+      "checkpoint_save_log_count": 0,
+      "checkpoint_save_log_lines": [],
+      "identity_markers": {
+        "model_loaded": false,
+        "input_root_seen": false,
+        "task_boundary_seen": false
+      },
+      "ray_shutdown": null,
+      "postflight_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\continuous-runtime-evidence-20260909\\raw\\probe\\resource-postflight.json",
+      "selected_gpus_idle_in_postflight": true,
+      "status": "limited"
+    },
+    "scope_notes": [
+      "This is same-process PersistentRunner Task1 -> Task2 evidence only; it is not cross-process exact resume.",
+      "Sampled actor/anchor comparisons do not establish all-parameter equality.",
+      "If retention tensor fields are absent, acceptance relies on exact production-log aggregate reconciliation and records that limitation."
+    ]
+  },
+  "cross_process_finding": "CAND-RESUME-CIL-001 remains open; no cross-process task-boundary entry/state protocol was exercised."
+}

@@ -1,0 +1,9 @@
+{
+  "command": [
+    "D:\\anaconda3\\envs\\rapo-b01\\python.exe",
+    "-B",
+    "docs/remediation/AUTH-CTAN-001/verify_scope.py"
+  ],
+  "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author",
+  "exit_code": 1
+}

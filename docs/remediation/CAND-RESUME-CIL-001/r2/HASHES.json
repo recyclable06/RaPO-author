@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "self_excluded": true,
+  "finding": "CAND-RESUME-CIL-001",
+  "round": "r2",
+  "role": "independent_remediation",
+  "worktree": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "branch": "codex/remediate-cil-resume-001",
+  "base_head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+  "first_round_records": {
+    "first_round_hashes_sha256": "1dfbdc9efcdb853be12e5ab0ded6ffb0f6c4aabc23e811eca836c5de0b58e740",
+    "first_round_supplement_sha256": "3f560bec8b43990cd62f9560e43da1c4bd74d9a8eafbb0bc2c0ad3e177cd27d0",
+    "independent_acceptance_hashes_sha256": "f20fbcd2eaa200eeb2e6aea099d908ee7a2fb764e1525119d33e0216c94f24a6",
+    "integration_manifest_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1"
+  },
+  "frozen_inputs": [
+    {
+      "path": "inputs/image_cls_cil_rapo.py",
+      "bytes": 93286,
+      "sha256": "23cbb3c01f69704eb304c2b9c884d8165a9783a913422d6e679e63bb42d71928",
+      "source": "first_round_target"
+    },
+    {
+      "path": "inputs/test_cil_resume.py",
+      "bytes": 8722,
+      "sha256": "a8b17b247eac0526108fbd7388af9b98946752bb8214d24229f00121bd200896",
+      "source": "first_round_target"
+    }
+  ],
+  "current_target_files": [
+    {
+      "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "bytes": 99349,
+      "sha256": "ba8a5da9341785178bd444112c4fc78dd352b52fe359b768218f4a4a6f5f7863"
+    },
+    {
+      "path": "tests/author_fixes/test_cil_resume.py",
+      "bytes": 14217,
+      "sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64"
+    }
+  ],
+  "r2_artifacts": [
+    {
+      "path": "CAND-RESUME-CIL-001-r2-vs-5ced.patch",
+      "bytes": 84665,
+      "sha256": "47424dd2a6038761b0790335b2e7efe6ba933ebbf146304176a53bb2a4e0eb1c"
+    },
+    {
+      "path": "CAND-RESUME-CIL-001-r2-vs-first-round.patch",
+      "bytes": 25717,
+      "sha256": "8a8262ecb35dfbb104f9da757dab9e071fbb133d88f6db786bc8307d9a717cf6"
+    },
+    {
+      "path": "CASE_MAPPING.md",
+      "bytes": 3471,
+      "sha256": "7f2e310b5515ca1eab1bee3d530e50f19a7c52db0b349bc55cb3d92fc17ffe6a"
+    },
+    {
+      "path": "PRE_HASHES.md",
+      "bytes": 1236,
+      "sha256": "cec9298086ba094d0f193f9ac8a7d3f8d8d950118148665747f5c3eaf075996b"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 4320,
+      "sha256": "dce4136f4584f7a6b47c391c5716b8f8400c694ab70944f4666cfb6feaa48732"
+    },
+    {
+      "path": "raw/01_combined.meta.json",
+      "bytes": 1511,
+      "sha256": "1ea665cbb86994ea1c1eae27858e0dc9c82eecf00790d724861b7002fed595c3"
+    },
+    {
+      "path": "raw/01_combined.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/01_combined.stdout.txt",
+      "bytes": 4431,
+      "sha256": "58f24816fb26beb043324cd3c06e15c88bbabb03a08c1e10ad0c3c9eaab6afca"
+    }
+  ],
+  "validation": {
+    "command": "D:/anaconda3/envs/rapo-b01/python.exe -B -m pytest tests/author_fixes/test_cil_resume.py tests/author_fixes/test_coco.py tests/author_fixes/test_ctan.py -p no:cacheprovider -v --tb=short",
+    "exit_code": 0,
+    "cil_new_cases": 12,
+    "ctan_coco_regression_cases": 25,
+    "combined_passed": 37,
+    "stderr_bytes": 0,
+    "gpu_or_ssh": "not run",
+    "install_train_inference": "not run",
+    "commit_or_push": "not run"
+  },
+  "exclusions": [
+    "This HASHES.json is self-excluded to avoid circular identity.",
+    "The first-round HASHES.json and SUPPLEMENT_HASHES.json remain unchanged.",
+    "r2 temporary pytest and patch-generation directories were removed after evidence capture."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "date": "2026-09-14",
+  "role": "coordinator_current_snapshot_receipt",
+  "root": "C:/Users/Administrator/.codex/worktrees/71a6/RaPO-author/docs/diagnostics/FRESH-PROCESS-V6-GPU-20260914",
+  "verdict": "BLOCKED_GPU_PREFLIGHT_RESOURCES_BUSY",
+  "file_count": 13,
+  "total_bytes": 15271.0,
+  "files": [
+    {
+      "bytes": 1131,
+      "path": "BLOCKED.md",
+      "sha256": "095ba3d4c683c5e3c71566f1607382a03ddb25620b85a046be82e4673ded4465"
+    },
+    {
+      "bytes": 1639,
+      "path": "COMMANDS_ENV.md",
+      "sha256": "96dc919f065e777c52a54029999b10beb8eae445ad37ba5d9866ba82d4415a66"
+    },
+    {
+      "bytes": 2109,
+      "path": "FROZEN_V6_IDENTITY.json",
+      "sha256": "14365de230cc30e1eeccd546c5287c9701be577badd0d4e0fdc0ea214ce015af"
+    },
+    {
+      "bytes": 977,
+      "path": "PROGRESS.md",
+      "sha256": "9489ff14b7aecf43a3cead24c861bc6dbfaf6c778659c1872c703cb26aec4e74"
+    },
+    {
+      "bytes": 2,
+      "path": "raw/gpu-207.exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 65,
+      "path": "raw/gpu-207.stderr.txt",
+      "sha256": "f0e8b3ffe8615ebc2b0d50828784c1cfe491a590fde3d78cf5dfe386dad2dfe7"
+    },
+    {
+      "bytes": 1862,
+      "path": "raw/gpu-207.stdout.txt",
+      "sha256": "a015bb9e14024a0cd25a8522088f4161ba9b54803a550a96a48962d8c407158d"
+    },
+    {
+      "bytes": 2,
+      "path": "raw/gpu-211.exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 65,
+      "path": "raw/gpu-211.stderr.txt",
+      "sha256": "f0e8b3ffe8615ebc2b0d50828784c1cfe491a590fde3d78cf5dfe386dad2dfe7"
+    },
+    {
+      "bytes": 2789,
+      "path": "raw/gpu-211.stdout.txt",
+      "sha256": "d477822ad6625564db2c36d0bf955815a3bf85ad6a72cd49b1ef304bd06d6870"
+    },
+    {
+      "bytes": 804,
+      "path": "raw/package-verification.txt",
+      "sha256": "ce8e6c46c4e165841159a1e719bf5897aaca601fbe34f10a4924ec9c8ef5dbf5"
+    },
+    {
+      "bytes": 2688,
+      "path": "REPORT.md",
+      "sha256": "2d6d5457f642b4343e0541030a488ec826986a60793ccb6ef33cb02b802bc74f"
+    },
+    {
+      "bytes": 1138,
+      "path": "VERDICT.json",
+      "sha256": "7feff78788aeadb4caa46367aaaf4fae8e8f4b041b1c33457bde3e55133aa968"
+    }
+  ],
+  "scope": "Binds the files read now; does not prove historical immutability or GPU execution."
+}

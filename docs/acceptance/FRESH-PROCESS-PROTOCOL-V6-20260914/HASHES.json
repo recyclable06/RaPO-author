@@ -1,0 +1,38 @@
+{
+  "files": [
+    {
+      "bytes": 702,
+      "path": "PROGRESS.md",
+      "sha256": "a53e61e27c5e6128d557cfddb86f13c5cb611daab7c858fbcb362d1fc396faaa"
+    },
+    {
+      "bytes": 4468,
+      "path": "REPORT.md",
+      "sha256": "fd03c72a48f91364a811891eaedba184858b45e320933ab893d5f8d00f62b78b"
+    },
+    {
+      "bytes": 1283,
+      "path": "RUN_METADATA.json",
+      "sha256": "deb41687652d7bd96a96c34998bd53937183eb72a45fb904ba0e1d2eff2690ec"
+    },
+    {
+      "bytes": 17121,
+      "path": "acceptance_probe.py",
+      "sha256": "a8d627bd4f19ddd0697f1d481be3dd9125ba75e92133cb251ee9f9620b34e074"
+    },
+    {
+      "bytes": 11455,
+      "path": "raw/acceptance_probe.stdout.json",
+      "sha256": "ee0aeac009002db7870a66feaff665d72eb9bbeabb134a0519dfe49b138bd2a1"
+    }
+  ],
+  "package_file_count": 5,
+  "package_manifest_sha256": "d1287c666358490cd41e79ffd940cda9a115e2c358be0ba9cb2d618860b97113",
+  "package_self_excluded": true,
+  "package_total_bytes": 35029,
+  "raw_file_count": 1,
+  "raw_manifest_sha256": "2ad204c050861075db10f3c8def4b564c2a01cfa3d8db3a17468980011e0db9b",
+  "raw_total_bytes": 11455,
+  "schema_version": 1,
+  "status": "frozen_acceptance_self_excluded"
+}

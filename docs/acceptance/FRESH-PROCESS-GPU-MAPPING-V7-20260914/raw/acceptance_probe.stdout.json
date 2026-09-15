@@ -1,0 +1,169 @@
+{
+  "acceptance_root": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-GPU-MAPPING-V7-20260914",
+  "candidate": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v7",
+  "cpu": {
+    "ast": {
+      "errors": [],
+      "pass": true,
+      "python_file_count": 23
+    },
+    "launcher_contract": {
+      "pass": true,
+      "returncode": 0,
+      "script": "launcher_contract_probe_v6.py",
+      "stderr": "",
+      "stdout": "PASS_V6_LAUNCHER_C_AB_CONTRACT\n"
+    },
+    "launcher_static": {
+      "common_v6_file_count": 59,
+      "only_inherited_v6_difference": [
+        "run_v6.py"
+      ],
+      "preflight_before_production_popen": true,
+      "production_argv_builder_unchanged": true,
+      "result_schema_version": 6,
+      "stale_hash_manifest_reference": false,
+      "status": "PASS_V7_LAUNCHER_WIRING_STATIC"
+    },
+    "mapping_fixtures": {
+      "pass": true,
+      "returncode": 0,
+      "script": "test_gpu_mapping_v7.py",
+      "stderr": "",
+      "stdout": "PASS_V7_GPU_MAPPING_FIXTURES\n"
+    },
+    "raw_replay": {
+      "coverage": [
+        "gpu-d4babf14-b743-2673-4344-311c2f561214",
+        "gpu-f32f2674-753c-cd20-7606-34a0e5804687"
+      ],
+      "status": "PASS_REPLAY_V7_RAW_MAPPING",
+      "worker_count": 2,
+      "worker_smi_policy": "diagnostic_only_not_a_worker_visibility_gate"
+    }
+  },
+  "finding": {
+    "id": "FPP-V7-001",
+    "required_fix": "Restore an actual worker process-start identity (for example /proc/<pid>/stat field 22 on Linux) and validate that the required identity fields are present before accepting two workers.",
+    "severity": "blocking_for_bounded_gpu_readiness",
+    "summary": "gpu_preflight_v7.py records time.time_ns() at report time as process_start instead of carrying the real OS process-start identity used by v6."
+  },
+  "package": {
+    "inherited_v6": {
+      "actual_file_count": 59,
+      "actual_total_bytes": 4268936,
+      "extra": [],
+      "listed_file_count": 59,
+      "listed_total_bytes": 4268936,
+      "manifest_sha256_declared": "60e5d5ee5b161f212466976af1f7689a632dbeffb0911615a27440115365ce54",
+      "manifest_sha256_recomputed": "60e5d5ee5b161f212466976af1f7689a632dbeffb0911615a27440115365ce54",
+      "mismatches": [],
+      "missing": [],
+      "self_sha256": "e0c671e00f481efbffb0097cc361673aca1e504914356ebe603a2f1d75c3c820"
+    },
+    "v7": {
+      "actual_file_count": 116,
+      "actual_total_bytes": 4393404,
+      "extra": [],
+      "listed_file_count": 116,
+      "listed_total_bytes": 4393404,
+      "manifest_sha256_declared": "4606990ad442783ae08ff2149ac6d71a46236a660630bbaf8d2d41c60acf9fbb",
+      "manifest_sha256_recomputed": "4606990ad442783ae08ff2149ac6d71a46236a660630bbaf8d2d41c60acf9fbb",
+      "mismatches": [],
+      "missing": [],
+      "raw_file_count": 65,
+      "raw_manifest_sha256_declared": "57945f80de9a53d5e137ce83bc299a08c0122b82696def0c724af1bf2a2919b3",
+      "raw_manifest_sha256_recomputed": "57945f80de9a53d5e137ce83bc299a08c0122b82696def0c724af1bf2a2919b3",
+      "raw_total_bytes": 4117257,
+      "self_sha256": "6e17de365bd2905fb821f37c88a4c441e4d2440d92437fdbf0d6729c962c2e38"
+    }
+  },
+  "parser_identity_boundary": {
+    "equal": false,
+    "inherited_v6_parser_identity": "06cb3fe8c6f78b46a37c6f36703a48e65a87f838f7d66b8734a86cd81500a7a3",
+    "interpretation": "The r2 parser hash is path/config-bound and is not substituted for the inherited v6 parser identity.",
+    "r2_parser_identity": "5e56258c21437b119968c1916f0edacb4a1ce761387b89939d103ff926adcfa7",
+    "r2_remote_source_root": "/mnt/conda/zhenglifeng/t/r6g211r2/source",
+    "source_entry_sha256_equal": true
+  },
+  "process_identity": {
+    "finding_id": "FPP-V7-001",
+    "impact": "The worker identity guard can accept two reports from one process because process_start is generated at report time; it is not an OS process-start identity.",
+    "raw_values_are_epoch_nanoseconds": true,
+    "status": "BLOCKER_FPP_V7_PROCESS_IDENTITY",
+    "v6_actual_process_start_line": 64,
+    "v7_process_start_line": 216,
+    "v7_reads_proc_process_start": false,
+    "v7_uses_report_timestamp": true
+  },
+  "r2_delivery": {
+    "declared_file_count": 37,
+    "declared_total_bytes": 56608,
+    "file_count": 37,
+    "manifest_self_sha256": "3d3ab9f61a9dbce1c416267c99acfd66a56bf0df84330b6977b28a98f3d3095e",
+    "matches": true,
+    "total_bytes": 56608
+  },
+  "real_raw": {
+    "coverage": [
+      "gpu-d4babf14-b743-2673-4344-311c2f561214",
+      "gpu-f32f2674-753c-cd20-7606-34a0e5804687"
+    ],
+    "host_gpu_count": 7,
+    "model_constructed": false,
+    "release_exit_codes": {
+      "final-check.exit.txt": "0",
+      "probe.exit.txt": "0",
+      "release-check.exit.txt": "0"
+    },
+    "requested_uuids": [
+      "gpu-f32f2674-753c-cd20-7606-34a0e5804687",
+      "gpu-d4babf14-b743-2673-4344-311c2f561214"
+    ],
+    "selected_indices": [
+      2,
+      3
+    ],
+    "status": "PASS_V7_REAL_MAPPING_RAW_RECHECK",
+    "training_started": false,
+    "worker_reports": [
+      {
+        "cvd_tokens": [
+          "GPU-d4babf14-b743-2673-4344-311c2f561214"
+        ],
+        "driver_count": 1,
+        "driver_pci": "09:00.0",
+        "host_pci": "09:00.0",
+        "node_id": "955c92d83a121c03b3bb0d6788849545d7bb5781bd49b3cc21736d74",
+        "physical_uuid": "gpu-d4babf14-b743-2673-4344-311c2f561214",
+        "pid": 690039,
+        "process_start": "1789393391935789488",
+        "ray_id_kind": "uuid",
+        "runtime_count": 1
+      },
+      {
+        "cvd_tokens": [
+          "GPU-f32f2674-753c-cd20-7606-34a0e5804687"
+        ],
+        "driver_count": 1,
+        "driver_pci": "08:00.0",
+        "host_pci": "08:00.0",
+        "node_id": "955c92d83a121c03b3bb0d6788849545d7bb5781bd49b3cc21736d74",
+        "physical_uuid": "gpu-f32f2674-753c-cd20-7606-34a0e5804687",
+        "pid": 690035,
+        "process_start": "1789393391915680561",
+        "ray_id_kind": "uuid",
+        "runtime_count": 1
+      }
+    ],
+    "worker_smi_full_host_confirmed": true
+  },
+  "schema_version": 1,
+  "scope": {
+    "c_ab_run": false,
+    "model_constructed": false,
+    "paper_faithful_claim": false,
+    "training_started": false
+  },
+  "verdict": "NEEDS_PROTOCOL_REVISION"
+}

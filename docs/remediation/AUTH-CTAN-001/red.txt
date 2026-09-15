@@ -1,0 +1,192 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.6.0 -- D:\anaconda3\envs\rapo-b01\python.exe
+rootdir: C:\Users\Administrator\.codex\worktrees\b7ae\RaPO-author
+collecting ... collected 22 items
+
+tests/author_fixes/test_ctan.py::test_task1_first_and_multiple_batches_default_config FAILED [  4%]
+tests/author_fixes/test_ctan.py::test_task123_matches_uninterrupted_and_scalar_formula FAILED [  9%]
+tests/author_fixes/test_ctan.py::test_different_histories_same_nonzero_last_batch FAILED [ 13%]
+tests/author_fixes/test_ctan.py::test_real_json_roundtrip_count_and_next_advantage FAILED [ 18%]
+tests/author_fixes/test_ctan.py::test_zero_and_tiny_variance_no_floor[xs0] FAILED [ 22%]
+tests/author_fixes/test_ctan.py::test_zero_and_tiny_variance_no_floor[xs1] FAILED [ 27%]
+tests/author_fixes/test_ctan.py::test_old_guard_threshold_exceeded_without_fallback FAILED [ 31%]
+tests/author_fixes/test_ctan.py::test_shared_hook_task123_retention_before_ctan FAILED [ 36%]
+tests/author_fixes/test_ctan.py::test_disabled_ctan_unchanged_original_grpo[1] PASSED [ 40%]
+tests/author_fixes/test_ctan.py::test_disabled_ctan_unchanged_original_grpo[2] PASSED [ 45%]
+tests/author_fixes/test_ctan.py::test_disabled_ctan_unchanged_original_grpo[3] PASSED [ 50%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[None] FAILED [ 54%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state1] FAILED [ 59%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state2] FAILED [ 63%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state3] FAILED [ 68%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state4] FAILED [ 72%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state5] FAILED [ 77%]
+tests/author_fixes/test_ctan.py::test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/img_cls_cil/image_cls_cil_rapo.py] FAILED [ 81%]
+tests/author_fixes/test_ctan.py::test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/cil_det/image_det_cil_rapo.py] FAILED [ 86%]
+tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[image-examples/baselines/img_cls_cil/image_cls_cil_rapo.py] FAILED [ 90%]
+tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[video-examples/baselines/img_cls_cil/image_cls_cil_rapo.py] FAILED [ 95%]
+tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[det-examples/baselines/cil_det/image_det_cil_rapo.py] FAILED [100%]
+
+================================== FAILURES ===================================
+____________ test_task1_first_and_multiple_batches_default_config _____________
+tests\author_fixes\test_ctan.py:67: in test_task1_first_and_multiple_batches_default_config
+    assert normalizer.should_use_ema_grpo()
+E   assert False
+E    +  where False = should_use_ema_grpo()
+E    +    where should_use_ema_grpo = <source_loader.EMAAdvNormalizer object at 0x000001D02302E7D0>.should_use_ema_grpo
+____________ test_task123_matches_uninterrupted_and_scalar_formula ____________
+tests\author_fixes\test_ctan.py:84: in test_task123_matches_uninterrupted_and_scalar_formula
+    old = step(split, xs, old)
+tests\author_fixes\test_ctan.py:60: in step
+    assert normalizer.ema_std == pytest.approx(ema, rel=1e-5, abs=1e-6)
+E   assert 1.1556073698997498 == 2.1591436645678974 �� 2.2e-05
+E     
+E     comparison failed
+E     Obtained: 1.1556073698997498
+E     Expected: 2.1591436645678974 �� 2.2e-05
+______________ test_different_histories_same_nonzero_last_batch _______________
+tests\author_fixes\test_ctan.py:97: in test_different_histories_same_nonzero_last_batch
+    assert restored.ema_std == n.ema_std
+E   assert 1.29099440574646 == 1.154836811542511
+E    +  where 1.29099440574646 = <source_loader.EMAAdvNormalizer object at 0x000001D02302D660>.ema_std
+E    +  and   1.154836811542511 = <source_loader.EMAAdvNormalizer object at 0x000001D02302D810>.ema_std
+______________ test_real_json_roundtrip_count_and_next_advantage ______________
+tests\author_fixes\test_ctan.py:113: in test_real_json_roundtrip_count_and_next_advantage
+    old = step(n, xs, old)
+tests\author_fixes\test_ctan.py:60: in step
+    assert normalizer.ema_std == pytest.approx(ema, rel=1e-5, abs=1e-6)
+E   assert 0.00404145193099976 == 4.037414473894938 �� 4.0e-05
+E     
+E     comparison failed
+E     Obtained: 0.00404145193099976
+E     Expected: 4.037414473894938 �� 4.0e-05
+__________________ test_zero_and_tiny_variance_no_floor[xs0] __________________
+tests\author_fixes\test_ctan.py:124: in test_zero_and_tiny_variance_no_floor
+    step(n, xs, None)
+tests\author_fixes\test_ctan.py:60: in step
+    assert normalizer.ema_std == pytest.approx(ema, rel=1e-5, abs=1e-6)
+E   assert 0.001 == 0.0 �� 1.0e-06
+E     
+E     comparison failed
+E     Obtained: 0.001
+E     Expected: 0.0 �� 1.0e-06
+__________________ test_zero_and_tiny_variance_no_floor[xs1] __________________
+tests\author_fixes\test_ctan.py:124: in test_zero_and_tiny_variance_no_floor
+    step(n, xs, None)
+tests\author_fixes\test_ctan.py:60: in step
+    assert normalizer.ema_std == pytest.approx(ema, rel=1e-5, abs=1e-6)
+E   assert 0.001 == 1.91485421551...e-08 �� 1.0e-06
+E     
+E     comparison failed
+E     Obtained: 0.001
+E     Expected: 1.9148542155126763e-08 �� 1.0e-06
+_____________ test_old_guard_threshold_exceeded_without_fallback ______________
+tests\author_fixes\test_ctan.py:132: in test_old_guard_threshold_exceeded_without_fallback
+    step(n, [0, 0, 0, 0], None)
+tests\author_fixes\test_ctan.py:60: in step
+    assert normalizer.ema_std == pytest.approx(ema, rel=1e-5, abs=1e-6)
+E   assert 0.001 == 0.0 �� 1.0e-06
+E     
+E     comparison failed
+E     Obtained: 0.001
+E     Expected: 0.0 �� 1.0e-06
+_______________ test_shared_hook_task123_retention_before_ctan ________________
+tests\author_fixes\test_ctan.py:162: in test_shared_hook_task123_retention_before_ctan
+    torch.testing.assert_close(d.batch["token_level_rewards"].sum(-1), torch.tensor(scores), rtol=1e-5, atol=1e-6)
+E   AssertionError: The values for attribute 'dtype' do not match: torch.float32 != torch.int64.
+________________ test_later_task_requires_valid_history[None] _________________
+tests\author_fixes\test_ctan.py:184: in test_later_task_requires_valid_history
+    with pytest.raises((ValueError, RuntimeError), match="(?i)(history|state|EMA)"):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'RuntimeError'>)
+_______________ test_later_task_requires_valid_history[state1] ________________
+tests\author_fixes\test_ctan.py:184: in test_later_task_requires_valid_history
+    with pytest.raises((ValueError, RuntimeError), match="(?i)(history|state|EMA)"):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'RuntimeError'>)
+_______________ test_later_task_requires_valid_history[state2] ________________
+tests\author_fixes\test_ctan.py:184: in test_later_task_requires_valid_history
+    with pytest.raises((ValueError, RuntimeError), match="(?i)(history|state|EMA)"):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'RuntimeError'>)
+_______________ test_later_task_requires_valid_history[state3] ________________
+tests\author_fixes\test_ctan.py:184: in test_later_task_requires_valid_history
+    with pytest.raises((ValueError, RuntimeError), match="(?i)(history|state|EMA)"):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'RuntimeError'>)
+_______________ test_later_task_requires_valid_history[state4] ________________
+tests\author_fixes\test_ctan.py:184: in test_later_task_requires_valid_history
+    with pytest.raises((ValueError, RuntimeError), match="(?i)(history|state|EMA)"):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'RuntimeError'>)
+_______________ test_later_task_requires_valid_history[state5] ________________
+tests\author_fixes\test_ctan.py:184: in test_later_task_requires_valid_history
+    with pytest.raises((ValueError, RuntimeError), match="(?i)(history|state|EMA)"):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'RuntimeError'>)
+_ test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/img_cls_cil/image_cls_cil_rapo.py] _
+tests\author_fixes\test_ctan.py:200: in test_actual_reinit_passes_state_and_fails_when_missing
+    assert trainer.ema_adv.ema_std == n.ema_std
+E   AssertionError: assert 1.29099440574646 == 3.107308197498322
+E    +  where 1.29099440574646 = <source_loader.EMAAdvNormalizer object at 0x000001D02302CD00>.ema_std
+E    +    where <source_loader.EMAAdvNormalizer object at 0x000001D02302CD00> = namespace(ema_adv=<source_loader.EMAAdvNormalizer object at 0x000001D02302CD00>, ema_adv_config=EMAAdvConfig(enabled=True, beta=0.999, eps=1e-06, bootstrap_steps=0, activate_from_task=1, min_std=0.0, guard_abs_max=0.0, bias_correction=False, beta_warmup_steps=0, beta_warmup_init=0.9), config=namespace(trainer=namespace(save_checkpoint_path='unused', find_last_checkpoint=False, load_checkpoint_path=None, max_steps=4)), train_dataloader=[], val_dataloader=[], _task_id=2, _preset_global_step=2, training_steps=4, output_dir='unused', _anchor_available=False, _pending_retention_metrics={}, val_reward_score=0.0, best_val_reward_score=-1.0, best_global_step=None).ema_adv
+E    +  and   3.107308197498322 = <source_loader.EMAAdvNormalizer object at 0x000001D02302D900>.ema_std
+_ test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/cil_det/image_det_cil_rapo.py] _
+tests\author_fixes\test_ctan.py:191: in test_actual_reinit_passes_state_and_fails_when_missing
+    select(entry, {"reinit_for_task"}, ns, "PersistentCILTrainer")
+tests\author_fixes\source_loader.py:30: in select
+    nodes = next(n for n in nodes if isinstance(n, ast.ClassDef) and n.name == parent).body
+E   StopIteration
+_ test_real_configs_cli_and_environment_defaults[image-examples/baselines/img_cls_cil/image_cls_cil_rapo.py] _
+tests\author_fixes\test_ctan.py:215: in test_real_configs_cli_and_environment_defaults
+    assert asdict(Config()) == defaults
+E   AssertionError: assert {'activate_fr...teps': 2, ...} == {'activate_fr...teps': 0, ...}
+E     
+E     Omitting 5 identical items, use -vv to show
+E     Differing items:
+E     {'guard_abs_max': 5.0} != {'guard_abs_max': 0.0}
+E     {'beta_warmup_steps': 2} != {'beta_warmup_steps': 0}
+E     {'min_std': 0.001} != {'min_std': 0.0}
+E     {'bias_correction': True} != {'bias_correction': False}...
+E     
+E     ...Full output truncated (29 lines hidden), use '-vv' to show
+_ test_real_configs_cli_and_environment_defaults[video-examples/baselines/img_cls_cil/image_cls_cil_rapo.py] _
+tests\author_fixes\test_ctan.py:215: in test_real_configs_cli_and_environment_defaults
+    assert asdict(Config()) == defaults
+E   AssertionError: assert {'activate_fr...teps': 2, ...} == {'activate_fr...teps': 0, ...}
+E     
+E     Omitting 5 identical items, use -vv to show
+E     Differing items:
+E     {'guard_abs_max': 5.0} != {'guard_abs_max': 0.0}
+E     {'beta_warmup_steps': 2} != {'beta_warmup_steps': 0}
+E     {'min_std': 0.001} != {'min_std': 0.0}
+E     {'bias_correction': True} != {'bias_correction': False}...
+E     
+E     ...Full output truncated (29 lines hidden), use '-vv' to show
+_ test_real_configs_cli_and_environment_defaults[det-examples/baselines/cil_det/image_det_cil_rapo.py] _
+tests\author_fixes\test_ctan.py:215: in test_real_configs_cli_and_environment_defaults
+    assert asdict(Config()) == defaults
+E   AssertionError: assert {'activate_fr...teps': 2, ...} == {'activate_fr...teps': 0, ...}
+E     
+E     Omitting 5 identical items, use -vv to show
+E     Differing items:
+E     {'guard_abs_max': 5.0} != {'guard_abs_max': 0.0}
+E     {'beta_warmup_steps': 2} != {'beta_warmup_steps': 0}
+E     {'min_std': 0.001} != {'min_std': 0.0}
+E     {'bias_correction': True} != {'bias_correction': False}...
+E     
+E     ...Full output truncated (29 lines hidden), use '-vv' to show
+=========================== short test summary info ===========================
+FAILED tests/author_fixes/test_ctan.py::test_task1_first_and_multiple_batches_default_config
+FAILED tests/author_fixes/test_ctan.py::test_task123_matches_uninterrupted_and_scalar_formula
+FAILED tests/author_fixes/test_ctan.py::test_different_histories_same_nonzero_last_batch
+FAILED tests/author_fixes/test_ctan.py::test_real_json_roundtrip_count_and_next_advantage
+FAILED tests/author_fixes/test_ctan.py::test_zero_and_tiny_variance_no_floor[xs0]
+FAILED tests/author_fixes/test_ctan.py::test_zero_and_tiny_variance_no_floor[xs1]
+FAILED tests/author_fixes/test_ctan.py::test_old_guard_threshold_exceeded_without_fallback
+FAILED tests/author_fixes/test_ctan.py::test_shared_hook_task123_retention_before_ctan
+FAILED tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[None]
+FAILED tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state1]
+FAILED tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state2]
+FAILED tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state3]
+FAILED tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state4]
+FAILED tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state5]
+FAILED tests/author_fixes/test_ctan.py::test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/img_cls_cil/image_cls_cil_rapo.py]
+FAILED tests/author_fixes/test_ctan.py::test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/cil_det/image_det_cil_rapo.py]
+FAILED tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[image-examples/baselines/img_cls_cil/image_cls_cil_rapo.py]
+FAILED tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[video-examples/baselines/img_cls_cil/image_cls_cil_rapo.py]
+FAILED tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[det-examples/baselines/cil_det/image_det_cil_rapo.py]
+======================== 19 failed, 3 passed in 8.95s =========================

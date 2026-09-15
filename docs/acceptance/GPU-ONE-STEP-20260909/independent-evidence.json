@@ -1,0 +1,692 @@
+{
+  "probe": "independent_probe.py",
+  "diagnostic_root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\effective-update-20260909",
+  "result_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\effective-update-20260909\\attempt-15\\meta\\effective-update-result.json",
+  "result_bytes": 18893683,
+  "result_sha256": "994ddb9c7795211e0c55187d7467a8f0bdbe9721141f99c1c7a3513e960fec4a",
+  "manifest": {
+    "manifest_path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\effective-update-20260909\\HASHES.json",
+    "manifest_sha256": "2664886875063679c3ea5ec70f46f61544bee34afcb3c848fecc7940436ed6c8",
+    "self_excluded": true,
+    "declared_file_count": 53,
+    "all_files_match": true,
+    "mismatches": []
+  },
+  "source_inventory": {
+    "root": "C:\\Users\\Administrator\\.codex\\worktrees\\5ced\\RaPO-author",
+    "worktree_file_count_including_untracked_runtime_cache": 340,
+    "integration_manifest_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+    "integration_manifest_sha256_expected": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+    "integration_manifest_hash_ok": true,
+    "integration_handoff_sha256": "1f24c89dba5ee452adf8b31d36c8b9a57aeff4e11f73a26f0b3d430be9be6913",
+    "key_file_count": 10,
+    "key_files_all_match": true,
+    "key_files": [
+      {
+        "path": "examples/baselines/_rapo_components.py",
+        "exists": true,
+        "expected_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+        "actual_sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+        "exists": true,
+        "expected_sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+        "actual_sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+        "exists": true,
+        "expected_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+        "actual_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "scripts/image/rapo_cfg.json",
+        "exists": true,
+        "expected_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "actual_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "scripts/video/rapo_cfg.json",
+        "exists": true,
+        "expected_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "actual_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "scripts/det/rapo_cfg.json",
+        "exists": true,
+        "expected_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "actual_sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/run_evidence.py",
+        "exists": true,
+        "expected_sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+        "actual_sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/source_loader.py",
+        "exists": true,
+        "expected_sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+        "actual_sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/test_coco.py",
+        "exists": true,
+        "expected_sha256": "7052ecc16f4c0a31689010238bb5848f578bea4d423db05f90c7cf449227e9a9",
+        "actual_sha256": "7052ecc16f4c0a31689010238bb5848f578bea4d423db05f90c7cf449227e9a9",
+        "source_match_recorded": true,
+        "ok": true
+      },
+      {
+        "path": "tests/author_fixes/test_ctan.py",
+        "exists": true,
+        "expected_sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2",
+        "actual_sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2",
+        "source_match_recorded": true,
+        "ok": true
+      }
+    ]
+  },
+  "evaluation": {
+    "decision": "PASS_LIMITED_EFFECTIVE_UPDATE_WITH_SCOPE_EXCEPTION",
+    "flags": {
+      "result_status_pass": true,
+      "run_exitcode_zero": true,
+      "attempt15_cuda_error_free": true,
+      "static_production_chain_proven": true,
+      "runtime_identity_matches_probe": true,
+      "world_size_two": true,
+      "worker_phases_correct": true,
+      "mapping_expected_physical_4_6": true,
+      "workers_expose_physical_4_6": true,
+      "ctan_hook_once": true,
+      "advantages_finite_and_nonzero": true,
+      "ema_count_0_to_1": true,
+      "gradients_finite_nonzero": true,
+      "actor_sampled_change": true,
+      "initial_actor_anchor_sampled_match": true,
+      "old_anchor_sampled_stable": true,
+      "updated_actor_differs_from_old_anchor": true,
+      "new_anchor_sampled_matches_actor": true,
+      "mapped_actor_sampled_change": true,
+      "stale_vllm_sampled_difference": true,
+      "synced_vllm_sampled_and_summary_equal": true,
+      "log_prob_finite_nonzero": true,
+      "post_sync_generation_finite": true,
+      "ray_shutdown": true,
+      "no_production_source_edit_flag": true
+    },
+    "phase_summary": {
+      "before_update": {
+        "recorded_phase": "before_actor_update",
+        "expected_phase": "before_actor_update",
+        "phase_name_match": true,
+        "world_size": 2,
+        "workers": [
+          {
+            "rank": 0,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "4",
+            "manager_loaded": false,
+            "sync_history_length": 1,
+            "event_indices": [
+              0
+            ]
+          },
+          {
+            "rank": 1,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "6",
+            "manager_loaded": false,
+            "sync_history_length": 1,
+            "event_indices": [
+              0
+            ]
+          }
+        ]
+      },
+      "after_update": {
+        "recorded_phase": "after_actor_update_before_vllm_sync",
+        "expected_phase": "after_actor_update_before_vllm_sync",
+        "phase_name_match": true,
+        "world_size": 2,
+        "workers": [
+          {
+            "rank": 0,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "4",
+            "manager_loaded": false,
+            "sync_history_length": 1,
+            "event_indices": [
+              0
+            ]
+          },
+          {
+            "rank": 1,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "6",
+            "manager_loaded": false,
+            "sync_history_length": 1,
+            "event_indices": [
+              0
+            ]
+          }
+        ]
+      },
+      "after_vllm_sync": {
+        "recorded_phase": "after_production_vllm_sync",
+        "expected_phase": "after_production_vllm_sync",
+        "phase_name_match": true,
+        "world_size": 2,
+        "workers": [
+          {
+            "rank": 0,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "4",
+            "manager_loaded": true,
+            "sync_history_length": 3,
+            "event_indices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "rank": 1,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "6",
+            "manager_loaded": true,
+            "sync_history_length": 3,
+            "event_indices": [
+              0,
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      "after_fit": {
+        "recorded_phase": "after_fit_before_new_anchor_copy",
+        "expected_phase": "after_fit_before_new_anchor_copy",
+        "phase_name_match": true,
+        "world_size": 2,
+        "workers": [
+          {
+            "rank": 0,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "4",
+            "manager_loaded": false,
+            "sync_history_length": 2,
+            "event_indices": [
+              0,
+              1
+            ]
+          },
+          {
+            "rank": 1,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "6",
+            "manager_loaded": false,
+            "sync_history_length": 2,
+            "event_indices": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "after_anchor_copy": {
+        "recorded_phase": "after_actor_to_anchor_copy",
+        "expected_phase": "after_actor_to_anchor_copy",
+        "phase_name_match": true,
+        "world_size": 2,
+        "workers": [
+          {
+            "rank": 0,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "4",
+            "manager_loaded": false,
+            "sync_history_length": 2,
+            "event_indices": [
+              0,
+              1
+            ]
+          },
+          {
+            "rank": 1,
+            "hostname": "gpu-211",
+            "cuda_visible_devices": "6",
+            "manager_loaded": false,
+            "sync_history_length": 2,
+            "event_indices": [
+              0,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "identity": {
+      "source": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/source",
+      "model": "/home/zhenglifeng/models/Qwen2-VL-2B-Instruct-895c3a4",
+      "inputs": "/mnt/conda/zhenglifeng/t/eu-p1-20260908/inputs",
+      "config": {
+        "ctan_env": {
+          "EMA_ADV_ACTIVATE_FROM_TASK": "1",
+          "EMA_ADV_BETA": "0.999",
+          "EMA_ADV_BETA_WARMUP_INIT": "0.9",
+          "EMA_ADV_BETA_WARMUP_STEPS": "0",
+          "EMA_ADV_BIAS_CORRECTION": "0",
+          "EMA_ADV_BOOTSTRAP_STEPS": "0",
+          "EMA_ADV_ENABLED": "1",
+          "EMA_ADV_EPS": "1e-06",
+          "EMA_ADV_GUARD_ABS_MAX": "0.0",
+          "EMA_ADV_MIN_STD": "0.0"
+        },
+        "cuda_launch_blocking": "1",
+        "gpu_memory_utilization": 0.8,
+        "max_prompt_length": 768,
+        "max_response_length": 96,
+        "n_gpus_per_node": 2,
+        "retention_active_for_task": false,
+        "rollout_n": 4
+      }
+    },
+    "ray_mapping": {
+      "expected_physical_indices": [
+        4,
+        6
+      ],
+      "expected_physical_uuids": [
+        "GPU-4bd5a062-f6e3-e8bf-83d1-a44675314850",
+        "GPU-75d3fddd-06bf-785d-4ac3-41074b52d00d"
+      ],
+      "mapping_check": {
+        "actual_uuids": [
+          "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+        ],
+        "expected_uuids": [
+          "4bd5a062-f6e3-e8bf-83d1-a44675314850",
+          "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+        ],
+        "logical_to_physical": {
+          "0": 4,
+          "1": 6
+        },
+        "status": "pass",
+        "valid": true,
+        "worker_cvd": [
+          4,
+          6
+        ]
+      },
+      "pid": 437173,
+      "ray_gpu_ids": [
+        "4",
+        "6"
+      ],
+      "torch_device_count": 2,
+      "torch_properties": [
+        {
+          "logical_index": 0,
+          "name": "NVIDIA GeForce RTX 3090",
+          "total_memory": 25298141184,
+          "uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+        },
+        {
+          "logical_index": 1,
+          "name": "NVIDIA GeForce RTX 3090",
+          "total_memory": 25298141184,
+          "uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+        }
+      ],
+      "worker_cuda_visible_devices": "4,6"
+    },
+    "selected_gpu_rows": [
+      {
+        "compute_apps": [],
+        "index": 4,
+        "memory_total_mib": 24576,
+        "memory_used_mib": 4,
+        "name": "NVIDIA GeForce RTX 3090",
+        "utilization_gpu_percent": 0,
+        "uuid": "GPU-4bd5a062-f6e3-e8bf-83d1-a44675314850"
+      },
+      {
+        "compute_apps": [],
+        "index": 6,
+        "memory_total_mib": 24576,
+        "memory_used_mib": 4,
+        "name": "NVIDIA GeForce RTX 3090",
+        "utilization_gpu_percent": 0,
+        "uuid": "GPU-75d3fddd-06bf-785d-4ac3-41074b52d00d"
+      }
+    ],
+    "worker_devices": [
+      {
+        "rank": 0,
+        "hostname": "gpu-211",
+        "cuda_visible_devices": "4",
+        "ray_gpu_ids": [
+          "4"
+        ],
+        "uuids": [
+          {
+            "logical_index": 0,
+            "name": "NVIDIA GeForce RTX 3090",
+            "total_memory": 25298141184,
+            "uuid": "4bd5a062-f6e3-e8bf-83d1-a44675314850"
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "hostname": "gpu-211",
+        "cuda_visible_devices": "6",
+        "ray_gpu_ids": [
+          "6"
+        ],
+        "uuids": [
+          {
+            "logical_index": 0,
+            "name": "NVIDIA GeForce RTX 3090",
+            "total_memory": 25298141184,
+            "uuid": "75d3fddd-06bf-785d-4ac3-41074b52d00d"
+          }
+        ]
+      }
+    ],
+    "ctan": {
+      "hook_calls": 1,
+      "advantages": {
+        "finite_count": 1536,
+        "max_abs": 2.0189287662506104,
+        "nonzero_count": 1029,
+        "total_count": 1536
+      },
+      "ema_before": {
+        "activate_from_task": 1,
+        "beta": 0.999,
+        "beta_warmup_init": 0.9,
+        "beta_warmup_steps": 0,
+        "bias_correction": false,
+        "bootstrap_steps": 0,
+        "ema_mean": 0.0,
+        "ema_std": 1.0,
+        "eps": 1e-06,
+        "guard_abs_max": 0.0,
+        "last_batch_reward_mean": null,
+        "last_batch_reward_std": null,
+        "min_std": 0.0,
+        "update_count": 0
+      },
+      "ema_after": {
+        "activate_from_task": 1,
+        "beta": 0.999,
+        "beta_warmup_init": 0.9,
+        "beta_warmup_steps": 0,
+        "bias_correction": false,
+        "bootstrap_steps": 0,
+        "ema_mean": 0.375,
+        "ema_std": 0.6191391944885254,
+        "eps": 1e-06,
+        "guard_abs_max": 0.0,
+        "last_batch_reward_mean": 0.375,
+        "last_batch_reward_std": 0.6191391944885254,
+        "min_std": 0.0,
+        "update_count": 1
+      }
+    },
+    "actor": {
+      "grad_norms": [
+        36.75,
+        36.75
+      ],
+      "sample_delta": {
+        "label": "before update vs after update actor trainable samples",
+        "record_count": 16,
+        "sample_count": 16384,
+        "changed_sample_count": 269,
+        "changed_parameter_count": 16,
+        "max_abs_sample_delta": 1.9073486328125e-06,
+        "max_summary_stat_abs_delta": 1.52587890625e-05,
+        "all_recorded_values_finite": true,
+        "summary_scopes": [
+          "sparse_sample"
+        ],
+        "missing_or_mismatched": [],
+        "full_parameter_equality_proven": false,
+        "sampled_equal": false,
+        "sampled_changed": true
+      },
+      "mapped_actor_update": {
+        "label": "mapped actor initial vs post-update",
+        "worker_count": 1,
+        "sample_count": 32,
+        "changed_sample_count": 2,
+        "max_abs_sample_delta": 1.9073486328125e-06,
+        "max_summary_stat_abs_delta": 4.76837158203125e-06,
+        "missing_or_mismatched": [],
+        "summary_scopes": [],
+        "sampled_equal": false,
+        "sampled_nonzero_difference": true,
+        "summary_stats_equal": false,
+        "full_parameter_equality_proven": false
+      },
+      "log_prob_delta": {
+        "finite_count": 1536,
+        "max_abs": 1.8301353454589844,
+        "mean_abs": 0.02675141580402851,
+        "nonzero_count": 955,
+        "total_count": 1536
+      }
+    },
+    "anchor": {
+      "initial_actor_vs_anchor": {
+        "label": "initial actor vs initial anchor",
+        "record_count": 16,
+        "sample_count": 16384,
+        "changed_sample_count": 0,
+        "changed_parameter_count": 0,
+        "max_abs_sample_delta": 0.0,
+        "max_summary_stat_abs_delta": 0.0,
+        "all_recorded_values_finite": true,
+        "summary_scopes": [
+          "sparse_sample"
+        ],
+        "missing_or_mismatched": [],
+        "full_parameter_equality_proven": false,
+        "sampled_equal": true,
+        "sampled_changed": false
+      },
+      "old_anchor_stable": {
+        "label": "old anchor before vs after actor update",
+        "record_count": 16,
+        "sample_count": 16384,
+        "changed_sample_count": 0,
+        "changed_parameter_count": 0,
+        "max_abs_sample_delta": 0.0,
+        "max_summary_stat_abs_delta": 0.0,
+        "all_recorded_values_finite": true,
+        "summary_scopes": [
+          "sparse_sample"
+        ],
+        "missing_or_mismatched": [],
+        "full_parameter_equality_proven": false,
+        "sampled_equal": true,
+        "sampled_changed": false
+      },
+      "updated_actor_vs_old_anchor": {
+        "label": "updated actor vs old anchor",
+        "record_count": 16,
+        "sample_count": 16384,
+        "changed_sample_count": 269,
+        "changed_parameter_count": 16,
+        "max_abs_sample_delta": 1.9073486328125e-06,
+        "max_summary_stat_abs_delta": 1.52587890625e-05,
+        "all_recorded_values_finite": true,
+        "summary_scopes": [
+          "sparse_sample"
+        ],
+        "missing_or_mismatched": [],
+        "full_parameter_equality_proven": false,
+        "sampled_equal": false,
+        "sampled_changed": true
+      },
+      "new_anchor_matches_updated_actor": {
+        "label": "post-fit actor vs copied new anchor",
+        "record_count": 16,
+        "sample_count": 16384,
+        "changed_sample_count": 0,
+        "changed_parameter_count": 0,
+        "max_abs_sample_delta": 0.0,
+        "max_summary_stat_abs_delta": 0.0,
+        "all_recorded_values_finite": true,
+        "summary_scopes": [
+          "sparse_sample"
+        ],
+        "missing_or_mismatched": [],
+        "full_parameter_equality_proven": false,
+        "sampled_equal": true,
+        "sampled_changed": false
+      }
+    },
+    "vllm": {
+      "selected_key": "visual.blocks.0.attn.proj.bias",
+      "stale_before_sync": {
+        "label": "actor vs stale vLLM before production sync",
+        "worker_count": 2,
+        "sample_count": 32,
+        "changed_sample_count": 2,
+        "max_abs_sample_delta": 1.9073486328125e-06,
+        "max_summary_stat_abs_delta": 4.76837158203125e-06,
+        "missing_or_mismatched": [],
+        "summary_scopes": [
+          "exact"
+        ],
+        "sampled_equal": false,
+        "sampled_nonzero_difference": true,
+        "summary_stats_equal": false,
+        "full_parameter_equality_proven": false
+      },
+      "after_sync": {
+        "label": "actor vs vLLM after production sync",
+        "worker_count": 2,
+        "sample_count": 32,
+        "changed_sample_count": 0,
+        "max_abs_sample_delta": 0.0,
+        "max_summary_stat_abs_delta": 0.0,
+        "missing_or_mismatched": [],
+        "summary_scopes": [
+          "exact"
+        ],
+        "sampled_equal": true,
+        "sampled_nonzero_difference": false,
+        "summary_stats_equal": true,
+        "full_parameter_equality_proven": false
+      },
+      "event_boundaries": [
+        "production_sync_after_wake_before_and_after_load_weights",
+        "production_sync_after_wake_before_and_after_load_weights"
+      ],
+      "loaded_at_wrapper_entry": [
+        true,
+        true
+      ]
+    },
+    "generation": {
+      "batch_size": 4,
+      "finite_response_tokens": true,
+      "response_tokens": 384
+    },
+    "static_source_audit": {
+      "diagnostic_probe_sha256": "947d367c7302e24df6a12bb222a7bec58530c2ceabb928796d1fd56e0b02e8f7",
+      "runtime_identity": {
+        "source": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/source",
+        "model": "/home/zhenglifeng/models/Qwen2-VL-2B-Instruct-895c3a4",
+        "inputs": "/mnt/conda/zhenglifeng/t/eu-p1-20260908/inputs"
+      },
+      "probe_constants": {
+        "source": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/source",
+        "model": "/home/zhenglifeng/models/Qwen2-VL-2B-Instruct-895c3a4",
+        "inputs": "/mnt/conda/zhenglifeng/t/eu-p1-20260908/inputs"
+      },
+      "runtime_identity_matches_probe_constants": {
+        "source": true,
+        "model": true,
+        "inputs": true
+      },
+      "checks": {
+        "probe_uses_production_persistent_runner": true,
+        "probe_calls_unchanged_trainer_fit": true,
+        "probe_wraps_original_actor_update": true,
+        "probe_wraps_original_advantage_hook": true,
+        "probe_wraps_original_sync": true,
+        "probe_defers_vllm_observation_until_loaded": true,
+        "probe_has_no_direct_load_weights_call": true,
+        "production_sync_gathers_and_loads_weights": true,
+        "production_wakes_before_sync": true,
+        "production_actor_update_calls_policy": true,
+        "production_fit_calls_actor_update": true,
+        "production_rapo_fit_installs_hook": true,
+        "production_rapo_hook_uses_ema": true
+      },
+      "all_static_chain_checks_pass": true,
+      "integration_manifest_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1"
+    },
+    "run_log_audit": {
+      "run_start": "2026-09-09T11:15:58+08:00",
+      "run_finish": "2026-09-09T11:20:14+08:00",
+      "run_exitcode": "0",
+      "attempt15_stderr_error_like_lines": [],
+      "attempt15_cuda_error_free": true,
+      "prior_cuda_error_samples": {
+        "9": [
+          "\u001b[36m(ObservedPersistentRunner pid=370952)\u001b[0m RuntimeError: CUDA error: an illegal memory access was encountered"
+        ],
+        "11": [
+          "\u001b[36m(WorkerDict pid=386653)\u001b[0m [rank0]:[E909 10:39:42.081840348 ProcessGroupNCCL.cpp:1895] [PG ID 0 PG GUID 0(default_pg) Rank 0] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered",
+          "\u001b[36m(WorkerDict pid=386653)\u001b[0m [2026-09-09 10:39:42,237 E 386653 386998] logging.cc:112: Unhandled exception: N3c1016DistBackendErrorE. what(): [PG ID 0 PG GUID 0(default_pg) Rank 0] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered",
+          "\u001b[36m(WorkerDict pid=386850)\u001b[0m [rank1]:[E909 10:39:42.078755916 ProcessGroupNCCL.cpp:1895] [PG ID 0 PG GUID 0(default_pg) Rank 1] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered",
+          "\u001b[36m(WorkerDict pid=386850)\u001b[0m [2026-09-09 10:39:42,234 E 386850 386996] logging.cc:112: Unhandled exception: N3c1016DistBackendErrorE. what(): [PG ID 0 PG GUID 0(default_pg) Rank 1] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered"
+        ],
+        "13": [
+          "\u001b[36m(WorkerDict pid=397101)\u001b[0m [rank1]:[E909 10:47:14.980508774 ProcessGroupNCCL.cpp:1895] [PG ID 0 PG GUID 0(default_pg) Rank 1] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered",
+          "\u001b[36m(WorkerDict pid=397101)\u001b[0m [2026-09-09 10:47:14,136 E 397101 397335] logging.cc:112: Unhandled exception: N3c1016DistBackendErrorE. what(): [PG ID 0 PG GUID 0(default_pg) Rank 1] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered"
+        ]
+      },
+      "checkpoint_save_log_lines": [
+        "\u001b[36m(WorkerDict pid=438591)\u001b[0m [rank-1]: Saving model to /mnt/conda/zhenglifeng/t/effective-update-20260909/attempt-15/outputs/unused-checkpoint-path/global_step_1/actor/model_world_size_2_rank_1.pt.",
+        "\u001b[36m(WorkerDict pid=438242)\u001b[0m [rank-0]: Saving model to /mnt/conda/zhenglifeng/t/effective-update-20260909/attempt-15/outputs/unused-checkpoint-path/global_step_1/actor/model_world_size_2_rank_0.pt."
+      ],
+      "checkpoint_save_log_count": 2,
+      "checkpoint_write_observed_in_log": true,
+      "runtime_identity_markers": {
+        "qwen2_vl_model_loaded": true,
+        "image_input_key_seen": true,
+        "generation_batch_four_seen": true,
+        "input_path_seen": true
+      }
+    },
+    "declared_no_checkpoint_write": true,
+    "checkpoint_write_scope_pass": false
+  }
+}

@@ -1,0 +1,38 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.6.0 -- D:\anaconda3\envs\rapo-b01\python.exe
+rootdir: C:\Users\Administrator\.codex\worktrees\8ac5\RaPO-author
+collecting ... collected 31 items
+
+tests/author_fixes/test_cil_resume.py::test_valid_boundary_fixture_is_production_serialized_and_validated PASSED [  3%]
+tests/author_fixes/test_cil_resume.py::test_missing_or_corrupt_checkpoint_fails_closed[delete] PASSED [  6%]
+tests/author_fixes/test_cil_resume.py::test_missing_or_corrupt_checkpoint_fails_closed[append] PASSED [  9%]
+tests/author_fixes/test_cil_resume.py::test_marker_semantic_mismatch_fails_closed PASSED [ 12%]
+tests/author_fixes/test_cil_resume.py::test_model_only_marker_fails_closed PASSED [ 16%]
+tests/author_fixes/test_cil_resume.py::test_source_guards_preserve_continuous_path_and_restore_order PASSED [ 19%]
+tests/author_fixes/test_coco.py::test_coco_static_callpoint_uses_seen_labels_and_task_filter_first PASSED [ 22%]
+tests/author_fixes/test_coco.py::test_coco_data_assignment_and_real_answer_filters_for_six_seeds PASSED [ 25%]
+tests/author_fixes/test_coco.py::test_coco_author_reward_full_answer_beats_car_only_with_margin PASSED [ 29%]
+tests/author_fixes/test_ctan.py::test_task1_first_and_multiple_batches_default_config PASSED [ 32%]
+tests/author_fixes/test_ctan.py::test_task123_matches_uninterrupted_and_scalar_formula PASSED [ 35%]
+tests/author_fixes/test_ctan.py::test_different_histories_same_nonzero_last_batch PASSED [ 38%]
+tests/author_fixes/test_ctan.py::test_real_json_roundtrip_count_and_next_advantage PASSED [ 41%]
+tests/author_fixes/test_ctan.py::test_zero_and_tiny_variance_no_floor[xs0] PASSED [ 45%]
+tests/author_fixes/test_ctan.py::test_zero_and_tiny_variance_no_floor[xs1] PASSED [ 48%]
+tests/author_fixes/test_ctan.py::test_old_guard_threshold_exceeded_without_fallback PASSED [ 51%]
+tests/author_fixes/test_ctan.py::test_shared_hook_task123_retention_before_ctan PASSED [ 54%]
+tests/author_fixes/test_ctan.py::test_disabled_ctan_unchanged_original_grpo[1] PASSED [ 58%]
+tests/author_fixes/test_ctan.py::test_disabled_ctan_unchanged_original_grpo[2] PASSED [ 61%]
+tests/author_fixes/test_ctan.py::test_disabled_ctan_unchanged_original_grpo[3] PASSED [ 64%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[None] PASSED [ 67%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state1] PASSED [ 70%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state2] PASSED [ 74%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state3] PASSED [ 77%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state4] PASSED [ 80%]
+tests/author_fixes/test_ctan.py::test_later_task_requires_valid_history[state5] PASSED [ 83%]
+tests/author_fixes/test_ctan.py::test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/img_cls_cil/image_cls_cil_rapo.py] PASSED [ 87%]
+tests/author_fixes/test_ctan.py::test_actual_reinit_passes_state_and_fails_when_missing[examples/baselines/cil_det/image_det_cil_rapo.py] PASSED [ 90%]
+tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[image-examples/baselines/img_cls_cil/image_cls_cil_rapo.py] PASSED [ 93%]
+tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[video-examples/baselines/img_cls_cil/image_cls_cil_rapo.py] PASSED [ 96%]
+tests/author_fixes/test_ctan.py::test_real_configs_cli_and_environment_defaults[det-examples/baselines/cil_det/image_det_cil_rapo.py] PASSED [100%]
+
+============================= 31 passed in 8.09s ==============================

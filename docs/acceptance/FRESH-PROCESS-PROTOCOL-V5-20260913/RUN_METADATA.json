@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "finding": "FRESH-PROCESS-PROTOCOL-V5-20260913",
+  "role": "independent_acceptance",
+  "date": "2026-09-13",
+  "candidate_root": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v5",
+  "target_root": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "commands": [
+    "python -B acceptance_probe.py --candidate <v5> --target-root <8ac5>",
+    "independent package/raw/history/target identity recomputation",
+    "independent CPU/static judge counterexamples"
+  ],
+  "scope": {
+    "production_imported": false,
+    "ray_started": false,
+    "gpu_used": false,
+    "model_constructed": false,
+    "training_started": false,
+    "inference_started": false,
+    "dependencies_installed": false,
+    "ssh_used": false
+  },
+  "candidate_local_zero_gpu": "BLOCKED_ZERO_GPU_RAY_UNAVAILABLE; reused as declared evidence, not upgraded",
+  "verdict": "NEEDS_PROTOCOL_REVISION",
+  "findings": [
+    "FPP-V5-001",
+    "FPP-V5-002",
+    "FPP-V5-003",
+    "FPP-V5-004",
+    "FPP-V5-005"
+  ]
+}

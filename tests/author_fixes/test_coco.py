@@ -1,0 +1,350 @@
+"""CPU-local COCO checks for AUTH-COCO-001.
+
+The static checks read the production call site and the real dataloader task
+filter before executing the unmodified filtering helpers selected from the
+author source.  They do not import Ray/datasets or replace the subject code.
+"""
+
+from __future__ import annotations
+
+import ast
+import hashlib
+import importlib.util
+import json
+from collections import Counter
+from pathlib import Path
+from types import SimpleNamespace
+from typing import Any, Iterable, Optional
+
+import numpy as np
+import pytest
+
+
+ROOT = Path(__file__).resolve().parents[2]
+DET_SOURCE = ROOT / "examples/baselines/cil_det/image_det_cil.py"
+RAPO_SOURCE = ROOT / "examples/baselines/cil_det/image_det_cil_rapo.py"
+TRAIN = ROOT / "data/object_det_cil_dataset/train_5shots.jsonl"
+CATEGORIES = ROOT / "data/object_det_cil_dataset/categories.json"
+
+DATA_SHA256 = {
+    "data/object_det_cil_dataset/categories.json":
+        "bce0b4c7e2ab32ad052574511dfdb23543b5feb20077b92d2477e47fcee0c363",
+    "data/object_det_cil_dataset/metadata.json":
+        "ca3835853917429769fb597eed5cd7090040a6471ec896fc6d8d7325c7223f6a",
+    "data/object_det_cil_dataset/train_5shots.jsonl":
+        "eab08f2603eb4153b77d973ef35cd4da7f96459c6894594773de9c40bc420710",
+    "data/object_det_cil_dataset/val.jsonl":
+        "10924839d427c6020e6bcd26020c3054d9584aed01b82f71a2cf1df5246c2d31",
+}
+
+SEED_SPECS = (
+    {
+        "tasks": 5,
+        "base_classes": 16,
+        "incremental_classes": 16,
+        "seeds": (136, 377, 639),
+        "counts": (
+            (16, 19, 11, 64, 96),
+            (16, 17, 27, 58, 88),
+            (22, 19, 22, 56, 87),
+        ),
+    },
+    {
+        "tasks": 10,
+        "base_classes": 8,
+        "incremental_classes": 8,
+        "seeds": (277, 305, 738),
+        "counts": (
+            (13, 14, 10, 16, 13, 16, 20, 20, 41, 43),
+            (11, 10, 21, 10, 14, 15, 10, 23, 39, 53),
+            (10, 12, 13, 13, 11, 14, 23, 23, 45, 42),
+        ),
+    },
+)
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _function_node(path: Path, name: str) -> ast.FunctionDef:
+    tree = ast.parse(path.read_bytes(), filename=str(path))
+    return next(
+        node for node in tree.body
+        if isinstance(node, ast.FunctionDef) and node.name == name
+    )
+
+
+def _load_real_det_helpers() -> dict[str, Any]:
+    """Execute selected, unmodified helper functions from image_det_cil.py."""
+    names = {
+        "_normalize_label_name",
+        "_filter_annotations_by_classes",
+        "_infer_example_task_id_from_answer",
+        "_build_class_order",
+        "_build_class_to_task_map",
+        "_chunk_classes",
+    }
+    tree = ast.parse(DET_SOURCE.read_bytes(), filename=str(DET_SOURCE))
+    nodes = [
+        node for node in tree.body
+        if isinstance(node, ast.FunctionDef) and node.name in names
+    ]
+    assert {node.name for node in nodes} == names
+    namespace = {
+        "json": json,
+        "np": np,
+        "Any": Any,
+        "Iterable": Iterable,
+        "Optional": Optional,
+    }
+    exec(
+        compile(ast.Module(body=nodes, type_ignores=[]), str(DET_SOURCE), "exec"),
+        namespace,
+    )
+    return {name: namespace[name] for name in names}
+
+
+def _run_task_call() -> ast.Call:
+    """Read the actual runner.run_task call in the production task loop."""
+    run_cil = _function_node(RAPO_SOURCE, "_run_cil")
+    calls = [
+        node for node in ast.walk(run_cil)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "remote"
+        and isinstance(node.func.value, ast.Attribute)
+        and node.func.value.attr == "run_task"
+    ]
+    assert len(calls) == 1
+    return calls[0]
+
+
+def _keyword(call: ast.Call, name: str) -> ast.keyword:
+    return next(keyword for keyword in call.keywords if keyword.arg == name)
+
+
+def _names(expression: ast.AST) -> set[str]:
+    return {
+        node.id for node in ast.walk(expression)
+        if isinstance(node, ast.Name)
+    }
+
+
+def _evaluate_allowed_classes(
+    expression: ast.AST,
+    prompt_seen_labels: bool,
+    seen_class_names: list[str],
+    ordered_task_class_names: list[str],
+) -> list[str]:
+    """Evaluate only the source expression, with real task-loop values."""
+    compiled = compile(ast.Expression(expression), str(RAPO_SOURCE), "eval")
+    namespace = {
+        "known_args": SimpleNamespace(prompt_seen_labels=prompt_seen_labels),
+        "prompt_label_list": seen_class_names if prompt_seen_labels else None,
+        "seen_class_names": seen_class_names,
+        "ordered_task_class_names": ordered_task_class_names,
+    }
+    return eval(compiled, {"__builtins__": {}}, namespace)
+
+
+def _load_rows() -> list[dict[str, Any]]:
+    return [
+        json.loads(line)
+        for line in TRAIN.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+
+
+def _normalized_categories(
+    detections: list[dict[str, Any]], normalize: Any,
+) -> set[str]:
+    return {normalize(detection["category"]) for detection in detections}
+
+
+def test_coco_static_callpoint_uses_seen_labels_and_task_filter_first() -> None:
+    """Static production wiring is separate from local filtering behavior."""
+    call = _run_task_call()
+    allowed = _keyword(call, "allowed_classes").value
+    task_filter = _keyword(call, "task_id_filter").value
+    class_map = _keyword(call, "class_to_task").value
+
+    assert isinstance(task_filter, ast.Name)
+    assert task_filter.id == "task_idx"
+    assert isinstance(class_map, ast.Name)
+    assert class_map.id == "class_to_task"
+    assert "seen_class_names" in _names(allowed)
+    assert "ordered_task_class_names" in _names(allowed)
+    assert isinstance(allowed, ast.IfExp)
+    test_names = _names(allowed.test) | {
+        node.attr for node in ast.walk(allowed.test)
+        if isinstance(node, ast.Attribute)
+    }
+    assert "prompt_seen_labels" in test_names or "prompt_label_list" in test_names
+
+    seen = ["person", "car"]
+    novel = ["car"]
+    assert _evaluate_allowed_classes(allowed, True, seen, novel) == seen
+    assert _evaluate_allowed_classes(allowed, False, seen, novel) == novel
+
+    build = _function_node(DET_SOURCE, "_build_dataloader")
+    task_branch = next(
+        node for node in ast.walk(build)
+        if isinstance(node, ast.If)
+        and any(
+            isinstance(part, ast.Name) and part.id == "task_id_filter"
+            for part in ast.walk(node.test)
+        )
+    )
+    label_branch = next(
+        node for node in ast.walk(build)
+        if isinstance(node, ast.If)
+        and isinstance(node.test, ast.Compare)
+        and any(
+            isinstance(part, ast.Name) and part.id == "allowed_classes"
+            for part in ast.walk(node.test)
+        )
+    )
+    assert task_branch.lineno < label_branch.lineno
+    filter_calls = [
+        node for node in ast.walk(label_branch)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Name)
+        and node.func.id == "_filter_annotations_by_classes"
+    ]
+    assert len(filter_calls) == 2
+
+
+def test_coco_data_assignment_and_real_answer_filters_for_six_seeds() -> None:
+    """Check image membership, task assignment, answer and answer_seg locally."""
+    for relative, expected in DATA_SHA256.items():
+        assert _sha256(ROOT / relative) == expected
+
+    helpers = _load_real_det_helpers()
+    normalize = helpers["_normalize_label_name"]
+    filter_annotations = helpers["_filter_annotations_by_classes"]
+    infer_task = helpers["_infer_example_task_id_from_answer"]
+    build_order = helpers["_build_class_order"]
+    build_map = helpers["_build_class_to_task_map"]
+    chunk = helpers["_chunk_classes"]
+    class_names = json.loads(CATEGORIES.read_text(encoding="utf-8"))["categories"]
+    rows = _load_rows()
+    assert len(rows) == 206
+    image_order = tuple(row["images"][0] for row in rows)
+    assert len(set(image_order)) == 206
+    assert all(len(row["images"]) == 1 for row in rows)
+
+    call = _run_task_call()
+    allowed_expression = _keyword(call, "allowed_classes").value
+    saw_single_class = False
+    saw_cross_task = False
+
+    for seed_spec in SEED_SPECS:
+        for seed, expected_counts in zip(seed_spec["seeds"], seed_spec["counts"]):
+            order = build_order(80, None, seed)
+            splits = chunk(
+                order,
+                seed_spec["base_classes"],
+                seed_spec["incremental_classes"],
+                seed_spec["tasks"],
+            )
+            class_to_task = build_map(splits, class_names)
+            assert set(class_to_task) == {
+                normalize(name) for name in class_names
+            }
+            assigned = [
+                infer_task(row["answer"], class_to_task)
+                for row in rows
+            ]
+            assert [assigned.count(task_id) for task_id in range(seed_spec["tasks"])] == list(expected_counts)
+            assert set(assigned) == set(range(seed_spec["tasks"]))
+
+            for row, task_id in zip(rows, assigned):
+                answer = json.loads(row["answer"])
+                answer_seg = json.loads(row["answer_seg"])
+                categories = _normalized_categories(answer, normalize)
+                task_ids = {class_to_task[category] for category in categories}
+                saw_single_class |= len(categories) == 1
+                saw_cross_task |= len(task_ids) > 1
+                if task_id < 0:
+                    continue
+
+            seen_class_names: list[str] = []
+            for task_id, task_class_ids in enumerate(splits):
+                ordered_task_class_names = [class_names[i] for i in task_class_ids]
+                seen_class_names.extend(ordered_task_class_names)
+                seen_allowed = _evaluate_allowed_classes(
+                    allowed_expression,
+                    True,
+                    seen_class_names,
+                    ordered_task_class_names,
+                )
+                novel_allowed = _evaluate_allowed_classes(
+                    allowed_expression,
+                    False,
+                    seen_class_names,
+                    ordered_task_class_names,
+                )
+                assert seen_allowed == seen_class_names
+                assert novel_allowed == ordered_task_class_names
+                seen_norm = {normalize(name) for name in seen_allowed}
+                novel_norm = {normalize(name) for name in novel_allowed}
+
+                for row, assigned_task in zip(rows, assigned):
+                    if assigned_task != task_id:
+                        continue
+                    answer = json.loads(row["answer"])
+                    answer_seg = json.loads(row["answer_seg"])
+                    assert _normalized_categories(answer, normalize) <= seen_norm
+                    assert json.loads(filter_annotations(row["answer"], seen_norm)) == answer
+                    assert json.loads(filter_annotations(row["answer_seg"], seen_norm)) == answer_seg
+
+                    expected_novel = [
+                        detection for detection in answer
+                        if normalize(detection["category"]) in novel_norm
+                    ]
+                    expected_novel_seg = [
+                        detection for detection in answer_seg
+                        if normalize(detection["category"]) in novel_norm
+                    ]
+                    assert json.loads(filter_annotations(row["answer"], novel_norm)) == expected_novel
+                    assert json.loads(filter_annotations(row["answer_seg"], novel_norm)) == expected_novel_seg
+                    assert len(json.loads(filter_annotations(row["answer"], seen_norm))) == len(answer)
+                    assert len(json.loads(filter_annotations(row["answer_seg"], seen_norm))) == len(answer_seg)
+                    assert Counter(
+                        normalize(detection["category"])
+                        for detection in json.loads(filter_annotations(row["answer"], seen_norm))
+                    ) == Counter(normalize(detection["category"]) for detection in answer)
+
+    assert saw_single_class
+    assert saw_cross_task
+
+
+def test_coco_author_reward_full_answer_beats_car_only_with_margin() -> None:
+    """Use the shipped SciPy/Hungarian reward on the required eight-box row."""
+    row = next(
+        row for row in _load_rows()
+        if row["images"] == ["train2017/000000018783.jpg"]
+    )
+    ground_truth = row["answer"]
+    detections = json.loads(ground_truth)
+    assert len(detections) == 8
+    car_only = json.dumps(
+        [detection for detection in detections if detection["category"] == "car"],
+        ensure_ascii=False,
+    )
+
+    spec = importlib.util.spec_from_file_location(
+        "author_det_reward", ROOT / "examples/reward_function/det.py"
+    )
+    assert spec is not None and spec.loader is not None
+    reward = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(reward)
+    response = lambda answer: f"<think>valid analysis</think><answer>{answer}</answer>"
+
+    full = reward.compute_score({"response": response(ground_truth), "ground_truth": ground_truth})
+    car = reward.compute_score({"response": response(car_only), "ground_truth": ground_truth})
+    assert full == {"overall": pytest.approx(3.0), "format": pytest.approx(1.0), "iou": pytest.approx(1.0), "cls_accuracy": pytest.approx(1.0)}
+    assert car == {"overall": pytest.approx(1.25), "format": pytest.approx(1.0), "iou": pytest.approx(0.125), "cls_accuracy": pytest.approx(0.125)}
+    assert full["overall"] - car["overall"] == pytest.approx(1.75)
+    assert full["overall"] - (car["overall"] + 0.5) > 0

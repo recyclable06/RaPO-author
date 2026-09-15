@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "finding": "CAND-RESUME-CIL-001",
+  "round": "r3.1",
+  "role": "independent_acceptance",
+  "target_root": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "acceptance_root": "C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/CIL-RESUME-CPU-R31-20260911",
+  "target_files": [
+    {
+      "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "bytes": 102269,
+      "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+    },
+    {
+      "path": "tests/author_fixes/test_cil_resume.py",
+      "bytes": 24215,
+      "sha256": "2bb64dccbce91409840d04344a30a58b76265ae77145ab33b4819a3613b4aadf"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/r3/HASHES.json",
+      "bytes": 4787,
+      "sha256": "ce058c0a2e9485ba027c2a6c7356f02ef99a3b0d1a283674d8a2e418f4a75271"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "prior-acceptance/CIL-RESUME-CPU-R3-20260910/identity-evidence.json",
+      "bytes": 7883,
+      "sha256": "6fb659486539831f2d40275210d74fced34b5c50f91b2c473ecf198f5a2bcb90"
+    },
+    {
+      "path": "coordinator-freeze/docs/CIL_RESUME_R31_FREEZE.md",
+      "bytes": 2679,
+      "sha256": "8c8296d484ec6b9d8d078de7ece3b3621ff5a2dd7285d26601c3faa0d01cef61"
+    }
+  ],
+  "acceptance_artifacts": [
+    {
+      "path": "hash-comparison.json",
+      "bytes": 144,
+      "sha256": "3c964ebf48459b6e9fbcb0612766dbb05651555dcf3d2da7b5ff8aebcc8f3657"
+    },
+    {
+      "path": "hash-end.json",
+      "bytes": 822,
+      "sha256": "3e3371996e5d3b1b6f18c47a787ef70873b77c24062a9f69d06bdc9fa4c1608e"
+    },
+    {
+      "path": "hash-start.json",
+      "bytes": 1005,
+      "sha256": "7be5468488d6d0f79e875328cfb79b7a1305de6ce61b01aae7d21e891e84713c"
+    },
+    {
+      "path": "independent_probe.py",
+      "bytes": 21839,
+      "sha256": "f9311f0f3864e01b5f263d90573a9fda1d5d79fe4ee23e9091d2a6d109f772ab"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 909,
+      "sha256": "686e8b26d93dba1dfe106fb2f30fcf4bef765702c633f40c867b268f3130b188"
+    },
+    {
+      "path": "raw/01_identity_start.exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "path": "raw/01_identity_start.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/01_identity_start.stdout.txt",
+      "bytes": 7608,
+      "sha256": "63466add63d4590010dbd1c6b684e7cb05d6b11497be47050de86ac558a93619"
+    },
+    {
+      "path": "raw/02_independent_probe.exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "path": "raw/02_independent_probe.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/02_independent_probe.stdout.txt",
+      "bytes": 11461,
+      "sha256": "5140dcec9af1c096c0edcdfde2ec62aeb177d3f016241d5a03cf34af6bbe9a96"
+    },
+    {
+      "path": "raw/03_combined.exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "path": "raw/03_combined.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/03_combined.stdout.txt",
+      "bytes": 5006,
+      "sha256": "6006fcaf1e40ba14e51a39d52d87143303458b181fd59151080ed0e96b363658"
+    },
+    {
+      "path": "raw/04_identity_end.exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "path": "raw/04_identity_end.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/04_identity_end.stdout.txt",
+      "bytes": 7606,
+      "sha256": "9b0a379ab9de2310c61415feacf95edb3cb06067159a1350fddcaf4ca860268f"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 4135,
+      "sha256": "b29edbcc17743ea8cf3bf9f1a26538c120ebfb0278f2e291918402f2f3039b31"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 1181,
+      "sha256": "ace517686716bc0c0329af7fc7fc5c1948951bc387ff234e6fa96c02acf3d255"
+    }
+  ],
+  "verdict": "PASS_READY_FOR_GPU",
+  "fresh_process_resume": "not_accepted",
+  "exclusions": [
+    "This HASHES.json is self-excluded to avoid circular identity.",
+    "pytest-basetemp/** is disposable pytest harness state and is not part of the acceptance evidence manifest.",
+    "GPU/SSH/install/train/inference/commit/push were not run."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "D:\\anaconda3\\envs\\rapo-b01\\python.exe",
+    "-B",
+    "docs/acceptance/AUTH-CTAN-001/acceptance_probe.py"
+  ],
+  "cwd": "C:\\Users\\Administrator\\Desktop\\RaPO-author",
+  "exit_code": 0,
+  "python": "Python 3.10.20",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "stdout_path": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\AUTH-CTAN-001\\tmp\\independent-probe.stdout.txt",
+  "stderr_path": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\AUTH-CTAN-001\\tmp\\independent-probe.stderr.txt",
+  "result_path": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\AUTH-CTAN-001\\tmp\\independent-probe.json"
+}

@@ -1,0 +1,261 @@
+{
+  "ctan": "C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author",
+  "hash_and_scope": {
+    "author_baseline": {
+      "base_head_expected": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+      "commit_matches": true,
+      "expected_commit": "7fe2a73291f208ad9784a8333523825718881907",
+      "resolved_commit": "7fe2a73291f208ad9784a8333523825718881907",
+      "unchanged_files": {
+        "data/object_det_cil_dataset/categories.json": true,
+        "data/object_det_cil_dataset/metadata.json": true,
+        "data/object_det_cil_dataset/train_5shots.jsonl": true,
+        "data/object_det_cil_dataset/val.jsonl": true,
+        "examples/baselines/cil_det/image_det_cil.py": true,
+        "examples/reward_function/det.py": true
+      }
+    },
+    "coco_diff_vs_ctan": {
+      "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+      "unified_diff": [
+        "--- ctan-source",
+        "+++ coco-target",
+        "@@ -886,7 +886,7 @@",
+        "                 val_progress=not known_args.no_val_progress,",
+        "                 val_write_predictions=known_args.val_write_predictions,",
+        "                 val_output_dir=known_args.val_output_dir,",
+        "-                allowed_classes=ordered_task_class_names,",
+        "+                allowed_classes=seen_class_names if known_args.prompt_seen_labels else ordered_task_class_names,",
+        "                 val_allowed_classes=seen_class_names,",
+        "                 allowed_class_order=prompt_label_list or ordered_task_class_names,",
+        "                 extra_val_splits=eval_plan,"
+      ]
+    },
+    "coco_hash_manifest": {
+      "listed_files": 38,
+      "listed_mismatches": [],
+      "manifest_self_expected": "e6f54e82a577822f8d6ba8ac887b29c5017c6f8894488cf17851b62ff69d148f",
+      "manifest_self_matches": true,
+      "manifest_self_sha256": "e6f54e82a577822f8d6ba8ac887b29c5017c6f8894488cf17851b62ff69d148f",
+      "pre_batch_sha256": "b559ca15634582684b6ac4882127542b5b9056edbea217543202e9927ba2aa7d"
+    },
+    "ctan_manifest": {
+      "listed_files": 265,
+      "listed_mismatches": [],
+      "manifest_self_expected": "1c2365642756bb24c37e2e12fbd734e3d29d5d30863ce0dfe55a44cb7351c0ef",
+      "manifest_self_matches": true,
+      "manifest_self_sha256": "1c2365642756bb24c37e2e12fbd734e3d29d5d30863ce0dfe55a44cb7351c0ef"
+    },
+    "governance": {
+      "main_agents_sha256": "ea219982348cf89432058fc6be6c3cd78d93b5a47c39c6eb24e6f84c6f0ce411",
+      "same_as_main": true,
+      "target_agents_sha256": "ea219982348cf89432058fc6be6c3cd78d93b5a47c39c6eb24e6f84c6f0ce411"
+    },
+    "target_vs_ctan_source": {
+      "expected_mismatches": [
+        "AGENTS.md",
+        "examples/baselines/cil_det/image_det_cil_rapo.py"
+      ],
+      "matching_files": 263,
+      "mismatches": [
+        "AGENTS.md",
+        "examples/baselines/cil_det/image_det_cil_rapo.py"
+      ],
+      "only_expected_mismatches": true,
+      "target_extra_files": [
+        "docs/remediation/AUTH-COCO-001/BLOCKED.md",
+        "docs/remediation/AUTH-COCO-001/HANDOFF.md",
+        "docs/remediation/AUTH-COCO-001/HASHES.json",
+        "docs/remediation/AUTH-COCO-001/PRE_BATCH_HASHES.json",
+        "docs/remediation/AUTH-COCO-001/PROGRESS.md",
+        "docs/remediation/AUTH-COCO-001/SPEC.md",
+        "docs/remediation/AUTH-COCO-001/green-coco.stderr.txt",
+        "docs/remediation/AUTH-COCO-001/green-coco.stdout.txt",
+        "docs/remediation/AUTH-COCO-001/green-confirmed.stderr.txt",
+        "docs/remediation/AUTH-COCO-001/green-confirmed.stdout.txt",
+        "docs/remediation/AUTH-COCO-001/green-final.stderr.txt",
+        "docs/remediation/AUTH-COCO-001/green-final.stdout.txt",
+        "docs/remediation/AUTH-COCO-001/production.patch",
+        "docs/remediation/AUTH-COCO-001/red-coco.stderr.txt",
+        "docs/remediation/AUTH-COCO-001/red-coco.stdout.txt",
+        "docs/remediation/AUTH-COCO-001/red-confirmed.stderr.txt",
+        "docs/remediation/AUTH-COCO-001/red-confirmed.stdout.txt",
+        "docs/remediation/AUTH-COCO-001/regression.stderr.txt",
+        "docs/remediation/AUTH-COCO-001/regression.stdout.txt",
+        "docs/remediation/AUTH-COCO-001/scope-check.json",
+        "docs/remediation/AUTH-COCO-001/syntax-check.json",
+        "docs/remediation/AUTH-COCO-001/tests.patch",
+        "tests/author_fixes/test_coco.py"
+      ],
+      "unexpected_extra_files": []
+    }
+  },
+  "main": "C:\\Users\\Administrator\\Desktop\\RaPO-author",
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:42:35) [MSC v.1942 64 bit (AMD64)]",
+  "static_callpoint_and_six_seed_truth_table": {
+    "callpoint": {
+      "allowed_classes_ast": "seen_class_names if known_args.prompt_seen_labels else ordered_task_class_names",
+      "answer_filter_calls": 2,
+      "class_to_task_ast": "class_to_task",
+      "label_filter_line": 747,
+      "task_filter_line": 733,
+      "task_id_filter_ast": "task_idx"
+    },
+    "truth_table": {
+      "result": "pass",
+      "seed_runs": [
+        {
+          "counts": [
+            16,
+            19,
+            11,
+            64,
+            96
+          ],
+          "seed": 136,
+          "split_class_counts": [
+            16,
+            16,
+            16,
+            16,
+            16
+          ],
+          "tasks": 5
+        },
+        {
+          "counts": [
+            16,
+            17,
+            27,
+            58,
+            88
+          ],
+          "seed": 377,
+          "split_class_counts": [
+            16,
+            16,
+            16,
+            16,
+            16
+          ],
+          "tasks": 5
+        },
+        {
+          "counts": [
+            22,
+            19,
+            22,
+            56,
+            87
+          ],
+          "seed": 639,
+          "split_class_counts": [
+            16,
+            16,
+            16,
+            16,
+            16
+          ],
+          "tasks": 5
+        },
+        {
+          "counts": [
+            13,
+            14,
+            10,
+            16,
+            13,
+            16,
+            20,
+            20,
+            41,
+            43
+          ],
+          "seed": 277,
+          "split_class_counts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "tasks": 10
+        },
+        {
+          "counts": [
+            11,
+            10,
+            21,
+            10,
+            14,
+            15,
+            10,
+            23,
+            39,
+            53
+          ],
+          "seed": 305,
+          "split_class_counts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "tasks": 10
+        },
+        {
+          "counts": [
+            10,
+            12,
+            13,
+            13,
+            11,
+            14,
+            23,
+            23,
+            45,
+            42
+          ],
+          "seed": 738,
+          "split_class_counts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "tasks": 10
+        }
+      ],
+      "task_rows_checked": 45
+    }
+  },
+  "synthetic_task_first_filter_and_field_integrity": {
+    "assigned_tasks": {
+      "cross-01": 1,
+      "cross-12": 2,
+      "old-only": 0
+    },
+    "novel_answer_seg": "cross-01 retains only new segmentation object",
+    "result": "pass",
+    "seen_answer_and_answer_seg": "cross-01 retains exact object dictionaries and order",
+    "task_first_exclusion": "old-only excluded from task 1 before label filtering"
+  },
+  "target": "C:\\Users\\Administrator\\.codex\\worktrees\\1449\\RaPO-author"
+}

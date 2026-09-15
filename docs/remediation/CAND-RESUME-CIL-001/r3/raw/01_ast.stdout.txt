@@ -1,0 +1,1 @@
+AST_OK examples/baselines/img_cls_cil/image_cls_cil_rapo.py tests/author_fixes/test_cil_resume.py

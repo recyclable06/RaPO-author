@@ -1,0 +1,66 @@
+{
+  "python_paths": [
+    {
+      "path": "examples/baselines/_rapo_components.py",
+      "exit_code": 0
+    },
+    {
+      "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "exit_code": 0
+    },
+    {
+      "path": "examples/baselines/cil_det/image_det_cil.py",
+      "exit_code": 0
+    },
+    {
+      "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+      "exit_code": 0
+    },
+    {
+      "path": "examples/reward_function/det.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/author_fixes/source_loader.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/author_fixes/test_ctan.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/author_fixes/test_coco.py",
+      "exit_code": 0
+    }
+  ],
+  "shell_command": "D:\\Git\\bin\\bash.exe -n",
+  "shell_paths": [
+    {
+      "path": "scripts/det/10task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/det/5task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/image/10task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/image/20task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/video/10task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/video/5task.sh",
+      "exit_code": 0
+    }
+  ],
+  "git_diff_check_exit_code": 0,
+  "initial_default_bash_exit_code": 127,
+  "default_bash_resolution": "C:\\Windows\\System32\\bash.exe was launcher; D:\\Git\\bin\\bash.exe used"
+}

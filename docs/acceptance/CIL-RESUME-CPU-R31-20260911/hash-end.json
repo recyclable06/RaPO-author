@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-09-11T16:43:44.6448441+08:00",
+  "source": {
+    "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+    "bytes": 102269,
+    "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  },
+  "test": {
+    "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\tests\\author_fixes\\test_cil_resume.py",
+    "bytes": 24215,
+    "sha256": "2bb64dccbce91409840d04344a30a58b76265ae77145ab33b4819a3613b4aadf"
+  },
+  "manifest": {
+    "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\docs\\remediation\\CAND-RESUME-CIL-001\\r3\\HASHES.json",
+    "bytes": 4787,
+    "sha256": "ce058c0a2e9485ba027c2a6c7356f02ef99a3b0d1a283674d8a2e418f4a75271"
+  }
+}

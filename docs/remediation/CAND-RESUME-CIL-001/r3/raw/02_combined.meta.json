@@ -1,0 +1,22 @@
+{
+  "case": "combined_cpu_regression",
+  "command": "D:/anaconda3/envs/rapo-b01/python.exe -B -m pytest tests/author_fixes/test_cil_resume.py tests/author_fixes/test_ctan.py tests/author_fixes/test_coco.py -p no:cacheprovider -v --tb=short",
+  "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "start": "2026-09-10T00:02:00.4011865+08:00",
+  "end": "2026-09-10T00:02:17.2938333+08:00",
+  "exit_code": 0,
+  "stdout": "02_combined.stdout.txt",
+  "stderr": "02_combined.stderr.txt",
+  "exit": "02_combined.exit.txt",
+  "stdout_bytes": 5804,
+  "stderr_bytes": 0,
+  "python_version": "Python 3.10.20",
+  "pytest_version": "pytest 8.4.2",
+  "env": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "0",
+    "PYTHONWARNINGS": "default"
+  },
+  "branch": "codex/remediate-cil-resume-001",
+  "head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647"
+}

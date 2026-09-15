@@ -1,0 +1,43 @@
+{
+  "python": "D:/anaconda3/envs/rapo-b01/python.exe -B",
+  "python_ast_paths": [
+    "examples/baselines/_rapo_components.py",
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+    "examples/baselines/cil_det/image_det_cil.py",
+    "examples/baselines/cil_det/image_det_cil_rapo.py",
+    "tests/author_fixes/run_evidence.py",
+    "tests/author_fixes/source_loader.py",
+    "tests/author_fixes/test_ctan.py",
+    "tests/author_fixes/test_coco.py"
+  ],
+  "python_ast_exit": 0,
+  "shell_command": "bash -n",
+  "shell": [
+    {
+      "path": "scripts/det/10task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/det/5task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/image/10task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/image/20task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/video/10task.sh",
+      "exit_code": 0
+    },
+    {
+      "path": "scripts/video/5task.sh",
+      "exit_code": 0
+    }
+  ],
+  "diff_check_command": "git diff --check",
+  "diff_check_exit": 0
+}

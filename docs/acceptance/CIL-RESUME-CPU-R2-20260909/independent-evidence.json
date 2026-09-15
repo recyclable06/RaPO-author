@@ -1,0 +1,346 @@
+{
+  "schema_version": 2,
+  "probe": "independent_probe.py",
+  "target_root": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "source_ref": "C:\\Users\\Administrator\\.codex\\worktrees\\5ced\\RaPO-author",
+  "scope": "independent R2 CPU/static acceptance; production and test read-only",
+  "identities": {
+    "target_source": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "bytes": 99349,
+      "sha256": "ba8a5da9341785178bd444112c4fc78dd352b52fe359b768218f4a4a6f5f7863"
+    },
+    "target_test": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\tests\\author_fixes\\test_cil_resume.py",
+      "bytes": 14217,
+      "sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64"
+    },
+    "target_source_expected": {
+      "bytes": 99349,
+      "sha256": "ba8a5da9341785178bd444112c4fc78dd352b52fe359b768218f4a4a6f5f7863"
+    },
+    "target_test_expected": {
+      "bytes": 14217,
+      "sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64"
+    },
+    "target_files_match_expected": true,
+    "r2_hashes": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\docs\\remediation\\CAND-RESUME-CIL-001\\r2\\HASHES.json",
+      "actual_sha256": "3c626bad55777ab9c9e217635bd9c81371fa40bf938eb3a66b221f51df81a43a",
+      "expected_sha256": "3c626bad55777ab9c9e217635bd9c81371fa40bf938eb3a66b221f51df81a43a",
+      "self_hash_matches": true,
+      "artifacts": [
+        {
+          "path": "CAND-RESUME-CIL-001-r2-vs-5ced.patch",
+          "declared": {
+            "bytes": 84665,
+            "sha256": "47424dd2a6038761b0790335b2e7efe6ba933ebbf146304176a53bb2a4e0eb1c"
+          },
+          "actual": {
+            "bytes": 84665,
+            "sha256": "47424dd2a6038761b0790335b2e7efe6ba933ebbf146304176a53bb2a4e0eb1c"
+          },
+          "match": true
+        },
+        {
+          "path": "CAND-RESUME-CIL-001-r2-vs-first-round.patch",
+          "declared": {
+            "bytes": 25717,
+            "sha256": "8a8262ecb35dfbb104f9da757dab9e071fbb133d88f6db786bc8307d9a717cf6"
+          },
+          "actual": {
+            "bytes": 25717,
+            "sha256": "8a8262ecb35dfbb104f9da757dab9e071fbb133d88f6db786bc8307d9a717cf6"
+          },
+          "match": true
+        },
+        {
+          "path": "CASE_MAPPING.md",
+          "declared": {
+            "bytes": 3471,
+            "sha256": "7f2e310b5515ca1eab1bee3d530e50f19a7c52db0b349bc55cb3d92fc17ffe6a"
+          },
+          "actual": {
+            "bytes": 3471,
+            "sha256": "7f2e310b5515ca1eab1bee3d530e50f19a7c52db0b349bc55cb3d92fc17ffe6a"
+          },
+          "match": true
+        },
+        {
+          "path": "PRE_HASHES.md",
+          "declared": {
+            "bytes": 1236,
+            "sha256": "cec9298086ba094d0f193f9ac8a7d3f8d8d950118148665747f5c3eaf075996b"
+          },
+          "actual": {
+            "bytes": 1236,
+            "sha256": "cec9298086ba094d0f193f9ac8a7d3f8d8d950118148665747f5c3eaf075996b"
+          },
+          "match": true
+        },
+        {
+          "path": "REPORT.md",
+          "declared": {
+            "bytes": 4320,
+            "sha256": "dce4136f4584f7a6b47c391c5716b8f8400c694ab70944f4666cfb6feaa48732"
+          },
+          "actual": {
+            "bytes": 4320,
+            "sha256": "dce4136f4584f7a6b47c391c5716b8f8400c694ab70944f4666cfb6feaa48732"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/01_combined.meta.json",
+          "declared": {
+            "bytes": 1511,
+            "sha256": "1ea665cbb86994ea1c1eae27858e0dc9c82eecf00790d724861b7002fed595c3"
+          },
+          "actual": {
+            "bytes": 1511,
+            "sha256": "1ea665cbb86994ea1c1eae27858e0dc9c82eecf00790d724861b7002fed595c3"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/01_combined.stderr.txt",
+          "declared": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "actual": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "match": true
+        },
+        {
+          "path": "raw/01_combined.stdout.txt",
+          "declared": {
+            "bytes": 4431,
+            "sha256": "58f24816fb26beb043324cd3c06e15c88bbabb03a08c1e10ad0c3c9eaab6afca"
+          },
+          "actual": {
+            "bytes": 4431,
+            "sha256": "58f24816fb26beb043324cd3c06e15c88bbabb03a08c1e10ad0c3c9eaab6afca"
+          },
+          "match": true
+        }
+      ],
+      "all_artifacts_match": true
+    },
+    "frozen_inputs": {
+      "source": {
+        "bytes": 93286,
+        "sha256": "23cbb3c01f69704eb304c2b9c884d8165a9783a913422d6e679e63bb42d71928"
+      },
+      "test": {
+        "bytes": 8722,
+        "sha256": "a8b17b247eac0526108fbd7388af9b98946752bb8214d24229f00121bd200896"
+      }
+    },
+    "integration_manifest": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\5ced\\RaPO-author\\docs\\INTEGRATION_HASHES.json",
+      "sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+      "expected_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1"
+    }
+  },
+  "control_flow": {
+    "current_pruning_node_line": 1899,
+    "previous_task_pruning_node_line": 1915,
+    "stop_after_boundary_break_line": 1948,
+    "pruning_precedes_break": true,
+    "stop_if_contains_break": true,
+    "current_task_multiple_checkpoint_fixture": {
+      "pass": true,
+      "error": "refusing to prune a protected boundary path"
+    },
+    "continued_task_previous_root_fixture": {
+      "pass": true,
+      "error": "refusing to prune a protected boundary path"
+    },
+    "published_root_is_registered_before_pruning_line": 1817,
+    "boundary_marker_created_before_registration_line": 1815
+  },
+  "protocol_cases": {
+    "valid_multi_rank_full_checkpoint": {
+      "pass": true,
+      "manifest_sha256": "468e3c16e1c4b2f2165400f49449f7b952f1332e6da9f1f5ff33818f4945a0ba",
+      "file_count": 7
+    },
+    "missing_dataloader_fails_closed": {
+      "pass": true,
+      "error": "full boundary checkpoint is missing dataloader.pt"
+    },
+    "missing_rank_optimizer_fails_closed": {
+      "pass": true,
+      "error": "full boundary checkpoint rank 1 is missing native state: ['optim']"
+    },
+    "same_size_local_model_content_mutation_changes_identity": {
+      "pass": true,
+      "same_size_before": 4,
+      "same_size_after": 4,
+      "before_hash": "3f03c5fdf9aff601ef4e82b93e7728f03712eadbee2fefb1fbd5d2420739b42d",
+      "after_hash": "1e67cdfb5cc6eaff1c45040608a0b080c9e4dce366603b35a88d0b50482b13bd"
+    }
+  },
+  "source_identity_audit": {
+    "manifest_file_count": 65,
+    "manifest_sha256": "44f5dcd664c050d4c98bea29883ce7b77f8c3b039b41e19c661e4806f68258ae",
+    "declared_roots": [
+      "examples/baselines/cil_misc",
+      "examples/baselines/img_cls_cil",
+      "verl/single_controller",
+      "verl/trainer",
+      "verl/utils",
+      "verl/workers"
+    ],
+    "declared_explicit_files": [
+      "examples/baselines/_rapo_components.py",
+      "examples/config.yaml",
+      "scripts/image/rapo_cfg.json",
+      "verl/protocol.py"
+    ],
+    "missing_runtime_dependencies": [
+      "verl/models/monkey_patch.py",
+      "verl/models/transformers/qwen2_vl.py",
+      "examples/reward_function/cls.py"
+    ],
+    "fsdp_worker_direct_model_patch_import_line": 42,
+    "reward_config_spec": "./examples/reward_function/cls.py:compute_score",
+    "reward_config_line": 93,
+    "reward_dynamic_loader_line": 117,
+    "reward_file_present": true,
+    "model_patch_file_present": true
+  },
+  "model_revision_audit": {
+    "producer_reads_revision": true,
+    "model_config_fields": [
+      "model_path",
+      "tokenizer_path",
+      "override_config",
+      "enable_gradient_checkpointing",
+      "trust_remote_code",
+      "freeze_vision_tower",
+      "lora"
+    ],
+    "model_config_declares_revision": false,
+    "producer_remote_identity_example": {
+      "revision": "0123456789abcdef0123456789abcdef01234567",
+      "identity_hash": "d3d71575ab2181578d15f6eeeb42b27c8401360456d1d6314d88e29f04a66011"
+    },
+    "native_from_pretrained_calls": [
+      {
+        "line": 178,
+        "callee": "AutoConfig.from_pretrained",
+        "keywords": [
+          "bos_token_id",
+          "eos_token_id",
+          "pad_token_id",
+          "trust_remote_code"
+        ]
+      },
+      {
+        "line": 188,
+        "callee": "GenerationConfig.from_pretrained",
+        "keywords": []
+      },
+      {
+        "line": 211,
+        "callee": "AutoClass.from_pretrained",
+        "keywords": [
+          "attn_implementation",
+          "config",
+          "device_map",
+          "low_cpu_mem_usage",
+          "torch_dtype",
+          "trust_remote_code"
+        ]
+      }
+    ],
+    "tokenizer_from_pretrained_calls": [
+      {
+        "line": 23,
+        "callee": "AutoTokenizer.from_pretrained",
+        "keywords": []
+      },
+      {
+        "line": 45,
+        "callee": "AutoProcessor.from_pretrained",
+        "keywords": []
+      }
+    ],
+    "vllm_constructor_calls": [
+      {
+        "line": 114,
+        "callee": "LLM",
+        "keywords": [
+          "disable_custom_all_reduce",
+          "disable_log_stats",
+          "distributed_executor_backend",
+          "dtype",
+          "enable_chunked_prefill",
+          "enable_sleep_mode",
+          "enforce_eager",
+          "gpu_memory_utilization",
+          "load_format",
+          "max_model_len",
+          "max_num_batched_tokens",
+          "model",
+          "seed",
+          "skip_tokenizer_init",
+          "tensor_parallel_size",
+          "trust_remote_code"
+        ]
+      }
+    ],
+    "native_loader_calls_pass_revision": false,
+    "consumer_revision_gap": true,
+    "relevant_lines": {
+      "fsdp_auto_config": 178,
+      "fsdp_auto_class": 211,
+      "fsdp_generation_config": 188,
+      "tokenizer": 23,
+      "processor": 45,
+      "vllm": 114
+    }
+  },
+  "blocking_findings": [
+    {
+      "id": "CIL-CPU-002",
+      "severity": "P2-gate",
+      "finding": "The exact production pruning branches raise on a protected boundary path instead of skipping it; this reproduces failure before the stop-after-boundary break and again when a no-stop run prunes the previous Task-1 root.",
+      "lines": "1899-1922"
+    },
+    {
+      "id": "CIL-CPU-004",
+      "severity": "spec-gap",
+      "finding": "The producer accepts a remote 40-hex revision, but ModelConfig has no revision field and the native AutoConfig/AutoClass/tokenizer/vLLM loading calls do not pass revision, so the identity is not the revision actually consumed by the loader.",
+      "lines": "image_cls_cil_rapo.py:399-419; fsdp_workers.py:178-219; tokenizer.py:21-45; vllm_rollout_spmd.py:114-130"
+    },
+    {
+      "id": "CIL-CPU-005",
+      "severity": "spec-gap",
+      "finding": "The dynamic source manifest omits runtime production files used by the path: at least verl/models/monkey_patch.py and examples/reward_function/cls.py are loaded/imported but absent from the identity.",
+      "lines": "fsdp_workers.py:42; examples/config.yaml:93; workers/reward/function.py:114-123"
+    }
+  ],
+  "verdict": "FAIL_NOT_READY_FOR_GPU",
+  "fresh_process_resume": "not_accepted",
+  "gpu_handoff": {
+    "not_run": true,
+    "required_after_remediation": [
+      "Re-run the two OS-process Task-1 publisher and fresh Task-2 resume only after CPU/static blockers are fixed.",
+      "Verify protected boundary roots are preserved without a pruning exception and the old boundary root is read-only.",
+      "Verify the actual immutable model revision is passed to every native model/tokenizer/vLLM loader, or use a local content manifest.",
+      "Verify the complete source/config manifest includes all runtime production and reward files, then run world-size-2 native restore and Task-2 first update."
+    ]
+  },
+  "test_tree": {
+    "ast_parses": true,
+    "new_test_file_bytes": 14217,
+    "new_test_file_sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64",
+    "test_function_count": 17
+  }
+}
+

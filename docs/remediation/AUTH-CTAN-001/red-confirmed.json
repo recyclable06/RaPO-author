@@ -1,0 +1,47 @@
+{
+  "command": [
+    "D:\\anaconda3\\envs\\rapo-b01\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/author_fixes/test_ctan.py",
+    "-p",
+    "no:cacheprovider",
+    "-v",
+    "--tb=short"
+  ],
+  "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author",
+  "exit_code": 1,
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:42:35) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "torch": "2.5.1+cpu",
+  "numpy": "1.26.4",
+  "environment_overrides": {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "source_sha256": {
+    "examples/baselines/_rapo_components.py": "73aac97f816c124e4fbf06ab3ac0e270045fc79a91c62dc534e8d5d39f99243c",
+    "examples/baselines/img_cls_cil/image_cls_cil_rapo.py": "0e06cce12ecde79a1fc965a421b6fa8910fb6dd4e39cd6fac3ce854998ead93d",
+    "examples/baselines/cil_det/image_det_cil_rapo.py": "7f36ef88964cc7b56e8e6384f49c2c3f8c570d41961b20a0e12dc82e1da6dc65",
+    "scripts/image/rapo_cfg.json": "0e3e72bb6510cc0c176983cf46efc70d400ac6f4f79acafe2a6c5409e15df99a",
+    "scripts/video/rapo_cfg.json": "0e3e72bb6510cc0c176983cf46efc70d400ac6f4f79acafe2a6c5409e15df99a",
+    "scripts/det/rapo_cfg.json": "0e3e72bb6510cc0c176983cf46efc70d400ac6f4f79acafe2a6c5409e15df99a",
+    "verl/trainer/core_algos.py": "871cadc71a8b04295ebdc8ff516ba242697e49cb27680920d4870a8431023d71",
+    "verl/trainer/ray_trainer.py": "54b9cb7fccc78513440ed05f9c53fe80c43bf86425ae6067ea4a7d41d25017ca",
+    "tests/author_fixes/run_evidence.py": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+    "tests/author_fixes/source_loader.py": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+    "tests/author_fixes/test_ctan.py": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2"
+  },
+  "dependencies": {
+    "torch": true,
+    "numpy": true,
+    "scipy": true,
+    "pytest": true,
+    "jinja2": true,
+    "ray": false,
+    "datasets": false,
+    "transformers": false,
+    "vllm": false
+  }
+}

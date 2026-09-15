@@ -1,0 +1,15 @@
+{
+  "phase": "initial",
+  "target_root": "C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author",
+  "declared_count": 265,
+  "expected_count": 265,
+  "missing_count": 0,
+  "mismatch_count": 0,
+  "actual_file_count": 265,
+  "extra_file_count": 0,
+  "actual_not_listed_count": 0,
+  "manifest_sha256": "1c2365642756bb24c37e2e12fbd734e3d29d5d30863ce0dfe55a44cb7351c0ef",
+  "expected_manifest_sha256": "1c2365642756bb24c37e2e12fbd734e3d29d5d30863ce0dfe55a44cb7351c0ef",
+  "excluded_self": "docs/remediation/AUTH-CTAN-001/SHA256SUMS.json",
+  "status": "PASS"
+}

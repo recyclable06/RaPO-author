@@ -1,0 +1,67 @@
+{
+  "ast_compile": {
+    "argv_validate.py": "PASS",
+    "gpu_preflight.py": "PASS",
+    "judge_v2.py": "PASS",
+    "run_v2.py": "PASS",
+    "runtime_entry.py": "PASS",
+    "runtime_observer.py": "PASS",
+    "test_judge_v2.py": "PASS"
+  },
+  "config_root_binding": {
+    "command_remote_root": "/mnt/conda/zhenglifeng/t/fresh-process-resume-20260911-v2-UNIQUE",
+    "command_source_root_is_remote_root_source": true,
+    "config_format_prompt": "/mnt/conda/zhenglifeng/t/fresh-process-resume-20260911/v2/source/examples/format_prompt/cls.jinja",
+    "config_reward_function": "/mnt/conda/zhenglifeng/t/fresh-process-resume-20260911/v2/source/examples/reward_function/cls.py",
+    "config_uses_old_non_unique_root": true,
+    "config_uses_unique_command_root": false,
+    "old_non_unique_root_prefix": "/mnt/conda/zhenglifeng/t/fresh-process-resume-20260911/v2",
+    "run_v2_contains_config_rewrite": false
+  },
+  "hash_manifest": {
+    "actual_file_count": 16,
+    "actual_total_bytes": 145020,
+    "all_declared_files_match": true,
+    "declared_file_count": 16,
+    "declared_total_bytes": 145020
+  },
+  "input_identity_binding": {
+    "argv_validate_records_actual_model_and_input_identities": true,
+    "argv_validate_references_expected_input_object": false,
+    "argv_validate_references_expected_model_object": false,
+    "expected_input_manifest_name": "INPUT_MANIFEST.json",
+    "expected_input_root": "/mnt/conda/zhenglifeng/t/eu-p1-20260908/inputs",
+    "expected_model_path": "/home/zhenglifeng/models/Qwen2-VL-2B-Instruct-895c3a4",
+    "input_manifest_files_inside_v2": []
+  },
+  "prep": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v2",
+  "protocol_vs_judge": {
+    "judge_checks_effective_variation": false,
+    "judge_checks_raw_variation": true,
+    "protocol_requires_uid_repetition_and_nonzero_variation": true
+  },
+  "ray_child_observation_binding": {
+    "observer_has_child_import_hook": false,
+    "observer_propagates_pythonpath": true,
+    "observer_required_set_is_local": true,
+    "production_runner_remote_decorator": true,
+    "runner_creates_worker_remote_in_child": true,
+    "runtime_entry_installs_observer": true
+  },
+  "runtime_source_manifest": {
+    "actual_file_count": 91,
+    "actual_manifest_sha256": "947de3842eadb716d241eb4bb4f2fff62f2cfe39305cf03ffd0fbe35abd052e1",
+    "expected_file_count": 91,
+    "expected_manifest_sha256": "947de3842eadb716d241eb4bb4f2fff62f2cfe39305cf03ffd0fbe35abd052e1",
+    "matches_expected": true
+  },
+  "status": "PASS_STATIC_PROBE_WITH_FINDINGS",
+  "target": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "target_identity": {
+    "bytes": 102269,
+    "exists": true,
+    "expected_bytes": 102269,
+    "expected_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  }
+}

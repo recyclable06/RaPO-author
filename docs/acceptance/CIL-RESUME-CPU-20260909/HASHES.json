@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "acceptance_snapshot": {
+    "directory": "docs/acceptance/CIL-RESUME-CPU-20260909",
+    "self_excluded": true,
+    "file_count": 11
+  },
+  "acceptance_artifacts_sha256_excluding_this_file": [
+    {
+      "path": "independent_probe.py",
+      "bytes": 21432,
+      "sha256": "7825faa45835115c73295264acdb867eb8b0f5a5176e387c7c5ae7ff3fa3576e"
+    },
+    {
+      "path": "independent-evidence.json",
+      "bytes": 6183,
+      "sha256": "1db59b62af9a097a3009b80e6423eff6413a0f590d79e1d8689bc7a7d303cf5d"
+    },
+    {
+      "path": "independent-probe.exit.txt",
+      "bytes": 2,
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    },
+    {
+      "path": "independent-probe.stderr.txt",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "independent-probe.stdout.txt",
+      "bytes": 6241,
+      "sha256": "ffbb579db256310a8f4c00515f2539f3c04c0fbe9afe35ff7c67a6a370fdfd61"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 2434,
+      "sha256": "b64b1335edf19c5122c490a5b27f6e12cf0ec52335af9abc5956a3c42ab4c1be"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 8224,
+      "sha256": "ca4641cea0ffd9fc2feca95a81b457ca42e35265be3b738f44bb32881457f1c8"
+    },
+    {
+      "path": "RUN_METADATA.md",
+      "bytes": 3570,
+      "sha256": "fc9f65e447947451fbe4fde76f838d843be9760955f4f6fcb28f939072455cea"
+    },
+    {
+      "path": "tests-31.exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "tests-31.stderr.txt",
+      "bytes": 788,
+      "sha256": "140a97beb5ec6c1c14063196e6d682b96d3a000c48b30f1ee32d08a79fcc9acc"
+    },
+    {
+      "path": "tests-31.stdout.txt",
+      "bytes": 3690,
+      "sha256": "5e6e3faf8a35cb3c49ff1a0e3b96429988b5c0a23f021df64dc9914d6f83f5a2"
+    }
+  ]
+}

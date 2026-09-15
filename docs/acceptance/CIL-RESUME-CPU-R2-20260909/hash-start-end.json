@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "target_root": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "checked_by": "independent_probe.py",
+  "before_cpu_regression": {
+    "source": {
+      "bytes": 99349,
+      "sha256": "ba8a5da9341785178bd444112c4fc78dd352b52fe359b768218f4a4a6f5f7863"
+    },
+    "test": {
+      "bytes": 14217,
+      "sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64"
+    }
+  },
+  "after_cpu_regression": {
+    "source": {
+      "bytes": 99349,
+      "sha256": "ba8a5da9341785178bd444112c4fc78dd352b52fe359b768218f4a4a6f5f7863"
+    },
+    "test": {
+      "bytes": 14217,
+      "sha256": "331e62782cc63ef9a2fb4d2de1afe921593f629309f263c6728a7de5299e3f64"
+    }
+  },
+  "unchanged": true
+}

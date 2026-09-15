@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "acceptance_snapshot": {
+    "directory": "docs/acceptance/CIL-RESUME-CPU-R2-20260909",
+    "self_excluded": true,
+    "file_count": 12,
+    "verdict": "FAIL_NOT_READY_FOR_GPU"
+  },
+  "acceptance_artifacts_sha256_excluding_this_file": [
+    {
+      "path": "hash-start-end.json",
+      "bytes": 737,
+      "sha256": "71ad151b387c507cc9e8be2a05a9f37f140c494dac0512a5f101967dc6a5b4a9"
+    },
+    {
+      "path": "independent_probe.py",
+      "bytes": 23870,
+      "sha256": "74da5fc213986ce326619388968ce4a3ceefa791e58afa7edf8c11e697c78834"
+    },
+    {
+      "path": "independent-evidence.json",
+      "bytes": 12308,
+      "sha256": "eb2b919693858f5adc19c7b2f53bc59e8bb1a79dae7feb7e0c656dec94a33878"
+    },
+    {
+      "path": "independent-probe.exit.txt",
+      "bytes": 2,
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    },
+    {
+      "path": "independent-probe.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "independent-probe.stdout.txt",
+      "bytes": 12308,
+      "sha256": "eb2b919693858f5adc19c7b2f53bc59e8bb1a79dae7feb7e0c656dec94a33878"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 1041,
+      "sha256": "cd1c6a9ec8a8e209f514268a8784cd6a21a2311caa617201d6aa8c96dd476d19"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 7626,
+      "sha256": "6a720ee359a71b3be934e6aed1816d4a9fb5a75c32d0ae422a77c233be41eb8b"
+    },
+    {
+      "path": "RUN_METADATA.md",
+      "bytes": 2357,
+      "sha256": "55d55ec936bfb5673441f6d2e8c53b44aa84d5b635fb6e39864cf31668c90834"
+    },
+    {
+      "path": "tests-37.exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "tests-37.stderr.txt",
+      "bytes": 786,
+      "sha256": "74e7ba67d319a871d16cac591b48a9bc9cd4220e9a3f5aa8e777815ca14b2175"
+    },
+    {
+      "path": "tests-37.stdout.txt",
+      "bytes": 4388,
+      "sha256": "f7703c2d2093cbe3869006d06fc391f008b48b8621905a177f6313d4a107e9c8"
+    }
+  ]
+}

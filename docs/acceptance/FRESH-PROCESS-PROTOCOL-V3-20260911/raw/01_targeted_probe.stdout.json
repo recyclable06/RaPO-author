@@ -1,0 +1,119 @@
+{
+  "ast_compile": {
+    "argv_validate_v3.py": "PASS",
+    "child_bootstrap_v3.py": "PASS",
+    "gpu_preflight_v3.py": "PASS",
+    "judge_v3.py": "PASS",
+    "prep_probe_v3.py": "PASS",
+    "ray_bootstrap_smoke.py": "PASS",
+    "run_v3.py": "PASS",
+    "runtime_entry_v3.py": "PASS",
+    "runtime_observer_v3.py": "PASS",
+    "sitecustomize.py": "PASS",
+    "test_judge_v3.py": "PASS"
+  },
+  "child_bootstrap_check": {
+    "event_kind": "child_bootstrap_install",
+    "event_module_identity_hashes_present": true,
+    "event_role": "ray_worker",
+    "reported_installed": true,
+    "runtime_observer_imported_after_bootstrap": false
+  },
+  "command_checks": {
+    "actual_launcher_missing_cil_cfg_exit_code": 2,
+    "actual_launcher_missing_cil_cfg_rejected": true,
+    "commands_run_leg_passes_cil_cfg": false,
+    "launcher_parser_requires_cil_cfg": true,
+    "parser_error_identifies_cil_cfg": true
+  },
+  "frozen_content_checks": {
+    "mutated_input_error": "ArgvValidationError: input content manifest mismatch: missing=[], extra=[], mismatched=['class_b/b.jpg']",
+    "mutated_input_rejected": true,
+    "positive_with_explicit_known": true,
+    "positive_with_explicit_known_error": null,
+    "positive_without_implicit_known": false,
+    "positive_without_implicit_known_error": "NameError: name 'known' is not defined"
+  },
+  "gpu_executed": false,
+  "hash_manifest": {
+    "actual_file_count": 24,
+    "all_declared_match": true,
+    "declared_file_count": 24,
+    "extra_files": [],
+    "mismatches": []
+  },
+  "inference_executed": false,
+  "judge_check": {
+    "effective_constant_reasons": [
+      "no UID group of exactly four rollouts has nonzero raw and effective reward variation"
+    ],
+    "effective_constant_rejected": true,
+    "hash_only_child_bootstrap_gate_accepts_without_wrapper_report": true,
+    "hash_only_child_bootstrap_gate_reasons": [],
+    "valid_fixture_pass": true
+  },
+  "manifest_checks": {
+    "expected_class_order_equals_input_manifest": true,
+    "expected_tokenizer_equals_model": true,
+    "input_files_canonical": true,
+    "input_manifest_expected_hash": true,
+    "input_manifest_file_count": true,
+    "model_files_canonical": true,
+    "model_manifest_expected_hash": true,
+    "model_manifest_file_count": true,
+    "template_expected_hash": true
+  },
+  "observer_ensure_process_check": {
+    "child_event_reports_installed": [
+      true
+    ],
+    "child_observer_install_event": true,
+    "duplicate_seq_values": [
+      1
+    ],
+    "event_sequences": [
+      1,
+      1,
+      2
+    ],
+    "patched_labels_after_ensure_process": [],
+    "process_identity_event": true
+  },
+  "production_imported": false,
+  "ray_executed": false,
+  "render_checks": {
+    "negative_unresolved_placeholder_error": "RuntimeError: unresolved config placeholder: ${UNBOUND}",
+    "negative_unresolved_placeholder_rejected": true,
+    "positive_input_root_bound": true,
+    "positive_model_root_bound": true,
+    "positive_no_unresolved_placeholders": true,
+    "positive_output_root_bound": true,
+    "positive_source_root_bound": true
+  },
+  "sitecustomize_check": {
+    "bootstrap_event_count": 1,
+    "exit_code": 0,
+    "observer_imported": false,
+    "sitecustomize_file": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v3\\sitecustomize.py"
+  },
+  "source_wiring": {
+    "child_bootstrap_has_no_wrapper_install_call": true,
+    "child_bootstrap_imports_runtime_observer": false,
+    "observer_install_calls_process_wrappers": true,
+    "observer_patches_checkpoint_manager": true,
+    "runner_creates_worker_remote_in_runner": true,
+    "sitecustomize_calls_only_bootstrap": true,
+    "worker_instantiates_checkpoint_manager": true,
+    "worker_module_imports_checkpoint_manager_global": true
+  },
+  "status": "PASS_TARGETED_PROBE_WITH_FINDINGS",
+  "target_identity": {
+    "bytes": 102269,
+    "expected_bytes": 102269,
+    "expected_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  },
+  "target_root": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "training_executed": false,
+  "v3_root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v3"
+}

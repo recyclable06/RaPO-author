@@ -1,0 +1,13 @@
+diff --git "a/C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author\\examples\\baselines\\cil_det\\image_det_cil_rapo.py" "b/C:\\Users\\Administrator\\.codex\\worktrees\\1449\\RaPO-author\\examples\\baselines\\cil_det\\image_det_cil_rapo.py"
+index 470a41d..ee33baf 100644
+--- "a/C:\\Users\\Administrator\\.codex\\worktrees\\b7ae\\RaPO-author\\examples\\baselines\\cil_det\\image_det_cil_rapo.py"
++++ "b/C:\\Users\\Administrator\\.codex\\worktrees\\1449\\RaPO-author\\examples\\baselines\\cil_det\\image_det_cil_rapo.py"
+@@ -886,7 +886,7 @@ def _run_cil(
+                 val_progress=not known_args.no_val_progress,
+                 val_write_predictions=known_args.val_write_predictions,
+                 val_output_dir=known_args.val_output_dir,
+-                allowed_classes=ordered_task_class_names,
++                allowed_classes=seen_class_names if known_args.prompt_seen_labels else ordered_task_class_names,
+                 val_allowed_classes=seen_class_names,
+                 allowed_class_order=prompt_label_list or ordered_task_class_names,
+                 extra_val_splits=eval_plan,

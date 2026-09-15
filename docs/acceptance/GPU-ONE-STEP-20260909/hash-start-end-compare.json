@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "target_manifest": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/effective-update-20260909/HASHES.json",
+  "self_excluded": true,
+  "declared_file_count": 53,
+  "start": {
+    "manifest_sha256": "2664886875063679c3ea5ec70f46f61544bee34afcb3c848fecc7940436ed6c8",
+    "all_declared_files_match": true,
+    "result_sha256": "994ddb9c7795211e0c55187d7467a8f0bdbe9721141f99c1c7a3513e960fec4a"
+  },
+  "end": {
+    "manifest_sha256": "2664886875063679c3ea5ec70f46f61544bee34afcb3c848fecc7940436ed6c8",
+    "all_declared_files_match": true,
+    "result_sha256": "994ddb9c7795211e0c55187d7467a8f0bdbe9721141f99c1c7a3513e960fec4a"
+  },
+  "unchanged": true,
+  "checked_by": "independent_probe.py"
+}

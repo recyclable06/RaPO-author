@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "algorithm": "sha256",
+  "self_excluded": true,
+  "generated": "2026-09-09",
+  "scope": "Independent read-only audit artifacts for CAND-RESUME-CIL-001; HASHES.json itself is excluded.",
+  "source_identity": {
+    "worktree": "C:/Users/Administrator/.codex/worktrees/5ced/RaPO-author",
+    "branch": "codex/integrate-accepted-fixes",
+    "head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+    "author_tag": "author-drop-20260904",
+    "author_tag_commit": "7fe2a73291f208ad9784a8333523825718881907",
+    "integration_hashes_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1"
+  },
+  "target_source_files": [
+    {
+      "path": "examples/baselines/_rapo_components.py",
+      "bytes": 28358,
+      "sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155"
+    },
+    {
+      "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "bytes": 45529,
+      "sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d"
+    },
+    {
+      "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+      "bytes": 54072,
+      "sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a"
+    },
+    {
+      "path": "examples/baselines/img_cls_cil/image_cls_cil.py",
+      "bytes": 23183,
+      "sha256": "dce11bb12e0f3a36135e52248676a73b92701f626456ea31205a5d5f37334019"
+    },
+    {
+      "path": "verl/trainer/ray_trainer.py",
+      "bytes": 33623,
+      "sha256": "54b9cb7fccc78513440ed05f9c53fe80c43bf86425ae6067ea4a7d41d25017ca"
+    },
+    {
+      "path": "verl/trainer/data_loader.py",
+      "bytes": 4502,
+      "sha256": "344f1f50aff2285e5cbc8d462f8b08755b29b59efc0ce412842db63e46612391"
+    },
+    {
+      "path": "verl/utils/checkpoint/checkpoint_manager.py",
+      "bytes": 5641,
+      "sha256": "af20ef83b0289591dbd1ccbd91c46dc4a4aadf0094bd6f89edfd743c39f4904f"
+    },
+    {
+      "path": "verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+      "bytes": 6975,
+      "sha256": "525fdef04dcc8aba2973407428dc6f600f064187625a892b7d39f205db199179"
+    },
+    {
+      "path": "verl/workers/fsdp_workers.py",
+      "bytes": 32141,
+      "sha256": "4ce08f3214b9eeaf429c789f76ea2560156cbad003ce465e2eaf48233a99bad6"
+    },
+    {
+      "path": "verl/workers/sharding_manager/fsdp_vllm.py",
+      "bytes": 9913,
+      "sha256": "0066978584494778b7396fb4ccd20dffef557ae6ad165db39967e472b5c02308"
+    },
+    {
+      "path": "scripts/image/rapo_cfg.json",
+      "bytes": 438,
+      "sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861"
+    },
+    {
+      "path": "scripts/image/10task.sh",
+      "bytes": 3271,
+      "sha256": "9fe6be63a5e0d156c57cc945ca522366bb7c89e4f38f632ca185c004cbd89fea"
+    }
+  ],
+  "integrated_test_files": [
+    {
+      "path": "tests/author_fixes/run_evidence.py",
+      "bytes": 2344,
+      "sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34"
+    },
+    {
+      "path": "tests/author_fixes/source_loader.py",
+      "bytes": 2298,
+      "sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746"
+    },
+    {
+      "path": "tests/author_fixes/test_coco.py",
+      "bytes": 13639,
+      "sha256": "7052ecc16f4c0a31689010238bb5848f578bea4d423db05f90c7cf449227e9a9"
+    },
+    {
+      "path": "tests/author_fixes/test_ctan.py",
+      "bytes": 9783,
+      "sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2"
+    }
+  ],
+  "reused_evidence": [
+    {
+      "path": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/cross-task-resume-20260909/HASHES.json",
+      "file_count": 12,
+      "sha256": "0814e7fe716c112aac078fae45f2b5962f838e53a1d2043b237627caddf0aae8"
+    },
+    {
+      "path": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/continuous-runtime-evidence-20260909/HASHES.json",
+      "file_count": 45,
+      "sha256": "21e57f9d6c0432fbad0a7c8d11080251353d8f2f1b8ee6dc2b2d9f452490465f"
+    },
+    {
+      "path": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/cross-task-resume-20260909/static-results.json",
+      "bytes": 22058,
+      "sha256": "133e00f4170ddce09abdb153a33207c820656dd0cf169782dfd75f18170356f8"
+    },
+    {
+      "path": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/cross-task-resume-20260909/RUNTIME_SUMMARY.json",
+      "bytes": 4926,
+      "sha256": "f826bd19a7f15a1731d1663f9605a516937ce9d35c0d307abcc3b52aee37664d"
+    },
+    {
+      "path": "C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/CONTINUOUS-TASK12-20260909/REPORT.md",
+      "bytes": 6730,
+      "sha256": "de6f7879c155112614d1eaf1d4e56e41f9db140c0a0ec28e4e14153ab9a22e45"
+    },
+    {
+      "path": "C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/GPU-ONE-STEP-20260909/REPORT.md",
+      "bytes": 6264,
+      "sha256": "87ceaab2f61cfdb5a1743e97df9dd7096c039269040efa0f4e1f1f9b8da9d2b7"
+    }
+  ],
+  "audit_artifacts": {
+    "directory": "docs/audit/2026-09-09-cil-resume",
+    "file_count_excluding_self": 6,
+    "files": {
+      "ACCEPTANCE_CASES.md": {
+        "bytes": 6620,
+        "sha256": "8c800ac81adaa185512f64b83b75590a3718b5e43a29174f874f6eb6eab576eb"
+      },
+      "ALLOWLIST.md": {
+        "bytes": 3797,
+        "sha256": "5ad5d5d1366d2b231fb150ee168e96bca266020ca5b7f938778f186205e99916"
+      },
+      "FINDING.md": {
+        "bytes": 5702,
+        "sha256": "4376ebf7c9b8506c3de5c9c01e5192c1a7d36c5c7acc75f1affeed0efd025c03"
+      },
+      "PROGRESS.md": {
+        "bytes": 2535,
+        "sha256": "43e5c0e8c3281fe62bf7b56c8235e76985bdb7b34ba29860448bf7f324a6fd07"
+      },
+      "REPORT.md": {
+        "bytes": 12283,
+        "sha256": "a3bd1c124df8ede7619e96d68315cb1555383d6ab32c764447d3d1bf4f408280"
+      },
+      "SPEC_DRAFT.md": {
+        "bytes": 10478,
+        "sha256": "0965aa1608c2e3fd1f86f606535832ff3e8a9e0f09ee788e5bb8cfc59335ac44"
+      }
+    }
+  },
+  "source_hash_snapshot": {
+    "before_audit": true,
+    "after_audit_pending_recheck": true,
+    "expected_unchanged": true
+  }
+}

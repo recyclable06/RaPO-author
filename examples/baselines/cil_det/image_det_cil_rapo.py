@@ -886,7 +886,7 @@ def _run_cil(
                 val_progress=not known_args.no_val_progress,
                 val_write_predictions=known_args.val_write_predictions,
                 val_output_dir=known_args.val_output_dir,
-                allowed_classes=ordered_task_class_names,
+                allowed_classes=seen_class_names if known_args.prompt_seen_labels else ordered_task_class_names,
                 val_allowed_classes=seen_class_names,
                 allowed_class_order=prompt_label_list or ordered_task_class_names,
                 extra_val_splits=eval_plan,
@@ -1091,12 +1091,12 @@ def _parse_args() -> "tuple[argparse.Namespace, list[str]]":
     parser.add_argument("--ctan_beta", dest="ema_adv_beta", type=float, default=0.999)
     parser.add_argument("--ctan_eps", dest="ema_adv_eps", type=float, default=1e-6)
     parser.add_argument("--ctan_bootstrap_steps", dest="ema_adv_bootstrap_steps", type=int, default=0)
-    parser.add_argument("--ctan_activate_from_task", dest="ema_adv_activate_from_task", type=int, default=2)
-    parser.add_argument("--ctan_min_std", dest="ema_adv_min_std", type=float, default=1e-3)
-    parser.add_argument("--ctan_guard_abs_max", dest="ema_adv_guard_abs_max", type=float, default=5.0)
-    parser.add_argument("--ctan_bias_correction", dest="ema_adv_bias_correction", action="store_true", default=True)
+    parser.add_argument("--ctan_activate_from_task", dest="ema_adv_activate_from_task", type=int, default=1)
+    parser.add_argument("--ctan_min_std", dest="ema_adv_min_std", type=float, default=0.0)
+    parser.add_argument("--ctan_guard_abs_max", dest="ema_adv_guard_abs_max", type=float, default=0.0)
+    parser.add_argument("--ctan_bias_correction", dest="ema_adv_bias_correction", action="store_true", default=False)
     parser.add_argument("--no_ctan_bias_correction", dest="ema_adv_bias_correction", action="store_false")
-    parser.add_argument("--ctan_beta_warmup_steps", dest="ema_adv_beta_warmup_steps", type=int, default=2)
+    parser.add_argument("--ctan_beta_warmup_steps", dest="ema_adv_beta_warmup_steps", type=int, default=0)
     parser.add_argument("--ctan_beta_warmup_init", dest="ema_adv_beta_warmup_init", type=float, default=0.9)
 
     # Retention reward args

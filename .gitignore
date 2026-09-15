@@ -9,3 +9,21 @@ data/object_det_cil_dataset_rebuilt/
 # Local experiment telemetry
 wandb/
 *.log
+
+# Local runtime outputs and credentials; curated evidence stays in docs/.
+.pytest_cache/
+pytest-basetemp/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+checkpoints/
+outputs/
+
+# Frozen small evidence logs are part of the reproducibility record.
+!docs/audit/**/*.log
+!docs/acceptance/**/*.log
+!docs/remediation/**/*.log

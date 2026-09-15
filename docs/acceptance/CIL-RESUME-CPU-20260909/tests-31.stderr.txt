@@ -1,0 +1,11 @@
+Exception ignored in atexit callback: <function cleanup_numbered_dir at 0x000001C93E67B5B0>
+Traceback (most recent call last):
+  File "D:\anaconda3\envs\rapo-b01\lib\site-packages\_pytest\pathlib.py", line 374, in cleanup_numbered_dir
+    cleanup_dead_symlinks(root)
+  File "D:\anaconda3\envs\rapo-b01\lib\site-packages\_pytest\pathlib.py", line 359, in cleanup_dead_symlinks
+    if not left_dir.resolve().exists():
+  File "D:\anaconda3\envs\rapo-b01\lib\pathlib.py", line 1290, in exists
+    return self.stat()
+  File "D:\anaconda3\envs\rapo-b01\lib\pathlib.py", line 1097, in stat
+    return self._accessor.stat(self, follow_symlinks=follow_symlinks)
+PermissionError: [WinError 5] access denied: 'C:\\Users\\Administrator\\AppData\\Local\\Temp\\pytest-of-Administrator\\pytest-current'

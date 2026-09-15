@@ -1,0 +1,13 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.6.0 -- D:\anaconda3\envs\rapo-b01\python.exe
+rootdir: C:\Users\Administrator\.codex\worktrees\8ac5\RaPO-author
+collecting ... collected 6 items
+
+tests/author_fixes/test_cil_resume.py::test_valid_boundary_fixture_is_production_serialized_and_validated PASSED [ 16%]
+tests/author_fixes/test_cil_resume.py::test_missing_or_corrupt_checkpoint_fails_closed[delete] PASSED [ 33%]
+tests/author_fixes/test_cil_resume.py::test_missing_or_corrupt_checkpoint_fails_closed[append] PASSED [ 50%]
+tests/author_fixes/test_cil_resume.py::test_marker_semantic_mismatch_fails_closed PASSED [ 66%]
+tests/author_fixes/test_cil_resume.py::test_model_only_marker_fails_closed PASSED [ 83%]
+tests/author_fixes/test_cil_resume.py::test_source_guards_preserve_continuous_path_and_restore_order PASSED [100%]
+
+============================== 6 passed in 4.81s ==============================

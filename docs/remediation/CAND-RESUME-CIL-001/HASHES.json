@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "self_excluded": true,
+  "finding": "CAND-RESUME-CIL-001",
+  "role": "independent_remediation",
+  "worktree": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "branch": "codex/remediate-cil-resume-001",
+  "base_head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+  "author_tag": "author-drop-20260904",
+  "author_tag_commit": "7fe2a73291f208ad9784a8333523825718881907",
+  "integration_manifest_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+  "source_worktree": "C:/Users/Administrator/.codex/worktrees/5ced/RaPO-author",
+  "source_branch": "codex/integrate-accepted-fixes",
+  "source_head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+  "files": [
+    {
+      "path": "examples/baselines/_rapo_components.py",
+      "bytes": 28358,
+      "sha256": "58499b6642943cd7b8360c39173dba266231516cd50e7c01d61a724054180155",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "examples/baselines/cil_det/image_det_cil_rapo.py",
+      "bytes": 54072,
+      "sha256": "22216a30eb2d293280d0bd6e65075acb3d969a239a2d4a73b2321605fa7bf25a",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "bytes": 93286,
+      "sha256": "23cbb3c01f69704eb304c2b9c884d8165a9783a913422d6e679e63bb42d71928",
+      "source_snapshot_sha256": "8a13974e3dfa7756a076844ce25ef6d66c71c29751fd2dec2f00a52b49092f3d",
+      "finding_modified": true
+    },
+    {
+      "path": "scripts/image/rapo_cfg.json",
+      "bytes": 438,
+      "sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "scripts/video/rapo_cfg.json",
+      "bytes": 438,
+      "sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "scripts/det/rapo_cfg.json",
+      "bytes": 438,
+      "sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "tests/author_fixes/run_evidence.py",
+      "bytes": 2344,
+      "sha256": "32c8b19d3501f7a96ed83ce824235bc017da671b812fb15e79addba761255d34",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "tests/author_fixes/source_loader.py",
+      "bytes": 2298,
+      "sha256": "310540efd2ce9584e9bfa12739c2de33af380cd577b5e3ed80b92b6a7d17d746",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "tests/author_fixes/test_coco.py",
+      "bytes": 13639,
+      "sha256": "7052ecc16f4c0a31689010238bb5848f578bea4d423db05f90c7cf449227e9a9",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "tests/author_fixes/test_ctan.py",
+      "bytes": 9783,
+      "sha256": "f91e8c67b9a087e311e89e0f2aa7c4f6f3d1fd27c136f41b6885478f764161b2",
+      "source_snapshot_unchanged": true
+    },
+    {
+      "path": "tests/author_fixes/test_cil_resume.py",
+      "bytes": 8722,
+      "sha256": "a8b17b247eac0526108fbd7388af9b98946752bb8214d24229f00121bd200896",
+      "finding_added": true
+    }
+  ],
+  "validation": {
+    "py_compile": "pass",
+    "new_protocol_tests": "6 passed",
+    "ctan_coco_regression": "25 passed",
+    "combined": "31 passed",
+    "git_diff_check": "pass",
+    "gpu_or_ssh": "not run",
+    "commit_or_push": "not run"
+  }
+}

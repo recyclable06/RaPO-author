@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-09-11T16:42:13.8525426+08:00",
+  "command": "D:/anaconda3/envs/rapo-b01/python.exe -B -m pytest tests/author_fixes/test_cil_resume.py tests/author_fixes/test_ctan.py tests/author_fixes/test_coco.py -p no:cacheprovider -v --tb=short --basetemp C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/CIL-RESUME-CPU-R31-20260911/pytest-basetemp",
+  "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "python": "D:/anaconda3/envs/rapo-b01/python.exe",
+  "python_version": "Python 3.10.20",
+  "env_python_dont_write_bytecode": "1",
+  "env_pythonhashseed": "<unset>",
+  "target_source": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+  "target_test": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\tests\\author_fixes\\test_cil_resume.py",
+  "target_manifest": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\docs\\remediation\\CAND-RESUME-CIL-001\\r3\\HASHES.json",
+  "basetemp": "C:/Users/Administrator/Desktop/RaPO-author/docs/acceptance/CIL-RESUME-CPU-R31-20260911/pytest-basetemp"
+}

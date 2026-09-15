@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "probe": "independent_probe.py",
+  "target_root": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+  "source_ref": "C:\\Users\\Administrator\\.codex\\worktrees\\5ced\\RaPO-author",
+  "integration_ref": "C:\\Users\\Administrator\\.codex\\worktrees\\5ced\\RaPO-author",
+  "identities": {
+    "target_hashes_sha256": "1dfbdc9efcdb853be12e5ab0ded6ffb0f6c4aabc23e811eca836c5de0b58e740",
+    "target_hashes_expected": "1dfbdc9efcdb853be12e5ab0ded6ffb0f6c4aabc23e811eca836c5de0b58e740",
+    "target_hashes_self_matches_expected": true,
+    "target_files_match": true,
+    "target_source_sha256": "23cbb3c01f69704eb304c2b9c884d8165a9783a913422d6e679e63bb42d71928",
+    "target_source_expected": "23cbb3c01f69704eb304c2b9c884d8165a9783a913422d6e679e63bb42d71928",
+    "target_test_sha256": "a8b17b247eac0526108fbd7388af9b98946752bb8214d24229f00121bd200896",
+    "target_test_expected": "a8b17b247eac0526108fbd7388af9b98946752bb8214d24229f00121bd200896",
+    "integration_manifest_sha256": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+    "integration_manifest_expected": "6514f4dca401ffc805ae57031d1926f742e531ce0fbb981448315538ade8b0b1",
+    "base_head_expected": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647"
+  },
+  "static_audit": {
+    "production_ast_parses": true,
+    "cli_flags": true,
+    "explicit_fresh_branch": true,
+    "continuous_load_path_none": true,
+    "fresh_loader_cursor_zero": true,
+    "restore_before_anchor_copy": true,
+    "marker_atomic_last": true,
+    "post_validation_before_publish": true,
+    "driver_rng_before_task_loader": true,
+    "native_continual_loader_skip_helper": true,
+    "new_task_test_function_count": 5,
+    "new_task_parametrized_case_count": 6,
+    "new_test_names": [
+      "test_marker_semantic_mismatch_fails_closed",
+      "test_missing_or_corrupt_checkpoint_fails_closed",
+      "test_model_only_marker_fails_closed",
+      "test_source_guards_preserve_continuous_path_and_restore_order",
+      "test_valid_boundary_fixture_is_production_serialized_and_validated"
+    ],
+    "publish_stops_after_task1": false,
+    "published_boundary_pruning_guard": false,
+    "dataloader_required_by_boundary_validator": false,
+    "source_identity_file_count": 6,
+    "source_identity_files": [
+      "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "examples/baselines/img_cls_cil/image_cls_cil.py",
+      "examples/baselines/_rapo_components.py",
+      "verl/trainer/ray_trainer.py",
+      "verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+      "verl/workers/sharding_manager/fsdp_vllm.py"
+    ],
+    "model_identity_has_revision_or_selected_metadata": true,
+    "model_identity_binds_full_weight_manifest": false
+  },
+  "protocol_checks": {
+    "valid_production_serialized_fixture": {
+      "pass": true,
+      "marker": "temporary fixture; path intentionally not retained"
+    },
+    "missing_checkpoint_fails_closed": {
+      "pass": true,
+      "error": "checkpoint artifact missing: actor/model_world_size_1_rank_0.pt"
+    },
+    "missing_dataloader_rejected": {
+      "pass": false,
+      "error": "validator accepted a manifest without dataloader.pt"
+    }
+  },
+  "blocking_findings": [
+    {
+      "id": "CIL-CPU-001",
+      "severity": "P1-gate",
+      "file": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "lines": "1648-1714",
+      "finding": "--publish_task_boundary publishes Task 1 but the production task loop has no stop/return boundary; the same process proceeds to Task 2."
+    },
+    {
+      "id": "CIL-CPU-002",
+      "severity": "P1-gate",
+      "file": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "lines": "1795-1823,1846-1856",
+      "finding": "pruning protects the source boundary only when resume_boundary is non-null; the publishing process has resume_boundary=None, so default latest/none pruning can remove the published Task-1 checkpoint after continuing."
+    },
+    {
+      "id": "CIL-CPU-003",
+      "severity": "spec-gap",
+      "file": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "lines": "563-585,678-728",
+      "finding": "the boundary manifest validator accepts a complete manifest without dataloader.pt; the frozen specification requires the native full checkpoint artifact set, including dataloader state."
+    },
+    {
+      "id": "CIL-CPU-004",
+      "severity": "spec-gap",
+      "file": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "lines": "319-339",
+      "finding": "model identity binds the absolute path plus selected metadata or an optional revision, but does not require an immutable revision or a full model-weight/content manifest; a changed weight file at the same path can retain the boundary identity."
+    },
+    {
+      "id": "CIL-CPU-005",
+      "severity": "spec-gap",
+      "file": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "lines": "82-89,270-283",
+      "finding": "the boundary source identity is limited to six selected files and is not an equivalent complete production-source identity for the native restore, optimizer/RNG and loader implementation it claims to bind."
+    }
+  ],
+  "verdict": "FAIL_NOT_READY_FOR_GPU",
+  "fresh_process_resume": "not_accepted",
+  "gpu_handoff": {
+    "required_after_remediation": [
+      "Two OS processes: Task 1 publisher exits after marker publication, then Task 2 fresh process starts.",
+      "Verify published boundary remains intact under default checkpoint policy and old boundary root is read-only.",
+      "Verify native actor/optimizer/scheduler/worker RNG restore, driver/vLLM RNG restore, anchor reconstruction and Task-2 loader cursor=0 on real world-size-2 GPU workers.",
+      "Verify Task-2 first real update and bounded trajectory-close metrics; do not call this bitwise state equality."
+    ],
+    "not_run": true
+  }
+}

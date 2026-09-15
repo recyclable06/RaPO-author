@@ -1,0 +1,21 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.6.0 -- D:\anaconda3\envs\rapo-b01\python.exe
+rootdir: C:\Users\Administrator\.codex\worktrees\1449\RaPO-author
+collecting ... collected 3 items
+
+tests/author_fixes/test_coco.py::test_coco_static_callpoint_uses_seen_labels_and_task_filter_first FAILED [ 33%]
+tests/author_fixes/test_coco.py::test_coco_data_assignment_and_real_answer_filters_for_six_seeds PASSED [ 66%]
+tests/author_fixes/test_coco.py::test_coco_author_reward_full_answer_beats_car_only_with_margin PASSED [100%]
+
+================================== FAILURES ===================================
+______ test_coco_static_callpoint_uses_seen_labels_and_task_filter_first ______
+tests\author_fixes\test_coco.py:179: in test_coco_static_callpoint_uses_seen_labels_and_task_filter_first
+    assert "prompt_seen_labels" in _names(allowed.test) or "prompt_label_list" in _names(allowed.test)
+E   AssertionError: assert ('prompt_seen_labels' in {'known_args'} or 'prompt_label_list' in {'known_args'})
+E    +  where {'known_args'} = _names(<ast.Attribute object at 0x000002A62EB64DF0>)
+E    +    where <ast.Attribute object at 0x000002A62EB64DF0> = <ast.IfExp object at 0x000002A62EB64DC0>.test
+E    +  and   {'known_args'} = _names(<ast.Attribute object at 0x000002A62EB64DF0>)
+E    +    where <ast.Attribute object at 0x000002A62EB64DF0> = <ast.IfExp object at 0x000002A62EB64DC0>.test
+=========================== short test summary info ===========================
+FAILED tests/author_fixes/test_coco.py::test_coco_static_callpoint_uses_seen_labels_and_task_filter_first
+========================= 1 failed, 2 passed in 2.92s =========================

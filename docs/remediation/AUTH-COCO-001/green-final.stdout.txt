@@ -1,0 +1,10 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.20, pytest-8.4.2, pluggy-1.6.0 -- D:\anaconda3\envs\rapo-b01\python.exe
+rootdir: C:\Users\Administrator\.codex\worktrees\1449\RaPO-author
+collecting ... collected 3 items
+
+tests/author_fixes/test_coco.py::test_coco_static_callpoint_uses_seen_labels_and_task_filter_first PASSED [ 33%]
+tests/author_fixes/test_coco.py::test_coco_data_assignment_and_real_answer_filters_for_six_seeds PASSED [ 66%]
+tests/author_fixes/test_coco.py::test_coco_author_reward_full_answer_beats_car_only_with_margin PASSED [100%]
+
+============================== 3 passed in 2.79s ==============================

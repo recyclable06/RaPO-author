@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "self_excluded": true,
+  "finding": "CAND-RESUME-CIL-001",
+  "purpose": "Supplementary delivery identity for the actual patches, original delivery documents, and raw validation evidence.",
+  "worktree": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+  "branch": "codex/remediate-cil-resume-001",
+  "head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+  "author_tag": "author-drop-20260904",
+  "source_worktree": "C:/Users/Administrator/.codex/worktrees/5ced/RaPO-author",
+  "source_branch": "codex/integrate-accepted-fixes",
+  "patch_generation_order": {
+    "finding_only_patch": "Generated from the 5ced image source plus the frozen remediation image source and new CIL test before this supplement was written.",
+    "author_tag_overall_patch": "Generated from the author tag diff and untracked delivery material before this supplement was written and before the final PATCHES.md update.",
+    "supplement_manifest": "Written last; this file is self-excluded to avoid a circular hash dependency."
+  },
+  "actual_patches": [
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/CAND-RESUME-CIL-001-vs-5ced.patch",
+      "basis": "5ced CIL image source to remediation image source plus tests/author_fixes/test_cil_resume.py",
+      "bytes": 70900,
+      "sha256": "4bf2d1ccb29ad8f7f4e11100efd4890902c7bf5688bd1743c5cf6bfbbd797af2",
+      "header_prefixes": ["old/", "new/"],
+      "apply_strip": 2
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/CAND-RESUME-CIL-001-vs-author-tag.patch",
+      "basis": "author-drop-20260904 to the remediation worktree, including tracked baseline additions, allowlisted production/test changes, first-round delivery documents, raw evidence, and the finding-only patch",
+      "bytes": 4003574,
+      "sha256": "3ff866dcfd6bbb8445a844814eb7e384696202e61928af4ddf3765b94387ba60",
+      "supplement_excluded": true
+    }
+  ],
+  "frozen_subject_files": [
+    {
+      "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "bytes": 93286,
+      "sha256": "23cbb3c01f69704eb304c2b9c884d8165a9783a913422d6e679e63bb42d71928",
+      "finding_modified": true
+    },
+    {
+      "path": "tests/author_fixes/test_cil_resume.py",
+      "bytes": 8722,
+      "sha256": "a8b17b247eac0526108fbd7388af9b98946752bb8214d24229f00121bd200896",
+      "finding_added": true
+    }
+  ],
+  "original_delivery_docs": [
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/REPORT.md",
+      "bytes": 3227,
+      "sha256": "0e09f2d85ae7839ed4a0089951f387ee5c460a48dc0f5ce6e8d9916d7f4de87d"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/PROGRESS.md",
+      "bytes": 1994,
+      "sha256": "95a46f29813694970105ae09adf8a957675a7db5d9cda5fef740c27c399d9e22"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/PRE_HASHES.md",
+      "bytes": 3166,
+      "sha256": "4da37b861aa2bb849306277dd1c5e8fbf85bd31dc69e0885dd914c1620c7b4ff"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/HASHES.json",
+      "bytes": 3372,
+      "sha256": "1dfbdc9efcdb853be12e5ab0ded6ffb0f6c4aabc23e811eca836c5de0b58e740"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/PATCHES.md",
+      "bytes": 2306,
+      "sha256": "a8e14ea4de505abcc21c154cea31df3beba30da63d072e28bcf23650e1f9a512",
+      "supplement_updated": true
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/TEST_EVIDENCE.md",
+      "bytes": 2223,
+      "sha256": "4a251328002208f491c8bef1b0427afe1080380fd76a098fd722d8a8f75f3f6b"
+    }
+  ],
+  "raw_evidence": [
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/01_py_compile.meta.json",
+      "kind": "meta",
+      "bytes": 1097,
+      "sha256": "29ede59ffef003f4f209a36e527c56704bb9e63fa519770270cfe47140c8d041"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/01_py_compile.stderr.txt",
+      "kind": "stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/01_py_compile.stdout.txt",
+      "kind": "stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/02_cil_resume.meta.json",
+      "kind": "meta",
+      "bytes": 1074,
+      "sha256": "f4f2b4a2d65c2a4d9ccba787648e36699f49aea60a16b985a83f402e4baa8c66"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/02_cil_resume.stderr.txt",
+      "kind": "stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/02_cil_resume.stdout.txt",
+      "kind": "stdout",
+      "bytes": 1014,
+      "sha256": "4ae2ea75cad044f7222324374ec5e2f2b5547f468a4eba4ef1163c84f402303b"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/03_ctan_coco.meta.json",
+      "kind": "meta",
+      "bytes": 1100,
+      "sha256": "5dba843b060d77f74e83e3467bd1f7fdc1eef1ab28ce5f0134ef65b9151a8d35"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/03_ctan_coco.stderr.txt",
+      "kind": "stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/03_ctan_coco.stdout.txt",
+      "kind": "stdout",
+      "bytes": 3099,
+      "sha256": "4ae658011f52a8d3e4126c17615c51a8d9ee573389361f0bfd69882991e3ab40"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/04_combined.meta.json",
+      "kind": "meta",
+      "bytes": 1132,
+      "sha256": "989e51a5628027d9f78f9eb66b666ce8d8a588d196940dcddae6358a9805c9e1"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/04_combined.stderr.txt",
+      "kind": "stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/remediation/CAND-RESUME-CIL-001/raw/04_combined.stdout.txt",
+      "kind": "stdout",
+      "bytes": 3743,
+      "sha256": "51aa1badebc34a306ea7d2494fe0fd2f12fb9b2edeb5748dcf4e99a560b29277"
+    }
+  ],
+  "raw_results": [
+    {
+      "name": "01_py_compile",
+      "meta": "raw/01_py_compile.meta.json",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "02_cil_resume",
+      "meta": "raw/02_cil_resume.meta.json",
+      "exit_code": 0,
+      "result": "6 passed"
+    },
+    {
+      "name": "03_ctan_coco",
+      "meta": "raw/03_ctan_coco.meta.json",
+      "exit_code": 0,
+      "result": "25 passed"
+    },
+    {
+      "name": "04_combined",
+      "meta": "raw/04_combined.meta.json",
+      "exit_code": 0,
+      "result": "31 passed"
+    }
+  ],
+  "validation": {
+    "combined_stdout_is_complete_verbose_capture": true,
+    "stderr_files_empty": true,
+    "production_or_test_bytes_changed_after_capture": false,
+    "gpu_or_ssh": "not run",
+    "commit_or_push": "not run"
+  },
+  "exclusions": [
+    "SUPPLEMENT_HASHES.json is self-excluded because it records the hashes of the actual patch and delivery files.",
+    "The temporary patch-generation directory is not delivery evidence and is removed after this manifest is verified."
+  ]
+}

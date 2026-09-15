@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "04_combined",
+  "command": "D:/anaconda3/envs/rapo-b01/python.exe -m pytest tests/author_fixes/test_cil_resume.py tests/author_fixes/test_coco.py tests/author_fixes/test_ctan.py -p no:cacheprovider -v --tb=short",
+  "start": "2026-09-09T21:03:06.9574539+08:00",
+  "end": "2026-09-09T21:03:16.8363957+08:00",
+  "exit_code": 0,
+  "stdout_file": "04_combined.stdout.txt",
+  "stderr_file": "04_combined.stderr.txt",
+  "environment": {
+    "cwd": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author",
+    "interpreter": "D:/anaconda3/envs/rapo-b01/python.exe",
+    "python_version": "Python 3.10.20",
+    "pytest_version": "pytest 8.4.2",
+    "branch_status": "## codex/remediate-cil-resume-001\r\n M examples/baselines/_rapo_components.py\r\n M examples/baselines/cil_det/image_det_cil_rapo.py\r\n M examples/baselines/img_cls_cil/image_cls_cil_rapo.py\r\n M scripts/det/rapo_cfg.json\r\n M scripts/image/rapo_cfg.json\r\n M scripts/video/rapo_cfg.json\r\n?? docs/remediation/\r\n?? tests/",
+    "head": "da0c5ad521387bab75e74dc0bf0fd47dc13a3647",
+    "platform": null
+  }
+}

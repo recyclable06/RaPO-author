@@ -1,0 +1,62 @@
+[
+  {
+    "path": "scripts/image/rapo_cfg.json",
+    "matches": true,
+    "ctan": {
+      "enable": true,
+      "beta": 0.999,
+      "eps": 1E-06,
+      "bootstrap_steps": 0,
+      "activate_from_task": 1,
+      "min_std": 0.0,
+      "guard_abs_max": 0.0,
+      "bias_correction": false,
+      "beta_warmup_steps": 0,
+      "beta_warmup_init": 0.9
+    },
+    "retention_enable": true,
+    "retention_activate_from_task": 2,
+    "anchor_activate_from_task": 2,
+    "sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861"
+  },
+  {
+    "path": "scripts/video/rapo_cfg.json",
+    "matches": true,
+    "ctan": {
+      "enable": true,
+      "beta": 0.999,
+      "eps": 1E-06,
+      "bootstrap_steps": 0,
+      "activate_from_task": 1,
+      "min_std": 0.0,
+      "guard_abs_max": 0.0,
+      "bias_correction": false,
+      "beta_warmup_steps": 0,
+      "beta_warmup_init": 0.9
+    },
+    "retention_enable": true,
+    "retention_activate_from_task": 2,
+    "anchor_activate_from_task": 2,
+    "sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861"
+  },
+  {
+    "path": "scripts/det/rapo_cfg.json",
+    "matches": true,
+    "ctan": {
+      "enable": true,
+      "beta": 0.999,
+      "eps": 1E-06,
+      "bootstrap_steps": 0,
+      "activate_from_task": 1,
+      "min_std": 0.0,
+      "guard_abs_max": 0.0,
+      "bias_correction": false,
+      "beta_warmup_steps": 0,
+      "beta_warmup_init": 0.9
+    },
+    "retention_enable": true,
+    "retention_activate_from_task": 2,
+    "anchor_activate_from_task": 2,
+    "sha256": "9853b9c53e5601b1f3ff9e56fccef03c2697571ccdaa8e77d3a2a75f65e11861"
+  }
+]
