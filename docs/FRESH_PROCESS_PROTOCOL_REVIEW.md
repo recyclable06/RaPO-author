@@ -191,3 +191,11 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 外层timeout杀死wrapper导致run-result/process-end和完整production stdout/stderr未落盘；console文件是摘要而非完整原始输出。结构化日志、observer与Ray日志保留，独立复核任务将检查是否存在遗漏异常及checkpoint完整性证据边界。远端 `/mnt/conda/zhenglifeng/t/r9g211d16/` 约17GiB保留；本地1804271616bytes的部分模型传输明确无效，不作为恢复或判定输入，也不上传GitHub。现场释放检查记录21:06:39私有进程退出，GPU4–6空闲，其他用户0–3不动。
 
 同一有限诊断授权内已续派新唯一R2从头运行C，不能用旧Task1 checkpoint拼接连续对照。科学更新数/配置不变，墙钟上限C2700秒、A/B各1800秒，生产合计最多6300秒；额外有限日志收尾与释放。超时监督在冻结包外实施：核验本次child PID/start/命令/目录后终止child，留launcher120秒排空communicate管道并保存结果，再只清理自身私有Ray；若无法安全实施或必须改包则回报准备角色，不现场改冻结源码。优先远端完整内容清单和判定所需raw，避免再次下载整份权重。失败或无进展到上限后停止并回报，不自动继续加时。
+
+### 2026-09-16：超时证据独立复核接收与交付限制
+
+独立[超时复核](acceptance/FRESH-PROCESS-V9-GPU-TIMEOUT-20260916/REPORT.md)保持BLOCKED_C_TIMEOUT_AFTER_TASK1。协调者核对5文件71818bytes一致，HASHES.json自身SHA256 `5f260585371a687916699bf5abbf305b36bfaebd2f2eaaca9cdf26255690d1cb`。81个observer文件426行无解析错误，每rank两次完整update_actor前后事件；experiment log有两次训练及一次validation，Task2无更新。checkpoint保存本身约263.37秒。留存Ray/observer日志未发现实际OOM/traceback/CUDA/NCCL高风险标记，但缺失完整stdout/stderr，不能推导整段运行无异常。
+
+checkpoint的六文件清单只证明列示名称与大小，未提供远端内容hash；此前“完整checkpoint”执行方表述不能升级为内容完整或恢复可用验收。本地partial继续排除。旧delivery manifest含generated_at字符串字面换行，严格JSON解析失败；协调者此前PowerShell宽松解析后439文件逐项hash/bytes核对事实仍成立，但不应把它称为有效JSON清单。原件不覆盖，已要求执行者在R2收尾保留勘误或另存明确派生的修正版，并对新清单做严格JSON回读，不影响正在进行的GPU任务。
+
+独立报告末尾的“separately authorized”不构成新的用户批准门：用户持续授权与协调者已明确下发的R2范围/预算覆盖本次有限重跑。R2任务继续，独立旧记录不替代或提前判定R2结果。

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "manifest": "acceptance-artifact-self-excluded",
+  "root": "docs/acceptance/FRESH-PROCESS-V9-GPU-TIMEOUT-20260916",
+  "self_excluded": true,
+  "self_excluded_file": "HASHES.json",
+  "created_date": "2026-09-16",
+  "file_count": 5,
+  "total_bytes": 71818,
+  "files": [
+    {
+      "path": "acceptance_probe.py",
+      "bytes": 23635,
+      "sha256": "02f3d126f4a51ed3bb177fc8416bf52a1d6bbb1c572aa2f226a1fc0245ea9f27"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 1131,
+      "sha256": "b382ec498feb16c245cfe63807c0a5fd660131c3791f1ef48ecfc37f6b69f59c"
+    },
+    {
+      "path": "raw/acceptance_probe.stdout.json",
+      "bytes": 40816,
+      "sha256": "4809d30dc0afe042f9ea1591318e641683b21b29a862bb16bdcfc97162909301"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 4679,
+      "sha256": "9c406ffcffaad5b26fefbd4e45c9ecd2a1d7c4ff63e0e34d4af901e5ad60c8eb"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 1557,
+      "sha256": "6c3e855a52ba0681c4abecf47028dbdb6e86a6d098cb145d0417d3a91175b3ca"
+    }
+  ]
+}

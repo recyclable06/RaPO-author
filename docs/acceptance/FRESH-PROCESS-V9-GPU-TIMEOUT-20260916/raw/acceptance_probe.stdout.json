@@ -1,0 +1,1000 @@
+{
+  "acceptance_id": "FRESH-PROCESS-V9-GPU-TIMEOUT-20260916",
+  "anomaly_scan": {
+    "interpretation": "No retained-log anomaly marker matched the scan. The scan cannot restore the missing complete stdout/stderr or process-end boundary.",
+    "observer_events": {
+      "classification_counts": {},
+      "high_risk_match_count": 0,
+      "high_risk_matches": [],
+      "match_count": 0,
+      "matches": [],
+      "scanned_file_count": 81,
+      "scanned_line_count": 426,
+      "unclassified_match_count": 0,
+      "unclassified_matches": []
+    },
+    "ray_logs": {
+      "classification_counts": {
+        "expected_lifecycle_or_teardown": 37,
+        "pre_run_cluster_cleanup": 1,
+        "zero_status_counter": 54
+      },
+      "high_risk_match_count": 0,
+      "high_risk_matches": [],
+      "match_count": 92,
+      "matches": [
+        {
+          "file": "raw/ray-logs/dashboard.log",
+          "line": 12,
+          "text": "2026-09-16 20:54:30,222\tWARNING dashboard.py:282 -- Exiting with SIGTERM immediately..."
+        },
+        {
+          "file": "raw/ray-logs/debug_state.txt",
+          "line": 49,
+          "text": "- num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/debug_state.txt",
+          "line": 50,
+          "text": "- num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/debug_state.txt",
+          "line": 51,
+          "text": "- num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/gcs_server.out",
+          "line": 346,
+          "text": "[2026-09-16 20:39:50,605 I 1051160 1051207] (gcs_server) gcs_task_manager.cc:737: Marking all running tasks of job 01000000 as failed."
+        },
+        {
+          "file": "raw/ray-logs/gcs_server.out",
+          "line": 3662,
+          "text": "[2026-09-16 20:54:29,472 I 1051160 1051160] (gcs_server) gcs_node_manager.cc:386: Removing node, node name = 192.168.1.211, death reason = EXPECTED_TERMINATION, death message = received SIGTERM node_id=d15b8921cf8ecbf26b10097f7bd08a2f378fc2fd6a33f433ee515f3b"
+        },
+        {
+          "file": "raw/ray-logs/gcs_server.out",
+          "line": 3666,
+          "text": "[2026-09-16 20:54:29,955 I 1051160 1051209] (gcs_server) ray_syncer_bidi_reactor_base.h:182: Failed to read the message from: d15b8921cf8ecbf26b10097f7bd08a2f378fc2fd6a33f433ee515f3b"
+        },
+        {
+          "file": "raw/ray-logs/gcs_server.out",
+          "line": 3668,
+          "text": "[2026-09-16 20:54:31,641 I 1051160 1051160] (gcs_server) gcs_server_main.cc:172: GCS server received SIGTERM, shutting down..."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-0c2b27419b980a489118e3079515692992c1f8a9f35c72f514a24ce6_1051972.log",
+          "line": 986,
+          "text": "[2026-09-16 20:54:29,618 W 1051972 1054632] metric_exporter.cc:105: [1] Export metrics to agent failed: RpcError: RPC Error message: failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:60426: Failed to connect to remote host: Connection refused; RPC Error details:  rpc_code: 14. This won't affect Ray, but you can lose metrics from the cluster."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-11c819fc7b54a3ac4b549a7ce7e891277190c36ce5cad069be9a50a5_1052007.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,781 I 1052007 1054840] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-12dead7c87a68227fcd4527d5d0262a539602c1d244e886e0cb66278_1051973.log",
+          "line": 985,
+          "text": "[2026-09-16 20:54:29,781 I 1051973 1054516] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-18a804788d90dfbb2aeaaccf9d03fb8b01508491a302faa94d381840_1051971.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,781 I 1051971 1054545] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-2358d3475fbc865a2471e55f95b7cb755981d7da01de93677d0727cc_1051969.log",
+          "line": 986,
+          "text": "[2026-09-16 20:54:29,781 I 1051969 1054869] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-2d7cf43bab000c1b35e88fe1877f2f26c8b7ca121dc32272657613e4_1051987.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,780 I 1051987 1053983] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: failed to connect to all addresses; last error: UNKNOWN: ipv4:192.168.1.211:35951: Failed to connect to remote host: Connection refused; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-3672bf826a9a2bf7efdb675e68d705171be90af9acf96ae20306ce10_1052008.log",
+          "line": 986,
+          "text": "[2026-09-16 20:54:29,761 W 1052008 1054719] metric_exporter.cc:105: [1] Export metrics to agent failed: RpcError: RPC Error message: failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:60426: Failed to connect to remote host: Connection refused; RPC Error details:  rpc_code: 14. This won't affect Ray, but you can lose metrics from the cluster."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-4d1afea7a170c54d289c4fcfb95696bf1f0436dc6d2f8d6dc7e1928d_1051989.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,782 I 1051989 1054574] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-50aaacf9668a608041f3d6ece8c193790e229c2ae330ba6d97a1247b_1051997.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,781 I 1051997 1054811] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-5e2f522fe893216d4d6d93f02f740bbf3121a36482f8ad6df7d53671_1051968.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,612 W 1051968 1053794] metric_exporter.cc:105: [1] Export metrics to agent failed: RpcError: RPC Error message: failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:60426: Failed to connect to remote host: Connection refused; RPC Error details:  rpc_code: 14. This won't affect Ray, but you can lose metrics from the cluster."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-6342c8e4b6da6f22166755de77fb6197465b4200834620b538818f1b_1051957.log",
+          "line": 66,
+          "text": "[2026-09-16 20:39:35,497 I 1051957 1053430] core_worker.cc:4541: Force kill actor request has received. exiting immediately... The actor is dead because it was killed by `ray.kill`."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-6342c8e4b6da6f22166755de77fb6197465b4200834620b538818f1b_1051957.log",
+          "line": 67,
+          "text": "[2026-09-16 20:39:35,497 W 1051957 1053430] core_worker.cc:1263: Force exit the process.  Details: Worker exits because the actor is killed. The actor is dead because it was killed by `ray.kill`."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-6342c8e4b6da6f22166755de77fb6197465b4200834620b538818f1b_1051957.log",
+          "line": 70,
+          "text": "[2026-09-16 20:39:35,514 I 1051957 1053430] raylet_client.cc:73: RayletClient::Disconnect, exit_type=INTENDED_SYSTEM_EXIT, exit_detail=Worker exits because the actor is killed. The actor is dead because it was killed by `ray.kill`., has creation_task_exception_pb_bytes=0"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-6415d25098a4482dc015c0776c465aa2de0e40c9a39bbc1771e71d98_1052009.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,782 I 1052009 1054224] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-8116b8823e30d0ea5ecd628fe6919e4592777f7f0a49b88e77402123_1051988.log",
+          "line": 986,
+          "text": "[2026-09-16 20:54:29,782 I 1051988 1053862] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-a41e79dae1a76217d59de65cd2057004ad67f480840b243b1fd997b6_1051958.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,782 I 1051958 1054075] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-ae66f83619b7346f51e50500745f3f23debd217373104b7f3e415a49_1051986.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,783 I 1051986 1053828] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-af3a682058c9054e08521e4bc54a5ca0467f95714442ad55f2fbdfe7_1051977.log",
+          "line": 985,
+          "text": "[2026-09-16 20:54:29,782 I 1051977 1053770] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-c0ad568033e8918c0df417b101368ed710d3511ab372740c08b655ee_1052000.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,782 I 1052000 1054342] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-c34ec83fee46974237959f2977b6f74f9c84f8720b3bf530c78ad126_1051996.log",
+          "line": 923,
+          "text": "[2026-09-16 20:54:29,782 I 1051996 1055072] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-c380becb9636dbceab125d3dcafdb3638c9788f137ef398ee29549ab_1052011.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,634 W 1052011 1054661] metric_exporter.cc:105: [1] Export metrics to agent failed: RpcError: RPC Error message: failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:60426: Failed to connect to remote host: Connection refused; RPC Error details:  rpc_code: 14. This won't affect Ray, but you can lose metrics from the cluster."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-d8b2e64972b094bc82bbd22876a9811676da222f487a852ad5b94b57_1051978.log",
+          "line": 63,
+          "text": "[2026-09-16 20:39:35,497 I 1051978 1053459] core_worker.cc:4541: Force kill actor request has received. exiting immediately... The actor is dead because it was killed by `ray.kill`."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-d8b2e64972b094bc82bbd22876a9811676da222f487a852ad5b94b57_1051978.log",
+          "line": 64,
+          "text": "[2026-09-16 20:39:35,497 W 1051978 1053459] core_worker.cc:1263: Force exit the process.  Details: Worker exits because the actor is killed. The actor is dead because it was killed by `ray.kill`."
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-d8b2e64972b094bc82bbd22876a9811676da222f487a852ad5b94b57_1051978.log",
+          "line": 67,
+          "text": "[2026-09-16 20:39:35,529 I 1051978 1053459] raylet_client.cc:73: RayletClient::Disconnect, exit_type=INTENDED_SYSTEM_EXIT, exit_detail=Worker exits because the actor is killed. The actor is dead because it was killed by `ray.kill`., has creation_task_exception_pb_bytes=0"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-ddc54869e5e33b407f370ea4f1131e9f276a9248556e7b268c592f8e_1051991.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,782 I 1051991 1054487] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-e5c2f6807b91324c0b028c2d21d8be806d522c5981ba6dde8157e468_1051961.log",
+          "line": 988,
+          "text": "[2026-09-16 20:54:29,781 I 1051961 1054233] raylet_client.cc:281: Error reporting task backlog information: RpcError: RPC Error message: Cancelling all calls; RPC Error details:  rpc_code: 14"
+        },
+        {
+          "file": "raw/ray-logs/python-core-worker-f0d86542a170b6f55d18722d9a3d2904e3e34f4e0746a758fe99c72b_1051985.log",
+          "line": 986,
+          "text": "[2026-09-16 20:54:29,733 W 1051985 1054690] metric_exporter.cc:105: [1] Export metrics to agent failed: RpcError: RPC Error message: failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:60426: Failed to connect to remote host: Connection refused; RPC Error details:  rpc_code: 14. This won't affect Ray, but you can lose metrics from the cluster."
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 90,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 91,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 92,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 280,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 281,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 282,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 474,
+          "text": "[2026-09-16 20:39:35,618 W 1051346 1051378] (raylet) store.cc:368: Disconnecting client due to connection error with code 2: End of file"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 475,
+          "text": "[2026-09-16 20:39:35,628 W 1051346 1051378] (raylet) store.cc:368: Disconnecting client due to connection error with code 2: End of file"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 477,
+          "text": "[2026-09-16 20:39:35,856 W 1051346 1051378] (raylet) store.cc:368: Disconnecting client due to connection error with code 2: End of file"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 551,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 552,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 553,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 777,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 778,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 779,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1003,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1004,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1005,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1229,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1230,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1231,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1455,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1456,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1457,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1681,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1682,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1683,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1907,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1908,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 1909,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2133,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2134,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2135,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2359,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2360,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2361,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2585,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2586,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2587,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2811,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2812,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 2813,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3037,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3038,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3039,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3263,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3264,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3265,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3489,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3490,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3491,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3715,
+          "text": "[state-dump] - num chunks received failed (all): 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3716,
+          "text": "[state-dump] - num chunks received failed / cancelled: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3717,
+          "text": "[state-dump] - num chunks received failed / plasma error: 0"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3866,
+          "text": "[2026-09-16 20:54:29,468 I 1051346 1051346] (raylet) main.cc:504: received SIGTERM. Existing local drain request = None"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3867,
+          "text": "[2026-09-16 20:54:29,469 I 1051346 1051346] (raylet) main.cc:307: Raylet graceful shutdown triggered, reason = EXPECTED_TERMINATION, reason message = received SIGTERM"
+        },
+        {
+          "file": "raw/ray-logs/raylet.out",
+          "line": 3871,
+          "text": "[2026-09-16 20:54:29,481 W 1051346 1051378] (raylet) store.cc:368: Disconnecting client due to connection error with code 2: End of file"
+        }
+      ],
+      "scanned_file_count": 312,
+      "scanned_line_count": 66212,
+      "unclassified_match_count": 0,
+      "unclassified_matches": []
+    },
+    "retained_runtime_evidence": {
+      "classification_counts": {
+        "expected_lifecycle_or_teardown": 1,
+        "unclassified_lexical_match": 2
+      },
+      "high_risk_match_count": 0,
+      "high_risk_matches": [],
+      "match_count": 3,
+      "matches": [
+        {
+          "file": "raw/C-ssh.stdout.txt",
+          "line": 12,
+          "text": "The process proceeded to model construction, rollout/reward execution, actor updates, checkpoint saving and Task 2 reinitialization. No production traceback was present in the captured console excerpt."
+        },
+        {
+          "file": "raw/C-timeout-policy.txt",
+          "line": 1,
+          "text": "Leg C was launched with an outer timeout of 900 seconds and SIGTERM on expiry."
+        },
+        {
+          "file": "raw/C-timeout-policy.txt",
+          "line": 5,
+          "text": "This is recorded as a bounded diagnostic timeout, not as evidence of a production exception."
+        }
+      ],
+      "scanned_file_count": 7,
+      "scanned_line_count": 146,
+      "unclassified_match_count": 2,
+      "unclassified_matches": [
+        {
+          "file": "raw/C-ssh.stdout.txt",
+          "line": 12,
+          "text": "The process proceeded to model construction, rollout/reward execution, actor updates, checkpoint saving and Task 2 reinitialization. No production traceback was present in the captured console excerpt."
+        },
+        {
+          "file": "raw/C-timeout-policy.txt",
+          "line": 5,
+          "text": "This is recorded as a bounded diagnostic timeout, not as evidence of a production exception."
+        }
+      ]
+    }
+  },
+  "assessment_status": "TIMEOUT_AFTER_TASK1",
+  "candidate_root": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\FRESH-PROCESS-V9-GPU-20260916",
+  "checkpoint": {
+    "classification": "remote_inventory_structural_listing_only",
+    "content_hashes_available": false,
+    "expected_file_set_matches": true,
+    "listed_files": {
+      "extra_state_world_size_2_rank_0.pt": 14696,
+      "extra_state_world_size_2_rank_1.pt": 14696,
+      "model_world_size_2_rank_0.pt": 2442685994,
+      "model_world_size_2_rank_1.pt": 2442685994,
+      "optim_world_size_2_rank_0.pt": 6627901423,
+      "optim_world_size_2_rank_1.pt": 6627936751
+    },
+    "listed_sizes_match_expected": true,
+    "local_actor_files": [
+      {
+        "bytes": 1804271616,
+        "path": "raw/remote-results/C/production/2026-09-16-203957/task_1/global_step_2/actor/model_world_size_2_rank_1.pt"
+      }
+    ],
+    "partial_local_file_bytes": 1804271616,
+    "partial_local_file_matches_expected_remote_size": false,
+    "partial_local_file_present": true,
+    "partial_transfer_excluded_from_judgment": true,
+    "remote_results_root_bytes": 18177662246
+  },
+  "conclusion": {
+    "acceptance_established": false,
+    "blocking_reason": "900-second outer timeout after Task 1 checkpoint and during Task 2 transition; final wrapper artifacts absent",
+    "production_exception_proven": false,
+    "task1_real_update_evidence": "corroborated_by_structured_log_and_observer_pairs",
+    "task2_completion": "not_observed"
+  },
+  "delivery_manifest": {
+    "declared_file_count": 439,
+    "declared_total_bytes": 1831106053,
+    "entry_bytes_sum": 1831106053,
+    "entry_bytes_sum_matches_declared": true,
+    "entry_count": 439,
+    "entry_count_matches_declared": true,
+    "entry_parse_error_count": 0,
+    "json_error": "Invalid control character at: line 7 column 20 (char 242)",
+    "json_valid": false,
+    "limitation": "The delivery manifest is not machine-parseable JSON because its generated_at string contains a literal line break. Entry lines and declared totals were checked separately.",
+    "path": "DELIVERY_MANIFEST-v9-gpu-20260916.json",
+    "sha256": "f8ea1a5562aa05f03b741808c64346ef08d7525bc7342738bf7c0bf692da8463",
+    "sha256_matches_recorded_expected": true
+  },
+  "evidence_boundary": {
+    "all_named_final_files_absent": true,
+    "availability_source_states_complete_stdout_unavailable": true,
+    "candidate_report_does_not_claim_complete_stdout": true,
+    "console_identified_as_normalized_excerpt": true,
+    "missing_named_final_files": {
+      "process-end.json": [],
+      "process.stderr.log": [],
+      "process.stdout.log": [],
+      "run-result.json": []
+    },
+    "observer_events_present": true,
+    "outer_timeout_seconds": 900,
+    "ray_logs_present": true,
+    "run_result_or_process_end_present": false,
+    "ssh_console_excerpt_present": true,
+    "ssh_exit_code": 1,
+    "structured_production_logs_present": true,
+    "timeout_source_states_final_files_not_written": true
+  },
+  "generated_at": "2026-09-16T13:45:35.946594+00:00",
+  "observer": {
+    "all_update_pairs_returned_complete": true,
+    "checkpoint_pairs": {
+      "FSDPCheckpointManager.save_checkpoint": [
+        {
+          "after_complete": true,
+          "after_status": "returned",
+          "after_unix": 1789563133.1242263,
+          "before_unix": 1789563037.429837,
+          "call_id": "1061024:1789562992029246265:a8d43c7fda1446e687c90e0396496ffd",
+          "has_after": true,
+          "has_before": true,
+          "label": "FSDPCheckpointManager.save_checkpoint",
+          "local_rank": 1,
+          "rank": 1
+        },
+        {
+          "after_complete": true,
+          "after_status": "returned",
+          "after_unix": 1789563131.5145288,
+          "before_unix": 1789563038.7861872,
+          "call_id": "1060780:1789562991570573353:0ff24e80d17d48b6b07d01bd54b90cb8",
+          "has_after": true,
+          "has_before": true,
+          "label": "FSDPCheckpointManager.save_checkpoint",
+          "local_rank": 0,
+          "rank": 0
+        }
+      ],
+      "FSDPWorker.save_checkpoint": [
+        {
+          "after_complete": true,
+          "after_status": "returned",
+          "after_unix": 1789563191.549263,
+          "before_unix": 1789562991.5144627,
+          "call_id": "1060780:1789562928329689252:d2efbc44394345718ade6770fa59c39b",
+          "has_after": true,
+          "has_before": true,
+          "label": "FSDPWorker.save_checkpoint",
+          "local_rank": 0,
+          "rank": 0
+        },
+        {
+          "after_complete": true,
+          "after_status": "returned",
+          "after_unix": 1789563190.6754324,
+          "before_unix": 1789562991.9687603,
+          "call_id": "1061024:1789562928330298181:0296580530b047eda4e760fd399ca5cc",
+          "has_after": true,
+          "has_before": true,
+          "label": "FSDPWorker.save_checkpoint",
+          "local_rank": 1,
+          "rank": 1
+        }
+      ]
+    },
+    "driver_transition_pairs": [
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562426.480307,
+        "before_unix": 1789562426.4360368,
+        "call_id": "1059522:1789562426412591484:8116b7d1b93443f3b8f723cadf8c8250",
+        "has_after": true,
+        "has_before": true,
+        "label": "_build_dataloader",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562426.5614123,
+        "before_unix": 1789562426.5154078,
+        "call_id": "1059522:1789562426497419870:4ab374d0e4c948deb361783b8a27a3e7",
+        "has_after": true,
+        "has_before": true,
+        "label": "_build_dataloader",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562630.9198785,
+        "before_unix": 1789562630.8202782,
+        "call_id": "1059522:1789562630795806007:fb1927b0d819495d8d8501cf3fda63e4",
+        "has_after": true,
+        "has_before": true,
+        "label": "_build_dataloader",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562631.0180814,
+        "before_unix": 1789562630.9615357,
+        "call_id": "1059522:1789562630936753586:dd09f758089b4e99bee58e5eb56330b7",
+        "has_after": true,
+        "has_before": true,
+        "label": "_build_dataloader",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562631.108119,
+        "before_unix": 1789562631.0629067,
+        "call_id": "1059522:1789562631035685977:cc2b10d4c5324c5fabfd2a2608141892",
+        "has_after": true,
+        "has_before": true,
+        "label": "PersistentCILTrainer.reinit_for_task",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789563191.726094,
+        "before_unix": 1789562631.241786,
+        "call_id": "1059522:1789562631213610616:d055496ee8744c258c4a86af4d511fbf",
+        "has_after": true,
+        "has_before": true,
+        "label": "PersistentCILTrainer.fit",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789563191.6737876,
+        "before_unix": 1789562928.307839,
+        "call_id": "1059522:1789562928275606162:eb0db9b010c847ffbb204761efbe2530",
+        "has_after": true,
+        "has_before": true,
+        "label": "PersistentCILTrainer._save_checkpoint",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789563191.9336312,
+        "before_unix": 1789563191.7898333,
+        "call_id": "1059522:1789563191756545170:5d45b26b3b3042928025fa5f339da51c",
+        "has_after": true,
+        "has_before": true,
+        "label": "_build_dataloader",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789563200.9202654,
+        "before_unix": 1789563200.8358557,
+        "call_id": "1059522:1789563200799350641:d9e77092474440418e85d4c90c9428e6",
+        "has_after": true,
+        "has_before": true,
+        "label": "_build_dataloader",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789563201.0536625,
+        "before_unix": 1789563200.9811609,
+        "call_id": "1059522:1789563200942220735:192084148778422c9f9c48ddb77919cb",
+        "has_after": true,
+        "has_before": true,
+        "label": "_build_dataloader",
+        "local_rank": null,
+        "rank": null
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789563201.1704686,
+        "before_unix": 1789563201.1110282,
+        "call_id": "1059522:1789563201072871776:c61d2e70031b48cf8d259c490e704505",
+        "has_after": true,
+        "has_before": true,
+        "label": "PersistentCILTrainer.reinit_for_task",
+        "local_rank": null,
+        "rank": null
+      }
+    ],
+    "event_file_count": 81,
+    "event_line_count": 426,
+    "kind_counts": {
+      "child_bootstrap_install": 89,
+      "child_observer_install": 15,
+      "observer_hook_ready": 89,
+      "rank_identity": 2,
+      "ray_init_runtime_env": 1,
+      "ray_init_wrapper_install": 88,
+      "ray_kill_wrapper_install": 88,
+      "target_wrapper_call_after": 27,
+      "target_wrapper_call_before": 27
+    },
+    "last_target_event_unix": 1789563201.1704686,
+    "parse_error_count": 0,
+    "parse_errors": [],
+    "target_label_counts": {
+      "FSDPCheckpointManager.save_checkpoint": 2,
+      "FSDPWorker.__init__": 2,
+      "FSDPWorker.save_checkpoint": 2,
+      "FSDPWorker.update_actor": 4,
+      "PersistentCILTrainer.__init__": 1,
+      "PersistentCILTrainer._load_checkpoint": 1,
+      "PersistentCILTrainer._save_checkpoint": 1,
+      "PersistentCILTrainer.fit": 1,
+      "PersistentCILTrainer.reinit_for_task": 2,
+      "PersistentRefFSDPWorker.__init__": 2,
+      "PersistentRefFSDPWorker.init_anchor": 2,
+      "_build_dataloader": 7
+    },
+    "task1_updates_observed": 2,
+    "task2_transition": {
+      "dataloader_return_unix": [
+        1789563191.9336312,
+        1789563200.9202654,
+        1789563201.0536625
+      ],
+      "no_update_actor_after_transition": true,
+      "reinit_return_unix": [
+        1789563201.1704686
+      ]
+    },
+    "task2_update_actor_pair_count": 0,
+    "update_actor_pair_count": 4,
+    "update_actor_pairs": [
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562773.2478416,
+        "before_unix": 1789562702.0888612,
+        "call_id": "1060780:1789562658963202056:a83ac050c9bd4045a722e7b41f549bd8",
+        "has_after": true,
+        "has_before": true,
+        "label": "FSDPWorker.update_actor",
+        "local_rank": 0,
+        "rank": 0,
+        "rank_update_index": 1
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562919.4673393,
+        "before_unix": 1789562849.169566,
+        "call_id": "1060780:1789562786665236851:10f9d095ce3d4e5d9d1bb2d174749f3a",
+        "has_after": true,
+        "has_before": true,
+        "label": "FSDPWorker.update_actor",
+        "local_rank": 0,
+        "rank": 0,
+        "rank_update_index": 2
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562772.8940294,
+        "before_unix": 1789562701.3523324,
+        "call_id": "1061024:1789562658967505194:12a5de54d2834aa3b5f6e8805202ba62",
+        "has_after": true,
+        "has_before": true,
+        "label": "FSDPWorker.update_actor",
+        "local_rank": 1,
+        "rank": 1,
+        "rank_update_index": 1
+      },
+      {
+        "after_complete": true,
+        "after_status": "returned",
+        "after_unix": 1789562919.0210385,
+        "before_unix": 1789562848.818342,
+        "call_id": "1061024:1789562786666695852:6e33afeae74f4fd0ad4c5a82c9dffd5a",
+        "has_after": true,
+        "has_before": true,
+        "label": "FSDPWorker.update_actor",
+        "local_rank": 1,
+        "rank": 1,
+        "rank_update_index": 2
+      }
+    ],
+    "update_actor_ranks": [
+      0,
+      1
+    ]
+  },
+  "release": {
+    "other_user_processes_untouched": true,
+    "private_diagnostic_processes_absent": true,
+    "selected_gpu_tokens_idle": true
+  },
+  "schema_version": 1,
+  "scope": {
+    "cpu_or_v9_readiness_rerun": false,
+    "model_or_checkpoint_transfer_action_taken": false,
+    "production_code_changed": false,
+    "read_only_candidate_review": true,
+    "ssh_or_gpu_action_taken": false
+  },
+  "status": "BLOCKED",
+  "structured_experiment": {
+    "config": {
+      "max_steps": 2,
+      "n_gpus_per_node": 2,
+      "rollout_n": 4,
+      "save_model_only": false
+    },
+    "experiment_log": {
+      "json_parse_error_count": 0,
+      "line_count": 3,
+      "task2_training_record_present": false,
+      "training_record_count": 2,
+      "training_records": [
+        {
+          "advantages_mean": -0.09457512944936752,
+          "reward": {
+            "accuracy": 0.125,
+            "format": 0.25,
+            "overall": 0.375
+          },
+          "step": 1,
+          "time_per_step": 141.71639431201038
+        },
+        {
+          "advantages_mean": -0.10669668018817902,
+          "reward": {
+            "accuracy": 0.125,
+            "format": 0.25,
+            "overall": 0.375
+          },
+          "step": 2,
+          "time_per_step": 146.2010333250073
+        }
+      ],
+      "training_steps": [
+        1,
+        2
+      ],
+      "validation_record_count": 1,
+      "validation_steps": [
+        2
+      ]
+    },
+    "local_task_2_directory_present": false,
+    "metrics_summary": {
+      "base_classes": 2,
+      "class_order_seed": null,
+      "final_class_order_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "final_class_order_names": [
+        "n02085620",
+        "n03930630",
+        "n04266014",
+        "n07734744"
+      ],
+      "incremental_classes": 2,
+      "tasks": {
+        "task1": {
+          "average_acc": 50.0,
+          "forgetting_rate": null,
+          "last_acc": 50.0,
+          "last_acc_details": {
+            "task1": 50.0
+          }
+        }
+      },
+      "total_tasks": 2
+    },
+    "metrics_summary_tasks": [
+      "task1"
+    ],
+    "task_metrics_record_count": 1,
+    "task_metrics_records": [
+      {
+        "average_acc": 50.0,
+        "forgetting_rate": null,
+        "last_acc": 50.0,
+        "last_acc_details": {
+          "task1": 50.0
+        },
+        "task": 1
+      }
+    ]
+  },
+  "verdict": "BLOCKED_C_TIMEOUT_AFTER_TASK1"
+}

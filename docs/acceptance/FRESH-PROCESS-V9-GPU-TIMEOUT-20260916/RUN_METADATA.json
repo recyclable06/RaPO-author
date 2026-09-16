@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "acceptance_id": "FRESH-PROCESS-V9-GPU-TIMEOUT-20260916",
+  "created_date": "2026-09-16",
+  "role": "independent acceptance evidence review",
+  "candidate_root": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\FRESH-PROCESS-V9-GPU-20260916",
+  "candidate_verdict_reviewed": "BLOCKED_C_TIMEOUT_AFTER_TASK1",
+  "scope": [
+    "Review retained structured experiment logs, observer events, Ray logs and checkpoint inventory for leg C.",
+    "Establish the observed update count and Task 2 transition boundary.",
+    "Record the 900-second timeout and missing final wrapper artifacts.",
+    "Keep the partial local checkpoint transfer excluded from all judgment."
+  ],
+  "not_performed": [
+    "No SSH or GPU action.",
+    "No new model or checkpoint transfer.",
+    "No CPU run, v9 readiness rerun, or new scientific acceptance run.",
+    "No production-code change."
+  ],
+  "source_groups": {
+    "candidate_summary": [
+      "VERDICT.json",
+      "C_ASSESSMENT.json",
+      "REPORT.md",
+      "BLOCKED.md"
+    ],
+    "structured_production": "raw/remote-results/C/production/2026-09-16-203957/",
+    "observer_events": "raw/remote-results/C/observer/events/",
+    "ray_logs": "raw/ray-logs/",
+    "checkpoint_inventory": "raw/remote-checkpoint-inventory.txt",
+    "evidence_boundary": [
+      "raw/C-ssh.stdout.txt",
+      "raw/C-timeout-policy.txt",
+      "raw/C-stdout-stderr-availability.txt"
+    ]
+  },
+  "probe": "acceptance_probe.py",
+  "probe_output": "raw/acceptance_probe.stdout.json"
+}
