@@ -1,0 +1,99 @@
+{
+  "acceptance_protocol": "FPP-V9-REWARD-IDENTITY-INDEPENDENT-ACCEPTANCE",
+  "acceptance_root": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-V9-REWARD-IDENTITY-20260916",
+  "combined_v9_verdict": {
+    "only_original_blocker_cleared": true,
+    "original_v9_acceptance_blocker": "BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY",
+    "ready_for_bounded_gpu": true,
+    "supplement_status": "PASS_V9_REWARD_IDENTITY_SUPPLEMENT"
+  },
+  "frozen_bindings": {
+    "frozen_v9": {
+      "declared_package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+      "declared_raw_manifest_sha256": "9d41841454ac9cc9dddd226f8d52613514675a5ab04b5188d2cd0b1f5736485c",
+      "file_count": 205,
+      "hashes_file_self_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+      "package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+      "raw_file_count": 128,
+      "raw_manifest_sha256": "9d41841454ac9cc9dddd226f8d52613514675a5ab04b5188d2cd0b1f5736485c",
+      "raw_total_bytes": 4185383,
+      "total_bytes": 4658581
+    },
+    "original_v9_acceptance_unchanged": true,
+    "supplement": {
+      "declared_package_manifest_sha256": "2935c0c6ff3d34adc44d727c2356b71b22d73714becc28b360f443e445737c56",
+      "declared_raw_manifest_sha256": "c978ac2c9910fed038b2f936fb5a78cc0be3b69fa8f627d6d526f2d2820a97ca",
+      "file_count": 14,
+      "hashes_file_self_sha256": "da6ad19c30cf5cffc5ed47b5b1ef7983b9d9008c21e0ad57e7c350b739eb789a",
+      "package_manifest_sha256": "2935c0c6ff3d34adc44d727c2356b71b22d73714becc28b360f443e445737c56",
+      "raw_file_count": 8,
+      "raw_manifest_sha256": "c978ac2c9910fed038b2f936fb5a78cc0be3b69fa8f627d6d526f2d2820a97ca",
+      "raw_total_bytes": 21382,
+      "total_bytes": 47813
+    },
+    "supplement_does_not_copy_v9_package": true
+  },
+  "schema_version": 1,
+  "scope": {
+    "c_ab_run": false,
+    "full_42_cpu_suite_rerun": false,
+    "model_constructed": false,
+    "new_gpu_action": false,
+    "paper_faithful_claim": false,
+    "ssh_action": false,
+    "training_started": false,
+    "v8_evidence_reused": true,
+    "v9_original_acceptance_reused": true
+  },
+  "supplement": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-INIT-COMPAT-V9-20260916\\v9-reward-identity-supplement-20260916",
+  "supplement_probe_source": {
+    "ast_parse": true,
+    "cloudpickle_roundtrip": true,
+    "hash_negative_fixtures": true,
+    "independent_hash_from_source_bytes": true,
+    "loaded_callable_source_lookup": true,
+    "real_ray_worker_hash_lookup": true,
+    "uses_frozen_run_v9_renderer_and_argv": true,
+    "zero_gpu_and_no_model_static": true
+  },
+  "supplement_raw": {
+    "cloudpickle_roundtrip": true,
+    "exit_code": 0,
+    "gpu_used": false,
+    "invalid_main_loader_rejected": true,
+    "mismatched_hash_rejected": true,
+    "missing_hash_rejected": true,
+    "model_constructed": false,
+    "post_init_call_count": 1,
+    "ray_released": true,
+    "same_callable": true,
+    "same_source_sha256": true,
+    "sample_overall": 2.0,
+    "stages": {
+      "local_reward_loader": {
+        "callable_name": "compute_score",
+        "real_path": "/mnt/conda/zhenglifeng/t/rapo-v5-zg-0913-211/source/examples/reward_function/cls.py",
+        "sample_overall": 2.0,
+        "source_sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1",
+        "stage": "local_reward_loader"
+      },
+      "ray_worker_roundtrip.worker_report": {
+        "callable_name": "compute_score",
+        "real_path": "/mnt/conda/zhenglifeng/t/rapo-v5-zg-0913-211/source/examples/reward_function/cls.py",
+        "sample_overall": 2.0,
+        "source_sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1",
+        "stage": "ray_worker_roundtrip.worker_report"
+      },
+      "serialized_reward_config": {
+        "callable_name": "compute_score",
+        "real_path": "/mnt/conda/zhenglifeng/t/rapo-v5-zg-0913-211/source/examples/reward_function/cls.py",
+        "sample_overall": 2.0,
+        "source_sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1",
+        "stage": "serialized_reward_config"
+      }
+    },
+    "status": "PASS_V9_REWARD_IDENTITY_SUPPLEMENT",
+    "training_started": false
+  },
+  "verdict": "READY_FOR_BOUNDED_GPU"
+}

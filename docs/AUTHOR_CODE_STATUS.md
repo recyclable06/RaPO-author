@@ -15,7 +15,7 @@
 
 当前恢复诊断采用同机两张RTX3090，比较连续运行C与退出后恢复A/B，每任务两次真实更新。要求边界完整状态精确恢复，后续奖励、优势、retention指标按预先冻结容差比较；不要求后续随机轨迹逐张量相等。
 
-2026-09-16在211两张3090上，v8 GPU物理映射/进程身份门已通过。连续对照C进入模型初始化，但vLLM 0.8.1无法将UUID形式CVD转为数字，奖励配置也被解析为不存在的main函数；C退出码1、0次更新，A/B未开始。v9修复已冻结：保留真实UUID核验，采用兼容numeric CVD，以生产支持的cls.py:compute_score声明奖励入口。独立增量验收确认映射、vLLM转换及实际奖励函数调用通过，但仍缺序列化、本地加载器和真实Ray worker各阶段独立计算的奖励源码hash，结论为BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY。已派零GPU证据补充，只复核该缺口；尚不能证明完整模型初始化或C/A/B通过。生产源码和科学指标不改。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。
+2026-09-16在211两张3090上，v8 GPU物理映射/进程身份门已通过。连续对照C进入模型初始化，但vLLM 0.8.1无法将UUID形式CVD转为数字，奖励配置也被解析为不存在的main函数；C退出码1、0次更新，A/B未开始。v9修复保留真实UUID核验，采用兼容numeric CVD，以生产支持的cls.py:compute_score声明奖励入口。v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/REPORT.md)：映射、vLLM转换、实际callable和序列化/local/真实Ray worker独立源码hash均通过。已续派专用执行任务检查现场资源并以run_v9执行有限双卡C/A/B；当前尚无该次实际更新或恢复结果。生产源码和科学指标不改。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。
 
 ## 后续门槛
 

@@ -1,0 +1,39 @@
+{
+  "acceptance_id": "FRESH-PROCESS-V9-REWARD-IDENTITY-20260916",
+  "file_count": 5,
+  "files": [
+    {
+      "bytes": 864,
+      "path": "PROGRESS.md",
+      "sha256": "a3b8de6b09df31a869fe4666eba1ff4138dd00bb4bed2de941976a0366d97669"
+    },
+    {
+      "bytes": 5684,
+      "path": "REPORT.md",
+      "sha256": "186cc7565ee7d9c042e6c19b8f914442c6e229a52cf915ce637f0e4f203c2700"
+    },
+    {
+      "bytes": 2445,
+      "path": "RUN_METADATA.json",
+      "sha256": "636cd9786d882639ea8cf012f99e0b7d5b0826219653b3ffaece753229abb606"
+    },
+    {
+      "bytes": 18920,
+      "path": "acceptance_probe.py",
+      "sha256": "869ddccf73cf90351d59c9c3129e56ab43e9667f9530967dc6af822c03dfcc2d"
+    },
+    {
+      "bytes": 4489,
+      "path": "raw/acceptance_probe.stdout.json",
+      "sha256": "014bb2b6683d291fc4875e435c57fb3a3c6b3ff1beac2667a9ec11738457ca9a"
+    }
+  ],
+  "package_manifest_sha256": "2f973333b0487cdc9cfee5c134bd6b8372d6924938022f8fb51299c9b3716133",
+  "package_self_excluded": true,
+  "raw_file_count": 1,
+  "raw_manifest_sha256": "96ec4c8c4300bb72b2d6a5e2512534a95083cfb63fac40f35a8aa081254b5fe9",
+  "raw_total_bytes": 4489,
+  "schema_version": 1,
+  "status": "independent_acceptance_self_excluded",
+  "total_bytes": 32402
+}

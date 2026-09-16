@@ -18,9 +18,9 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（v9增量复核已完成，有一项证据缺口） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/`：BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY，5文件57690bytes协调者核对一致，清单self `74fdd89b1f297d1b7ae75d74783bde2a6a69c4906fdc3d19ca530d63e712cae4`。其余映射、vLLM、callable及launcher通过；仅复核后续reward hash补充 |
-| 专用诊断准备（v9冻结，reward身份补充进行中） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 14c8准备目录v9，205文件4658581bytes，HASHES_v9 self `45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39`。新建v9-reward-identity-supplement-20260916，仅补序列化/local/真实零GPU Ray worker独立源码hash；保留原包与run_v9，无新GPU/模型/训练 |
-| 专用诊断执行（v8模型初始化失败，已结束） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | `C:/Users/Administrator/.codex/worktrees/71a6/RaPO-author/docs/diagnostics/FRESH-PROCESS-V8-GPU-20260916/`；211选GPU4/5，v8物理映射门PASS。C初始化因vLLM UUID转int失败，另有reward main缺失，exit1、0/4更新；A/B未开始，本次Ray已释放。239文件2512119 bytes协调者一致，清单self `0f080e2e55116a770565b81533041aa28b70d4d0c60542991d74918c945bbcfb` |
+| 独立验收（v9组合就绪通过） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `docs/acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/`：READY_FOR_BOUNDED_GPU；5文件32402bytes协调者一致，清单self `da1f7ba51c903ca8e93cb870e10b2b07bc01e0bb701bc54eea47aa00b0939b21`。原唯一reward hash缺口闭合，历史报告保持原件 |
+| 专用诊断准备（v9与reward身份补充已冻结） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 原v9 self `45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39`不变。14c8 `docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/v9-reward-identity-supplement-20260916/` 14文件47813bytes协调者核对一致，清单self `da6ad19c30cf5cffc5ed47b5b1ef7983b9d9008c21e0ad57e7c350b739eb789a`；真实零GPU Ray/source hash独立通过，已交71a6执行 |
+| 专用诊断执行（v9有限双卡对照已续派） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6新输出 `docs/diagnostics/FRESH-PROCESS-V9-GPU-20260916/`；先复查211/207任意同机两张空闲3090，再以冻结run_v9和新短远端根执行C/A/B。沿用R3.1、完整边界和原指标容差。当前未回报实际更新；v8初始化失败原件完整保留 |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
 
@@ -57,7 +57,7 @@ R3.1独立验收接收：验收HASHES.json自hash `7c595a7d3d5744307fab722750f75
 
 - 一步有效更新：`docs/acceptance/GPU-ONE-STEP-20260909/REPORT.md`，有限通过且有 checkpoint 范围偏差记录。
 - 同进程 Task 1→Task 2：`docs/acceptance/CONTINUOUS-TASK12-20260909/REPORT.md`，有限通过；retention 是聚合证据、actor/anchor 是采样证据，执行日志归档范围有限。
-- 下一步：v9奖励源码身份零GPU证据补充 → 仅独立复核该缺口 → 现场复查并重新执行有限C/A/B → 独立验收实际运行。已通过的映射、vLLM与callable证据复用；不扩大科学协议或重做无关检查。
+- 下一步：现场复查并执行已独立就绪的v9有限C/A/B → 独立验收实际运行。已通过的映射、vLLM、callable与奖励源码身份证据复用；不扩大科学协议或重做无关检查。
 - 旧诊断 model-only outputs 约 19.6 GB，新连续诊断两份完整 checkpoint 约 36.3 GB，均保留；清理不是当前技术前置。
 
 ## 自动跟进

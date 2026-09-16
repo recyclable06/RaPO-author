@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "acceptance_id": "FRESH-PROCESS-V9-REWARD-IDENTITY-20260916",
+  "date": "2026-09-16",
+  "role": "independent acceptance",
+  "verdict": "READY_FOR_BOUNDED_GPU",
+  "supplement": {
+    "root": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/v9-reward-identity-supplement-20260916",
+    "hashes_file": "HASHES_SUPPLEMENT.json",
+    "hashes_file_self_sha256": "da6ad19c30cf5cffc5ed47b5b1ef7983b9d9008c21e0ad57e7c350b739eb789a",
+    "package_file_count_excluding_self": 14,
+    "package_total_bytes_excluding_self": 47813,
+    "package_manifest_sha256": "2935c0c6ff3d34adc44d727c2356b71b22d73714becc28b360f443e445737c56",
+    "raw_file_count": 8,
+    "raw_total_bytes": 21382,
+    "raw_manifest_sha256": "c978ac2c9910fed038b2f936fb5a78cc0be3b69fa8f627d6d526f2d2820a97ca"
+  },
+  "frozen_v9": {
+    "hashes_file_self_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "package_file_count": 205,
+    "package_total_bytes": 4658581,
+    "package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a"
+  },
+  "reward_identity": {
+    "spec": "examples/reward_function/cls.py:compute_score",
+    "source_sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1",
+    "stages": [
+      "serialized_reward_config",
+      "local_reward_loader",
+      "ray_worker_roundtrip.worker_report"
+    ],
+    "same_callable": true,
+    "same_source_sha256": true,
+    "sample_overall": 2.0
+  },
+  "probe": {
+    "path": "acceptance_probe.py",
+    "command": "python -B docs/acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/acceptance_probe.py",
+    "working_directory": "C:/Users/Administrator/Desktop/RaPO-author",
+    "return_code": 0,
+    "output": "raw/acceptance_probe.stdout.json"
+  },
+  "scope": {
+    "candidate_modified": false,
+    "original_acceptance_modified": false,
+    "new_gpu_action": false,
+    "ssh_action": false,
+    "model_constructed": false,
+    "training_started": false,
+    "c_ab_run": false,
+    "full_42_cpu_suite_rerun": false,
+    "paper_faithful_claim": false
+  },
+  "combined_v9": {
+    "original_blocker": "BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY",
+    "supplement_status": "PASS_V9_REWARD_IDENTITY_SUPPLEMENT",
+    "only_original_blocker_cleared": true,
+    "ready_for_bounded_gpu": true
+  },
+  "coordinator_thread_id": "01a08faa-ba41-73b2-b3d3-e468521682e0"
+}

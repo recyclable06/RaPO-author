@@ -175,3 +175,11 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 独立[验收报告](acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/REPORT.md)结论为BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY。协调者复算5文件57690bytes全部一致，HASHES.json自身SHA256 `74fdd89b1f297d1b7ae75d74783bde2a6a69c4906fdc3d19ca530d63e712cae4`。验收独立复算v9及继承v8身份，通过numeric真实映射、安装版vLLM转换、奖励callable实际调用、源码与launcher接线；不推翻这些通过范围。
 
 唯一缺口是serialized_reward_config、local_reward_loader和真实Ray worker report缺少各自独立计算的source_sha256，现有上游hash不能证明worker实际加载文件相同。已续派14c8新建v9-reward-identity-supplement-20260916，仅扩展诊断probe并重跑受影响的零GPU奖励加载证据：由实际反序列化配置或已加载callable定位文件，在对应进程内计算hash并与冻结reward身份比较，保留真实调用及非法main拒绝。原v9包、run_v9及所有失败记录保持冻结；无需新launcher版本、重复GPU映射或42CPU。补充交付后只独立复核该缺口，再续派71a6执行已授权双卡C/A/B。
+
+补充已交付至14c8的 `docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/v9-reward-identity-supplement-20260916/`。协调者核对14文件47813bytes全部一致，HASHES_SUPPLEMENT.json自身SHA256 `da6ad19c30cf5cffc5ed47b5b1ef7983b9d9008c21e0ad57e7c350b739eb789a`；package manifest `2935c0c6ff3d34adc44d727c2356b71b22d73714becc28b360f443e445737c56`，raw8文件21382bytes。真实211零GPUprobe报告post_init一次、三个阶段从实际callable独立定位文件并重算相同冻结reward hash、样例调用及负例通过、私有Ray已释放。已派独立增量复核到新目录 `docs/acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/`；当前仅接收证据，不提前宣告就绪或恢复通过。
+
+### 2026-09-16：v9组合独立就绪，续派双卡C/A/B
+
+独立[补充验收](acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/REPORT.md)给出READY_FOR_BOUNDED_GPU，原唯一reward source hash缺口闭合。协调者核对5文件32402bytes一致，HASHES.json自身SHA256 `da1f7ba51c903ca8e93cb870e10b2b07bc01e0bb701bc54eea47aa00b0939b21`；package manifest `2f973333b0487cdc9cfee5c134bd6b8372d6924938022f8fb51299c9b3716133`。独立确认三个阶段实际callable文件读取/哈希、cloudpickle往返、真实零GPU worker、实际调用和负例；未变范围复用，旧验收不改写。
+
+已续派71a6，在新本地FRESH-PROCESS-V9-GPU-20260916与新短个人远端根中，现场检查211优先/207备用，任选同机两张合格空闲3090，以run_v9.py和v9 template/expected运行C/A/B。实际numeric CVD经PCI/CUDA/UUID映射确认，R3.1源码与世界大小2、n4、每任务两次更新、完整边界及冻结指标容差不变。保存每腿完整日志、真实更新、退出恢复、路径身份及资源释放；失败不现场改包。目前是执行派发，尚无该次模型初始化、训练更新或fresh-process restore结论。
