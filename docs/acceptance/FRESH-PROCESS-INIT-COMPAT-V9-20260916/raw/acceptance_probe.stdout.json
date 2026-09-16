@@ -1,0 +1,217 @@
+{
+  "acceptance_protocol": "FPP-V8-INIT-COMPAT-INDEPENDENT-ACCEPTANCE",
+  "acceptance_root": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-INIT-COMPAT-V9-20260916",
+  "blockers": [
+    {
+      "criterion": "post_init/serialization/local loader/real Ray worker must retain and expose the same callable and source_sha256",
+      "evidence": {
+        "candidate_probe": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9\\production_reward_probe_v9.py",
+        "effective_and_validator_hash": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1",
+        "missing_stages": [
+          "serialized_reward_config",
+          "local_reward_loader",
+          "ray_worker"
+        ],
+        "raw_probe_result": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9\\raw\\remote-reward-init-20260916-211\\reward-init-20260916-r4\\probe-result.json"
+      },
+      "id": "BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY",
+      "minimum_clearance": "add an independently recomputed source_sha256 to serialized/local/real-Ray worker observations and assert equality to the frozen reward source hash; then rerun only the affected reward-init evidence and this incremental acceptance",
+      "severity": "incremental acceptance blocker"
+    }
+  ],
+  "candidate": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9",
+  "gpu_raw": {
+    "host_pci_numeric_resolution": true,
+    "model_constructed": false,
+    "numeric_cvd": "4,5",
+    "rejected_busy_gpu_attempt": {
+      "exit_code": 1,
+      "stdout": "{\"error\": \"GPUPreflightError: selected GPU is not idle under the memory gate: {'index': 2, 'uuid': 'GPU-f32f2674-753c-cd20-7606-34a0e5804687', 'uuid_normalized': 'gpu-f32f2674-753c-cd20-7606-34a0e5804687', 'name': 'NVIDIA GeForce RTX 3090', 'memory_used_mib': 22502, 'memory_total_mib': 24576, 'pci_bus_id': '00000000:08:00.0', 'pci_bus_id_normalized': '08:00.0'}\", \"mapping_protocol\": \"FPP-V8-INIT-COMPAT\", \"status\": \"FAIL\"}\n"
+    },
+    "release_check": "PASS",
+    "selected_pci": [
+      "84:00.0",
+      "85:00.0"
+    ],
+    "selected_uuids": [
+      "gpu-4bd5a062-f6e3-e8bf-83d1-a44675314850",
+      "gpu-ad2d5d4b-c278-e728-c742-6913c7a3437d"
+    ],
+    "status": "PASS_V9_NUMERIC_PCI_GPU_MAPPING_RAW_RECHECK",
+    "training_started": false,
+    "two_worker_same_node": true,
+    "worker_process_identity": "linux_proc_stat_field22",
+    "worker_runtime_driver_identity": true
+  },
+  "historical_rejections": {
+    "ray_environment_failure_is_not_accepted": true,
+    "ray_environment_failure_preserved": true,
+    "wrong_source_exit_code": 2,
+    "wrong_source_failure_preserved": true,
+    "wrong_source_output_bytes": 632
+  },
+  "package_and_inheritance": {
+    "frozen_v8_reference_unchanged": true,
+    "nonraw_delta_paths": [
+      "COMMANDS_INIT_COMPAT_v9.md",
+      "EXPECTED_IDENTITY_v9.json",
+      "FROZEN_V8_REFERENCE_v9.json",
+      "HASHES_v8.json",
+      "INIT_COMPAT_PROTOCOL_v9.md",
+      "PPO_CONFIG_TEMPLATE_v9.json",
+      "PROGRESS_V9.md",
+      "README_V9_DELTA.md",
+      "argv_validate_v9.py",
+      "freeze_hashes_v9.py",
+      "gpu_preflight_v9.py",
+      "production_reward_probe_v9.py",
+      "run_v9.py",
+      "test_init_compat_v9.py",
+      "vllm_numeric_init_probe_v9.py"
+    ],
+    "v8": {
+      "declared_manifest_sha256": "7dbfe1ea8666fed036ae9d59d0b1697ec0d0f2b265d4869e643859bde494b34b",
+      "declared_raw_file_count": 88,
+      "declared_raw_manifest_sha256": "8b1dd4f3bc0fd81dee612c78aaff6b4dee50f3830c4149657dc574dde9025358",
+      "declared_raw_total_bytes": 4125939,
+      "file_count": 150,
+      "manifest_sha256": "7dbfe1ea8666fed036ae9d59d0b1697ec0d0f2b265d4869e643859bde494b34b",
+      "raw_file_count": 88,
+      "raw_manifest_sha256": "8b1dd4f3bc0fd81dee612c78aaff6b4dee50f3830c4149657dc574dde9025358",
+      "raw_total_bytes": 4125939,
+      "self_sha256": "abd4ccad8d3f2159cd636505b3c78bcafb14e4890e31d1cc81656d97ddc41420",
+      "total_bytes": 4471333
+    },
+    "v8_common_byte_exact": true,
+    "v8_common_file_count": 150,
+    "v9": {
+      "declared_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+      "declared_raw_file_count": 128,
+      "declared_raw_manifest_sha256": "9d41841454ac9cc9dddd226f8d52613514675a5ab04b5188d2cd0b1f5736485c",
+      "declared_raw_total_bytes": 4185383,
+      "file_count": 205,
+      "manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+      "raw_file_count": 128,
+      "raw_manifest_sha256": "9d41841454ac9cc9dddd226f8d52613514675a5ab04b5188d2cd0b1f5736485c",
+      "raw_total_bytes": 4185383,
+      "self_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+      "total_bytes": 4658581
+    }
+  },
+  "reward_raw": {
+    "invalid_main_rejected_by_loader": true,
+    "invalid_main_rejected_by_validator": true,
+    "local_callable": "compute_score",
+    "model_constructed": false,
+    "post_init_call_count": 1,
+    "ray_worker_callable": "compute_score",
+    "serialized_callable": "compute_score",
+    "source_hash_missing_from_stages": [
+      "serialized_reward_config",
+      "local_reward_loader",
+      "ray_worker"
+    ],
+    "source_hash_stages": {
+      "effective_reward_config": true,
+      "local_reward_loader": false,
+      "production_validator": true,
+      "ray_worker": false,
+      "serialized_reward_config": false
+    },
+    "status": "PASS_PRODUCTION_REWARD_INIT_COMPAT_RAW_CALLABLE_ONLY",
+    "strict_same_source_hash_across_serialized_local_ray": false,
+    "training_started": false,
+    "validator_source_sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1"
+  },
+  "schema_version": 1,
+  "scope": {
+    "c_ab_run": false,
+    "full_42_cpu_suite_rerun": false,
+    "model_constructed": false,
+    "new_gpu_action_in_this_acceptance": false,
+    "paper_faithful_claim": false,
+    "training_started": false,
+    "v8_evidence_reused_byte_exact": true
+  },
+  "source_and_scientific_identity": {
+    "entry": {
+      "bytes": 102269,
+      "path": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+    },
+    "input_manifest_sha256": "dd4afd0d231a1968e0edc9a2f9ab31bbedcfca07a25677e9b3ca870ba52f0e21",
+    "model_manifest_sha256": "19261b6d9291e5d0f2d5460000f8c8eb656b0289b8c53d32b1592e68038e5284",
+    "reward_source_sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1",
+    "runtime_source_manifest": {
+      "file_count": 91,
+      "manifest_sha256": "947de3842eadb716d241eb4bb4f2fff62f2cfe39305cf03ffd0fbe35abd052e1"
+    },
+    "scientific_recipe_byte_exact_with_v6": true,
+    "template_delta_only_reward_callable": true,
+    "test_reference": {
+      "bytes": 24215,
+      "path": "tests/author_fixes/test_cil_resume.py",
+      "sha256": "2bb64dccbce91409840d04344a30a58b76265ae77145ab33b4819a3613b4aadf"
+    }
+  },
+  "static_and_cpu": {
+    "ast_parse_all_top_level_python": true,
+    "cpu": {
+      "init_compat_fixtures": {
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "test_init_compat_v9.py"
+        ],
+        "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "PASS_V9_INIT_COMPAT_FIXTURES\n"
+      },
+      "launcher_contract": {
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "launcher_contract_probe_v6.py"
+        ],
+        "cwd": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "PASS_V6_LAUNCHER_C_AB_CONTRACT\n"
+      }
+    },
+    "import_probe": {
+      "command": [
+        "C:\\Program Files\\Python313\\python.exe",
+        "-B",
+        "-c",
+        "import argv_validate_v9, gpu_preflight_v9, run_v9, production_reward_probe_v9, vllm_numeric_init_probe_v9, test_init_compat_v9; print('PASS_V9_AST_IMPORT')"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS_V9_AST_IMPORT\n"
+    },
+    "launcher_gate_order": "CVD -> template render -> effective argv validator -> GPU preflight -> production Popen",
+    "production_argv_builder_byte_equivalent_to_v8_except_launcher_filename": true,
+    "pycache_absent": true,
+    "top_level_python_file_count": 35,
+    "v9_validator_and_preflight_wiring": true
+  },
+  "verdict": "BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY",
+  "vllm_raw": {
+    "engine_initialized": false,
+    "exit_code": 0,
+    "model_constructed": false,
+    "numeric_cvd": [
+      "2",
+      "3"
+    ],
+    "numeric_result": [
+      2,
+      3
+    ],
+    "status": "PASS_V9_VLLM_NUMERIC_NO_MODEL_RAW_RECHECK",
+    "uuid_cvd_rejected": "ValueError: invalid literal for int() with base 10: 'GPU-f32f2674-753c-cd20-7606-34a0e5804687'",
+    "version": "0.8.1"
+  }
+}

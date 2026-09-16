@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "acceptance_id": "FRESH-PROCESS-INIT-COMPAT-V9-20260916",
+  "date": "2026-09-16",
+  "role": "independent acceptance",
+  "verdict": "BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY",
+  "candidate": {
+    "root": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v9",
+    "hashes_file": "HASHES_v9.json",
+    "hashes_file_self_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "package_file_count_excluding_self": 205,
+    "package_total_bytes_excluding_self": 4658581,
+    "package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+    "raw_file_count": 128,
+    "raw_total_bytes": 4185383,
+    "raw_manifest_sha256": "9d41841454ac9cc9dddd226f8d52613514675a5ab04b5188d2cd0b1f5736485c"
+  },
+  "acceptance_probe": {
+    "path": "acceptance_probe.py",
+    "command": "python -B docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/acceptance_probe.py",
+    "working_directory": "C:/Users/Administrator/Desktop/RaPO-author",
+    "return_code": 0,
+    "output": "raw/acceptance_probe.stdout.json"
+  },
+  "scope": {
+    "candidate_modified": false,
+    "production_modified": false,
+    "new_gpu_action": false,
+    "model_constructed": false,
+    "training_started": false,
+    "c_ab_run": false,
+    "full_42_cpu_suite_rerun": false,
+    "paper_faithful_claim": false
+  },
+  "blocker": {
+    "id": "BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY",
+    "frozen_reward_source_sha256": "028b9c9721c0c1d80b0ae3652aec31c8fb458827ca4d079b1253b537099978a1",
+    "missing_observation_stages": [
+      "serialized_reward_config",
+      "local_reward_loader",
+      "ray_worker"
+    ],
+    "minimum_clearance": "independently recompute and expose source_sha256 at each missing stage, assert equality, rerun affected reward-init evidence and this acceptance"
+  },
+  "coordinator_thread_id": "01a08faa-ba41-73b2-b3d3-e468521682e0"
+}

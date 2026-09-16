@@ -162,3 +162,16 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 已读原始调用栈和配置，限定两个诊断兼容问题：FPP-V8-INIT-001，vLLM0.8.1的device_id_to_physical_device_id把CVD token转int，UUID触发ValueError，随后出现模型架构inspection失败；FPP-V8-INIT-002，诊断模板reward_function只有cls.py路径，手填derived reward_function_name会被生产RewardConfig.post_init覆盖为main，而真实模块定义compute_score。源函数和奖励算法不是本次修改对象。
 
 已派14c8准备者新v9最小修复：物理选择及验收仍以UUID为准，但允许经过真实CUDA/PCI/UUID验证的一致numeric CVD贯穿head/driver/worker/vLLM，不能只把SMI编号当作CUDA编号；保留同机两卡与真实进程身份门。奖励模板改为生产支持的cls.py:compute_score声明，并通过实际parser/RewardConfig/加载器确认callable及内容身份，不手填派生字段冒充有效配置。仅必要launcher/preflight/config/identity与正负例、文档/清单，不改R3.1、依赖、C/A/B步数或指标。既有环境真实无模型兼容检查后冻结，独立增量复核再交71a6执行；不重跑未变42CPU或全部传播检查。新远端根r8g211d16和全部旧证据保留。
+### 2026-09-16：v9冻结接收并交独立初始化兼容复核
+
+协调者核对14c8准备目录v9的205文件4658581 bytes全部一致，HASHES_v9.json自身SHA256 `45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39`；声明package manifest `3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a`，raw128文件4185383 bytes、manifest `9d41841454ac9cc9dddd226f8d52613514675a5ab04b5188d2cd0b1f5736485c`交独立复算。v8全部150路径声明保持原字节，新v9模块单独提供初始化兼容修复。
+
+准备者报告安装版vLLM0.8.1数字编号转换、实际production parser/RewardConfig/AutoRewardManager在本地及零GPU Ray加载compute_score、非法main拒绝均通过。最终numeric GPU probe在211现场选4/5，经PCI_BUS_ID与实际CUDA/runtime/driver/UUID核对两worker及释放，报告exit0。早期错误源（45529字节）、Ray环境传播错误与历史2/3被占用的失败原件保留；不把历史示例卡当固定授权，已明确可现场任选同机两张合格3090。
+
+已派独立验收到主目录 `docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/`，重点核实真实原始结果、全量8ac5源身份、reward callable身份及run_v9实际全路径接线，复用未变v8范围。新source路径对应的运行身份需如实绑定，不能只凭entry hash接受整个旧远端树。v9就绪验收后再由71a6执行C/A/B；本轮准备没有模型构造或训练。
+
+### 2026-09-16：v9独立结论与奖励源码身份最小补充
+
+独立[验收报告](acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/REPORT.md)结论为BLOCKED_RAY_REWARD_SOURCE_HASH_IDENTITY。协调者复算5文件57690bytes全部一致，HASHES.json自身SHA256 `74fdd89b1f297d1b7ae75d74783bde2a6a69c4906fdc3d19ca530d63e712cae4`。验收独立复算v9及继承v8身份，通过numeric真实映射、安装版vLLM转换、奖励callable实际调用、源码与launcher接线；不推翻这些通过范围。
+
+唯一缺口是serialized_reward_config、local_reward_loader和真实Ray worker report缺少各自独立计算的source_sha256，现有上游hash不能证明worker实际加载文件相同。已续派14c8新建v9-reward-identity-supplement-20260916，仅扩展诊断probe并重跑受影响的零GPU奖励加载证据：由实际反序列化配置或已加载callable定位文件，在对应进程内计算hash并与冻结reward身份比较，保留真实调用及非法main拒绝。原v9包、run_v9及所有失败记录保持冻结；无需新launcher版本、重复GPU映射或42CPU。补充交付后只独立复核该缺口，再续派71a6执行已授权双卡C/A/B。

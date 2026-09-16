@@ -1,0 +1,39 @@
+{
+  "acceptance_id": "FRESH-PROCESS-INIT-COMPAT-V9-20260916",
+  "file_count": 5,
+  "files": [
+    {
+      "bytes": 877,
+      "path": "PROGRESS.md",
+      "sha256": "4e00110f443d8b24d4ef58aee08b37a2f5c3836913b3da305c748f9c59e49912"
+    },
+    {
+      "bytes": 6906,
+      "path": "REPORT.md",
+      "sha256": "a18241c914026216d49039f7d2b9b6101a10a34a97708070282455ec2d3bde39"
+    },
+    {
+      "bytes": 1951,
+      "path": "RUN_METADATA.json",
+      "sha256": "dbd4ee8f45bc5426f62e09ef3273e1ecd3f3104b374c995f3dc73608eb6f80a2"
+    },
+    {
+      "bytes": 38535,
+      "path": "acceptance_probe.py",
+      "sha256": "dbe6250087c4c1966ed31ecaa4bb15e317fc4ebdb84f6e1d920134df3d274b78"
+    },
+    {
+      "bytes": 9421,
+      "path": "raw/acceptance_probe.stdout.json",
+      "sha256": "ec8b81e806cec631286d1f47b614a3299497108b138a144dbc7932e5b949bca0"
+    }
+  ],
+  "package_manifest_sha256": "d77d2d99f22ab6674def614185901a19f4d844f050d54a6ff3f719faabdfe388",
+  "package_self_excluded": true,
+  "raw_file_count": 1,
+  "raw_manifest_sha256": "ec682ad591f59d4bb1b3d8149539b87306c0dba48a63362bb4eb54b66fdab071",
+  "raw_total_bytes": 9421,
+  "schema_version": 1,
+  "status": "independent_acceptance_self_excluded",
+  "total_bytes": 57690
+}
