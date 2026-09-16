@@ -10,12 +10,12 @@
 |---|---|---|
 | CTAN / AUTH-CTAN-001 | 从Task 1首个优势batch开启；EMA跨任务连续传递，避免边界覆盖；retention仍从Task 2开始 | 独立代码/CPU验收通过，真实GPU有效更新及同进程跨任务有有限证据 |
 | COCO / AUTH-COCO-001 | 开启seen标签提示时，训练allowed_classes使用全部seen类别 | 提示与奖励GT局部修复通过；five-shot共现配额、监督时机及完整AP评估仍待验证 |
-| 图像任务边界恢复 / CAND-RESUME-CIL-001 | R3.1支持完整任务结束后发布完整边界，并由新进程进入下一任务 | [42项独立CPU检查通过](acceptance/CIL-RESUME-CPU-R31-20260911/REPORT.md)；真实GPU新进程恢复对照尚未开始训练 |
+| 图像任务边界恢复 / CAND-RESUME-CIL-001 | R3.1支持完整任务结束后发布完整边界，并由新进程进入下一任务 | [42项独立CPU检查通过](acceptance/CIL-RESUME-CPU-R31-20260911/REPORT.md)；2026-09-16 GPU对照进入模型初始化后失败，尚无真实训练更新 |
 | GPU链路 | 既有环境下完成有限有效更新和同进程Task 1→2 | 见[一步验收](acceptance/GPU-ONE-STEP-20260909/REPORT.md)与[连续任务验收](acceptance/CONTINUOUS-TASK12-20260909/REPORT.md)；不扩大为全参数、完整轨迹或论文规模通过 |
 
 当前恢复诊断采用同机两张RTX3090，比较连续运行C与退出后恢复A/B，每任务两次真实更新。要求边界完整状态精确恢复，后续奖励、优势、retention指标按预先冻结容差比较；不要求后续随机轨迹逐张量相等。
 
-v6实际启动前暴露GPU映射检查错误；v7物理映射已通过独立复核，其进程启动身份问题由v8局部修复。2026-09-15的[v8独立增量验收](acceptance/FRESH-PROCESS-PROC-IDENTITY-V8-20260915/REPORT.md)为READY_FOR_BOUNDED_GPU。随后08:28–08:29（+08:00）现场复查：211没有合格空闲卡，207只有一张，因此本轮C/A/B均未开始；当前受双卡资源阻塞，就绪结论继续有效。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。诊断代码与科学训练代码分开维护。
+2026-09-16在211两张3090上，v8 GPU物理映射/进程身份门已通过。连续对照C进入模型初始化，但vLLM 0.8.1无法将UUID形式CVD转为数字，奖励配置也被解析为不存在的main函数；C退出码1、0次更新，A/B未开始。已派v9最小诊断启动配置修复：保留真实UUID核验，采用兼容的numeric CVD，并通过生产支持的cls.py:compute_score声明奖励入口。生产源码和科学指标不改。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。历史独立就绪结论不替代新发现问题的处理或实际恢复通过。
 
 ## 后续门槛
 

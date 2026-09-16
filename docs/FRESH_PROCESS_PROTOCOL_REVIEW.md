@@ -155,3 +155,10 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 71a6执行任务回报BLOCKED_GPU_PREFLIGHT_RESOURCES_BUSY。协调者核对 `FRESH-PROCESS-V8-GPU-20260915/DELIVERY_MANIFEST-r8.json` 自身SHA256 `b5ea0681a12759d504ee2f6b8e9337867892fd58369400beb1b94c131772e80e`，18文件15390 bytes全部一致，并读取两台主机的原始资源输出。211在08:28:40（+08:00）没有合格空闲3090，207在08:29:00只有index2一张（5 MiB）；无同机双卡组合。两台可用磁盘约1.70 TB。
 
 本轮仅检查现场资源、路径/所有权及本地冻结身份；未部署、未做远端模型/输入全量hash、未创建新远端根、未启动Ray/模型/训练。C/A/B更新数均为0，trajectory/judge未运行。v8独立就绪仍有效，资源变化后重新检查并用新根执行；不新增修复、不重跑未变验收，也不恢复用户禁用的定时轮询。
+### 2026-09-16：v8 GPU门通过、C初始化失败与v9最小兼容范围
+
+协调者核对71a6 `FRESH-PROCESS-V8-GPU-20260916/DELIVERY_MANIFEST-v8-gpu-20260916.json` 自身SHA256 `0f080e2e55116a770565b81533041aa28b70d4d0c60542991d74918c945bbcfb`，239文件2512119 bytes全部一致。REPORT末尾2511961 bytes为旧汇总笔误，以清单与复算值为准，报告原件保留。211选物理GPU4/5；v8 preflight PASS，source entry/test/runtime均匹配8ac5冻结值，C路径绑定identity为 `f8402b07c42aee8775e21b0918a2e1c58921140bebdc9213281aa540bd50b8b9`。C生产初始化exit1、0/4更新，A/B未启动；执行方保全全stdout/stderr及10:31:52释放检查，私有Ray结束，未停止其他用户进程。
+
+已读原始调用栈和配置，限定两个诊断兼容问题：FPP-V8-INIT-001，vLLM0.8.1的device_id_to_physical_device_id把CVD token转int，UUID触发ValueError，随后出现模型架构inspection失败；FPP-V8-INIT-002，诊断模板reward_function只有cls.py路径，手填derived reward_function_name会被生产RewardConfig.post_init覆盖为main，而真实模块定义compute_score。源函数和奖励算法不是本次修改对象。
+
+已派14c8准备者新v9最小修复：物理选择及验收仍以UUID为准，但允许经过真实CUDA/PCI/UUID验证的一致numeric CVD贯穿head/driver/worker/vLLM，不能只把SMI编号当作CUDA编号；保留同机两卡与真实进程身份门。奖励模板改为生产支持的cls.py:compute_score声明，并通过实际parser/RewardConfig/加载器确认callable及内容身份，不手填派生字段冒充有效配置。仅必要launcher/preflight/config/identity与正负例、文档/清单，不改R3.1、依赖、C/A/B步数或指标。既有环境真实无模型兼容检查后冻结，独立增量复核再交71a6执行；不重跑未变42CPU或全部传播检查。新远端根r8g211d16和全部旧证据保留。
