@@ -183,3 +183,11 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 独立[补充验收](acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/REPORT.md)给出READY_FOR_BOUNDED_GPU，原唯一reward source hash缺口闭合。协调者核对5文件32402bytes一致，HASHES.json自身SHA256 `da1f7ba51c903ca8e93cb870e10b2b07bc01e0bb701bc54eea47aa00b0939b21`；package manifest `2f973333b0487cdc9cfee5c134bd6b8372d6924938022f8fb51299c9b3716133`。独立确认三个阶段实际callable文件读取/哈希、cloudpickle往返、真实零GPU worker、实际调用和负例；未变范围复用，旧验收不改写。
 
 已续派71a6，在新本地FRESH-PROCESS-V9-GPU-20260916与新短个人远端根中，现场检查211优先/207备用，任选同机两张合格空闲3090，以run_v9.py和v9 template/expected运行C/A/B。实际numeric CVD经PCI/CUDA/UUID映射确认，R3.1源码与世界大小2、n4、每任务两次更新、完整边界及冻结指标容差不变。保存每腿完整日志、真实更新、退出恢复、路径身份及资源释放；失败不现场改包。目前是执行派发，尚无该次模型初始化、训练更新或fresh-process restore结论。
+
+### 2026-09-16：v9真实Task1训练完成，外层超时与同预算重跑
+
+71a6交付BLOCKED_C_TIMEOUT_AFTER_TASK1。协调者逐项核对439文件1831106053bytes一致，DELIVERY_MANIFEST-v9-gpu-20260916.json自身SHA256 `f8ea1a5562aa05f03b741808c64346ef08d7525bc7342738bf7c0bf692da8463`。211选GPU4/5，numeric/PCI/UUID门PASS，C运行identity `462588adcf411ed68d7ec6e171b4fe88d4b374576d5304558819f6581185b23e`。真实Task1完成2/2更新，step约141.716/146.201秒，checkpoint保存及fit返回后Task2 reinit于1789563201.17047返回；尚无Task2 actor update即被900秒外层时限中断。C为2/4，A/B未开始，judge未运行；未证明生产异常。
+
+外层timeout杀死wrapper导致run-result/process-end和完整production stdout/stderr未落盘；console文件是摘要而非完整原始输出。结构化日志、observer与Ray日志保留，独立复核任务将检查是否存在遗漏异常及checkpoint完整性证据边界。远端 `/mnt/conda/zhenglifeng/t/r9g211d16/` 约17GiB保留；本地1804271616bytes的部分模型传输明确无效，不作为恢复或判定输入，也不上传GitHub。现场释放检查记录21:06:39私有进程退出，GPU4–6空闲，其他用户0–3不动。
+
+同一有限诊断授权内已续派新唯一R2从头运行C，不能用旧Task1 checkpoint拼接连续对照。科学更新数/配置不变，墙钟上限C2700秒、A/B各1800秒，生产合计最多6300秒；额外有限日志收尾与释放。超时监督在冻结包外实施：核验本次child PID/start/命令/目录后终止child，留launcher120秒排空communicate管道并保存结果，再只清理自身私有Ray；若无法安全实施或必须改包则回报准备角色，不现场改冻结源码。优先远端完整内容清单和判定所需raw，避免再次下载整份权重。失败或无进展到上限后停止并回报，不自动继续加时。
