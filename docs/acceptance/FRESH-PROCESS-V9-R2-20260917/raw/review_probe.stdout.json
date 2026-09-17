@@ -1,0 +1,833 @@
+{
+  "A_invalid": {
+    "classification": "NON_TRAINING_GPU_PREFLIGHT_BLOCK",
+    "result": {
+      "error": "numeric driver CVD does not resolve to the ordered requested UUIDs: {'cuda_device_order': 'PCI_BUS_ID', 'kind': 'ordered_numeric', 'tokens': ['4', '5'], 'physical_uuids': ['gpu-4bd5a062-f6e3-e8bf-83d1-a44675314850', 'gpu-ad2d5d4b-c278-e728-c742-6913c7a3437d'], 'resolutions': [{'token': '4', 'cuda_device_order': 'PCI_BUS_ID', 'physical_uuid': 'gpu-4bd5a062-f6e3-e8bf-83d1-a44675314850', 'pci_bus_id': '84:00.0', 'nvidia_smi_index_observed': 4}, {'token': '5', 'cuda_device_order': 'PCI_BUS_ID', 'physical_uuid': 'gpu-ad2d5d4b-c278-e728-c742-6913c7a3437d', 'pci_bus_id': '85:00.0', 'nvidia_smi_index_observed': 5}], 'host_pci_order': [{'cuda_ordinal': 0, 'physical_uuid': 'gpu-1ca900cc-ca37-5d77-c037-f0535326ab72', 'pci_bus_id': '04:00.0', 'nvidia_smi_index_observed': 0}, {'cuda_ordinal': 1, 'physical_uuid': 'gpu-412027df-8ec0-d9e1-c201-cb7a690811c6', 'pci_bus_id': '05:00.0', 'nvidia_smi_index_observed': 1}, {'cuda_ordinal': 2, 'physical_uuid': 'gpu-f32f2674-753c-cd20-7606-34a0e5804687', 'pci_bus_id': '08:00.0', 'nvidia_smi_index_observed': 2}, {'cuda_ordinal': 3, 'physical_uuid': 'gpu-d4babf14-b743-2673-4344-311c2f561214', 'pci_bus_id': '09:00.0', 'nvidia_smi_index_observed': 3}, {'cuda_ordinal': 4, 'physical_uuid': 'gpu-4bd5a062-f6e3-e8bf-83d1-a44675314850', 'pci_bus_id': '84:00.0', 'nvidia_smi_index_observed': 4}, {'cuda_ordinal': 5, 'physical_uuid': 'gpu-ad2d5d4b-c278-e728-c742-6913c7a3437d', 'pci_bus_id': '85:00.0', 'nvidia_smi_index_observed': 5}, {'cuda_ordinal': 6, 'physical_uuid': 'gpu-75d3fddd-06bf-785d-4ac3-41074b52d00d', 'pci_bus_id': '89:00.0', 'nvidia_smi_index_observed': 6}]} requested=['gpu-4bd5a062-f6bf-785d-4ac3-41074b52d00d', 'gpu-ad2d5d4b-c278-e728-c742-6913c7a3437d']",
+      "leg": "A",
+      "model_constructed": null,
+      "status": "BLOCKED_GPU_PREFLIGHT",
+      "training_started": null
+    },
+    "scientific_effect": "none"
+  },
+  "A_valid": {
+    "boundary_expected": {
+      "checkpoint_global_steps": [
+        2
+      ],
+      "complete": false,
+      "driver": null,
+      "errors": [
+        "A actual post-publication driver RNG capture is missing"
+      ],
+      "native_ranks": [
+        "0",
+        "1"
+      ],
+      "vllm_ranks": [
+        "0",
+        "1"
+      ]
+    },
+    "boundary_state_files_present": {
+      "boundary_state/driver_rng.json": false,
+      "boundary_state/vllm_rng_rank_0.json": false,
+      "boundary_state/vllm_rng_rank_1.json": false
+    },
+    "classification": "PASS_TASK1_MARKER_BUT_BOUNDARY_INCOMPLETE",
+    "high_risk_log_matches": [],
+    "marker": {
+      "completed_task": 1,
+      "global_step": 2,
+      "local_bytes": 40138,
+      "local_sha256": "c7b8c132de4346bba8c570d429bdcbef603c0bbeea6bfd8803fea84175d4f795",
+      "matches_recorded_sha256": true,
+      "next_task": 2,
+      "rng_references": {
+        "driver": {
+          "relative_path": "boundary_state/driver_rng.json",
+          "sha256": "46982e7ff065f5ddcbe754919de364a214becbcd93b88f0d88d36e0e5e348fa3"
+        },
+        "vllm": [
+          {
+            "rank": 0,
+            "relative_path": "boundary_state/vllm_rng_rank_0.json",
+            "sha256": "f6bb080f94c2267d2bf784ab45bba0a8d8f40bef2c5fdab20bef291ad8899418"
+          },
+          {
+            "rank": 1,
+            "relative_path": "boundary_state/vllm_rng_rank_1.json",
+            "sha256": "56046e84a0716523ea7a23e0ae9dab7aa7514124a20681603225131aaac00c13"
+          }
+        ]
+      },
+      "state_fingerprint": "564592322a072da8d267ce1dd84afe03caccbdadc1ff975f715384f7a095be8b",
+      "status": "complete"
+    },
+    "not_reusable_scope": [
+      "full exact boundary evidence",
+      "independent proof of the marker-referenced driver/vLLM boundary files",
+      "fresh-process exact resume acceptance"
+    ],
+    "process_end": {
+      "exit_code": 0,
+      "pid": 1115245,
+      "process_start_ns": 1789568337434554060,
+      "unix": 1789569736.61267
+    },
+    "raw_observer_event_file_count": 0,
+    "reusable_scope": [
+      "A-valid Task 1 production execution and 2 update records",
+      "marker bytes/hash/global_step/status and stop-before-Task-2 result",
+      "Task 1 checkpoint manifest carried inside the marker"
+    ],
+    "run_result": {
+      "a_published_and_stopped": true,
+      "boundary_expected_complete": false,
+      "exit_code": 0,
+      "model_constructed": true,
+      "status": "PASS_PRODUCTION_EXIT",
+      "training_started": true
+    },
+    "task1": {
+      "line_count": 3,
+      "path": "experiment_log.jsonl",
+      "training_record_count": 2,
+      "training_records": [
+        {
+          "advantage_mean": -0.09457512944936752,
+          "retention_drift": null,
+          "retention_reward": null,
+          "reward": {
+            "accuracy": 0.125,
+            "format": 0.25,
+            "overall": 0.375
+          },
+          "step": 1
+        },
+        {
+          "advantage_mean": -0.12117340415716171,
+          "retention_drift": null,
+          "retention_reward": null,
+          "reward": {
+            "accuracy": 0.25,
+            "format": 0.125,
+            "overall": 0.375
+          },
+          "step": 2
+        }
+      ],
+      "training_steps": [
+        1,
+        2
+      ],
+      "validation_record_count": 1,
+      "validation_steps": [
+        2
+      ]
+    }
+  },
+  "B_valid": {
+    "candidate_raw_files": [],
+    "classification": "RESTORE_STAGE_TIMEOUT_INCOMPLETE",
+    "facts_vs_inference": {
+      "not_established": [
+        "I/O as the root cause",
+        "a production code defect as the root cause",
+        "B process exit code and final stdout/stderr",
+        "final Ray/launcher/child/GPU release state"
+      ],
+      "observed_or_recorded": [
+        "validated child identity and checkpoint-restore-stage position in the retained observation summary",
+        "zero Task 2 update evidence at the last successful remote check",
+        "child-only SIGTERM was recorded after identity revalidation",
+        "launcher finalization and exit classification were not obtained"
+      ]
+    },
+    "not_reusable_scope": [
+      "Task 2 result",
+      "restore pass",
+      "exit status",
+      "final cleanup/release claim"
+    ],
+    "reusable_scope": [
+      "negative evidence that B did not establish Task 2 progress or exact resume"
+    ],
+    "summary_source": {
+      "is_summary_not_raw": true,
+      "path": "raw/B-timeout-observations.txt",
+      "sha256": "b5093407ea319876c550da30786ad883f5c8379484475a233015294f5fa22b80",
+      "textual_markers": {
+        "d_state_observed": true,
+        "high_rchar_observed": true,
+        "launcher_not_signaled": true,
+        "no_task2_experiment_log_at_last_check": true,
+        "ray_pipe_orphan_observation": true,
+        "sigterm_child_only": true,
+        "ssh_stream_reset": true
+      }
+    }
+  },
+  "C": {
+    "checkpoint_hash_manifest": {
+      "bad_line_count": 0,
+      "declared_total_bytes": 36314240992,
+      "entries": [
+        {
+          "bytes": 215,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/generation_config.json",
+          "sha256": "aa99f201efbe5a37bdbee6119eacdb77983c5c7e3ab020c1fcfc0c535f55a3bf"
+        },
+        {
+          "bytes": 215,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/generation_config.json",
+          "sha256": "aa99f201efbe5a37bdbee6119eacdb77983c5c7e3ab020c1fcfc0c535f55a3bf"
+        },
+        {
+          "bytes": 392,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/added_tokens.json",
+          "sha256": "7fa54985b58718a8fdb4f4d97484c4bd908db114847675e4bf3afe3e1d5d7bd4"
+        },
+        {
+          "bytes": 392,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/added_tokens.json",
+          "sha256": "7fa54985b58718a8fdb4f4d97484c4bd908db114847675e4bf3afe3e1d5d7bd4"
+        },
+        {
+          "bytes": 613,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/special_tokens_map.json",
+          "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd"
+        },
+        {
+          "bytes": 613,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/special_tokens_map.json",
+          "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd"
+        },
+        {
+          "bytes": 788,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/preprocessor_config.json",
+          "sha256": "9ff8a240516e4ef986717597bb2c5fff3e4d4c0951d02b7dee949ceb369b5b03"
+        },
+        {
+          "bytes": 788,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/preprocessor_config.json",
+          "sha256": "9ff8a240516e4ef986717597bb2c5fff3e4d4c0951d02b7dee949ceb369b5b03"
+        },
+        {
+          "bytes": 932,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/video_preprocessor_config.json",
+          "sha256": "000a9eac154c4b017b151d8406a0c004f0393c0d9151a23f13958935c81d2f04"
+        },
+        {
+          "bytes": 932,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/video_preprocessor_config.json",
+          "sha256": "000a9eac154c4b017b151d8406a0c004f0393c0d9151a23f13958935c81d2f04"
+        },
+        {
+          "bytes": 1017,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/chat_template.jinja",
+          "sha256": "a0bc6f6fc7a29a80017a433e8f03a1cc1236e838a944a2d034295a60c4f2fddb"
+        },
+        {
+          "bytes": 1017,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/chat_template.jinja",
+          "sha256": "a0bc6f6fc7a29a80017a433e8f03a1cc1236e838a944a2d034295a60c4f2fddb"
+        },
+        {
+          "bytes": 1580,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/dataloader.pt",
+          "sha256": "9ed6c6a6c657ea89d2f266ed148a68a2a207bf48a05bd612af332d32da0b4737"
+        },
+        {
+          "bytes": 1580,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/dataloader.pt",
+          "sha256": "ffb3f79b44428dfe6d8f387ac21915405e127e11d471a04fab7a269215341639"
+        },
+        {
+          "bytes": 3047,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/config.json",
+          "sha256": "89a30d7700ad5a5ab57fafc6696c8feae4a87d92d6470e2465809a72e01c7a0e"
+        },
+        {
+          "bytes": 3047,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/config.json",
+          "sha256": "89a30d7700ad5a5ab57fafc6696c8feae4a87d92d6470e2465809a72e01c7a0e"
+        },
+        {
+          "bytes": 3301,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/tokenizer_config.json",
+          "sha256": "962d14559db67dd0fbb8477c792c2013081b1ab128f0129664bb9dc8988095ba"
+        },
+        {
+          "bytes": 3301,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/tokenizer_config.json",
+          "sha256": "962d14559db67dd0fbb8477c792c2013081b1ab128f0129664bb9dc8988095ba"
+        },
+        {
+          "bytes": 14696,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/extra_state_world_size_2_rank_0.pt",
+          "sha256": "b3b0d84dba213eafc1ebca5fa9f15fbf977c6eb78fd0dfe5340c34a6737ac59f"
+        },
+        {
+          "bytes": 14696,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/extra_state_world_size_2_rank_1.pt",
+          "sha256": "32f5ef2702fb66238e9c7f25bf396914c6a263a9e44049c6c870dcb7b1fd69c6"
+        },
+        {
+          "bytes": 14696,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/extra_state_world_size_2_rank_0.pt",
+          "sha256": "00642be54fb22bce218b40ff68ea44338bdf2a4c5be4f2052298c6a076c2c5cc"
+        },
+        {
+          "bytes": 14696,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/extra_state_world_size_2_rank_1.pt",
+          "sha256": "56bcbfc7b9923015952f92ca8f2479a5a3739d759a51863c478db5fc67a85c81"
+        },
+        {
+          "bytes": 1671853,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/merges.txt",
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+        },
+        {
+          "bytes": 1671853,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/merges.txt",
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+        },
+        {
+          "bytes": 2776833,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/vocab.json",
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        },
+        {
+          "bytes": 2776833,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/vocab.json",
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        },
+        {
+          "bytes": 11420371,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/huggingface/tokenizer.json",
+          "sha256": "091aa7594dc2fcfbfa06b9e3c22a5f0562ac14f30375c13af7309407a0e67b8a"
+        },
+        {
+          "bytes": 11420371,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/huggingface/tokenizer.json",
+          "sha256": "091aa7594dc2fcfbfa06b9e3c22a5f0562ac14f30375c13af7309407a0e67b8a"
+        },
+        {
+          "bytes": 2442685994,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/model_world_size_2_rank_0.pt",
+          "sha256": "791578fb6b0c1e8431e36ce5f5708f9383bfca28fff7a662a2f54a1f11afe8ae"
+        },
+        {
+          "bytes": 2442685994,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/model_world_size_2_rank_1.pt",
+          "sha256": "bf9285edb1a1ea0a0ea9135e6bc27b05cb1256ab620e2bcf69ad9c1711c0984d"
+        },
+        {
+          "bytes": 2442685994,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/model_world_size_2_rank_0.pt",
+          "sha256": "bc4ca1aa00c467a2f4ff881a9acff3da89e9cb956e1ab07a8223929078f543cf"
+        },
+        {
+          "bytes": 2442685994,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/model_world_size_2_rank_1.pt",
+          "sha256": "750adf4e6f44b806f94f168dc527f194d8f366085888ccd6811de671df6f968c"
+        },
+        {
+          "bytes": 6627901423,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/optim_world_size_2_rank_0.pt",
+          "sha256": "19b521a48b1179ee3bc89c1d8d4ed975ef49af663ce75734761553c490ada315"
+        },
+        {
+          "bytes": 6627901423,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/optim_world_size_2_rank_0.pt",
+          "sha256": "9e4d30daca12da462e2436afe95028e9ce9916531b04c32d865d5e2d37aa7c7b"
+        },
+        {
+          "bytes": 6627936751,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_1/global_step_2/actor/optim_world_size_2_rank_1.pt",
+          "sha256": "94d6b15b013a0fed8f0823336673321eee83336e232298a931eb6ffd36000f76"
+        },
+        {
+          "bytes": 6627936751,
+          "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C/production/2026-09-16-214707/task_2/global_step_4/actor/optim_world_size_2_rank_1.pt",
+          "sha256": "531171d8fab9c7f35b0bb3a26937a5c2bfc598e4c4eb6d9248dd58f2eb3da6c5"
+        }
+      ],
+      "entry_count": 36,
+      "files_listing_line_count": 36,
+      "files_listing_total_bytes": 36314240992,
+      "observer_event_file_count": 0,
+      "path": "checkpoint-hashes-C.tsv",
+      "production_stderr_bytes": 348594,
+      "production_stdout_bytes": 25367,
+      "sha256": "72dbe33d171cc2f9d1c6243d76aa75d7836395bbc6d4462c40db829c487fe7cd",
+      "sha256_field_count": 36,
+      "sha256_matches_recorded": true,
+      "total_bytes": 36314240992,
+      "unique_path_count": 36
+    },
+    "classification": "PASS_CONTINUOUS_PRODUCTION_C_ONLY",
+    "high_risk_log_matches": [],
+    "metrics_summary": {
+      "base_classes": 2,
+      "class_order_seed": null,
+      "final_class_order_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "final_class_order_names": [
+        "n02085620",
+        "n03930630",
+        "n04266014",
+        "n07734744"
+      ],
+      "incremental_classes": 2,
+      "tasks": {
+        "task1": {
+          "average_acc": 50.0,
+          "forgetting_rate": null,
+          "last_acc": 50.0,
+          "last_acc_details": {
+            "task1": 50.0
+          }
+        },
+        "task2": {
+          "average_acc": 37.5,
+          "forgetting_rate": 0.0,
+          "last_acc": 25.0,
+          "last_acc_details": {
+            "task1": 50.0,
+            "task2": 0.0
+          }
+        }
+      },
+      "total_tasks": 2
+    },
+    "not_reusable_scope": [
+      "fresh-process exact resume",
+      "A full boundary proof or B restore proof",
+      "local byte rehash of the remote checkpoint files"
+    ],
+    "process_end": {
+      "exit_code": 0,
+      "pid": 1084503,
+      "process_start_ns": 1789566407842054371,
+      "unix": 1789567795.6083045
+    },
+    "raw_observer_events_present": false,
+    "reusable_scope": [
+      "continuous C Task 1/Task 2 update counts and metrics",
+      "C launcher/child exit-0 and complete stdout/stderr/process boundary",
+      "remote checkpoint file-size and per-file SHA256 inventory",
+      "C frozen identity and production-path evidence"
+    ],
+    "run_result": {
+      "exit_code": 0,
+      "model_constructed": true,
+      "status": "PASS_PRODUCTION_EXIT",
+      "stderr_bytes": 348594,
+      "stdout_bytes": 25367,
+      "training_started": true
+    },
+    "task1": {
+      "line_count": 3,
+      "path": "experiment_log.jsonl",
+      "training_record_count": 2,
+      "training_records": [
+        {
+          "advantage_mean": -0.09457512944936752,
+          "retention_drift": null,
+          "retention_reward": null,
+          "reward": {
+            "accuracy": 0.125,
+            "format": 0.25,
+            "overall": 0.375
+          },
+          "step": 1
+        },
+        {
+          "advantage_mean": -0.17426267266273499,
+          "retention_drift": null,
+          "retention_reward": null,
+          "reward": {
+            "accuracy": 0.125,
+            "format": 0.375,
+            "overall": 0.5
+          },
+          "step": 2
+        }
+      ],
+      "training_steps": [
+        1,
+        2
+      ],
+      "validation_record_count": 1,
+      "validation_steps": [
+        2
+      ]
+    },
+    "task2": {
+      "line_count": 3,
+      "path": "experiment_log.jsonl",
+      "training_record_count": 2,
+      "training_records": [
+        {
+          "advantage_mean": 0.056558914482593536,
+          "retention_drift": 0.0,
+          "retention_reward": 1.0,
+          "reward": {
+            "accuracy": 0.0,
+            "format": 0.5,
+            "overall": 0.5,
+            "retention_drift": 0.0,
+            "retention_reward": 1.0
+          },
+          "step": 3
+        },
+        {
+          "advantage_mean": 0.15119169652462006,
+          "retention_drift": 0.004269292578101158,
+          "retention_reward": 0.9256303310394287,
+          "reward": {
+            "accuracy": 0.0,
+            "format": 0.625,
+            "overall": 0.625,
+            "retention_drift": 0.004269292578101158,
+            "retention_reward": 0.9256303310394287
+          },
+          "step": 4
+        }
+      ],
+      "training_steps": [
+        3,
+        4
+      ],
+      "validation_record_count": 1,
+      "validation_steps": [
+        4
+      ]
+    }
+  },
+  "acceptance_id": "FRESH-PROCESS-V9-R2-20260917",
+  "assessment": {
+    "checkpoint_manifest": {
+      "bytes": 36314240992,
+      "file_count": 36,
+      "local_path": "raw/C-supervisor/checkpoint-hashes-C.tsv",
+      "manifest_sha256": "72dbe33d171cc2f9d1c6243d76aa75d7836395bbc6d4462c40db829c487fe7cd",
+      "remote_path": "/mnt/conda/zhenglifeng/t/r9r211d16b/supervisor/C/checkpoint-hashes-C.tsv",
+      "task1_bytes": 18157120496,
+      "task2_bytes": 18157120496
+    },
+    "leg": "C",
+    "metrics": {
+      "task1": [
+        {
+          "advantage_mean": -0.09457512944936752,
+          "reward_accuracy": 0.125,
+          "reward_format": 0.25,
+          "reward_overall": 0.375,
+          "step": 1
+        },
+        {
+          "advantage_mean": -0.17426267266273499,
+          "reward_accuracy": 0.125,
+          "reward_format": 0.375,
+          "reward_overall": 0.5,
+          "step": 2
+        }
+      ],
+      "task2": [
+        {
+          "advantage_mean": 0.056558914482593536,
+          "retention_drift": 0.0,
+          "retention_reward": 1.0,
+          "reward_accuracy": 0.0,
+          "reward_format": 0.5,
+          "reward_overall": 0.5,
+          "step": 3
+        },
+        {
+          "advantage_mean": 0.15119169652462006,
+          "retention_drift": 0.004269292578101158,
+          "retention_reward": 0.9256303310394287,
+          "reward_accuracy": 0.0,
+          "reward_format": 0.625,
+          "reward_overall": 0.625,
+          "step": 4
+        }
+      ]
+    },
+    "notes": [
+      "No OOM, traceback, CUDA error or NCCL failure was observed in the completed production result.",
+      "Ray worker shutdown messages in the final stdout are non-fatal cleanup after the zero exit.",
+      "This is bounded diagnostic evidence, not paper-scale reproduction or a resolution of AUTH-CTAN-001/AUTH-COCO-001."
+    ],
+    "remote_output_root": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/C",
+    "schema_version": 1,
+    "status": "PASS_C_PRODUCTION",
+    "supervisor": {
+      "child_kill_sent": 0,
+      "child_term_sent": 0,
+      "launcher_rc": 0,
+      "process_end_present": true,
+      "run_result_present": true,
+      "stderr_complete": true,
+      "stdout_complete": true
+    },
+    "updates": {
+      "global_steps": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "task1": 2,
+      "task2": 2
+    }
+  },
+  "candidate_root": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\FRESH-PROCESS-V9-GPU-20260916-R2",
+  "closeout": {
+    "identity": {
+      "closeout_id": "fresh-process-v9-gpu-20260917-CLOSEOUT",
+      "r2_delivery_manifest_sha256": "7bc2d84c752ccd87982cb53ba8055dff0e25e5d23244541ba54067e0ee549244",
+      "r2_run_id": "fresh-process-v9-gpu-20260916-R2",
+      "raw_evidence": [
+        "raw/211-readonly-command.txt",
+        "raw/211-readonly.stdout.txt",
+        "raw/211-readonly.stderr.txt",
+        "raw/211-readonly.exit.txt",
+        "raw/hostkey-211.stdout.txt",
+        "raw/hostkey-211.stderr.txt",
+        "raw/hostkey-211.exit.txt"
+      ],
+      "readonly_probe": {
+        "cleanup_commands_issued": false,
+        "ended_at": "2026-09-17T10:29:07.0940374+08:00",
+        "hostkey_lookup": "MATCHED_IN_KNOWN_HOSTS",
+        "known_hosts": "C:/Users/Administrator/.ssh/known_hosts",
+        "remote_final_cleanup_state": "UNCONFIRMED_HOST_UNREACHABLE",
+        "remote_identity_verified": false,
+        "ssh_exit_code": 255,
+        "started_at": "2026-09-17T10:28:54.1392960+08:00",
+        "stderr": "Timeout, server 192.168.1.211 not responding.",
+        "stderr_bytes": 47,
+        "stdout_bytes": 0,
+        "strict_hostkey": true
+      },
+      "schema_version": 1,
+      "scope": {
+        "b_root": "/mnt/conda/zhenglifeng/t/r9r211d16b/results/B-valid",
+        "host": "211",
+        "known_b_child_pid": 1153372,
+        "known_b_child_start_ticks": 10394069,
+        "known_b_launcher_pid": 1152533,
+        "known_b_launcher_start_ticks": 10383080,
+        "ray_session": "/mnt/conda/zhenglifeng/t/r9xr2b/session_2026-09-16_21-45-19_023308_1080181",
+        "ray_tmpdir": "/mnt/conda/zhenglifeng/t/r9xr2b",
+        "run_root": "/mnt/conda/zhenglifeng/t/r9r211d16b"
+      }
+    },
+    "raw_stderr": "Timeout, server 192.168.1.211 not responding.\n",
+    "raw_stdout_bytes": 0,
+    "remote_cleanup_state": "UNCONFIRMED_HOST_UNREACHABLE",
+    "verdict": {
+      "claim": "one strict-hostkey read-only connection probe was attempted; host 211 timed out, so this closeout verifies neither residual process identity nor final remote cleanup",
+      "closeout_id": "fresh-process-v9-gpu-20260917-CLOSEOUT",
+      "connection": {
+        "error": "Timeout, server 192.168.1.211 not responding.",
+        "probe_count": 1,
+        "ssh_exit_code": 255,
+        "strict_hostkey": true
+      },
+      "gates": {
+        "r2_frozen_binding_present": true,
+        "remote_final_cleanup_confirmed": false,
+        "resource_release_claim_allowed": false
+      },
+      "minimum_unblock": "restore access to host 211, rerun the same bounded strict-hostkey read-only identity probe, and only then consider exact run-root/session cleanup after PID/start-ticks/cmd/cwd/env validation",
+      "r2_delivery_manifest_sha256": "7bc2d84c752ccd87982cb53ba8055dff0e25e5d23244541ba54067e0ee549244",
+      "r2_run_id": "fresh-process-v9-gpu-20260916-R2",
+      "safety": {
+        "cleanup_attempted": false,
+        "global_ray_stop_or_pkill": false,
+        "new_training_or_b_retry": false,
+        "other_users_processes_touched": false,
+        "remote_identity_verified": false
+      },
+      "schema_version": 1,
+      "status": "REMOTE_CLEANUP_UNCONFIRMED_HOST_UNREACHABLE"
+    }
+  },
+  "closeout_root": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\FRESH-PROCESS-V9-GPU-20260917-CLOSEOUT",
+  "delivery_manifest": {
+    "declared_entry_count": 73,
+    "declared_total_bytes": 2840712,
+    "entry_count": 73,
+    "entry_count_matches": true,
+    "path": "DELIVERY_MANIFEST-R2.json",
+    "self_excluded": "DELIVERY_MANIFEST-R2.json",
+    "sha256": "7bc2d84c752ccd87982cb53ba8055dff0e25e5d23244541ba54067e0ee549244",
+    "sha256_matches_recorded": true,
+    "total_bytes": 2840712,
+    "total_bytes_matches": true
+  },
+  "generated_at": "2026-09-17T02:46:43.384297+00:00",
+  "overall": {
+    "B_only_rerun_sufficient_for_acceptance": false,
+    "fresh_process_exact_resume": false,
+    "minimum_recovery_path": [
+      "Keep C continuous-production evidence and its full checkpoint hash inventory reusable.",
+      "First repair/isolate the diagnostic A driver-RNG observation path and collect raw A events plus all marker-referenced boundary_state files; do not fabricate RNG.",
+      "Only after A full boundary evidence is complete, rerun B as a fresh process with complete raw stdout/stderr/process-end/run-result and observer/Ray evidence.",
+      "Keep the original reward/advantage/retention tolerances unchanged and verify B Task 2 updates plus boundary comparison."
+    ],
+    "paper_faithful_reproduction": false
+  },
+  "schema_version": 1,
+  "scope": {
+    "production_or_candidate_modified": false,
+    "read_only": true,
+    "remote_cleanup_confirmed": false,
+    "ssh_gpu_model_install_or_rerun": false
+  },
+  "source_review": {
+    "classification": "diagnostic_observation_or_collection_gap; production_publication_defect_not_proven",
+    "derivation_file": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9\\boundary_evidence_v6.py",
+    "derivation_lines": [
+      {
+        "line": 71,
+        "text": "def _driver_record(events: list[dict[str, Any]], *, field: str, label: str) -> dict[str, Any] | None:"
+      },
+      {
+        "line": 126,
+        "text": "        \"driver\": _driver_record(events, field=\"driver_rng_expected\", label=\"PersistentRunner.run_task\"),"
+      },
+      {
+        "line": 133,
+        "text": "    if expected[\"driver\"] is None:"
+      },
+      {
+        "line": 134,
+        "text": "        errors.append(\"A actual post-publication driver RNG capture is missing\")"
+      }
+    ],
+    "derivation_sha256": "bbc84988a5b3c5e38d08728a4698c1d41bc4dcc1380c98e28073b7b7e62fd851",
+    "observer_file": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9\\child_observer_v6.py",
+    "observer_sha256": "a7e239bca8bea99dd01e07c842efc9d0a45126cc4b43689a798937e67b9c43e1",
+    "observer_trigger_lines": [
+      {
+        "line": 248,
+        "text": "            if label == \"PersistentRunner.run_task\":"
+      },
+      {
+        "line": 251,
+        "text": "                if bool(publish) and task_id == 1 and os.environ.get(\"RAPO_DIAG_LEG\") == \"A\":"
+      },
+      {
+        "line": 252,
+        "text": "                    after[\"driver_rng_expected\"] = capture_driver_rng()"
+      },
+      {
+        "line": 274,
+        "text": "                    after[\"window_source\"] = f\"{os.environ.get('RAPO_DIAG_LEG', '?')}:task2-update-window\""
+      },
+      {
+        "line": 371,
+        "text": "    # production calls ray.init; this is a real propagation wrapper, not a"
+      },
+      {
+        "line": 377,
+        "text": "            original_init = ray.init"
+      },
+      {
+        "line": 383,
+        "text": "                    for name in (\"RAPO_DIAG_RUN_ROOT\", \"RAPO_DIAG_LEG\", \"RAPO_DIAG_SCHEMA\", \"RAPO_DIAG_CHILD_BOOTSTRAP\", \"RAPO_DIAG_FAIL_CLOSED\", \"PYTHONPATH\", \"PYTHONDONTWRITEBYTECODE\"):"
+      },
+      {
+        "line": 386,
+        "text": "                    runtime_env[\"env_vars\"] = env_vars"
+      },
+      {
+        "line": 392,
+        "text": "                ray.init = observed_init"
+      }
+    ],
+    "production_file": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+    "production_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "production_sha256_matches_identity": true,
+    "publication_lines": [
+      {
+        "line": 823,
+        "text": "def _publish_task_boundary("
+      },
+      {
+        "line": 881,
+        "text": "    _atomic_write_json(os.path.join(boundary_root, driver_rel), driver_rng_payload)"
+      },
+      {
+        "line": 1546,
+        "text": "        if publish_task_boundary:"
+      },
+      {
+        "line": 1566,
+        "text": "            worker_rng = trainer.actor_rollout_ref_wg.capture_boundary_vllm_rng()"
+      },
+      {
+        "line": 1573,
+        "text": "                driver_rng_payload=_capture_driver_rng_state(),"
+      }
+    ]
+  },
+  "verdict": {
+    "blocking_evidence": [
+      "B spent the bounded leg in checkpoint restoration and produced no Task 2 experiment_log record.",
+      "B child was safely identified and terminated after the deadline; Ray orphan cleanup prevented complete launcher finalization evidence.",
+      "A event-derived boundary evidence lacks the required post-publication driver RNG capture."
+    ],
+    "claim": "bounded C production completed; A published a marker; B did not reach Task 2 and exact fresh-process resume was not demonstrated",
+    "gates": {
+      "A_full_boundary_evidence": false,
+      "A_marker_published": true,
+      "B_task2_complete": false,
+      "C_complete": true,
+      "fresh_process_exact_resume": false,
+      "paper_faithful_reproduction": false
+    },
+    "legs": {
+      "A_invalid": {
+        "scientific_effect": "none",
+        "status": "BLOCKED_GPU_PREFLIGHT"
+      },
+      "A_valid": {
+        "boundary_error": "A actual post-publication driver RNG capture is missing",
+        "boundary_expected_complete": false,
+        "marker_global_step": 2,
+        "marker_sha256": "c7b8c132de4346bba8c570d429bdcbef603c0bbeea6bfd8803fea84175d4f795",
+        "marker_status": "complete",
+        "status": "PASS_TASK1_MARKER_BUT_BOUNDARY_INCOMPLETE",
+        "task2_run": false,
+        "updates": 2
+      },
+      "B_valid": {
+        "child_only_timeout": true,
+        "launcher_finalization": "not confirmed; private Ray cleanup interrupted the SSH evidence stream",
+        "status": "INCOMPLETE_RESTORE_TIMEOUT",
+        "task2_updates": 0
+      },
+      "C": {
+        "checkpoint_content_hash_manifest": true,
+        "status": "PASS_C_PRODUCTION",
+        "updates": 4
+      }
+    },
+    "next_minimum_action": "repair or isolate the Ray child-pipe/restore-stage failure and rerun only the authorized B acceptance leg after a fresh host and private-Ray preflight; do not reuse this partial B output as a checkpoint input",
+    "run_id": "fresh-process-v9-gpu-20260916-R2",
+    "schema_version": 1,
+    "status": "BLOCKED_B_RESTORE_TIMEOUT"
+  }
+}
+

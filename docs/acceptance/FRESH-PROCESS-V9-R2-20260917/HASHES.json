@@ -1,0 +1,40 @@
+{
+  "acceptance_id": "FRESH-PROCESS-V9-R2-20260917",
+  "root": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-V9-R2-20260917",
+  "self_excluded": "HASHES.json",
+  "entry_count": 6,
+  "total_bytes": 64823,
+  "entries": [
+    {
+      "path": "FINDING-A-OBSERVER-001.md",
+      "bytes": 2659,
+      "sha256": "b1e8bb72d40fc36b2e632918d817516ad90063aab8183458ab2bc941a764205c"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 1595,
+      "sha256": "273d7f3344a33724fd754dbbdf5ec6fcb6ce1c2bc9cbbc1b4574644bb61414f9"
+    },
+    {
+      "path": "raw/review_probe.stdout.json",
+      "bytes": 34355,
+      "sha256": "09f5157c3770507f49061b61509df0e06e637eaa6a344a7adad84d28712abd2a"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 6477,
+      "sha256": "ca80412592ae455221a8b8bcd42cebc7a9c0d49621d86bb749bd740981d3d69a"
+    },
+    {
+      "path": "review_probe.py",
+      "bytes": 17396,
+      "sha256": "07ce331335cce779011e547b1cdd78c64eafb4d8c714f67f89a736f1f49d1236"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 2341,
+      "sha256": "f216dfa0491c3232df3f2801d50caca7b36431535fe2618cebb95e6dff00b6e4"
+    }
+  ]
+}
+

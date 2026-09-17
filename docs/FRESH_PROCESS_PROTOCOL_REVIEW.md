@@ -215,3 +215,9 @@ B-valid新进程恢复阶段超时，无Task2更新。执行方观察摘要记�
 71a6 `FRESH-PROCESS-V9-GPU-20260917-CLOSEOUT/` 已冻结，协调者核对10文件7791bytes一致，DELIVERY_MANIFEST-CLOSEOUT.json自身SHA256 `54339973bbc58084d981c7442de516ea44fcc55549faf6631ddd4465af221f74`，绑定R2清单。known_hosts匹配后，以StrictHostKeyChecking=yes、BatchMode、ConnectTimeout=12、ConnectionAttempts=1做唯一一次只读连接检查；2026-09-17 10:28:54.1392960开始，10:29:07.0813817结束，exit255，stdout为空，stderr为“Timeout, server 192.168.1.211 not responding.”。
 
 未建立远端会话、未取得PID/start/cmd/cwd/env身份，未发送kill/stop/pkill，也未新增训练。状态为REMOTE_CLEANUP_UNCONFIRMED_HOST_UNREACHABLE，不能声明资源已释放，也不能仅据SSH超时断言主机故障原因。已将补充交独立R2审查，继续可在本地完成的A观察触发点定位。资源分支的最小解除条件是211访问恢复后再次有界只读身份核验，再处理明确属于本次的残留；不重复轮询。
+
+### 2026-09-17：R2独立接收与207共享文件补取
+
+独立[R2审查](acceptance/FRESH-PROCESS-V9-R2-20260917/REPORT.md)已完成，协调者核对6文件64823bytes一致，HASHES.json自身SHA256 `940d7c9eb5ae5cd38e9c558c5cbd567632f0683b214c45f2543cdb8c228d7071`。C PASS_C_PRODUCTION，连续四次更新/global steps1–4/exit0及36文件checkpoint内容清单可复用；B仍恢复超时，不接受exit或cleanup。A的[FINDING-A-OBSERVER-001](acceptance/FRESH-PROCESS-V9-R2-20260917/FINDING-A-OBSERVER-001.md)确认观察/采集缺口，实际生产源码有先保存driver/vLLM RNG后发布marker的路径，尚无生产发布缺陷证据。必须补同次A raw events及marker引用状态，不能从其他时点补造RNG。
+
+用户要求的[存储核查](STORAGE_STATUS_20260917.md)发现207可连接且能读取共享R2目录，主JuiceFS72%、conda89%，未见容量/inode耗尽。已派执行者在存储报告冻结后从207只读补取A/B小体积原件到新R2-SHARED-EVIDENCE-20260917；不扫描/复制权重、不启动新训练、不处理211进程。准备者仅本地定位最小观察方案；补取后再判断是否需代码修复或A重跑。共享文件可读不等于211进程已退出，资源释放仍UNCONFIRMED。

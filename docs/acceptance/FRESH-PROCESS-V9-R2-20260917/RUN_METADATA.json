@@ -1,0 +1,54 @@
+{
+  "acceptance_id": "FRESH-PROCESS-V9-R2-20260917",
+  "created_date": "2026-09-17",
+  "role": "independent_read_only_acceptance_review",
+  "scope": {
+    "candidate_root": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\FRESH-PROCESS-V9-GPU-20260916-R2",
+    "closeout_root": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\FRESH-PROCESS-V9-GPU-20260917-CLOSEOUT",
+    "production_source_root": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author",
+    "diagnostic_sidecar_root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9",
+    "acceptance_root": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-V9-R2-20260917"
+  },
+  "read_only_guards": {
+    "production_or_candidate_modified": false,
+    "remote_cleanup_confirmed": false,
+    "ssh_gpu_model_install_or_rerun": false,
+    "new_training_or_b_retry": false
+  },
+  "input_bindings": {
+    "r2_run_id": "fresh-process-v9-gpu-20260916-R2",
+    "r2_delivery_manifest_sha256": "7bc2d84c752ccd87982cb53ba8055dff0e25e5d23244541ba54067e0ee549244",
+    "c_checkpoint_hash_manifest_sha256": "72dbe33d171cc2f9d1c6243d76aa75d7836395bbc6d4462c40db829c487fe7cd",
+    "a_marker_sha256": "c7b8c132de4346bba8c570d429bdcbef603c0bbeea6bfd8803fea84175d4f795",
+    "b_timeout_summary_sha256": "b5093407ea319876c550da30786ad883f5c8379484475a233015294f5fa22b80",
+    "closeout_probe_ssh_exit_code": 255,
+    "closeout_probe_stderr": "Timeout, server 192.168.1.211 not responding."
+  },
+  "findings": [
+    {
+      "id": "FINDING-A-OBSERVER-001",
+      "classification": "diagnostic_observation_or_collection_gap",
+      "production_defect_proven": false,
+      "blocking_gate": "A_full_boundary_evidence"
+    }
+  ],
+  "verdict": {
+    "status": "BLOCKED_B_RESTORE_TIMEOUT",
+    "c_complete": true,
+    "a_marker_published": true,
+    "a_full_boundary_evidence": false,
+    "b_task2_complete": false,
+    "fresh_process_exact_resume": false,
+    "paper_faithful_reproduction": false,
+    "b_only_rerun_sufficient": false
+  },
+  "artifacts": [
+    "REPORT.md",
+    "FINDING-A-OBSERVER-001.md",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "raw/review_probe.stdout.json",
+    "review_probe.py",
+    "HASHES.json"
+  ]
+}
