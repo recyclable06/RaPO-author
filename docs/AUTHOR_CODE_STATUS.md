@@ -19,6 +19,8 @@ v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptan
 
 ## 后续门槛
 
+2026-09-17 10:29的单次有界SSH收尾检查仍超时（exit255），没有建立远端会话或执行清理；211上本次Ray/launcher/child及GPU最终释放状态为UNCONFIRMED。需要先恢复节点访问，才能核验自身残留和补取日志；本地独立审查继续，不反复轮询或启动新训练。
+
 旧v9运行的[独立超时复核](acceptance/FRESH-PROCESS-V9-GPU-TIMEOUT-20260916/REPORT.md)已确认Task1两次更新；留存日志未见明确OOM或运行异常，检查点保存约4.4分钟。远端checkpoint目前只有文件名称/大小清单，没有内容完整性验收；新运行需补内容hash与完整结束日志。旧交付JSON格式缺陷已登记，原始证据保持不变。
 
 1. 执行并独立验收有限GPU恢复对照；GPU映射与进程身份的增量就绪验收已完成。

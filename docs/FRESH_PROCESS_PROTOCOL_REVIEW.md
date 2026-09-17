@@ -209,3 +209,9 @@ A-invalid因命令中错误UUID被preflight拒绝，无训练。A-valid完成Tas
 B-valid新进程恢复阶段超时，无Task2更新。执行方观察摘要记录D状态/folio_wait_bit_common、较大读取计数与定向child SIGTERM；这些不能单独确证I/O根因。Ray orphan持有管道使launcher未完成，私有Ray清理过程中SSH reset；2026-09-17 10:21:56后续只读SSH亦超时，远端释放和最终日志未确认。已续派一次有界连接核查，连接恢复时只按PID/start/cmd/cwd/env与本次session核验自身残留后处理，收集现有小文件及A内容hash，冻结到新CLOSEOUT目录；禁止全局进程清理、新训练及盲重试。
 
 独立任务新建 `docs/acceptance/FRESH-PROCESS-V9-R2-20260917/`，检查C复用范围、A实际发布方法与observer触发点是否匹配、B现有证据局限，先给最小finding/allowlist再由对应角色修复。R2保持BLOCKED_B_RESTORE_TIMEOUT，完整恢复、trajectory judge与论文复现均未通过。原R2目录冻结，后续材料单独补充。
+
+### 2026-09-17：一次收尾连接超时，远端释放仍未确认
+
+71a6 `FRESH-PROCESS-V9-GPU-20260917-CLOSEOUT/` 已冻结，协调者核对10文件7791bytes一致，DELIVERY_MANIFEST-CLOSEOUT.json自身SHA256 `54339973bbc58084d981c7442de516ea44fcc55549faf6631ddd4465af221f74`，绑定R2清单。known_hosts匹配后，以StrictHostKeyChecking=yes、BatchMode、ConnectTimeout=12、ConnectionAttempts=1做唯一一次只读连接检查；2026-09-17 10:28:54.1392960开始，10:29:07.0813817结束，exit255，stdout为空，stderr为“Timeout, server 192.168.1.211 not responding.”。
+
+未建立远端会话、未取得PID/start/cmd/cwd/env身份，未发送kill/stop/pkill，也未新增训练。状态为REMOTE_CLEANUP_UNCONFIRMED_HOST_UNREACHABLE，不能声明资源已释放，也不能仅据SSH超时断言主机故障原因。已将补充交独立R2审查，继续可在本地完成的A观察触发点定位。资源分支的最小解除条件是211访问恢复后再次有界只读身份核验，再处理明确属于本次的残留；不重复轮询。

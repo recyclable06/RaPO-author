@@ -20,7 +20,7 @@
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
 | 独立验收（v9 R2实际证据与阻塞审查中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新输出 `docs/acceptance/FRESH-PROCESS-V9-R2-20260917/`，审C可复用范围、A缺post-publication driver RNG的观察/生产触发点、B恢复超时证据边界；无SSH/GPU/修改，不从摘要推断I/O根因 |
 | 专用诊断准备（v9与reward身份补充已冻结） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 原v9 self `45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39`不变。14c8 `docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/v9-reward-identity-supplement-20260916/` 14文件47813bytes协调者核对一致，清单self `da6ad19c30cf5cffc5ed47b5b1ef7983b9d9008c21e0ad57e7c350b739eb789a`；真实零GPU Ray/source hash独立通过，已交71a6执行 |
-| 专用诊断执行（R2已冻结，远端收尾核查中） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `FRESH-PROCESS-V9-GPU-20260916-R2/` 73文件2840712bytes协调者核对一致，清单self `7bc2d84c752ccd87982cb53ba8055dff0e25e5d23244541ba54067e0ee549244`。C4/4、A2/2但边界观察不全、B0/2恢复超时，远端释放未确认。新 `FRESH-PROCESS-V9-GPU-20260917-CLOSEOUT/` 只做一次有界SSH核查、身份确定的自身资源清理和小文件取证，不启动新训练 |
+| 专用诊断执行（R2及收尾记录冻结，211连接阻塞） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | R2为C4/4、A2/2但边界观察不全、B0/2恢复超时。71a6 `FRESH-PROCESS-V9-GPU-20260917-CLOSEOUT/` 10文件7791bytes协调者一致，清单self `54339973bbc58084d981c7442de516ea44fcc55549faf6631ddd4465af221f74`。10:29一次严格hostkey SSH超时exit255，未建立会话/未执行清理，释放UNCONFIRMED；不轮询或启动新训练 |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
 
