@@ -199,3 +199,13 @@ r2 `DELIVERY_MANIFEST-r2.json` 自身SHA256 `3d3ab9f61a9dbce1c416267c99acfd66a56
 checkpoint的六文件清单只证明列示名称与大小，未提供远端内容hash；此前“完整checkpoint”执行方表述不能升级为内容完整或恢复可用验收。本地partial继续排除。旧delivery manifest含generated_at字符串字面换行，严格JSON解析失败；协调者此前PowerShell宽松解析后439文件逐项hash/bytes核对事实仍成立，但不应把它称为有效JSON清单。原件不覆盖，已要求执行者在R2收尾保留勘误或另存明确派生的修正版，并对新清单做严格JSON回读，不影响正在进行的GPU任务。
 
 独立报告末尾的“separately authorized”不构成新的用户批准门：用户持续授权与协调者已明确下发的R2范围/预算覆盖本次有限重跑。R2任务继续，独立旧记录不替代或提前判定R2结果。
+
+### 2026-09-17：R2连续C完成，A边界观察缺口与B恢复超时
+
+协调者逐项核对71a6 `FRESH-PROCESS-V9-GPU-20260916-R2/` 73条目2840712bytes一致，DELIVERY_MANIFEST-R2.json自身SHA256 `7bc2d84c752ccd87982cb53ba8055dff0e25e5d23244541ba54067e0ee549244`。C的process-end exit0与run-result PASS_PRODUCTION_EXIT可读取，Task1/2各两次更新，远端checkpoint逐文件hash清单列36文件36314240992bytes；实际证据的独立接受范围仍待审查。
+
+A-invalid因命令中错误UUID被preflight拒绝，无训练。A-valid完成Task1两次更新并发布marker，SHA256 `c7b8c132de4346bba8c570d429bdcbef603c0bbeea6bfd8803fea84175d4f795`；boundary-expected明确complete=false、driver=null，缺少A actual post-publication driver RNG capture。不能仅凭marker或native worker状态宣称完整边界已验收，也不能仅重跑B补回A时点的实际随机状态。
+
+B-valid新进程恢复阶段超时，无Task2更新。执行方观察摘要记录D状态/folio_wait_bit_common、较大读取计数与定向child SIGTERM；这些不能单独确证I/O根因。Ray orphan持有管道使launcher未完成，私有Ray清理过程中SSH reset；2026-09-17 10:21:56后续只读SSH亦超时，远端释放和最终日志未确认。已续派一次有界连接核查，连接恢复时只按PID/start/cmd/cwd/env与本次session核验自身残留后处理，收集现有小文件及A内容hash，冻结到新CLOSEOUT目录；禁止全局进程清理、新训练及盲重试。
+
+独立任务新建 `docs/acceptance/FRESH-PROCESS-V9-R2-20260917/`，检查C复用范围、A实际发布方法与observer触发点是否匹配、B现有证据局限，先给最小finding/allowlist再由对应角色修复。R2保持BLOCKED_B_RESTORE_TIMEOUT，完整恢复、trajectory judge与论文复现均未通过。原R2目录冻结，后续材料单独补充。

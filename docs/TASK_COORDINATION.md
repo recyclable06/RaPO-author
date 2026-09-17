@@ -1,6 +1,6 @@
 # RaPO-author 任务协调台账
 
-更新：2026-09-16。当前协调任务：`01a08faa-ba41-73b2-b3d3-e468521682e0`（“规划 RaPO 作者代码复现路线 (3)”）。旧协调任务 `01a070af-8ee0-7641-b712-0cf59648e6ca` 已由用户替换，不再向其自动回报或恢复。
+更新：2026-09-17。当前协调任务：`01a08faa-ba41-73b2-b3d3-e468521682e0`（“规划 RaPO 作者代码复现路线 (3)”）。旧协调任务 `01a070af-8ee0-7641-b712-0cf59648e6ca` 已由用户替换，不再向其自动回报或恢复。
 
 ## 持续授权与回报
 
@@ -18,9 +18,9 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（v9超时证据复核已完成） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `docs/acceptance/FRESH-PROCESS-V9-GPU-TIMEOUT-20260916/` 保持BLOCKED_C_TIMEOUT_AFTER_TASK1；确认Task1两步，未见留存日志中的高风险异常，checkpoint仅结构性清单。5文件71818bytes协调者一致，清单self `5f260585371a687916699bf5abbf305b36bfaebd2f2eaaca9cdf26255690d1cb`；旧delivery JSON换行缺陷已通知执行者，R2继续 |
+| 独立验收（v9 R2实际证据与阻塞审查中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新输出 `docs/acceptance/FRESH-PROCESS-V9-R2-20260917/`，审C可复用范围、A缺post-publication driver RNG的观察/生产触发点、B恢复超时证据边界；无SSH/GPU/修改，不从摘要推断I/O根因 |
 | 专用诊断准备（v9与reward身份补充已冻结） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 原v9 self `45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39`不变。14c8 `docs/acceptance/FRESH-PROCESS-INIT-COMPAT-V9-20260916/v9-reward-identity-supplement-20260916/` 14文件47813bytes协调者核对一致，清单self `da6ad19c30cf5cffc5ed47b5b1ef7983b9d9008c21e0ad57e7c350b739eb789a`；真实零GPU Ray/source hash独立通过，已交71a6执行 |
-| 专用诊断执行（v9首次超时，R2已续派） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `FRESH-PROCESS-V9-GPU-20260916/`：Task1两次更新，Task2零次，900秒外层超时，A/B未开始；439文件1831106053bytes协调者核对一致，清单self `f8ea1a5562aa05f03b741808c64346ef08d7525bc7342738bf7c0bf692da8463`。新唯一R2目录与短远端根续跑同一步数，C2700秒/A1800秒/B1800秒，超时保留launcher收尾；不修改冻结包 |
+| 专用诊断执行（R2已冻结，远端收尾核查中） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `FRESH-PROCESS-V9-GPU-20260916-R2/` 73文件2840712bytes协调者核对一致，清单self `7bc2d84c752ccd87982cb53ba8055dff0e25e5d23244541ba54067e0ee549244`。C4/4、A2/2但边界观察不全、B0/2恢复超时，远端释放未确认。新 `FRESH-PROCESS-V9-GPU-20260917-CLOSEOUT/` 只做一次有界SSH核查、身份确定的自身资源清理和小文件取证，不启动新训练 |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
 
@@ -57,7 +57,7 @@ R3.1独立验收接收：验收HASHES.json自hash `7c595a7d3d5744307fab722750f75
 
 - 一步有效更新：`docs/acceptance/GPU-ONE-STEP-20260909/REPORT.md`，有限通过且有 checkpoint 范围偏差记录。
 - 同进程 Task 1→Task 2：`docs/acceptance/CONTINUOUS-TASK12-20260909/REPORT.md`，有限通过；retention 是聚合证据、actor/anchor 是采样证据，执行日志归档范围有限。
-- 下一步：现场复查并执行已独立就绪的v9有限C/A/B → 独立验收实际运行。已通过的映射、vLLM、callable与奖励源码身份证据复用；不扩大科学协议或重做无关检查。
+- 下一步：确认R2远端释放并收集现存日志 → 独立定位A RNG观察缺口与B恢复卡点 → 仅修复有证据的问题，确定C/A可复用范围后继续恢复对照。不把缺失状态补造成通过，不无变化地加时重试。
 - 旧诊断 model-only outputs 约 19.6 GB，新连续诊断两份完整 checkpoint 约 36.3 GB，均保留；清理不是当前技术前置。
 
 ## 自动跟进

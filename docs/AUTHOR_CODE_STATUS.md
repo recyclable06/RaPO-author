@@ -1,6 +1,6 @@
 # 作者代码当前状态
 
-更新：2026-09-16。根目录现已整合经过独立代码/CPU验收的修订，逐文件身份见 [INTEGRATION_HASHES.json](INTEGRATION_HASHES.json)。作者原始204文件及论文身份由 [BASELINE.json](BASELINE.json) 和标签 `author-drop-20260904` 保留。
+更新：2026-09-17。根目录现已整合经过独立代码/CPU验收的修订，逐文件身份见 [INTEGRATION_HASHES.json](INTEGRATION_HASHES.json)。作者原始204文件及论文身份由 [BASELINE.json](BASELINE.json) 和标签 `author-drop-20260904` 保留。
 
 **尚未完成论文复现。** 当前上传内容是作者基线、已验收的局部修复和研究过程证据，不包含正式复现结果或模型权重。
 
@@ -10,12 +10,12 @@
 |---|---|---|
 | CTAN / AUTH-CTAN-001 | 从Task 1首个优势batch开启；EMA跨任务连续传递，避免边界覆盖；retention仍从Task 2开始 | 独立代码/CPU验收通过，真实GPU有效更新及同进程跨任务有有限证据 |
 | COCO / AUTH-COCO-001 | 开启seen标签提示时，训练allowed_classes使用全部seen类别 | 提示与奖励GT局部修复通过；five-shot共现配额、监督时机及完整AP评估仍待验证 |
-| 图像任务边界恢复 / CAND-RESUME-CIL-001 | R3.1支持完整任务结束后发布完整边界，并由新进程进入下一任务 | [42项独立CPU检查通过](acceptance/CIL-RESUME-CPU-R31-20260911/REPORT.md)；2026-09-16 v9连续对照完成Task1两次更新，Task2尚无更新时被外层超时中断；A/B未开始，恢复仍待验证 |
+| 图像任务边界恢复 / CAND-RESUME-CIL-001 | R3.1支持完整任务结束后发布完整边界，并由新进程进入下一任务 | [42项独立CPU检查通过](acceptance/CIL-RESUME-CPU-R31-20260911/REPORT.md)；v9 R2连续C完成4/4更新，A完成2次并发布marker，但A主进程RNG观察缺失、B恢复超时且无Task2更新；尚未通过恢复验收 |
 | GPU链路 | 既有环境下完成有限有效更新和同进程Task 1→2 | 见[一步验收](acceptance/GPU-ONE-STEP-20260909/REPORT.md)与[连续任务验收](acceptance/CONTINUOUS-TASK12-20260909/REPORT.md)；不扩大为全参数、完整轨迹或论文规模通过 |
 
 当前恢复诊断采用同机两张RTX3090，比较连续运行C与退出后恢复A/B，每任务两次真实更新。要求边界完整状态精确恢复，后续奖励、优势、retention指标按预先冻结容差比较；不要求后续随机轨迹逐张量相等。
 
-2026-09-16 v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/REPORT.md)。在211两张3090上，真实模型初始化和Task1两次更新已完成，单步约142/146秒，并有远端checkpoint保存记录。C进入Task2后被900秒外层超时中断，C为2/4更新、A/B未开始、trajectory judge未运行；当前未证明生产异常，也未证明恢复成功。外层终止造成完整生产stdout/stderr与最终结果文件缺失，本地部分checkpoint传输明确无效。已续派相同步数的新C/A/B，C上限2700秒、A/B各1800秒，并调整包外监督使生产子进程先结束、launcher有120秒保存日志；独立任务并行复核旧证据。生产源码、候选和科学指标不改。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。
+v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptance/FRESH-PROCESS-V9-REWARD-IDENTITY-20260916/REPORT.md)。2026-09-16至17日的R2在211两张3090上，C连续Task1/2各完成两次更新并正常退出；两份checkpoint有36文件、36314240992bytes远端逐项内容hash。A-valid完成两次更新并发布Task1 marker，但事件派生边界缺少实际发布后的driver RNG capture。B-valid在新进程恢复checkpoint阶段超时、Task2零次更新；子进程收到定向SIGTERM，随后私有Ray清理期间SSH中断，远端launcher最终化及资源释放尚未确认。当前结论BLOCKED_B_RESTORE_TIMEOUT，不能宣称exact resume。已派一次有界SSH收尾检查及独立R2证据/观察触发点审查，暂不启动新训练或仅重跑B。生产源码、候选和科学指标不改。历次失败与限制见 [诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)，当前任务以 [协调台账](TASK_COORDINATION.md) 为准。
 
 ## 后续门槛
 
