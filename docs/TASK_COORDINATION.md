@@ -18,9 +18,9 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（v9 R2审查已完成） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `docs/acceptance/FRESH-PROCESS-V9-R2-20260917/`：C PASS_C_PRODUCTION可复用，A为diagnostic observation/collection gap，B恢复仍BLOCKED。6文件64823bytes协调者一致，清单self `940d7c9eb5ae5cd38e9c558c5cbd567632f0683b214c45f2543cdb8c228d7071` |
-| 专用诊断准备（A观察缺口本地定位中） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 冻结v9与生产不改；读取FINDING-A-OBSERVER-001，仅本地定位条件/采集缺口与最小方案。原始A事件补取前不凭猜测整改，不新增SSH/GPU |
-| 专用诊断执行（存储核查完成，共享小文件补取中） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 207可访问共享R2；STORAGE-CHECK-20260917已冻结，18文件26922bytes一致，清单self `867769c82a57e5e8fb49b432cfef664a858151d23d679f48ff10d71810baf5fa`。新R2-SHARED-EVIDENCE-20260917只补同次A/B状态与日志，不下载权重/训练/清理；211释放仍UNCONFIRMED |
+| 独立验收（共享补充增量复核中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 原R2 C PASS可复用；新输出 `docs/acceptance/FRESH-PROCESS-R2-SHARED-20260917/`。按实际B日志/observer定位最后阶段、SIGTERM与exit-6关系，核查A补证范围；不凭run_v9按exit推导的model_constructed=false作事实 |
+| 专用诊断准备（按实际A事件定位观察条件中） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 前次NO_CODE_CHANGE_YET补充保持冻结；新共享原件已取得，仅本地检查run_task事件/发布参数/task_id/leg条件与driver_rng_expected缺失，确证后才在新副本做最小诊断修复，不改生产/旧v9 |
+| 专用诊断执行（共享证据补取已冻结） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `R2-SHARED-EVIDENCE-20260917/` 252文件38692471bytes协调者一致，清单self `0a6d7c601db17be196c3d457c7a5acbc849e17b9ffde11758a48ac40ae0e284f`。215证据文件约38.5MB，无权重；A退出0、B退出-6，A实际driver观察仍缺，211释放仍UNCONFIRMED |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
 

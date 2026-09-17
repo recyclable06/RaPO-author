@@ -221,3 +221,13 @@ B-valid新进程恢复阶段超时，无Task2更新。执行方观察摘要记�
 独立[R2审查](acceptance/FRESH-PROCESS-V9-R2-20260917/REPORT.md)已完成，协调者核对6文件64823bytes一致，HASHES.json自身SHA256 `940d7c9eb5ae5cd38e9c558c5cbd567632f0683b214c45f2543cdb8c228d7071`。C PASS_C_PRODUCTION，连续四次更新/global steps1–4/exit0及36文件checkpoint内容清单可复用；B仍恢复超时，不接受exit或cleanup。A的[FINDING-A-OBSERVER-001](acceptance/FRESH-PROCESS-V9-R2-20260917/FINDING-A-OBSERVER-001.md)确认观察/采集缺口，实际生产源码有先保存driver/vLLM RNG后发布marker的路径，尚无生产发布缺陷证据。必须补同次A raw events及marker引用状态，不能从其他时点补造RNG。
 
 用户要求的[存储核查](STORAGE_STATUS_20260917.md)发现207可连接且能读取共享R2目录，主JuiceFS72%、conda89%，未见容量/inode耗尽。已派执行者在存储报告冻结后从207只读补取A/B小体积原件到新R2-SHARED-EVIDENCE-20260917；不扫描/复制权重、不启动新训练、不处理211进程。准备者仅本地定位最小观察方案；补取后再判断是否需代码修复或A重跑。共享文件可读不等于211进程已退出，资源释放仍UNCONFIRMED。
+
+准备者本地补充已冻结至14c8 `FRESH-PROCESS-V9-R2-A-OBSERVATION-SUPPLEMENT-20260917/`，协调者8文件18060bytes核对一致，HASHES_AUDIT.json自身SHA256 `b8fe209fdbc580bca1045b9fcf33f568913565fcfd8c8bd0eca652059cf79d9d`。结论NO_CODE_CHANGE_YET：marker及stdout支持实际发布，缺原始事件/marker引用文件时不能判断observer条件是否命中，不修生产、不补造RNG。交付缺失已经确认，但其是否是boundary派生不完整的唯一原因尚未证实，需补取同次原件后判断。补充中的本机C/D盘扫描不属于用户集群核查范围，已要求停止扩大该分支，结果不用于集群因果判断。
+
+### 2026-09-17：共享原件已补回，独立定位实际失败阶段
+
+71a6 `R2-SHARED-EVIDENCE-20260917/` 交付252文件38692471bytes协调者逐项一致，DELIVERY_MANIFEST-SHARED-EVIDENCE.json自身SHA256 `0a6d7c601db17be196c3d457c7a5acbc849e17b9ffde11758a48ac40ae0e284f`；EVIDENCE_INDEX自身 `cc30ab4dce800a08697dea21ae8327a9edce3f4933c4b3bdd828da3307051dc0`，包含215实际证据文件38523445bytes，最大单文件12830694bytes，满足16MiB/64MiB采集预算。通过207只读复制A/B事件、状态和日志，无checkpoint权重或新训练，旧原件不改。
+
+A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实际post-publication driver RNG。准备者现按真实A事件定位条件或采集故障，原生产发布缺陷仍未证实。B补回process-end exit-6、完整保存的stdout/stderr及前后边界清单比较equal=true，Task2更新0；相同边界清单不证明恢复成功。run_v9.py按returncode==0填model_constructed/training_started，故失败结果中的false不可独立证明未构造模型或未进入某个阶段。已交独立新审查 `FRESH-PROCESS-R2-SHARED-20260917/`，按原始日志/事件区分监督SIGTERM、最终exit-6与原始卡点；不预先归因I/O、NCCL或生产代码。
+
+取证中的inventory尾部CRLF导致exit127，八组实际复制exit0，清单与字节校验有效；完整worker-log候选仅列清单，若审查需要则精确补少量文件。共享终态文件可读仍不等于211存活进程/显卡现场已核验，cleanup保持UNCONFIRMED。
