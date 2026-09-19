@@ -239,3 +239,11 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 [B finding](acceptance/FRESH-PROCESS-R2-SHARED-20260917/FINDING-B-ANCHOR-INIT-001.md)确认已完成模型/FSDP/vLLM/persistent-worker初始化。rank0 PID1161595与rank1 PID1162100分别在1789572776.472536/1789572777.2901604进入init_anchor，均无after；run_task、native load/restore与fit事件均0。child于00:17:44.816206 exit-6，supervisor 00:18:33已见退出且child_term_sent=0/child_kill_sent=0；后续Raylet/dashboard SIGTERM在00:18:43–54。此前“restore阶段卡住、监督SIGTERM终止child”来自执行摘要，现被更强原件纠正，旧摘要保留但不再作为当前事实。aggregate stderr无owner的SIGTERM不足以归因，内部abort原因仍未知。
 
 [A finding](acceptance/FRESH-PROCESS-R2-SHARED-20260917/FINDING-A-DRIVER-RNG-002.md)确认marker引用driver/EMA/vLLM原件齐且hash匹配，但81事件文件435记录中实际run_task wrapper调用0，post-publication driver RNG证据未形成。准备任务本地继续定位Ray包装/实际调用路径，不以marker替代独立观察、不改生产。已续派执行任务只读经207补取两个B worker准确对应的stdout/stderr，保存枚举与源身份、预算16MiB/64MiB，不重跑或整树复制。C已接受结果不重跑，211现场资源释放仍UNCONFIRMED。
+
+### 2026-09-19：A观察器装饰时序delta交独立复核
+
+准备者交付14c8 `FRESH-PROCESS-V9-R2-A-OBSERVER-DELTA-20260919/`，协调者核对7文件53631bytes一致，HASHES_DELTA.json自身SHA256 `1d6106911223b061e93e1219509c51b8600458e11bd10f479240d4bf744f4cbe`。新child_observer_v6.py SHA256 `e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1`；生产、冻结v9与boundary_evidence未改。
+
+准备者定位为Ray装饰时序：生产模块顶层先创建ActorClass，旧loader在模块执行后才包装修改类，installed=true不能保证dispatch表实际经过wrapper。新副本在ray.remote装饰前包装raw class，返回ActorClass后另有兜底。根已核diff并交独立 `FRESH-PROCESS-A-OBSERVER-DELTA-20260919/` 审查其实际Ray语义和影响范围。
+
+现有CPU脚本用FakeActorClass/fake_remote，事件和RNG采集亦stub，只能作局部分支检查，不构成真实Ray dispatch或实际RNG门通过；不采纳准备报告“无需重跑观察器测试”的默认建议。独立任务须明确最小真实零GPU验证，以及新observer如何绑定新的部署/清单/入口身份，不能覆盖冻结v9后沿用旧清单。若本地环境不具备真实Ray则先提交具体方案，由对应角色使用既有环境完成，不安装新依赖、不直接跳到A GPU重跑。C通过范围继续复用，B证据定位另行推进。

@@ -18,8 +18,8 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（共享补充增量复核已完成） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `FRESH-PROCESS-R2-SHARED-20260917/` 8文件63824bytes协调者一致，清单self `94af87385e7319b389c03ecb143bd25bdafeaf9a0df5a3ae3a59febc3c3169cb`。B停在init_anchor无after，未观测restore/fit；exit-6不等于监督SIGTERM。A状态原件齐但run_task观察0，仍未闭合 |
-| 专用诊断准备（按实际A事件定位观察条件中） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 前次NO_CODE_CHANGE_YET补充保持冻结；新共享原件已取得，仅本地检查run_task事件/发布参数/task_id/leg条件与driver_rng_expected缺失，确证后才在新副本做最小诊断修复，不改生产/旧v9 |
+| 独立验收（A观察器delta复核中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新输出 `FRESH-PROCESS-A-OBSERVER-DELTA-20260919/`，审真实Ray装饰/dispatch语义、最小作用范围、actual RNG与部署身份接线；模拟Ray测试不作为真实门通过，无新GPU。共享复核旧结论保持冻结 |
+| 专用诊断准备（A观察器delta已冻结） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 14c8 `FRESH-PROCESS-V9-R2-A-OBSERVER-DELTA-20260919/` 7文件53631bytes协调者一致，清单self `1d6106911223b061e93e1219509c51b8600458e11bd10f479240d4bf744f4cbe`；新child sha `e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1`。在Ray装饰前包装raw class，生产/旧包不改；待独立语义和真实执行验证 |
 | 专用诊断执行（两个B worker日志补取中） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 原共享补充冻结不改；新 `R2-B-WORKER-EVIDENCE-20260919/` 仅经207枚举并复制PID1161595/1162100对应私有Ray stdout/stderr，16MiB单文件/64MiB总量，不复制权重/整日志树，不训练/清理。211释放仍UNCONFIRMED |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
