@@ -19,6 +19,8 @@ v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptan
 
 ## 后续门槛
 
+A观察器最小修复已交独立验收，结论PARTIAL_NOT_READY：现有测试模拟了Ray，且旧启动路径仍会选旧观察器。用户继续推进后，已安排新runtime接线和207既有环境真实零GPU验证，限制3CPU/600秒，不启动模型或训练；通过后才评估A-only两步重跑。B内部abort原因仍未定，不盲目重跑。
+
 2026-09-17 10:29的单次有界SSH收尾检查仍超时（exit255），没有建立远端会话或执行清理；211上本次Ray/launcher/child及GPU最终释放状态为UNCONFIRMED。需要先恢复节点访问，才能核验自身残留和补取日志；本地独立审查继续，不反复轮询或启动新训练。
 
 旧v9运行的[独立超时复核](acceptance/FRESH-PROCESS-V9-GPU-TIMEOUT-20260916/REPORT.md)已确认Task1两次更新；留存日志未见明确OOM或运行异常，检查点保存约4.4分钟。远端checkpoint目前只有文件名称/大小清单，没有内容完整性验收；新运行需补内容hash与完整结束日志。旧交付JSON格式缺陷已登记，原始证据保持不变。

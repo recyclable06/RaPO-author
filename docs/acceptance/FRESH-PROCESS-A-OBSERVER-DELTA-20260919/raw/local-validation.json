@@ -1,0 +1,23 @@
+{
+  "schema": "fresh-process-a-observer-delta-local-validation-v1",
+  "cpu_fake_regression": {
+    "status": "PASS_LOCAL_ONLY",
+    "stdout": "CPU observer regression: PASS",
+    "details": {
+      "pre_remote_patch": [true],
+      "after_events": 4,
+      "fake_actor_class": true,
+      "capture_driver_rng": "stubbed"
+    }
+  },
+  "python_compile": "PASS",
+  "ray_availability": {
+    "C:/Program Files/Python313/python.exe": null,
+    "C:/msys64/ucrt64/bin/python.exe": null,
+    "conda": "unavailable",
+    "required_project_version": "ray==2.46.0"
+  },
+  "real_ray_probe": "NOT_RUN_BLOCKED_NO_LOCAL_RAY",
+  "interpretation": "局部 fake/CPU 检查不能替代真实 Ray dispatch、序列化、worker bootstrap 或 actual RNG after-event。"
+}
+

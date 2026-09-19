@@ -1,0 +1,16 @@
+{
+  "schema": "fresh-process-a-observer-delta-independent-review-hashes-v1",
+  "self_excluded": true,
+  "files": {
+    "FINDING-DELTA-REAL-RAY-002.md": "0e1588a057c13e1915ccd1d5609fb904fe575dc7f1880cc5d57f5dbb100b5180",
+    "FINDING-DELTA-SCOPE-003.md": "ef39d1db1f74b67e0822f30227c08f711d39bbe1f4eb8ce9da628a59957a8d7f",
+    "FINDING-DELTA-WIRING-001.md": "021e46f45cc6573bb6340da0ee73822a9bf4a611bd593adccbc1a30d78b2d14d",
+    "PROGRESS.md": "df3d1a3a6a7feb087068e0c51a80004bd6158b65b22134986d0dde782bdbe6be",
+    "REPORT.md": "c3e646485b15753c3cfa8defc58f685423cd3b67e7f03db70c3330594896f4fb",
+    "RUN_METADATA.json": "b0a7966fd440788b5a33627e66d18d38a27ed636fece8ca9f81126e680590c64",
+    "VERDICT.json": "8a44bb67dad08699f99b4c5b40f536443d43ebe418c8666433e5788db159e048",
+    "ZERO_GPU_REAL_RAY_PLAN.md": "87c46eb039deb46faa07b3b823c6805f3b5193aa0b3b4262fe21740788d282ff",
+    "raw/local-validation.json": "5de8e1d4d478fc082ef2e7ab7ac47a57f6d6093dd3d7cb9ae5aacd27305b558c",
+    "zero_gpu_real_ray_probe.py": "ac9dbcdba4d31765cd8079cd56965e8b9de01587f7634b7e1e3687fefab77d9a"
+  }
+}

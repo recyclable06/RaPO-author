@@ -18,8 +18,8 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（A观察器delta复核中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新输出 `FRESH-PROCESS-A-OBSERVER-DELTA-20260919/`，审真实Ray装饰/dispatch语义、最小作用范围、actual RNG与部署身份接线；模拟Ray测试不作为真实门通过，无新GPU。共享复核旧结论保持冻结 |
-| 专用诊断准备（A观察器delta已冻结） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 14c8 `FRESH-PROCESS-V9-R2-A-OBSERVER-DELTA-20260919/` 7文件53631bytes协调者一致，清单self `1d6106911223b061e93e1219509c51b8600458e11bd10f479240d4bf744f4cbe`；新child sha `e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1`。在Ray装饰前包装raw class，生产/旧包不改；待独立语义和真实执行验证 |
+| 独立验收（A delta未就绪；B日志搜索窄复核中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `FRESH-PROCESS-A-OBSERVER-DELTA-20260919/` 为PARTIAL_NOT_READY，10文件27130bytes协调者一致，清单self `583dc6e07e68f0fc213946e274643bba257e76fd540c9250def2e4b7a6e98380`；真实Ray与runtime接线缺失。继续B限定搜索本地复核，不新增远端操作 |
+| 专用诊断准备（新runtime接线与真实零GPU验证进行中） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 原A delta冻结不改；新独立candidate绑定entry/bootstrap/observer/support/manifest和导入优先级。207既有Ray2.46.0最多3CPU/0GPU/600秒+120秒收尾，真实未初始化runner异常验证dispatch，不调用init/model/训练；修正参考probe恒FAIL等问题后独立验收 |
 | 专用诊断执行（B限定日志搜索已结束，未找到） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `R2-B-WORKER-EVIDENCE-20260919/` 20文件13695bytes协调者一致，清单self `4a0783da323cec6858fc8d3729db4909a1a845607d3182dc321b1461d9a902e6`。207连接成功，旧私有session内三个限定搜索无匹配，复制0 worker文件；不继续搜索/训练/清理。B内部原因未知，211释放仍UNCONFIRMED |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。

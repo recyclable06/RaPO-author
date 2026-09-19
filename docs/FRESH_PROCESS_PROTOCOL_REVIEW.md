@@ -253,3 +253,11 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 71a6 `R2-B-WORKER-EVIDENCE-20260919/` 已冻结，协调者逐项核对20文件13695bytes一致，DELIVERY_MANIFEST-R2-B-WORKER-EVIDENCE-20260919.json自身SHA256 `4a0783da323cec6858fc8d3729db4909a1a845607d3182dc321b1461d9a902e6`。207于11:28:59严格hostkey连接成功；针对本次私有Ray session，按PID1161595/1162100文件名、日志内容以及session根文件名做三次限定查询，stdout/stderr均空，记录exit0，无worker文件复制。
 
 协调者读到查询使用pipeline且未启用pipefail，因此exit0不独立证明每个find/grep成功；结论仅为本次限定搜索未找到，不宣称日志从未存在或完整目录已证明为空。已交独立任务在A验收后按既有inventory窄查是否有具体遗漏/轮转/链接线索，无需新增远端搜索；没有明确遗漏则保留内部abort未解，不盲目重跑。已通知执行任务结束本分支。原B阶段勘误有效，211现场资源释放仍UNCONFIRMED。
+
+### 用户继续推进：A delta未就绪，补新runtime与真实零GPU验证
+
+独立[A delta验收](acceptance/FRESH-PROCESS-A-OBSERVER-DELTA-20260919/REPORT.md)为PARTIAL_NOT_READY；协调者核对10文件27130bytes及全部hash一致，HASHES.json自身SHA256 `583dc6e07e68f0fc213946e274643bba257e76fd540c9250def2e4b7a6e98380`。静态方向合理，但真实Ray dispatch/序列化/重复包装/非目标透传未验证；原run_v9 HERE与runtime_entry仍优先选旧观察器，现有delta不是可运行的新身份。
+
+用户明确继续后，已派准备者新独立诊断runtime candidate：绑定完整entry/bootstrap/sitecustomize/event_writer/observer/支持文件及manifest，执行前核验导入路径与hash，生产和科学配置不改。使用207既有Ray2.46.0、CUDA_VISIBLE_DEVICES空、num_gpus0、最多3CPU，真实PersistentRunner仅构造并调用run_task至未初始化trainer的预期异常，不调用init/model/dataloader/fit；限600秒加120秒本次资源收尾，不全局清理、不接触211残留。
+
+独立验收附带的零GPU参考脚本未执行，根发现其conditions将两个固定false与正向条件一起all()导致恒FAIL，并且driver/实际runner双身份、版本/期望hash、精确异常和ray.get时限检查不足。旧参考原件保持冻结，准备者在新副本修正后执行真实无mock验证，保存全部事件和释放证据；实际post-publication RNG仍必须在后续A-only两步训练验证，零GPU不替代该门。B限定搜索的窄本地复核并行，C不重跑，不新增GPU训练。

@@ -1,0 +1,39 @@
+{
+  "schema": "fresh-process-a-observer-delta-independent-review-v1",
+  "reviewed_at": "2026-09-19T00:00:00+08:00",
+  "role": "independent_read_only_acceptance",
+  "source_delta_root": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/FRESH-PROCESS-V9-R2-A-OBSERVER-DELTA-20260919",
+  "source_delta_manifest": {
+    "file_count": 7,
+    "total_bytes": 53631,
+    "child_observer_sha256": "e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1"
+  },
+  "frozen_v9": {
+    "root": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v9",
+    "package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+    "child_observer_sha256": "a7e239bca8bea99dd01e07c842efc9d0a45126cc4b43689a798937e67b9c43e1",
+    "run_v9_sha256": "7dd48baf12122ee51f1d24d0a3bfb0b81a59722518c43dd69789b2ac54e11d56",
+    "inherited_support": {
+      "child_bootstrap_v6.py": "73c9ffe20467181a43e1c3f2523fb2699b19614dc6db73c9fdd0103abb9c8dbe",
+      "event_writer_v6.py": "c3800b2db60bbfa197659e803cb72e09718cf699d1342d146f134ef76267eb83",
+      "runtime_entry_v6.py": "f5636c6b126b2f9a8152d192599fb0d5c6f48bcccb5c230eea6b6c6b63a5485f",
+      "sitecustomize.py": "886e2055115e9ca72ce6edad94343cf8f6360e93cff3fa8d7672dd8b0ed953fd"
+    }
+  },
+  "production_source": {
+    "path": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author/examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+    "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  },
+  "checks": {
+    "delta_manifest": "PASS",
+    "static_diff_review": "PASS_WITH_SCOPE_CAVEAT",
+    "cpu_fake_regression": "PASS_LOCAL_ONLY",
+    "real_ray_zero_gpu": "BLOCKED_RAY_UNAVAILABLE",
+    "runtime_identity_binding": "OPEN",
+    "a_gate": "NOT_READY"
+  },
+  "production_modified": false,
+  "frozen_v9_modified": false,
+  "ssh_gpu_model_training_performed": false,
+  "overall": "PARTIAL_NOT_READY"
+}
