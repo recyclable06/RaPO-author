@@ -277,3 +277,11 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 已交独立任务在新 `FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/` 验证driver及真实Runner身份、实际dispatch、非目标透传、重复安装、退出证据、支持文件差异、生产启动链及manifest检查；特别区分零GPUmanifest和后续两GPU A身份。实际post-publication driver RNG仍须A两步验证，零GPUPASS不能替代。准备过程中失败尝试按RUN_METADATA保存，不改写为首次成功。
 
 用户再次要求继续后，专用执行任务同步做211/207一次有界只读预检，输出 `A-ONLY-RESOURCE-PREFLIGHT-20260919/`。只核当前SSH、GPU UUID/占用、容量/inode及本次旧进程身份，211失败不循环；不启Ray/模型/训练，不kill或删旧资产。A尚未调度，独立就绪与现场资源都满足后再冻结具体两步运行。C不重跑，B日志扩搜结束，B内部abort与211释放仍保留未解状态。
+
+### 2026-09-19 22:18：211恢复可访问，空闲卡和空间现场已核实
+
+71a6 `docs/diagnostics/A-ONLY-RESOURCE-PREFLIGHT-20260919/` 已冻结；协调者逐项核对12文件13418bytes一致，HASHES.json自身SHA256 `7cfb64dc7ff716ca9c1699ebc357240e5aa9f66d371721e3a13fc31a3f0b8b13`。211/207各一次严格hostkey连接均exit0，remote采样22:18:44+08:00。211原件列出0–6共7张RTX3090，各1MiB/0%，compute-app query为空；优先4/5 UUID `GPU-4bd5a062-f6e3-e8bf-83d1-a44675314850` / `GPU-ad2d5d4b-c278-e728-c742-6913c7a3437d`，不是固定只能用这两张。207备选3/4各4MiB，其他部分卡有活动负载，实际启动前重新检查。
+
+共享/mnt/conda容量使用86%、inode78%，剩余1906862348个1KiB块（约1.78TiB），211本地盘剩余298718968个1KiB块（约285GiB）；未见本次所查文件系统耗尽，不推断先前SSH故障原因。三个旧PID1115245/1153372/1152533与两个私有路径cmd查询没有匹配，后者pipeline未pipefail；不等于所有Ray/worker残留均已核查。旧目录保留与当前GPU空闲是不同事实，不再沿用“211不可达、GPU完全未知”的当前摘要；未清理任何资产。
+
+预检建议的长Ray临时路径不直接采用：前次零GPU出现过AF_UNIX长度问题，已告知执行者后续选用户专属短新路径（例如/tmp/zlf-a19r1），先核不存在/归属。A执行仍待runtime独立结论和具体入口身份，沿用1800秒主预算及最多120秒收尾，不自动加时，不重复已接受C。
