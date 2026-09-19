@@ -1,0 +1,90 @@
+{
+  "schema": "fresh-process-a-launch-guard-r2-independent-verdict-v1",
+  "reviewed_at": "2026-09-19",
+  "overall": "PASS_R2_TIMEOUT_POLICY_NARROW_REVIEW_CONTRACT_ONLY_NOT_A_RUN",
+  "launch_guard_ready_for_future_bounded_a_only": false,
+  "timeout_policy": "INDEPENDENTLY_CORROBORATED_RUNTIME_HELPER",
+  "private_ray_lifecycle": "CONTRACT_ONLY_PENDING_REAL_SUPERVISOR_LIFECYCLE",
+  "actual_a_run": false,
+  "actual_post_publication_driver_rng_expected": false,
+  "independent_acceptance_claim": false,
+  "findings": {
+    "FINDING-A-RUNTIME-MANIFEST-GUARD-001": {
+      "status": "INHERITED_R1_RESOLUTION",
+      "summary": "R2 retains the R1 pre-Popen identity guard; this review did not repeat the prior observer Ray dispatch scope."
+    },
+    "FINDING-A-TIMEOUT-BUDGET-003": {
+      "status": "INDEPENDENTLY_CORROBORATED_WITH_FIXTURE_STABILITY_LIMITATION",
+      "summary": "The runtime helper uses separate monotonic 1800-second production and bounded 120-second cleanup budgets, including the second TimeoutExpired path."
+    },
+    "FINDING-A-PRIVATE-RAY-LIFECYCLE-004": {
+      "status": "CONTRACT_BOUND_PENDING_REAL_SUPERVISOR_LIFECYCLE",
+      "summary": "The record guard checks declared fields but accepts a forged record with nonexistent temp root and fictional PID/start/owner; no executable supervisor or teardown was supplied."
+    },
+    "FINDING-A-TWO-GPU-IDENTITY-002": {
+      "status": "PENDING_FRESH_RESOURCE_AND_A_RUN",
+      "summary": "No GPU preflight or two-worker production execution was performed in this preparation review."
+    }
+  },
+  "evidence": {
+    "candidate_hashes_sha256": "593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7",
+    "candidate_manifest_sha256": "58b2cf82328120c9f4b45d1229684b03940d3f7aef9b36514d25137bc9e0329a",
+    "guard_support_sha256": "3bc0023bbd67c915c198722f331e78a8a79b6cde79792b1a9dd0880494412dcc",
+    "run_v9_sha256": "db64938bb5ae3208187c77295710d8856a8dd173ab0dae3af1337eb178d6beff",
+    "contract_sha256": "4d8a088bec4a4ebaca2466b44a2b693a98d2545bcfd8ed8baedc8486b7d392f6",
+    "candidate_declared_file_count": 15,
+    "candidate_declared_total_bytes": 94630,
+    "communicate_calls_with_timeout": true,
+    "production_timeout_seconds": 1800,
+    "cleanup_grace_seconds": 120,
+    "second_timeout_has_no_third_wait": true,
+    "private_record_forged_probe_accepted": true,
+    "bundled_full_repro_observations": [
+      "first independent run: assertion failure in timeout-line count",
+      "second independent run: PASS",
+      "probe run: PASS"
+    ],
+    "remote_r2_created": false,
+    "ray_started": false,
+    "model_loaded": false,
+    "training_started": false
+  },
+  "contract_observations": {
+    "recipe_and_paths_match_frozen_v9": true,
+    "r1_r2_recipe_boundary_identity_unchanged": true,
+    "manifest_example_output_is_stale": true,
+    "manifest_example_output": "/mnt/conda/zhenglifeng/t/a19r1",
+    "command_output": "/mnt/conda/zhenglifeng/t/a19r2",
+    "manifest_example_ray_tmp": "/tmp/zlf-a19r1",
+    "command_ray_tmp": "/tmp/zlf-a19r2-ray"
+  },
+  "scope": {
+    "read_only": true,
+    "new_ssh": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_invoked": false,
+    "production_modified": false,
+    "frozen_v9_modified": false,
+    "parent_observer_modified": false,
+    "r1_candidate_modified": false,
+    "a_output_created": false,
+    "ray_temp_created": false
+  },
+  "next_required": [
+    "Provide and independently inspect a real one-shot private-Ray supervisor lifecycle and record for FINDING-A-PRIVATE-RAY-LIFECYCLE-004.",
+    "Normalize the R2 manifest example output/temp paths before the future A command is frozen.",
+    "After fresh PCI_BUS_ID resource recheck and real supervisor evidence, run the bounded A-only sequence and derive actual post-publication driver_rng_expected."
+  ],
+  "artifacts": {
+    "report": "REPORT.md",
+    "verdict": "VERDICT.json",
+    "progress": "PROGRESS.md",
+    "run_metadata": "RUN_METADATA.json",
+    "hashes": "HASHES.json",
+    "probe": "review_probe.py",
+    "probe_output": "raw/independent_review.json",
+    "finding": "FINDING-A-PRIVATE-RAY-LIFECYCLE-004.md",
+    "note": "TIMEOUT-FIXTURE-STABILITY-NOTE.md"
+  }
+}

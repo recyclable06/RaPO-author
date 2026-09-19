@@ -313,3 +313,11 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 14c8 `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2/` 协调者核对15文件94630bytes及全部hash一致，HASHES_LAUNCH_GUARD自身SHA256 `593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7`；LAUNCH_GUARD_MANIFEST自身 `58b2cf82328120c9f4b45d1229684b03940d3f7aef9b36514d25137bc9e0329a`，guard_support `3bc0023bbd67c915c198722f331e78a8a79b6cde79792b1a9dd0880494412dcc`，run_v9 `db64938bb5ae3208187c77295710d8856a8dd173ab0dae3af1337eb178d6beff`。准备者标准库5负例及真实轻量子进程normal/timeout/inherited-pipe测试通过；本版没有远端Ray/GPU/模型/训练运行，R1远端Python证据只作lineage。
 
 根已派独立 `FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/` 核003/004有关diff。R2的PRIVATE_RAY_SUPERVISOR_CONTRACT明确仅schema/example，实际write/verify record与teardown仍是注释，尚不能直接执行A。已同时派准备者保持R2冻结另补具体一次性supervisor：创建私有head、核实际UID/PID-start/session/temp/address、原子记录、调用冻结R2、在正常/失败/timeout/finally核身份停止本次进程。Ray与child收尾共享总计最多120秒，不在两层各追加；禁止共享Ray、全局stop/pkill或删除旧资产。当前仅实现和轻量测试，需真实零GPURay检查时先冻结具体120秒主预算加最多120秒总收尾的命令，再交专用执行角色；不提前启动A。独立者并行审已有R2，其后只补新supervisor增量。
+
+### R2超时策略独立通过，Ray记录仍须live核验
+
+独立[R2窄复核](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/REPORT.md)8文件32157bytes协调者一致，HASHES.json自身SHA256 `4185f3fef432dcc016b67228c5bc1869eb0badd78f2f0ff80d14bd2a5d425c4f`。003 runtime helper通过：monotonic 1800/120、两个communicate均finite timeout、二次TimeoutExpired后不再等待、本次child新session及限定pid/group信号；正常/超时/继承管道路径无重复输出。A配方/边界/生产身份保持一致，已有通过范围复用。
+
+[004](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/FINDING-A-PRIVATE-RAY-LIFECYCLE-004.md)保持CONTRACT_BOUND_PENDING_REAL_SUPERVISOR_LIFECYCLE：只有JSON字段检查，独立伪造不存在的temp_root、PID999999999、虚构start及owner仍accepted。已传准备者要求实际live身份及目录核验，并覆盖可能脱离head进程组的本次Ray后代，不能仅凭kill head组声称资源已释放。具体supervisor继续补，不扩大为生产代码问题。
+
+[测试稳定性note](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/TIMEOUT-FIXTURE-STABILITY-NOTE.md)记录50ms fixture五次3通过/2失败，失败是exact timeout-line为0，未见重复；不足以把首次自测PASS当成稳定复现。新补充采用ready握手后计时，保留exact-once断言，不采用削弱断言的修法；旧R2不改。实际命令还需统一a19r1/a19r2历史路径例子，以新冻结短路径为准。无新增SSH/Ray/GPU/模型/训练，A gate仍OPEN。

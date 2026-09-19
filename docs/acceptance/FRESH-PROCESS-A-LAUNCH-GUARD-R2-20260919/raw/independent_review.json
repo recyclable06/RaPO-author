@@ -1,0 +1,82 @@
+{
+  "schema": "fresh-process-a-launch-guard-r2-independent-review-raw-v1",
+  "reviewed_at": "2026-09-19",
+  "probe": "review_probe.py",
+  "hash_check": {
+    "declared_file_count": 15,
+    "declared_total_bytes": 94630,
+    "actual_total_bytes": 94630,
+    "bad_files": [],
+    "hashes_self_sha256": "593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7"
+  },
+  "delta": {
+    "r1_file_count": 15,
+    "r2_file_count": 16,
+    "r2_only_files": ["PRIVATE_RAY_SUPERVISOR_CONTRACT.md"],
+    "r1_raw_parent_v9_source_untouched": true
+  },
+  "timeout_static": {
+    "communicate_calls": [
+      {"line": 193, "has_timeout": true},
+      {"line": 213, "has_timeout": true}
+    ],
+    "all_communicate_calls_bounded": true,
+    "monotonic_used": true,
+    "process_group_started": true,
+    "posix_group_kill_used": true,
+    "production_timeout_seconds": 1800,
+    "cleanup_grace_seconds": 120,
+    "second_timeout_handler_present": true
+  },
+  "second_timeout_probe": {
+    "finite_communicate_timeouts": [0.0999978, 0.1999991],
+    "kill_calls": 2,
+    "no_third_communicate": true,
+    "stdout_count": 1,
+    "stderr_count": 1,
+    "cleanup_timed_out": true
+  },
+  "timeout_fixture_evidence": {
+    "candidate_claim": "PASS_BOUNDED_TIMEOUT_CHILD_TESTS",
+    "independent_full_runs": ["FAIL_exact_stdout_assertion", "PASS", "PASS"],
+    "five_assertion_runs": {"pass": 3, "fail": 2},
+    "direct_no_assertion_runs": {"observed_counts": [0, 1], "duplicate_count_observed": false},
+    "interpretation": "runtime helper bounded; bundled 50ms stdout assertion is timing-sensitive"
+  },
+  "private_record_validator_probe": {
+    "accepted": true,
+    "head_pid": 999999999,
+    "head_process_start": "not-a-real-process-start",
+    "owner": "forged-owner",
+    "temp_root_exists": false,
+    "proves_only_json_field_shape_and_address_match": true
+  },
+  "supervisor_contract": {
+    "contract_marked_not_executed": true,
+    "executable_supervisor_present": false,
+    "record_writer_present": false,
+    "teardown_present": false
+  },
+  "identity_and_recipe": {
+    "r1_r2_recipe_boundary_identity_unchanged": true,
+    "recipe_matches_frozen_v9": true,
+    "a_argv_matches_frozen_v9_after_launcher_path_normalization": true,
+    "parent_manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "frozen_v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "production_source_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "stale_manifest_examples": {
+      "output": ["/mnt/conda/zhenglifeng/t/a19r1", "/mnt/conda/zhenglifeng/t/a19r2"],
+      "ray_tmp": ["/tmp/zlf-a19r1", "/tmp/zlf-a19r2-ray"]
+    }
+  },
+  "verdict": "PASS_R2_TIMEOUT_POLICY_NARROW_REVIEW_CONTRACT_ONLY_NOT_A_RUN",
+  "open_scope": ["FINDING-A-PRIVATE-RAY-LIFECYCLE-004", "timeout fixture evidence stability"],
+  "scope": {
+    "read_only": true,
+    "new_ssh": false,
+    "ray_started": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_invoked": false
+  }
+}

@@ -18,7 +18,7 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（R2预算与Ray记录增量进行中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新 `FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/` 只验003/004有关diff、monotonic预算及记录声明边界。根已指出R2尚无可运行supervisor，准备者补实现时先验其余部分，不重复已通过guard/真实dispatch |
+| 独立验收（R2已接收，待具体supervisor） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/` 8文件32157bytes根核对，self `4185f3fef432dcc016b67228c5bc1869eb0badd78f2f0ff80d14bd2a5d425c4f`。003通过；004仅JSON约束，伪造PID/owner亦通过，待实际supervisor。50ms fixture偶发失败记测试note，不升级生产finding |
 | 专用诊断准备（R2冻结，补实际supervisor） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2/` 15文件94630bytes根核对，self `593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7`。另存具体一次性Ray启动/核验记录/调用R2/有界收尾实现；当前仅标准库测试，不启动Ray/GPU，旧R2不改 |
 | 专用诊断执行（资源预检完成，待A单独调度） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `A-ONLY-RESOURCE-PREFLIGHT-20260919/` 12文件13418bytes协调者一致，清单self `7cfb64dc7ff716ca9c1699ebc357240e5aa9f66d371721e3a13fc31a3f0b8b13`。22:18:44两台SSH成功，211空闲3090及空间可用。旧3PID/私有路径查询未匹配，非完整残留验收；无模型/训练/清理，待新runtime独立结论 |
 

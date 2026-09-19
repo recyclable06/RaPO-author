@@ -1,0 +1,47 @@
+{
+  "schema": "fresh-process-a-launch-guard-r2-independent-review-hashes-v1",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "FINDING-A-PRIVATE-RAY-LIFECYCLE-004.md",
+      "bytes": 1316,
+      "sha256": "d194892ce6abc9be65e45879a97c624fddb5738960bc6974dab352e303d0af49"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 787,
+      "sha256": "e9b90bf6feae29fd86ef2dba37904e2e1099096c92f83204c6b835a7ad6d2d4c"
+    },
+    {
+      "path": "raw/independent_review.json",
+      "bytes": 3058,
+      "sha256": "137fe9ee7190a34725ba318c5f2ac636b87074a8e6fcd0e9d994d13f40d85058"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 4088,
+      "sha256": "c46f952f4f955bdfb751389abcfae1384ad636fde9755a194b8fcad2adf15265"
+    },
+    {
+      "path": "review_probe.py",
+      "bytes": 14712,
+      "sha256": "a512bc8f7ab3da449fef1e5c51ed39e43f2fcc2360bb29f9468ff255d0e08a60"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 3088,
+      "sha256": "7ffdc73a0a786f6edb1982e4c3978521d0c5be5a99b06b870d0c0b8bb7a6fb1a"
+    },
+    {
+      "path": "TIMEOUT-FIXTURE-STABILITY-NOTE.md",
+      "bytes": 905,
+      "sha256": "78b29302e53cd36f4f4d22b8854f7177a6b17a34138f07e0046f483b608969f6"
+    },
+    {
+      "path": "VERDICT.json",
+      "bytes": 4203,
+      "sha256": "2a6dd67c6fe256e72eaff2c8ecd8617d7994efcdcf1f93fd1616bd9a19f7d48a"
+    }
+  ]
+}

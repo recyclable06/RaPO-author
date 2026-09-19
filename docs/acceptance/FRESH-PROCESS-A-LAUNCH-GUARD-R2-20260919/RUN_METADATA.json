@@ -1,0 +1,60 @@
+{
+  "schema": "fresh-process-a-launch-guard-r2-independent-review-metadata-v1",
+  "reviewed_at": "2026-09-19",
+  "workspace": "C:/Users/Administrator/Desktop/RaPO-author",
+  "role": "independent_acceptance_review",
+  "source_r1": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919",
+  "source_r2": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2",
+  "source_parent_observer": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-CANDIDATE-20260919",
+  "source_frozen_v9": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v9",
+  "source_identities": {
+    "r2_hashes_sha256": "593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7",
+    "r2_manifest_sha256": "58b2cf82328120c9f4b45d1229684b03940d3f7aef9b36514d25137bc9e0329a",
+    "guard_support_sha256": "3bc0023bbd67c915c198722f331e78a8a79b6cde79792b1a9dd0880494412dcc",
+    "run_v9_sha256": "db64938bb5ae3208187c77295710d8856a8dd173ab0dae3af1337eb178d6beff",
+    "a_only_contract_sha256": "4d8a088bec4a4ebaca2466b44a2b693a98d2545bcfd8ed8baedc8486b7d392f6",
+    "parent_manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "frozen_v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "production_source_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  },
+  "method": {
+    "probe": "review_probe.py",
+    "probe_output": "raw/independent_review.json",
+    "read_only": true,
+    "new_ssh": false,
+    "gpu": false,
+    "model": false,
+    "training": false,
+    "installation": false,
+    "checks": [
+      "R2 15-file hash and byte-count recomputation",
+      "R1-to-R2 common-file and new-file delta check",
+      "AST review of all communicate calls and process-group setup",
+      "independent lightweight child normal/timeout/inherited-pipe checks",
+      "forced second TimeoutExpired path with finite timeouts",
+      "forged private-Ray record validator probe",
+      "frozen-v9 recipe/path/A-argv comparison"
+    ]
+  },
+  "observations": {
+    "candidate_test_results_claim": "PASS_BOUNDED_TIMEOUT_CHILD_TESTS",
+    "independent_timeout_fixture_stability": "3_of_5_assertion_runs_passed; 2_failed_on_exact_stdout_line_assertion",
+    "direct_timeout_output": "0_or_1_occurrences_in_repeated_runs; no_duplicate_occurrence_observed",
+    "supervisor_contract_executed": false,
+    "supervisor_record_writer_present": false,
+    "supervisor_teardown_present": false,
+    "forged_record_validator_accepted": true
+  },
+  "verdict": "PASS_R2_TIMEOUT_POLICY_NARROW_REVIEW_CONTRACT_ONLY_NOT_A_RUN",
+  "writes": [
+    "REPORT.md",
+    "FINDING-A-PRIVATE-RAY-LIFECYCLE-004.md",
+    "TIMEOUT-FIXTURE-STABILITY-NOTE.md",
+    "VERDICT.json",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "HASHES.json",
+    "review_probe.py",
+    "raw/independent_review.json"
+  ]
+}
