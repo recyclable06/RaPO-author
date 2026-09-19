@@ -1,0 +1,42 @@
+{
+  "schema": "fresh-process-r2-b-worker-evidence-hashes-v1",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "FINDING-B-WORKER-LOG-LIMITATION-001.md",
+      "bytes": 1435,
+      "sha256": "5c95f86d3216fce819435b64bc9ff3c3fc48d79fc6acecfa0cae194bcbd19d08"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 706,
+      "sha256": "5501abb214ed7e62fea8c29edad016327b4b4bc8f8299dd4a0668ebe3b777368"
+    },
+    {
+      "path": "raw/review_probe.stdout.json",
+      "bytes": 5856,
+      "sha256": "cfcaa88fed13844c73fdea3c6183467c885463071341e2307aa60262651f3a38"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 4311,
+      "sha256": "dbbbf67261eba52039ecb027fafb19853f8e3f770c1e818686e0e2ff5e67a0d3"
+    },
+    {
+      "path": "review_probe.py",
+      "bytes": 10392,
+      "sha256": "66485bc5a4297d768c191d9acb1fdef2a5f24414515d3e0a96c82fada7f885eb"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 1628,
+      "sha256": "4124fef69bef160766ee64c400f3d09a2d7363520ff95362d42c90e3f6b2d901"
+    },
+    {
+      "path": "VERDICT.json",
+      "bytes": 2286,
+      "sha256": "25a2bc91775d64a0675e52c70caa733572f1845d68eca92eff39f0e8b39a4577"
+    }
+  ]
+}

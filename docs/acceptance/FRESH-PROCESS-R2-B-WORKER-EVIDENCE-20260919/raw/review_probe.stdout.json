@@ -1,0 +1,111 @@
+{
+  "correlation_summary": {
+    "content_pid_matches_in_session_out_err_log_files": [],
+    "copied": false,
+    "exact_stdout_stderr_paths_found": 0,
+    "filename_pid_matches_in_logs_root": [],
+    "filename_pid_matches_in_session_root": [],
+    "path_size_mtime_records": [],
+    "requested_pids": [
+      1161595,
+      1162100
+    ],
+    "status": "NO_MATCHING_WORKER_STDOUT_STDERR_FOUND"
+  },
+  "existing_copied_ray_logs": {
+    "file_count": 13,
+    "target_pid_content_hits": {}
+  },
+  "finding": "NO_CONCRETE_WORKER_LOG_PATH_OR_ROTATION_SYMLINK_CLUE_FOUND_IN_LIMITED_LOCAL_EVIDENCE; B_INTERNAL_ABORT_CAUSE_NOT_RECOVERED",
+  "new_limited_searches": {
+    "all_recorded_exit_zero": true,
+    "all_stderr_empty": true,
+    "all_stdout_empty": true,
+    "interpretation": "限定文件名/内容搜索没有返回目标 PID 路径或内容；exit=0 只记录了外层命令结果，不能独立证明 find/grep/xargs 每一段成功，也不能证明 worker 日志绝对不存在。",
+    "pipeline_without_pipefail": true,
+    "results": {
+      "207-session-wide-worker-name-enumeration": {
+        "command": "ssh -o StrictHostKeyChecking=yes -o UserKnownHostsFile=C:\\Users\\Administrator\\.ssh\\known_hosts -o ConnectTimeout=10 -o ConnectionAttempts=1 -o BatchMode=yes 207 'find /mnt/conda/zhenglifeng/t/r9xr2b/session_2026-09-16_21-45-19_023308_1080181 -type f \\( -name \"*1161595*\" -o -name \"*1162100*\" \\) \\( -name \"*.out\" -o -name \"*.err\" \\) -printf \"%p\\t%s\\t%TY-%Tm-%TdT%TH:%TM:%TS%Tz\\n\" | sort'",
+        "command_sha256": "a00602c5f370fef791cf5f26fcdbaa448c0cc92b671c2b2e5d06e8775272085f",
+        "exit_record": "0",
+        "exit_record_is_zero": true,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stdout": "",
+        "stdout_bytes": 0
+      },
+      "207-worker-content-correlation": {
+        "command": "ssh -o StrictHostKeyChecking=yes -o UserKnownHostsFile=C:\\Users\\Administrator\\.ssh\\known_hosts -o ConnectTimeout=10 -o ConnectionAttempts=1 -o BatchMode=yes 207 'find /mnt/conda/zhenglifeng/t/r9xr2b/session_2026-09-16_21-45-19_023308_1080181/logs -type f \\( -name \"*.out\" -o -name \"*.err\" -o -name \"*.log\" \\) -print0 | xargs -0 grep -Il -E \"(^|[^0-9])(1161595|1162100)([^0-9]|$)\" | while IFS= read -r f; do stat -c \"path=%n\\tsize=%s\\tmtime=%y\" \"$f\"; grep -n -m 3 -E \"(^|[^0-9])(1161595|1162100)([^0-9]|$)\" \"$f\"; done'",
+        "command_sha256": "4633c7e4a044720482745d0a1b952e54f19667332c9d39ed0d06742af1bfe523",
+        "exit_record": "0",
+        "exit_record_is_zero": true,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stdout": "",
+        "stdout_bytes": 0
+      },
+      "207-worker-name-enumeration": {
+        "command": "ssh -o StrictHostKeyChecking=yes -o UserKnownHostsFile=C:\\Users\\Administrator\\.ssh\\known_hosts -o ConnectTimeout=10 -o ConnectionAttempts=1 -o BatchMode=yes 207 'find /mnt/conda/zhenglifeng/t/r9xr2b/session_2026-09-16_21-45-19_023308_1080181/logs -type f \\( -name \"*1161595*\" -o -name \"*1162100*\" \\) \\( -name \"*.out\" -o -name \"*.err\" \\) -printf \"%p\\t%s\\t%TY-%Tm-%TdT%TH:%TM:%TS%Tz\\n\" | sort'",
+        "command_sha256": "b06838b2f19e57cdff8719a09378191582f5cfcee8d17e16b073b5f4c1cbeca3",
+        "exit_record": "0",
+        "exit_record_is_zero": true,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stdout": "",
+        "stdout_bytes": 0
+      }
+    }
+  },
+  "overall": "PARTIAL_EVIDENCE_SUPPLEMENT",
+  "reviewed_at": "2026-09-19",
+  "schema": "fresh-process-r2-b-worker-narrow-independent-review-v1",
+  "scope": {
+    "expanded_scan": false,
+    "new_ssh": false,
+    "read_only": true,
+    "rerun": false,
+    "weights_or_tensors_touched": false
+  },
+  "shared_inventory": {
+    "exact_target_pid_hits_anywhere": [
+      "707489\t/mnt/conda/zhenglifeng/t/r9r211d16b/results/B-valid/observer/events/events-1162100.jsonl",
+      "707687\t/mnt/conda/zhenglifeng/t/r9r211d16b/results/B-valid/observer/events/events-1161595.jsonl"
+    ],
+    "exact_target_pid_hits_in_ray_section": [],
+    "inventory_exit_record": "start=2026-09-17T10:52:55.3599660+08:00\nexit_code=127\nend=2026-09-17T10:52:58.8185031+08:00\nstrict_hostkey=yes\nknown_hosts=C:\\Users\\Administrator\\.ssh\\known_hosts\nscript=C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\R2-SHARED-EVIDENCE-20260917\\raw\\207-inventory-script.sh",
+    "inventory_stderr": "bash: line 38: $'\\r': command not found\n",
+    "path": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\R2-SHARED-EVIDENCE-20260917\\raw\\207-inventory.stdout.txt",
+    "ray_python_core_worker_row_count": 56,
+    "ray_section_file_row_count": 318,
+    "ray_section_present": true,
+    "ray_worker_out_err_row_count": 112,
+    "script_has_timeout_or_mask": true,
+    "script_uses_find_P_and_type_f": true,
+    "sha256": "343d4c87e1918029b1e2f29df840bca4b5f36722cfd9de9c75a3710fb8c1da3c",
+    "symlink_inventory": "not_collected_by_find_P_type_f"
+  },
+  "supplement_integrity": {
+    "index": {
+      "declared_artifact_file_count": 19,
+      "declared_artifact_total_bytes": 9803,
+      "entry_count": 19,
+      "entry_total_bytes": 9803,
+      "ok": true,
+      "remote_worker_bytes_copied": 0,
+      "remote_worker_logs_copied": 0,
+      "sha256": "6d934e1d1930acf8f4fce71330f7b0b8d5f158e995294d9a5091d848b01eb690",
+      "weights_or_tensors_touched": false
+    },
+    "manifest": {
+      "actual_total_bytes": 13695,
+      "declared_file_count": 20,
+      "declared_total_bytes": 13695,
+      "entry_count": 20,
+      "extra": [],
+      "mismatches": [],
+      "missing": [],
+      "ok": true,
+      "sha256": "4a0783da323cec6858fc8d3729db4909a1a845607d3182dc321b1461d9a902e6"
+    }
+  }
+}

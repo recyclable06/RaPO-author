@@ -1,0 +1,44 @@
+{
+  "schema": "fresh-process-r2-b-worker-evidence-local-review-metadata-v1",
+  "reviewed_at": "2026-09-19",
+  "workspace": "C:\\Users\\Administrator\\Desktop\\RaPO-author",
+  "role": "independent_local_acceptance_review",
+  "source_evidence": {
+    "shared": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\R2-SHARED-EVIDENCE-20260917",
+    "supplement": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\R2-B-WORKER-EVIDENCE-20260919",
+    "shared_inventory_sha256": "343d4c87e1918029b1e2f29df840bca4b5f36722cfd9de9c75a3710fb8c1da3c",
+    "supplement_delivery_manifest_sha256": "4a0783da323cec6858fc8d3729db4909a1a845607d3182dc321b1461d9a902e6",
+    "supplement_evidence_index_sha256": "6d934e1d1930acf8f4fce71330f7b0b8d5f158e995294d9a5091d848b01eb690"
+  },
+  "method": {
+    "read_only": true,
+    "new_ssh": false,
+    "rerun": false,
+    "expanded_scan": false,
+    "weights_or_tensors_touched": false,
+    "production_modified": false,
+    "probe": "review_probe.py",
+    "probe_output": "raw/review_probe.stdout.json"
+  },
+  "validation": {
+    "manifest_entries": 20,
+    "manifest_total_bytes": 13695,
+    "index_entries": 19,
+    "index_total_bytes": 9803,
+    "worker_log_files_copied": 0,
+    "worker_log_bytes_copied": 0,
+    "overall": "PARTIAL_EVIDENCE_SUPPLEMENT",
+    "finding": "B-WORKER-LOG-LIMITATION-001"
+  },
+  "artifacts": [
+    "REPORT.md",
+    "FINDING-B-WORKER-LOG-LIMITATION-001.md",
+    "VERDICT.json",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "HASHES.json",
+    "review_probe.py",
+    "raw/review_probe.stdout.json"
+  ]
+}
+

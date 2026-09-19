@@ -261,3 +261,9 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 用户明确继续后，已派准备者新独立诊断runtime candidate：绑定完整entry/bootstrap/sitecustomize/event_writer/observer/支持文件及manifest，执行前核验导入路径与hash，生产和科学配置不改。使用207既有Ray2.46.0、CUDA_VISIBLE_DEVICES空、num_gpus0、最多3CPU，真实PersistentRunner仅构造并调用run_task至未初始化trainer的预期异常，不调用init/model/dataloader/fit；限600秒加120秒本次资源收尾，不全局清理、不接触211残留。
 
 独立验收附带的零GPU参考脚本未执行，根发现其conditions将两个固定false与正向条件一起all()导致恒FAIL，并且driver/实际runner双身份、版本/期望hash、精确异常和ray.get时限检查不足。旧参考原件保持冻结，准备者在新副本修正后执行真实无mock验证，保存全部事件和释放证据；实际post-publication RNG仍必须在后续A-only两步训练验证，零GPU不替代该门。B限定搜索的窄本地复核并行，C不重跑，不新增GPU训练。
+
+### 2026-09-19：B日志窄复核结束，根因仍未恢复
+
+独立[B日志复核](acceptance/FRESH-PROCESS-R2-B-WORKER-EVIDENCE-20260919/REPORT.md)保持PARTIAL_EVIDENCE_SUPPLEMENT，finding OPEN/NOT_RECOVERED。协调者7文件26614bytes逐项核对一致，HASHES.json自身SHA256 `1cafb14e9ff96b20a7e6e9845381bcd9805759696eb5403d02bdefc7fa088d6d`。既有Ray inventory有318条regular-file记录（56 python-core-worker、112 worker out/err），目标PID只出现在两份observer路径，Ray部分无匹配；旧查询超时/CRLF/pipeline状态与不枚举symlink的限制仍保留，未发现可明确补取的轮转/删除/链接路径，不继续扩大扫描。
+
+后续如进入B诊断，最小新增观察为两目标rank bootstrap时PID/start ticks/Ray worker ID/cwd/fd1-fd2实际目标及exact log path、独立阶段退出状态和有界日志尾；不能用新的概括摘要替代真实记录。该规格已传准备者供后续使用，不扩大当前A零GPU任务，也未启动B。C复用、B内部abort未解、211资源释放UNCONFIRMED。
