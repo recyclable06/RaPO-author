@@ -1,0 +1,113 @@
+{
+  "schema": "fresh-process-a-private-ray-supervisor-and-zero-gpu-independent-review-metadata-v2",
+  "reviewed_at": "2026-09-20",
+  "workspace": "C:/Users/Administrator/Desktop/RaPO-author",
+  "role": "independent_acceptance_review",
+  "source_supplement": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT",
+  "source_zero_gpu_delta": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT",
+  "source_cli_preflight": "C:/Users/Administrator/.codex/worktrees/71a6/RaPO-author/docs/diagnostics/RAY-CLI-ENTRY-PREFLIGHT-20260920",
+  "source_r2": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2",
+  "source_identities": {
+    "parent_hashes_supervisor_sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9",
+    "parent_supervisor_manifest_sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119",
+    "zero_gpu_hashes_sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003",
+    "zero_gpu_manifest_sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed",
+    "parent_r2_hashes_sha256": "593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7"
+  },
+  "method": {
+    "probe": "review_probe.py",
+    "probe_output": "raw/independent_review.json",
+    "read_only": true,
+    "new_ssh": false,
+    "gpu": false,
+    "model": false,
+    "training": false,
+    "installation": false,
+    "checks": [
+      "parent supplement hash and manifest runtime-file recomputation",
+      "zero-GPU delta hash and manifest runtime/artifact-file recomputation",
+      "independent parent standard-library fake-head/fake-launcher run()",
+      "independent zero-GPU standard-library delta run()",
+      "Linux/procfs/record/atomic-write static inspection",
+      "parent manifest, signal, process-session and pipe ownership inspection",
+      "zero-GPU resource, short-temp, deadline and shared-cleanup inspection",
+      "zero-GPU wrapper parent/manifest identity inspection",
+      "read-only selected-host Ray CLI entrypoint evidence verification",
+      "local Ray dependency availability check without installation"
+    ]
+  },
+  "test_boundary": {
+    "parent_fake_test_status": "PASS_PRIVATE_RAY_SUPERVISOR_STANDARD_LIBRARY_TESTS",
+    "zero_gpu_fake_test_status": "PASS_PRIVATE_RAY_ZERO_GPU_SUPERVISOR_STANDARD_LIBRARY_TESTS",
+    "fake_tests_strict_linux": false,
+    "fake_head": true,
+    "injected_readiness": true,
+    "zero_gpu_real_head_builder_exercised": false,
+    "real_ray_started": false,
+    "linux_procfs_exercised": false,
+    "ray_cli_2_46_exercised": false
+  },
+  "cli_preflight_evidence": {
+    "hashes_sha256": "9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775",
+    "declared_file_count": 30,
+    "declared_total_bytes": 16933,
+    "host_alias": "211",
+    "python_version": "3.11.6",
+    "ray_version": "2.46.0",
+    "python_module_ray_start_help_exit": 1,
+    "python_module_ray_status_help_exit": 1,
+    "validated_ray_script_start_help_exit": 0,
+    "validated_ray_script_status_help_exit": 0,
+    "service_started": false,
+    "new_ssh_in_this_review": false
+  },
+  "zero_gpu_command": {
+    "cuda_visible_devices": "",
+    "ray_num_gpus": 0,
+    "ray_num_cpus": 3,
+    "main_lifecycle_seconds": 120,
+    "cleanup_seconds_max": 120,
+    "cleanup_shared": true,
+    "ray_tmp": "/tmp/zlf-s20a",
+    "cli_help_version_preflight_required": true,
+    "cli_help_version_preflight_executed": false,
+    "wrapper_upper_bounds_enforced": false
+  },
+  "static_findings": {
+    "parent_manifest_precheck": false,
+    "zero_gpu_manifest_precheck": false,
+    "zero_gpu_parent_hash_precheck": false,
+    "signal_handlers": false,
+    "execute_finally": false,
+    "launcher_new_session": true,
+    "r2_production_child_new_session": true,
+    "supervisor_discovers_launcher_production_tree": false,
+    "head_pipes_drained_during_wait": false,
+    "head_logs_saved_after_cleanup_only": true,
+    "zero_gpu_resource_args": true,
+    "zero_gpu_short_tmp_policy": true,
+    "zero_gpu_main_budget_includes_readiness": true,
+    "zero_gpu_cleanup_subtracts_launcher_elapsed": true
+  },
+  "local_environment": {
+    "python": "C:/Program Files/Python313/python.exe",
+    "ray_module_available": false,
+    "ray_installation_attempted": false
+  },
+  "verdict": "NOT_READY_FOR_BOUNDED_ZERO_GPU",
+  "writes": [
+    "REPORT.md",
+    "FINDING-A-SUPERVISOR-MANIFEST-GUARD-005.md",
+    "FINDING-A-SUPERVISOR-INTERRUPT-CLEANUP-006.md",
+    "FINDING-A-SUPERVISOR-LAUNCHER-DESCENDANT-007.md",
+    "FINDING-A-SUPERVISOR-HEAD-PIPE-008.md",
+    "FINDING-A-ZEROGPU-MANIFEST-GUARD-009.md",
+    "FINDING-A-ZEROGPU-CLI-ENTRYPOINT-010.md",
+    "VERDICT.json",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "HASHES.json",
+    "review_probe.py",
+    "raw/independent_review.json"
+  ]
+}

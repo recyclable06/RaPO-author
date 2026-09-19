@@ -1,0 +1,67 @@
+{
+  "schema": "fresh-process-a-private-ray-supervisor-and-zero-gpu-independent-review-hashes-v3",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "FINDING-A-SUPERVISOR-HEAD-PIPE-008.md",
+      "bytes": 579,
+      "sha256": "5857079b1b71bb439f79465a864202835c2e4f82b5b4c929da690a740eae590d"
+    },
+    {
+      "path": "FINDING-A-SUPERVISOR-INTERRUPT-CLEANUP-006.md",
+      "bytes": 573,
+      "sha256": "03445ed009151f1210044a9a756cf5b29232cfb815a0844c321e0ca025a39ce4"
+    },
+    {
+      "path": "FINDING-A-SUPERVISOR-LAUNCHER-DESCENDANT-007.md",
+      "bytes": 695,
+      "sha256": "92eb62d9281d658260d532fda8a297408de21a29abaf783bce95e3174bff10f0"
+    },
+    {
+      "path": "FINDING-A-SUPERVISOR-MANIFEST-GUARD-005.md",
+      "bytes": 552,
+      "sha256": "f8b14c776448ed7b9259c6f245b2e39fa6b9ef6b87802229b24a706bbe678e5e"
+    },
+    {
+      "path": "FINDING-A-ZEROGPU-CLI-ENTRYPOINT-010.md",
+      "bytes": 1175,
+      "sha256": "52b1e88d3e12fc0105a501dcec62c0d21add9eb0749646d85d0d1a95429c7111"
+    },
+    {
+      "path": "FINDING-A-ZEROGPU-MANIFEST-GUARD-009.md",
+      "bytes": 733,
+      "sha256": "e045c58f4d6e7a43296a9dba21f2df07fde9b84559b42d204e40f4cd6aa7b43c"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 1236,
+      "sha256": "dc98c836c7c7f0e7482c91548272caa59f901f29e0d37600b2464605d014aecf"
+    },
+    {
+      "path": "raw/independent_review.json",
+      "bytes": 4621,
+      "sha256": "d1d712674fe897f7fc95b0960c52d6f912897cdb10c5a4f42944f30c30bd74d1"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 7316,
+      "sha256": "aa6a4713a01465207d3f290b495b9043e44e539efdd744d62e00664b1e0e2ef2"
+    },
+    {
+      "path": "review_probe.py",
+      "bytes": 15297,
+      "sha256": "3f14f35603407f37fa788f50632d2a510c99c723dd7eae2cabb35e12983af370"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 5031,
+      "sha256": "9c00b3627d7c4fb7c84c9197cfce5ea54c228f228689246a4b8cbec26f0dbd96"
+    },
+    {
+      "path": "VERDICT.json",
+      "bytes": 5281,
+      "sha256": "53ead40d96f6230b1ce502b8c7a3e83e55e6aa8840f560e7194fd950831b6b1c"
+    }
+  ]
+}

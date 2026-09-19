@@ -27,6 +27,8 @@ R2的50毫秒测试存在子进程尚未输出就被杀的偶发失败，独立�
 
 零GPU配置sibling也已冻结，协调者核对9文件34234bytes一致，已并入同一次独立组合复核。211于9月20日00:16:48的只读入口检查确认：Ray2.46.0没有ray.__main__，候选使用的python -m ray不可用；同环境bin/ray的start/status help均通过。已要求下一版修改实际启动及状态检查代码，合并独立反馈后冻结；未启动Ray服务。资源、预算和短路径配置的自测仍不等于真实生命周期通过。
 
+最新[supervisor独立组合审查](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/REPORT.md)为NOT_READY_FOR_BOUNDED_ZERO_GPU。准备层尚缺启动前自身hash校验、SIGINT/SIGTERM的finally收尾、launcher派生新session的完整清理和持续日志落盘，CLI亦需修正。已将六项finding集中交准备者在一个新组合runtime内修复；它们不是新的算法问题，已通过的训练参数/观察器/R2超时helper不重复验证。现有测试为fake head且strict_linux=False，不宣称Linux真实Ray路径通过。
+
 2026-09-19 22:18:44最新预检中211和207均可SSH访问。211列出的7张RTX3090均仅1MiB占用、0%利用率，无compute-app记录；优先考虑4/5两卡，实际启动前复核。共享/mnt/conda使用86%、剩余约1.78TiB，211本地盘剩余约285GiB。三个已知旧PID及两个私有路径的进程查询未匹配；这不是全部残留进程验收，但旧目录仍存在也不代表GPU仍被占用。没有执行清理，不能将9月17日的不可达状态继续当作当前事实。
 
 旧v9运行的[独立超时复核](acceptance/FRESH-PROCESS-V9-GPU-TIMEOUT-20260916/REPORT.md)已确认Task1两次更新；留存日志未见明确OOM或运行异常，检查点保存约4.4分钟。远端checkpoint目前只有文件名称/大小清单，没有内容完整性验收；新运行需补内容hash与完整结束日志。旧交付JSON格式缺陷已登记，原始证据保持不变。

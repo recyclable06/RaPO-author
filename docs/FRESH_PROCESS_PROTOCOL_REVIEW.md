@@ -335,3 +335,11 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 71a6 `RAY-CLI-ENTRY-PREFLIGHT-20260920/` 根核对30文件16933bytes一致，HASHES.json自身SHA256 `9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775`。gpu-211、UID1115、采样00:16:48+08:00，既有Python3.11.6/Ray2.46.0；find_spec(ray.__main__)=None，python -m ray start/status --help均exit1、No module named ray.__main__。实际可用入口 `/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/env/rapo-author/bin/ray`，start/status help均exit0，shebang绑定同环境python3.11。首次metadata内联转义SyntaxError原样保留，不用于环境结论；最终模块/CLI检查各有独立退出状态。
 
 该结果证明现候选CLI调用不能直接启动，不是Ray服务故障。已传准备者和独立者，下一版修实际head start/status代码及命令文档，合并其余独立反馈后冻结；允许基于已冻父/zeroGPU sibling另存清晰的最终组合runtime，避免多层补丁，旧快照保持不变。没有新Ray/GPU/模型/训练、安装或清理，也不再重复已确认的CLI探测。
+
+### 2026-09-20：组合审查未就绪，六项执行问题集中修正
+
+独立[组合审查](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/REPORT.md)已冻结，根核12文件43089bytes一致，HASHES.json自身SHA256 `f980ccf9c91bb29c7580a92ab71ec3f45613563c0f0e5e6de5e7e5d9ab26d5b1`，NOT_READY_FOR_BOUNDED_ZERO_GPU。父与zeroGPU两组stdlib测试独立通过，但strict_linux=False且fake head/readiness、head_command override，不能覆盖真正head builder、procfs或Ray。
+
+005/009为两个入口启动前未验证自身/父文件清单；006为execute没有finally/SIGTERM/SIGINT处理，KeyboardInterrupt不属于Exception；007为launcher group被杀后R2另newsession的production child可能逃逸；008为head stdout/stderr PIPE长时间不drain导致阻塞和日志缺失；010为已实证不可用的python -m ray。zeroGPU资源和含startup预算静态方向正确，但CLI可覆盖120秒上限。已一次集中派给准备者在新组合runtime修复，避免单项交付反复追加；优先私有日志文件、真实live身份及跨session子树、幂等有界finally和已验证bin/ray入口，旧快照不变。
+
+新增针对性验证只覆盖这些具体问题：损坏清单head不启动、真实轻量子进程的SIGINT/SIGTERM与新session孙进程退出、大日志不阻塞、总时限。Windows fake模式不得冒充Linux验证；必要的既有211Linux纯Python检查先冻结命令交专用执行，无模型/Ray启动。A科学参数、源码、R2已过helper和观察器不重做。准备后的Linux实际检查和零GPURay生命周期仍是后续步骤，当前无A运行。

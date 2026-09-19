@@ -1,0 +1,113 @@
+{
+  "schema": "fresh-process-a-private-ray-supervisor-and-zero-gpu-independent-verdict-v2",
+  "reviewed_at": "2026-09-20",
+  "overall": "NOT_READY_FOR_BOUNDED_ZERO_GPU",
+  "parent_standard_library_supervisor_tests": "INDEPENDENTLY_PASS_WITH_FAKE_HEAD_ONLY",
+  "zero_gpu_standard_library_delta_tests": "INDEPENDENTLY_PASS_WITH_FAKE_HEAD_ONLY",
+  "implementation_ready_for_bounded_zero_gpu": false,
+  "real_ray_lifecycle_run": false,
+  "real_ray_cli_2_46_verified": false,
+  "zero_gpu_command_contract": {
+    "cuda_visible_devices_empty": true,
+    "ray_num_gpus": 0,
+    "ray_num_cpus": 3,
+    "main_lifecycle_seconds_in_frozen_command": 120,
+    "cleanup_seconds_max_in_frozen_command": 120,
+    "cleanup_is_shared": true,
+    "short_fresh_direct_tmp_child": true,
+    "wrapper_enforces_120_second_upper_bounds": false
+  },
+  "findings": {
+    "FINDING-A-SUPERVISOR-MANIFEST-GUARD-005": {
+      "status": "OPEN",
+      "summary": "Parent supervisor manifest/hash is not checked before the Ray head starts."
+    },
+    "FINDING-A-SUPERVISOR-INTERRUPT-CLEANUP-006": {
+      "status": "OPEN",
+      "summary": "No SIGTERM/SIGINT handler or finally path guarantees cleanup when the supervisor is interrupted."
+    },
+    "FINDING-A-SUPERVISOR-LAUNCHER-DESCENDANT-007": {
+      "status": "OPEN",
+      "summary": "Supervisor-level timeout kills only the launcher session; R2 production child uses a separate session and is not discovered by supervisor cleanup."
+    },
+    "FINDING-A-SUPERVISOR-HEAD-PIPE-008": {
+      "status": "OPEN",
+      "summary": "Ray head stdout/stderr pipes are not drained during readiness and final logs are not guaranteed complete."
+    },
+    "FINDING-A-ZEROGPU-MANIFEST-GUARD-009": {
+      "status": "OPEN",
+      "summary": "Zero-GPU wrapper loads the supplied parent file without validating the zero-GPU or frozen parent manifest/hash before head startup."
+    },
+    "FINDING-A-ZEROGPU-CLI-ENTRYPOINT-010": {
+      "status": "OPEN_BLOCKING",
+      "summary": "The selected Ray 2.46.0 environment has no ray.__main__; python -m ray start/status --help exit 1, while the same environment's bin/ray help commands exit 0."
+    }
+  },
+  "evidence": {
+    "parent_hashes_supervisor_sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9",
+    "parent_supervisor_manifest_sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119",
+    "zero_gpu_hashes_sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003",
+    "zero_gpu_manifest_sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed",
+    "parent_r2_hashes_sha256": "593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7",
+    "cli_preflight_hashes_sha256": "9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775",
+    "cli_preflight_declared_file_count": 30,
+    "cli_preflight_declared_total_bytes": 16933,
+    "cli_preflight_host": "211",
+    "cli_preflight_python_version": "3.11.6",
+    "cli_preflight_ray_version": "2.46.0",
+    "python_module_ray_start_help_exit": 1,
+    "python_module_ray_status_help_exit": 1,
+    "validated_ray_script_start_help_exit": 0,
+    "validated_ray_script_status_help_exit": 0,
+    "ray_service_started_by_preflight": false,
+    "parent_declared_file_count": 10,
+    "parent_declared_total_bytes": 65323,
+    "zero_gpu_declared_file_count": 9,
+    "zero_gpu_declared_total_bytes": 34234,
+    "local_python_has_ray": false,
+    "linux_procfs_tested": false,
+    "ray_2_46_tested": false,
+    "parent_manifest_checked_before_head_start": false,
+    "zero_gpu_manifest_checked_before_head_start": false,
+    "signal_handlers_installed": false,
+    "head_pipe_drained_during_wait": false,
+    "r2_production_child_uses_new_session": true,
+    "zero_gpu_fake_tests_exercised_real_head_builder": false
+  },
+  "scope": {
+    "read_only": true,
+    "new_ssh": false,
+    "ray_started": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_invoked": false,
+    "production_started": false,
+    "r2_modified": false,
+    "parent_supervisor_modified": false,
+    "zero_gpu_candidate_modified": false
+  },
+  "next_required": [
+    "Add pre-head validation for the parent and zero-GPU runtime manifests/hashes.",
+    "Make SIGTERM/SIGINT and all exceptional exits enter one idempotent bounded cleanup path.",
+    "Contain and verify the launcher plus R2 production child sessions under supervisor cleanup.",
+    "Replace the Ray head PIPE arrangement with continuously drained or file-backed logs.",
+    "Replace python -m ray with the selected environment's validated bin/ray entrypoint for head/readiness/help, then rerun a real zero-GPU private lifecycle."
+  ],
+  "artifacts": {
+    "report": "REPORT.md",
+    "verdict": "VERDICT.json",
+    "progress": "PROGRESS.md",
+    "run_metadata": "RUN_METADATA.json",
+    "hashes": "HASHES.json",
+    "probe": "review_probe.py",
+    "probe_output": "raw/independent_review.json",
+    "findings": [
+      "FINDING-A-SUPERVISOR-MANIFEST-GUARD-005.md",
+      "FINDING-A-SUPERVISOR-INTERRUPT-CLEANUP-006.md",
+      "FINDING-A-SUPERVISOR-LAUNCHER-DESCENDANT-007.md",
+      "FINDING-A-SUPERVISOR-HEAD-PIPE-008.md",
+      "FINDING-A-ZEROGPU-MANIFEST-GUARD-009.md",
+      "FINDING-A-ZEROGPU-CLI-ENTRYPOINT-010.md"
+    ]
+  }
+}
