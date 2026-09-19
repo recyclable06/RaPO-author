@@ -1,0 +1,30 @@
+{
+  "schema": "fresh-process-r2-shared-independent-review-v1",
+  "reviewed_at": "2026-09-19T00:00:00+08:00",
+  "role": "independent_read_only_acceptance",
+  "shared_evidence_root": "C:/Users/Administrator/.codex/worktrees/71a6/RaPO-author/docs/diagnostics/R2-SHARED-EVIDENCE-20260917",
+  "shared_delivery_manifest_sha256": "0a6d7c601db17be196c3d457c7a5acbc849e17b9ffde11758a48ac40ae0e284f",
+  "shared_evidence_index_sha256": "cc30ab4dce800a08697dea21ae8327a9edce3f4933c4b3bdd828da3307051dc0",
+  "frozen_production_source": {
+    "path": "C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author/examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+    "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  },
+  "frozen_diagnostic_source": {
+    "path": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v9/run_v9.py",
+    "sha256": "7dd48baf12122ee51f1d24d0a3bfb0b81a59722518c43dd69789b2ac54e11d56"
+  },
+  "writes": [
+    "REPORT.md",
+    "FINDING-A-DRIVER-RNG-002.md",
+    "FINDING-B-ANCHOR-INIT-001.md",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "review_probe.py",
+    "raw/review_probe.stdout.json"
+  ],
+  "production_modified": false,
+  "experiment_rerun": false,
+  "weights_or_tensor_tree_copied": false,
+  "overall_verdict": "PARTIAL_EVIDENCE_SUPPLEMENT"
+}
+

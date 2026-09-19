@@ -1,0 +1,23 @@
+{
+  "schema": "fresh-process-r2-shared-independent-verdict-v1",
+  "overall": "PARTIAL_EVIDENCE_SUPPLEMENT",
+  "gate_closed": false,
+  "findings": {
+    "FINDING-A-DRIVER-RNG-002": {
+      "status": "OPEN",
+      "summary": "A marker-linked artifacts are present, but post-publication driver RNG observer proof remains incomplete."
+    },
+    "FINDING-B-ANCHOR-INIT-001": {
+      "status": "OPEN",
+      "summary": "B reaches model/FSDP/vLLM/persistent-worker and anchor-init stages, then exits -6; internal abort cause is unresolved."
+    }
+  },
+  "constraints": {
+    "production_code_modified": false,
+    "experiment_rerun": false,
+    "full_worker_logs_copied": false,
+    "host_211_cleanup": "UNCONFIRMED"
+  },
+  "shared_manifest_sha256": "0a6d7c601db17be196c3d457c7a5acbc849e17b9ffde11758a48ac40ae0e284f",
+  "evidence_index_sha256": "cc30ab4dce800a08697dea21ae8327a9edce3f4933c4b3bdd828da3307051dc0"
+}

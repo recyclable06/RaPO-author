@@ -231,3 +231,11 @@ B-valid新进程恢复阶段超时，无Task2更新。执行方观察摘要记�
 A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实际post-publication driver RNG。准备者现按真实A事件定位条件或采集故障，原生产发布缺陷仍未证实。B补回process-end exit-6、完整保存的stdout/stderr及前后边界清单比较equal=true，Task2更新0；相同边界清单不证明恢复成功。run_v9.py按returncode==0填model_constructed/training_started，故失败结果中的false不可独立证明未构造模型或未进入某个阶段。已交独立新审查 `FRESH-PROCESS-R2-SHARED-20260917/`，按原始日志/事件区分监督SIGTERM、最终exit-6与原始卡点；不预先归因I/O、NCCL或生产代码。
 
 取证中的inventory尾部CRLF导致exit127，八组实际复制exit0，清单与字节校验有效；完整worker-log候选仅列清单，若审查需要则精确补少量文件。共享终态文件可读仍不等于211存活进程/显卡现场已核验，cleanup保持UNCONFIRMED。
+
+### 2026-09-19：独立共享复核纠正B阶段与信号归因
+
+独立[共享复核](acceptance/FRESH-PROCESS-R2-SHARED-20260917/REPORT.md)交付8文件63824bytes，协调者逐项hash一致，HASHES.json自身SHA256 `94af87385e7319b389c03ecb143bd25bdafeaf9a0df5a3ae3a59febc3c3169cb`。清单采用路径到hash映射，不能按旧entries数组解释。overall保持PARTIAL_EVIDENCE_SUPPLEMENT。
+
+[B finding](acceptance/FRESH-PROCESS-R2-SHARED-20260917/FINDING-B-ANCHOR-INIT-001.md)确认已完成模型/FSDP/vLLM/persistent-worker初始化。rank0 PID1161595与rank1 PID1162100分别在1789572776.472536/1789572777.2901604进入init_anchor，均无after；run_task、native load/restore与fit事件均0。child于00:17:44.816206 exit-6，supervisor 00:18:33已见退出且child_term_sent=0/child_kill_sent=0；后续Raylet/dashboard SIGTERM在00:18:43–54。此前“restore阶段卡住、监督SIGTERM终止child”来自执行摘要，现被更强原件纠正，旧摘要保留但不再作为当前事实。aggregate stderr无owner的SIGTERM不足以归因，内部abort原因仍未知。
+
+[A finding](acceptance/FRESH-PROCESS-R2-SHARED-20260917/FINDING-A-DRIVER-RNG-002.md)确认marker引用driver/EMA/vLLM原件齐且hash匹配，但81事件文件435记录中实际run_task wrapper调用0，post-publication driver RNG证据未形成。准备任务本地继续定位Ray包装/实际调用路径，不以marker替代独立观察、不改生产。已续派执行任务只读经207补取两个B worker准确对应的stdout/stderr，保存枚举与源身份、预算16MiB/64MiB，不重跑或整树复制。C已接受结果不重跑，211现场资源释放仍UNCONFIRMED。

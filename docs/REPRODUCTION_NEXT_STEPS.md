@@ -1,12 +1,12 @@
 # RaPO 后续执行计划
 
-更新：2026-09-17。本文件给出当前推进顺序；详细历史见[诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)与[协调台账](TASK_COORDINATION.md)。
+更新：2026-09-19。本文件给出当前推进顺序；详细历史见[诊断评审记录](FRESH_PROCESS_PROTOCOL_REVIEW.md)与[协调台账](TASK_COORDINATION.md)。
 
 ## 当前位置
 
 作者基线审计、CTAN/COCO局部整改、恢复R3.1的独立CPU验收已经完成。小规模GPU有效更新、同进程跨任务已有有限通过证据。根目录现已整合这些代码，正在完成新进程恢复诊断；正式论文规模训练尚未启动。
 
-最新v9 R2连续C已完成两任务各两次更新，A完成Task1并发布marker，但缺发布后driver RNG观察；B新进程恢复checkpoint时超时，未进入Task2更新。当前先确认远端资源释放、收集缺失日志，并独立定位A观察缺口/B恢复卡点；不直接加时或只重跑B。C可复用范围经独立证据审查确定。
+最新v9 R2连续C四次更新及exit0已独立接受并可复用。A的marker引用状态文件已齐，但缺发布后driver RNG观察；B经原件复核定位于anchor初始化，尚未观测到checkpoint恢复/fit，exit-6内部原因待查。当前本地定位A观察器，并通过207只补两个B worker日志；211资源释放仍未现场确认。不直接加时或重跑B，不重跑C。
 
 | 顺序 | 当前工作 | 完成条件 |
 |---|---|---|

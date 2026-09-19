@@ -1,0 +1,953 @@
+{
+  "A": {
+    "boundary_expected": {
+      "complete": false,
+      "driver_present": false,
+      "errors": [
+        "A actual post-publication driver RNG capture is missing"
+      ],
+      "native_ranks": [
+        "0",
+        "1"
+      ],
+      "path": "evidence/A-root/boundary-expected.json",
+      "sha256": "f2cfac12f4a90d773526a8f57e0938ceeef910ddd6d7531ad895ba7a118d7767",
+      "vllm_ranks": [
+        "0",
+        "1"
+      ]
+    },
+    "finding": "marker_linked_artifacts_present_but_post_publication_driver_observer_proof_incomplete",
+    "marker": {
+      "checkpoint_manifest_sha256": "368d9d8d528ae7561d20bcbd4809e86aa63620bfd129b937776011337df19028",
+      "completed_task": 1,
+      "driver_rng_sha256": "46982e7ff065f5ddcbe754919de364a214becbcd93b88f0d88d36e0e5e348fa3",
+      "ema_sha256": "be82ad7b5c23eb65999b83d73115bc51b24ff440d1a06f8278a4579b18da1ea7",
+      "global_step": 2,
+      "next_task": 2,
+      "path": "evidence/A-boundary/task1-complete.json",
+      "sha256": "c7b8c132de4346bba8c570d429bdcbef603c0bbeea6bfd8803fea84175d4f795",
+      "state_fingerprint": "564592322a072da8d267ce1dd84afe03caccbdadc1ff975f715384f7a095be8b",
+      "status": "complete",
+      "vllm_rng_sha256": [
+        "f6bb080f94c2267d2bf784ab45bba0a8d8f40bef2c5fdab20bef291ad8899418",
+        "56046e84a0716523ea7a23e0ae9dab7aa7514124a20681603225131aaac00c13"
+      ]
+    },
+    "observer": {
+      "driver_rng_expected_records": 0,
+      "file_count": 81,
+      "record_count": 435,
+      "run_task_actual_call_count": 0,
+      "target_call_counts": {
+        "FSDPCheckpointManager.save_checkpoint": 8,
+        "FSDPWorker.__init__": 4,
+        "FSDPWorker.save_checkpoint": 8,
+        "FSDPWorker.update_actor": 8,
+        "PersistentCILTrainer.__init__": 2,
+        "PersistentCILTrainer._load_checkpoint": 2,
+        "PersistentCILTrainer._save_checkpoint": 4,
+        "PersistentCILTrainer.fit": 2,
+        "PersistentCILTrainer.reinit_for_task": 2,
+        "PersistentRefFSDPWorker.__init__": 4,
+        "PersistentRefFSDPWorker.capture_boundary_vllm_rng": 4,
+        "PersistentRefFSDPWorker.init_anchor": 4,
+        "_build_dataloader": 10
+      }
+    }
+  },
+  "B": {
+    "boundary_manifest": {
+      "after_sha256": "78f0b2c1664b1bad1ca6603bef17ef1b0393e64756a071116017d3ff43695837",
+      "before_sha256": "78f0b2c1664b1bad1ca6603bef17ef1b0393e64756a071116017d3ff43695837",
+      "equal": true
+    },
+    "finding": "model_fsdp_vllm_and_persistent_workers_initialized_then_both_ranks_entered_anchor_init_without_after; task2_restore_and_fit_not_observed; internal_abort_cause_unresolved",
+    "observer": {
+      "actual_call_counts_for_restore_or_fit": {
+        "FSDPCheckpointManager.load_checkpoint": 0,
+        "PersistentCILTrainer._load_checkpoint": 0,
+        "PersistentCILTrainer.fit": 0,
+        "PersistentCILTrainer.restore_boundary_checkpoint": 0,
+        "PersistentRunner.run_task": 0
+      },
+      "anchor_init_events": [
+        {
+          "call_id": "1161595:1789572755969361275:434c772ea83943bfad1d464979a74466",
+          "file": "events-1161595.jsonl",
+          "kind": "target_wrapper_call_before",
+          "label": "PersistentRefFSDPWorker.init_anchor",
+          "phase": "before",
+          "pid": 1161595,
+          "rank": 0,
+          "role": "fsdp_worker",
+          "unix": 1789572776.472536
+        },
+        {
+          "call_id": "1162100:1789572755969607133:ba654c587f304bb082ebb9cfb0059368",
+          "file": "events-1162100.jsonl",
+          "kind": "target_wrapper_call_before",
+          "label": "PersistentRefFSDPWorker.init_anchor",
+          "phase": "before",
+          "pid": 1162100,
+          "rank": 1,
+          "role": "fsdp_worker",
+          "unix": 1789572777.2901604
+        }
+      ],
+      "file_count": 81,
+      "record_count": 388,
+      "target_call_counts": {
+        "FSDPWorker.__init__": 4,
+        "PersistentCILTrainer.__init__": 2,
+        "PersistentRefFSDPWorker.__init__": 4,
+        "PersistentRefFSDPWorker.init_anchor": 2,
+        "_build_dataloader": 4
+      }
+    },
+    "process_end": {
+      "exit_code": -6,
+      "pid": 1153372,
+      "process_start_ns": 1789572458832962812,
+      "unix": 1789575464.8162055
+    },
+    "ray_shutdown_samples": {
+      "dashboard.log": [
+        {
+          "line": 12,
+          "text": "2026-09-17 00:18:54,358\tWARNING dashboard.py:282 -- Exiting with SIGTERM immediately..."
+        }
+      ],
+      "dashboard_agent.log": [
+        {
+          "line": 47,
+          "text": "2026-09-17 00:18:43,471\tWARNING agent.py:448 -- Exiting with SIGTERM immediately..."
+        }
+      ],
+      "gcs_server.err": [
+        {
+          "line": 1,
+          "text": "E0916 23:34:12.648573144 1080302 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 2,
+          "text": "E0917 00:12:26.270481267 1080284 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 3,
+          "text": "E0917 00:13:41.233468454 1080288 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 4,
+          "text": "E0917 00:18:39.525016025 1080288 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 5,
+          "text": "E0917 00:18:39.612464960 1080282 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 6,
+          "text": "E0917 00:18:44.456834884 1183068 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 7,
+          "text": "E0917 00:18:44.458791391 1183068 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 8,
+          "text": "E0917 00:18:44.458864162 1183068 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 9,
+          "text": "E0917 00:18:44.459294501 1183068 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        },
+        {
+          "line": 10,
+          "text": "E0917 00:18:44.459340098 1183068 chttp2_transport.cc:2890]             keepalive_ping_end state error: 0 (expect: 1)"
+        }
+      ],
+      "raylet.out": [
+        {
+          "line": 475,
+          "text": "[2026-09-16 21:46:47,529 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=1, has_creation_task_exception=false worker_id=bc3cd58cf7c381c0ba429033045a5f937d015c89601cf0ed44a99621"
+        },
+        {
+          "line": 476,
+          "text": "[2026-09-16 21:46:47,530 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=1, has_creation_task_exception=false worker_id=931d735e91d28f34ab6b31c3658a5f9e24cd874d51801cd4b185593d"
+        },
+        {
+          "line": 477,
+          "text": "[2026-09-16 21:46:47,554 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=3, has_creation_task_exception=false worker_id=01000000ffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        {
+          "line": 7719,
+          "text": "[2026-09-16 22:18:57,013 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=1, has_creation_task_exception=false worker_id=939f94efecd161495fe80f5b9941bc748254762237679e8cee125ec9"
+        },
+        {
+          "line": 7720,
+          "text": "[2026-09-16 22:18:57,015 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=1, has_creation_task_exception=false worker_id=2ac59dbe2db7e04a424f25981ecc066cf112bc9125012517180a5cb6"
+        },
+        {
+          "line": 7721,
+          "text": "[2026-09-16 22:18:57,038 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=3, has_creation_task_exception=false worker_id=02000000ffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        {
+          "line": 23115,
+          "text": "[2026-09-16 23:26:38,844 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=1, has_creation_task_exception=false worker_id=10a435eb1712f3e4633ca70bb3e841c2fd7111f4706ac6a2c38abecf"
+        },
+        {
+          "line": 23116,
+          "text": "[2026-09-16 23:26:38,845 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=1, has_creation_task_exception=false worker_id=a0e5e64170ec21dad0ed02fb4bd8a735e3aa3b48249762c018526b5a"
+        },
+        {
+          "line": 23117,
+          "text": "[2026-09-16 23:26:38,887 I 1080477 1080477] (raylet) node_manager.cc:1616: Disconnecting client, graceful=true, disconnect_type=3, has_creation_task_exception=false worker_id=03000000ffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        {
+          "line": 24963,
+          "text": "[2026-09-17 00:18:52,989 W 1080477 1080502] (raylet) metric_exporter.cc:105: [1] Export metrics to agent failed: RpcError: RPC Error message: failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:64319: Failed to connect to remote host: FD Shutdown; RPC Error details:  rpc_code: 14. This won't affect Ray, but you can lose metrics from the cluster."
+        },
+        {
+          "line": 25159,
+          "text": "[2026-09-17 00:18:53,011 I 1080477 1080477] (raylet) main.cc:504: received SIGTERM. Existing local drain request = None"
+        },
+        {
+          "line": 25160,
+          "text": "[2026-09-17 00:18:53,012 I 1080477 1080477] (raylet) main.cc:307: Raylet graceful shutdown triggered, reason = EXPECTED_TERMINATION, reason message = received SIGTERM"
+        }
+      ]
+    },
+    "run_result_derived_fields": {
+      "boundary_unchanged": true,
+      "exit_code": -6,
+      "model_constructed": false,
+      "training_started": false
+    },
+    "stderr_signal_lines": [
+      {
+        "line": 9,
+        "text": "\u001b[36m(WorkerDict pid=1162100)\u001b[0m [rank1]:[W916 23:31:31.755052913 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 1]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id."
+      },
+      {
+        "line": 16,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m [rank0]:[W916 23:31:32.986285133 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id."
+      },
+      {
+        "line": 25,
+        "text": "*** SIGTERM received at time=1789574336 on cpu 1 ***"
+      }
+    ],
+    "stdout_stage_lines": [
+      {
+        "line": 6,
+        "text": "  activate_from_task=2"
+      },
+      {
+        "line": 148,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m After huggingface model init: 0.41 GB / 23.56 GB."
+      },
+      {
+        "line": 150,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m After FSDP module init: 3.71 GB / 23.56 GB."
+      },
+      {
+        "line": 154,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m After huggingface model init: 3.71 GB / 23.56 GB."
+      },
+      {
+        "line": 156,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m After FSDP module init: 3.96 GB / 23.56 GB."
+      },
+      {
+        "line": 161,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m After vllm init: 8.49 GB / 23.56 GB."
+      },
+      {
+        "line": 165,
+        "text": "\u001b[36m(PersistentRunner pid=1160068)\u001b[0m [CIL] Workers initialised (persistent)."
+      },
+      {
+        "line": 169,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m After huggingface model init: 8.55 GB / 23.56 GB."
+      },
+      {
+        "line": 171,
+        "text": "\u001b[36m(WorkerDict pid=1161595)\u001b[0m After FSDP module init: 8.55 GB / 23.56 GB."
+      }
+    ],
+    "supervisor_timeline_lines": [
+      {
+        "line": 5,
+        "text": "2026-09-17T00:18:32+08:00 label=B-valid leg_deadline_reached child_seen=1"
+      },
+      {
+        "line": 6,
+        "text": "2026-09-17T00:18:33+08:00 label=B-valid child_already_exited_or_identity_changed no_child_signal_sent"
+      },
+      {
+        "line": 7,
+        "text": "2026-09-17T00:20:33+08:00 label=B-valid launcher_grace_expired"
+      },
+      {
+        "line": 8,
+        "text": "2026-09-17T00:20:33+08:00 label=B-valid no_safe_sigkill_target_after_grace"
+      },
+      {
+        "line": 9,
+        "text": "2026-09-17T00:20:34+08:00 label=B-valid launcher_still_active_after_supervision"
+      },
+      {
+        "line": 14,
+        "text": "2026-09-17T00:20:34+08:00 label=B-valid supervisor_end launcher_rc=125 child_term_sent=0 child_kill_sent=0 unsafe_no_child_kill=0"
+      }
+    ]
+  },
+  "integrity": {
+    "delivery_manifest": {
+      "actual_entry_count": 252,
+      "actual_total_bytes": 38692471,
+      "declared_file_count": 252,
+      "declared_total_bytes": 38692471,
+      "extra": [],
+      "mismatches": [],
+      "missing": [],
+      "ok": true,
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\R2-SHARED-EVIDENCE-20260917\\DELIVERY_MANIFEST-SHARED-EVIDENCE.json",
+      "self_sha256": "0a6d7c601db17be196c3d457c7a5acbc849e17b9ffde11758a48ac40ae0e284f"
+    },
+    "evidence_index": {
+      "copied_file_count": 215,
+      "copied_total_bytes": 38523445,
+      "entry_count": 215,
+      "entry_total_bytes": 38523445,
+      "max_file_bytes": 12830694,
+      "ok": true,
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\R2-SHARED-EVIDENCE-20260917\\EVIDENCE_INDEX.json",
+      "self_sha256": "cc30ab4dce800a08697dea21ae8327a9edce3f4933c4b3bdd828da3307051dc0",
+      "tensor_or_weight_files_copied": false
+    }
+  },
+  "minimum_next_evidence": [
+    "��Ҫ�� B �� run_v9 model_constructed=false/training_started=false ����δ����ģ�ͻ�δ��ʼѵ���Ķ�����ʵ�������� returncode == 0 ������",
+    "����� B �� SIGABRT ����ֻ����Դ�� Ray worker PID 1161595(rank0) �� 1162100(rank1) ��Ӧ�� stdout/stderr ԭ������ǰ shared inventory δ��¼��Щ�ļ�������˲���ƾ����·����",
+    "A �Ȳ���ʵ�� PersistentRunner.run_task ���ü� post-publication driver RNG �۲⣻�� marker �ļ��� manifest-linked subordinate artifacts ���ܹر� A boundary finding��",
+    "Host 211 cleanup ��Ϊ UNCONFIRMED��������δ�ı��״̬��"
+  ],
+  "overall_verdict": "PARTIAL_EVIDENCE_SUPPLEMENT",
+  "reviewed_at": "2026-09-19T00:00:00+08:00",
+  "schema": "fresh-process-r2-shared-independent-review-v1",
+  "scope": {
+    "delivery_manifest_sha256": "0a6d7c601db17be196c3d457c7a5acbc849e17b9ffde11758a48ac40ae0e284f",
+    "evidence_index_sha256": "cc30ab4dce800a08697dea21ae8327a9edce3f4933c4b3bdd828da3307051dc0",
+    "experiment_rerun": false,
+    "production_modified": false,
+    "read_only": true,
+    "shared_evidence": "C:\\Users\\Administrator\\.codex\\worktrees\\71a6\\RaPO-author\\docs\\diagnostics\\R2-SHARED-EVIDENCE-20260917"
+  },
+  "source_order": {
+    "checkpoint_file": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\verl\\utils\\checkpoint\\fsdp_checkpoint_manager.py",
+      "sha256": "525fdef04dcc8aba2973407428dc6f600f064187625a892b7d39f205db199179"
+    },
+    "checkpoint_load_excerpt": [
+      {
+        "line": 61,
+        "text": "    def load_checkpoint(self, path: Optional[str] = None):"
+      },
+      {
+        "line": 62,
+        "text": "        if path is None:"
+      },
+      {
+        "line": 63,
+        "text": "            return"
+      },
+      {
+        "line": 64,
+        "text": ""
+      },
+      {
+        "line": 65,
+        "text": "        # every rank download its own checkpoint"
+      },
+      {
+        "line": 66,
+        "text": "        model_path = os.path.join(path, f\"model_world_size_{self.world_size}_rank_{self.rank}.pt\")"
+      },
+      {
+        "line": 67,
+        "text": "        optim_path = os.path.join(path, f\"optim_world_size_{self.world_size}_rank_{self.rank}.pt\")"
+      },
+      {
+        "line": 68,
+        "text": "        extra_path = os.path.join(path, f\"extra_state_world_size_{self.world_size}_rank_{self.rank}.pt\")"
+      },
+      {
+        "line": 69,
+        "text": "        print(f\"[rank-{self.rank}]: Loading model from {os.path.abspath(model_path)}.\")"
+      },
+      {
+        "line": 70,
+        "text": "        print(f\"[rank-{self.rank}]: Loading optimizer from {os.path.abspath(optim_path)}.\")"
+      },
+      {
+        "line": 71,
+        "text": "        print(f\"[rank-{self.rank}]: Loading extra_state from {os.path.abspath(extra_path)}.\")"
+      },
+      {
+        "line": 72,
+        "text": "        model_state_dict = torch.load(model_path, weights_only=False)"
+      },
+      {
+        "line": 73,
+        "text": "        optim_state_dict = torch.load(optim_path, weights_only=False)"
+      },
+      {
+        "line": 74,
+        "text": "        extra_state_dict = torch.load(extra_path, weights_only=False)"
+      },
+      {
+        "line": 75,
+        "text": ""
+      }
+    ],
+    "derived_flag_excerpt": [
+      {
+        "line": 230,
+        "text": "    end = {\"unix\": time.time(), \"exit_code\": process.returncode, \"pid\": process.pid, \"process_start_ns\": start[\"process_start_ns\"]}"
+      },
+      {
+        "line": 231,
+        "text": "    _write_json(output / \"process-end.json\", end)"
+      },
+      {
+        "line": 232,
+        "text": "    result: dict[str, Any] = {\"schema_version\": SCHEMA_VERSION, \"status\": \"PASS_PRODUCTION_EXIT\" if process.returncode == 0 else \"FAIL_PRODUCTION_EXIT\", \"leg\": leg, \"identity_sha256\": ledger[\"identity_sha256\"], \"command\": command, \"exit_code\": process.returncode, \"stdout_bytes\": len(stdout.encode()), \"stderr_bytes\": len(stderr.encode()), \"model_constructed\": process.returncode == 0, \"training_started\": process.returncode == 0}"
+      }
+    ],
+    "production_excerpts": {
+      "anchor_dispatch": [
+        {
+          "line": 1599,
+          "text": "    def init_anchor_on_workers(self) -> None:"
+        },
+        {
+          "line": 1600,
+          "text": "        \"\"\"Trigger anchor model init on all FSDP workers.\"\"\""
+        },
+        {
+          "line": 1601,
+          "text": "        self._trainer.actor_rollout_ref_wg.init_anchor()"
+        }
+      ],
+      "anchor_method": [
+        {
+          "line": 984,
+          "text": "    @register(dispatch_mode=Dispatch.ONE_TO_ALL)"
+        },
+        {
+          "line": 985,
+          "text": "    def init_anchor(self) -> None:"
+        },
+        {
+          "line": 986,
+          "text": "        if not self._has_anchor:"
+        },
+        {
+          "line": 987,
+          "text": "            return"
+        },
+        {
+          "line": 988,
+          "text": ""
+        },
+        {
+          "line": 989,
+          "text": "        anchor_model_path: str = getattr("
+        },
+        {
+          "line": 990,
+          "text": "            self.config.actor.model, \"anchor_model_path\", \"\""
+        },
+        {
+          "line": 991,
+          "text": "        )"
+        },
+        {
+          "line": 992,
+          "text": "        existing_ref = self.ref_fsdp_module"
+        },
+        {
+          "line": 993,
+          "text": "        original_path: str = self.config.actor.model.model_path"
+        },
+        {
+          "line": 994,
+          "text": "        try:"
+        },
+        {
+          "line": 995,
+          "text": "            self.config.actor.model.model_path = anchor_model_path"
+        },
+        {
+          "line": 996,
+          "text": "            self._build_model_optimizer("
+        },
+        {
+          "line": 997,
+          "text": "                model_config=self.config.actor.model,"
+        },
+        {
+          "line": 998,
+          "text": "                fsdp_config=self.config.ref.fsdp,"
+        },
+        {
+          "line": 999,
+          "text": "                optim_config=None,"
+        },
+        {
+          "line": 1000,
+          "text": "                padding_free=self.config.ref.padding_free,"
+        },
+        {
+          "line": 1001,
+          "text": "                role=\"ref\","
+        },
+        {
+          "line": 1002,
+          "text": "            )"
+        },
+        {
+          "line": 1003,
+          "text": "        finally:"
+        },
+        {
+          "line": 1004,
+          "text": "            self.config.actor.model.model_path = original_path"
+        },
+        {
+          "line": 1005,
+          "text": ""
+        },
+        {
+          "line": 1006,
+          "text": "        self.anchor_fsdp_module = self.ref_fsdp_module"
+        },
+        {
+          "line": 1007,
+          "text": "        self.ref_fsdp_module = existing_ref"
+        },
+        {
+          "line": 1008,
+          "text": ""
+        },
+        {
+          "line": 1009,
+          "text": "        from verl.workers.actor.dp_actor import DataParallelPPOActor"
+        },
+        {
+          "line": 1010,
+          "text": ""
+        },
+        {
+          "line": 1011,
+          "text": "        self.anchor_policy = DataParallelPPOActor("
+        },
+        {
+          "line": 1012,
+          "text": "            config=self.config.ref,"
+        },
+        {
+          "line": 1013,
+          "text": "            actor_module=self.anchor_fsdp_module,"
+        },
+        {
+          "line": 1014,
+          "text": "        )"
+        }
+      ],
+      "main_order": [
+        {
+          "line": 1789,
+          "text": "    # Initialise the frozen anchor model on all workers. A failure here is fatal:"
+        },
+        {
+          "line": 1790,
+          "text": "    # the retention reward requires anchor log-probs from task 2 onward."
+        },
+        {
+          "line": 1791,
+          "text": "    ray.get(runner.init_anchor_on_workers.remote())"
+        },
+        {
+          "line": 1792,
+          "text": "    if resume_boundary is not None:"
+        },
+        {
+          "line": 1793,
+          "text": "        # This happens after worker construction but before the first fresh"
+        },
+        {
+          "line": 1794,
+          "text": "        # Task-2 dataloader is built. Native/vLLM streams are restored after"
+        },
+        {
+          "line": 1795,
+          "text": "        # the native actor checkpoint load inside run_task()."
+        },
+        {
+          "line": 1796,
+          "text": "        ray.get(runner.restore_boundary_driver_rng.remote(resume_boundary[\"_driver_path\"]))"
+        }
+      ],
+      "run_task_checkpoint_restore": [
+        {
+          "line": 1379,
+          "text": "        if fresh_boundary_resume:"
+        },
+        {
+          "line": 1380,
+          "text": "            if boundary is None:"
+        },
+        {
+          "line": 1381,
+          "text": "                raise CILBoundaryError(\"fresh boundary resume needs validated boundary metadata\")"
+        },
+        {
+          "line": 1382,
+          "text": "            if not copy_actor_to_anchor or not enable_anchor:"
+        },
+        {
+          "line": 1383,
+          "text": "                raise CILBoundaryError(\"fresh boundary resume requires the Task-2 previous-task anchor\")"
+        },
+        {
+          "line": 1384,
+          "text": "            # The runner is a new process. Restore driver/vLLM streams and"
+        },
+        {
+          "line": 1385,
+          "text": "            # native actor state before any Task-2 rollout or anchor copy."
+        },
+        {
+          "line": 1386,
+          "text": "            _restore_driver_rng_state(_read_json(boundary[\"_driver_path\"]))"
+        },
+        {
+          "line": 1387,
+          "text": ""
+        },
+        {
+          "line": 1388,
+          "text": "        # ���� Build task-specific dataloaders ����������������������������������������������������������"
+        },
+        {
+          "line": 1389,
+          "text": "        train_dataloader = base._build_dataloader("
+        },
+        {
+          "line": 1390,
+          "text": "            config.data, tokenizer, processor, allowed_classes,"
+        },
+        {
+          "line": 1391,
+          "text": "            is_train=True, label_list_override=prompt_label_list,"
+        },
+        {
+          "line": 1392,
+          "text": "            allowed_class_order=allowed_class_order,"
+        },
+        {
+          "line": 1393,
+          "text": "        )"
+        },
+        {
+          "line": 1394,
+          "text": "        val_dataloader = base._build_dataloader("
+        },
+        {
+          "line": 1395,
+          "text": "            config.data, tokenizer, processor, allowed_classes,"
+        },
+        {
+          "line": 1396,
+          "text": "            is_train=False, label_list_override=prompt_label_list,"
+        },
+        {
+          "line": 1397,
+          "text": "            allowed_class_order=allowed_class_order,"
+        },
+        {
+          "line": 1398,
+          "text": "        )"
+        },
+        {
+          "line": 1399,
+          "text": ""
+        },
+        {
+          "line": 1400,
+          "text": "        # ���� Compute per-task steps ����������������������������������������������������������������������������"
+        },
+        {
+          "line": 1401,
+          "text": "        per_task_steps = config.trainer.max_steps"
+        },
+        {
+          "line": 1402,
+          "text": "        if config.trainer.total_epochs is not None:"
+        },
+        {
+          "line": 1403,
+          "text": "            try:"
+        },
+        {
+          "line": 1404,
+          "text": "                per_task_steps = config.trainer.total_epochs * len(train_dataloader)"
+        },
+        {
+          "line": 1405,
+          "text": "            except Exception:"
+        },
+        {
+          "line": 1406,
+          "text": "                pass"
+        },
+        {
+          "line": 1407,
+          "text": ""
+        },
+        {
+          "line": 1408,
+          "text": "        last_global_step = 0"
+        },
+        {
+          "line": 1409,
+          "text": "        if config.trainer.load_checkpoint_path:"
+        },
+        {
+          "line": 1410,
+          "text": "            try:"
+        },
+        {
+          "line": 1411,
+          "text": "                last_global_step = int("
+        },
+        {
+          "line": 1412,
+          "text": "                    os.path.basename(config.trainer.load_checkpoint_path).split(\"global_step_\")[-1]"
+        },
+        {
+          "line": 1413,
+          "text": "                )"
+        },
+        {
+          "line": 1414,
+          "text": "            except Exception:"
+        },
+        {
+          "line": 1415,
+          "text": "                pass"
+        },
+        {
+          "line": 1416,
+          "text": ""
+        },
+        {
+          "line": 1417,
+          "text": "        # ���� EMA state ������������������������������������������������������������������������������������������������������"
+        },
+        {
+          "line": 1418,
+          "text": "        ema_state_path = _ema_stats_file_from_task_dir(config.trainer.save_checkpoint_path)"
+        },
+        {
+          "line": 1419,
+          "text": "        ema_initial_state = ("
+        },
+        {
+          "line": 1420,
+          "text": "            _read_json(boundary[\"_ema_path\"])"
+        },
+        {
+          "line": 1421,
+          "text": "            if fresh_boundary_resume and boundary is not None"
+        },
+        {
+          "line": 1422,
+          "text": "            else _load_ema_state(ema_state_path)"
+        },
+        {
+          "line": 1423,
+          "text": "        )"
+        },
+        {
+          "line": 1424,
+          "text": ""
+        },
+        {
+          "line": 1425,
+          "text": "        # ���� Reinitialise trainer for this task ����������������������������������������������������"
+        },
+        {
+          "line": 1426,
+          "text": "        if fresh_boundary_resume:"
+        },
+        {
+          "line": 1427,
+          "text": "            checkpoint_path = boundary[\"_checkpoint_path\"]"
+        },
+        {
+          "line": 1428,
+          "text": "            trainer.reinit_for_task("
+        },
+        {
+          "line": 1429,
+          "text": "                train_dataloader=train_dataloader,"
+        },
+        {
+          "line": 1430,
+          "text": "                val_dataloader=val_dataloader,"
+        },
+        {
+          "line": 1431,
+          "text": "                task_id=task_id,"
+        },
+        {
+          "line": 1432,
+          "text": "                per_task_steps=per_task_steps,"
+        },
+        {
+          "line": 1433,
+          "text": "                last_global_step=last_global_step,"
+        },
+        {
+          "line": 1434,
+          "text": "                save_checkpoint_path=config.trainer.save_checkpoint_path,"
+        },
+        {
+          "line": 1435,
+          "text": "                load_checkpoint_path=checkpoint_path,"
+        },
+        {
+          "line": 1436,
+          "text": "                ema_adv_state=ema_initial_state,"
+        },
+        {
+          "line": 1437,
+          "text": "                enable_anchor=enable_anchor,"
+        },
+        {
+          "line": 1438,
+          "text": "                fresh_boundary_resume=True,"
+        },
+        {
+          "line": 1439,
+          "text": "            )"
+        },
+        {
+          "line": 1440,
+          "text": "            trainer.restore_boundary_checkpoint(checkpoint_path, int(boundary[\"global_step\"]))"
+        },
+        {
+          "line": 1441,
+          "text": "            vllm_payloads = []"
+        },
+        {
+          "line": 1442,
+          "text": "            for item in boundary[\"rng\"][\"vllm\"]:"
+        },
+        {
+          "line": 1443,
+          "text": "                payload = _read_json(_safe_join(boundary[\"_boundary_root\"], item[\"relative_path\"]))"
+        },
+        {
+          "line": 1444,
+          "text": "                vllm_payloads.append(payload)"
+        },
+        {
+          "line": 1445,
+          "text": "            payload_by_rank = {int(item[\"rank\"]): item for item in vllm_payloads}"
+        },
+        {
+          "line": 1446,
+          "text": "            trainer.actor_rollout_ref_wg.restore_boundary_vllm_rng("
+        },
+        {
+          "line": 1447,
+          "text": "                [payload_by_rank[rank] for rank in sorted(payload_by_rank)]"
+        },
+        {
+          "line": 1448,
+          "text": "            )"
+        }
+      ],
+      "run_task_dispatch": [
+        {
+          "line": 1854,
+          "text": "        # Run the task"
+        },
+        {
+          "line": 1855,
+          "text": "        result = ray.get("
+        },
+        {
+          "line": 1856,
+          "text": "            runner.run_task.remote("
+        },
+        {
+          "line": 1857,
+          "text": "                config=task_config,"
+        },
+        {
+          "line": 1858,
+          "text": "                task_id=task_id,"
+        },
+        {
+          "line": 1859,
+          "text": "                val_progress=not known_args.no_val_progress,"
+        },
+        {
+          "line": 1860,
+          "text": "                val_write_predictions=known_args.val_write_predictions,"
+        },
+        {
+          "line": 1861,
+          "text": "                val_output_dir=known_args.val_output_dir,"
+        },
+        {
+          "line": 1862,
+          "text": "                allowed_classes=ordered_task_class_names,"
+        },
+        {
+          "line": 1863,
+          "text": "                allowed_class_order=task_allowed_class_order,"
+        },
+        {
+          "line": 1864,
+          "text": "                extra_val_splits=eval_plan,"
+        },
+        {
+          "line": 1865,
+          "text": "                prompt_label_list=prompt_label_list,"
+        },
+        {
+          "line": 1866,
+          "text": "                copy_actor_to_anchor=weight_actions[\"copy_actor_to_anchor\"],"
+        },
+        {
+          "line": 1867,
+          "text": "                enable_anchor=weight_actions[\"enable_anchor\"],"
+        }
+      ]
+    },
+    "production_file": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\8ac5\\RaPO-author\\examples\\baselines\\img_cls_cil\\image_cls_cil_rapo.py",
+      "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+    },
+    "run_v9_file": {
+      "path": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9\\run_v9.py",
+      "sha256": "7dd48baf12122ee51f1d24d0a3bfb0b81a59722518c43dd69789b2ac54e11d56"
+    }
+  }
+}

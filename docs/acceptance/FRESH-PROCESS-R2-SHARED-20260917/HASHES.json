@@ -1,0 +1,14 @@
+{
+  "schema": "fresh-process-r2-independent-review-hashes-v1",
+  "self_excluded": true,
+  "files": {
+    "FINDING-A-DRIVER-RNG-002.md": "b7f7698eb00a818b6cfcec3791205ee304914e2ec4c459bfb8b4049fbf410498",
+    "FINDING-B-ANCHOR-INIT-001.md": "19057a1d54b1e1af91cd5d7cd00603dab66818e4be66385e6e634dd318c306ae",
+    "PROGRESS.md": "d2aede0f20fdf68d2c5c7e2cdedd3ac2021ed568601d31dfb08e338109fea668",
+    "REPORT.md": "d5131b35a702a6c8740062f065e15fa063136e070d380bdf8292020ce59748ed",
+    "RUN_METADATA.json": "21e5a788d6b3ac843bb25de4b88d9d414c33192b134b30bacf54be58bb3b4054",
+    "VERDICT.json": "bdbf2c60cbd4d9f4fac88ed80755ccd4c109f8a07413d67cadc0b55b1dd08ef7",
+    "raw/review_probe.stdout.json": "9fb26e38bc367f6aa976051f12a16b64ceb155c7aad2e4a83650eeaefd95085b",
+    "review_probe.py": "5666bcfaec6e9f5cabdfd23f004f44de7b2c9feeb2086918901a3923d5a8ea6a"
+  }
+}
