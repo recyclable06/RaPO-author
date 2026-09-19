@@ -20,7 +20,7 @@
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
 | 独立验收（可执行supervisor窄复核进行中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新 `FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/` 核004实际Linux身份、CLI、进程树与中断/超时收尾、总预算和测试证据边界。已通过R2 guard/timeout、observer不重复，不SSH/Ray/GPU |
 | 专用诊断准备（父supervisor与零GPU sibling均冻结） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 父10文件65323bytes self `f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9`；新 `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT/` 9文件34234bytes self `3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003`，均根核对。0GPU/3CPU/120秒含startup/120收尾已交组合验收，无真实Ray |
-| 专用诊断执行（只读CLI入口预检进行中） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 新 `RAY-CLI-ENTRY-PREFLIGHT-20260920/` 一次有界211检查既有Python/Ray版本、模块和start/status help；如默认模块无入口，同次检查既有CLI。各命令保存原始状态；不启动Ray/GPU/训练，不安装或清理。9月19日22:18资源快照保留，未来运行前重核 |
+| 专用诊断执行（CLI预检完成，待实际零GPU调度） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | `RAY-CLI-ENTRY-PREFLIGHT-20260920/` 30文件16933bytes根核对，self `9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775`。211 Python3.11.6/Ray2.46.0无ray.__main__，bin/ray start/status help通过，已传准备者及独立者。仅帮助检查，无服务/GPU/训练启动 |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
 

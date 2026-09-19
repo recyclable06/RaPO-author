@@ -329,3 +329,9 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 已交独立 `FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/` 窄复核004、Linux路径及中断/超时/后代进程收尾，不重复已通过范围。根读到zeroGPU命令仍使用production-timeout1800，Ray head无显式num-gpus=0/CPU上限，动态RayTmp也较长；已派准备者保持旧补充冻结另存新版：空CUDA可见列表、0GPU/最多3CPU，startup/readiness/probe合计120秒加最多120秒共享收尾，短唯一私有路径。A模式仍两GPU/1800秒，两个模式分别绑定；CLI `python -m ray` 的既有环境可执行性不能用fake-head证明，需核实际入口。当前只准备和独立审查，真实零GPU测试命令就绪后再派专用执行者，无A运行。
 
 零GPU独立sibling `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT/` 已收，9文件34234bytes根核对一致，HASHES_ZEROGPU自身SHA256 `3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003`，MANIFEST_ZEROGPU自身 `eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed`。wrapper引用冻结父supervisor，0GPU/3CPU/CUDA空、含startup的120秒主预算、共享120秒收尾和短/tmp目录已实现并完成标准库自测。已并入正在进行的独立组合复核，不重复另启验收任务。CLI仍未实证，另派专用执行者 `RAY-CLI-ENTRY-PREFLIGHT-20260920/` 对211一次有界只读import/version/help检查；如缺ray.__main__，同次检查既有env/bin/ray或ray.scripts.scripts入口，逐命令保存退出状态，不安装或启动Ray。
+
+### 2026-09-20 00:16：CLI入口已实证，候选模块调用不可执行
+
+71a6 `RAY-CLI-ENTRY-PREFLIGHT-20260920/` 根核对30文件16933bytes一致，HASHES.json自身SHA256 `9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775`。gpu-211、UID1115、采样00:16:48+08:00，既有Python3.11.6/Ray2.46.0；find_spec(ray.__main__)=None，python -m ray start/status --help均exit1、No module named ray.__main__。实际可用入口 `/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/env/rapo-author/bin/ray`，start/status help均exit0，shebang绑定同环境python3.11。首次metadata内联转义SyntaxError原样保留，不用于环境结论；最终模块/CLI检查各有独立退出状态。
+
+该结果证明现候选CLI调用不能直接启动，不是Ray服务故障。已传准备者和独立者，下一版修实际head start/status代码及命令文档，合并其余独立反馈后冻结；允许基于已冻父/zeroGPU sibling另存清晰的最终组合runtime，避免多层补丁，旧快照保持不变。没有新Ray/GPU/模型/训练、安装或清理，也不再重复已确认的CLI探测。
