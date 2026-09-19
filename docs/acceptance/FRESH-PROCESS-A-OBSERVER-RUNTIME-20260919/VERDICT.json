@@ -1,0 +1,60 @@
+{
+  "schema": "fresh-process-a-observer-runtime-independent-incremental-verdict-v1",
+  "reviewed_at": "2026-09-19",
+  "overall": "NOT_READY_FOR_BOUNDED_A_ONLY",
+  "real_ray_zero_gpu_dispatch": "INDEPENDENTLY_CORROBORATED",
+  "a_gate_closed": false,
+  "delta_dispatch_ready": false,
+  "findings": {
+    "FINDING-A-RUNTIME-MANIFEST-GUARD-001": {
+      "status": "OPEN",
+      "summary": "Candidate-only zero-GPU preflight verifies the runtime manifest, but production run_v9.py does not verify or bind it before spawning runtime_entry_v6.py."
+    },
+    "FINDING-A-TWO-GPU-IDENTITY-002": {
+      "status": "OPEN",
+      "summary": "The candidate identity is explicitly zero-GPU; two-GPU A wiring and actual post-publication driver_rng_expected remain unproven."
+    }
+  },
+  "evidence": {
+    "candidate_manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "candidate_observer_sha256": "e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1",
+    "candidate_event_writer_sha256": "e9fc45c8a605dd9451a7f90c533c4c1ed6b1d800a35822a659a7c68fa911df61",
+    "candidate_hashes_runtime_sha256": "72f53b1238624c9c9b160b856168505cca2ef5b6048fffa567546c1614a6d5b1",
+    "frozen_v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "production_source_sha256_declared": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "ray_version": "2.46.0",
+    "num_gpus": 0,
+    "num_cpus": 3,
+    "event_count": 118,
+    "event_file_count": 14,
+    "bootstrap_count": 19,
+    "production_runner_pid": 3915086,
+    "production_runner_process_start": "3915086:67472233",
+    "run_task_call_id": "3915086:1789807978239168413:f2f92994383f410f9859c9a959d13973",
+    "run_task_inert_error": "AttributeError: 'NoneType' object has no attribute '_task_id'",
+    "forbidden_call_count": 0,
+    "probe_actor_pid": 3913646
+  },
+  "scope": {
+    "read_only": true,
+    "new_ssh": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_invoked": false,
+    "installation": false,
+    "production_modified": false,
+    "frozen_v9_modified": false,
+    "b_or_c_rerun": false
+  },
+  "next_required": [
+    "Close FINDING-A-RUNTIME-MANIFEST-GUARD-001 in the production launcher before A dispatch.",
+    "Use frozen v9 PPO_CONFIG_TEMPLATE_v9.json and EXPECTED_IDENTITY_v9.json explicitly; do not fall back to candidate/old observer config paths.",
+    "Run the new candidate-bound A-only two-step two-GPU sequence and derive actual post-publication driver_rng_expected from the observer after-event."
+  ],
+  "artifacts": {
+    "report": "REPORT.md",
+    "independent_review": "raw/independent_review.json",
+    "command_contract": "REPORT.md#A-only-command-contract",
+    "hashes": "HASHES.json"
+  }
+}

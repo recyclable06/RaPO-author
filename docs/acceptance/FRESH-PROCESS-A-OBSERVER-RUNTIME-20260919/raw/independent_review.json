@@ -1,0 +1,592 @@
+{
+  "candidate": {
+    "frozen_v9_hashes_sha256_declared": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "observer_sha256": "e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1",
+    "production_source_sha256_declared": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "root": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-A-OBSERVER-RUNTIME-CANDIDATE-20260919"
+  },
+  "candidate_manifest": {
+    "declared_file_count": 13,
+    "escapes": [],
+    "frozen_v9": {
+      "hashes_file": "HASHES_v9.json",
+      "hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+      "package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+      "package_self_excluded": true,
+      "root": "/mnt/conda/zhenglifeng/t/r9r211d16b/v9"
+    },
+    "local_import_closure": {
+      "argv_validate_v9.py": [
+        "identity_v6"
+      ],
+      "boundary_evidence_v6.py": [],
+      "child_bootstrap_v6.py": [
+        "child_observer_v6",
+        "event_writer_v6"
+      ],
+      "child_observer_v6.py": [
+        "event_writer_v6",
+        "state_fingerprint_v6"
+      ],
+      "event_writer_v6.py": [],
+      "gpu_preflight_v9.py": [],
+      "identity_v6.py": [],
+      "run_v9.py": [
+        "argv_validate_v9",
+        "boundary_evidence_v6",
+        "gpu_preflight_v9",
+        "identity_v6"
+      ],
+      "runtime_entry_v6.py": [
+        "child_bootstrap_v6"
+      ],
+      "sitecustomize.py": [
+        "child_bootstrap_v6",
+        "event_writer_v6"
+      ],
+      "state_fingerprint_v6.py": [],
+      "zero_gpu_real_ray_launcher.py": [],
+      "zero_gpu_real_ray_probe.py": [
+        "child_bootstrap_v6",
+        "child_observer_v6"
+      ]
+    },
+    "manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "mismatches": [],
+    "missing": [],
+    "missing_local_imports": [],
+    "ok": true,
+    "production_source": {
+      "bytes": 102269,
+      "path": "/mnt/conda/zhenglifeng/t/r9r211d16b/source/examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+      "sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+    },
+    "runtime": {
+      "cuda_visible_devices": "",
+      "model_loaded": false,
+      "num_cpus": 3,
+      "num_gpus": 0,
+      "python": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/env/rapo-author/bin/python",
+      "ray_version": "2.46.0",
+      "training_invoked": false
+    },
+    "self_excluded": true,
+    "v9_hashes_local_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "v9_hashes_matches_declared": true
+  },
+  "delivery_hashes": {
+    "actual_nonself_file_count": 149,
+    "actual_nonself_total_bytes": 1241341,
+    "declared_file_count": 40,
+    "declared_total_bytes": 646309,
+    "entry_count": 40,
+    "entry_total_bytes": 646309,
+    "extra_categories": {
+      "pycache": 13,
+      "ray-temp": 96
+    },
+    "extra_count": 109,
+    "extra_total_bytes": 595032,
+    "hashes_runtime_sha256": "72f53b1238624c9c9b160b856168505cca2ef5b6048fffa567546c1614a6d5b1",
+    "mismatches": [],
+    "missing": [],
+    "ok": true
+  },
+  "events": {
+    "all_bootstraps_candidate_identity": true,
+    "bootstrap_count": 19,
+    "driver_remote_wrapper_install_count": 1,
+    "event_file_count": 14,
+    "event_files": [
+      "events-3910612.jsonl",
+      "events-3912113.jsonl",
+      "events-3912115.jsonl",
+      "events-3912363.jsonl",
+      "events-3912398.jsonl",
+      "events-3912400.jsonl",
+      "events-3912427.jsonl",
+      "events-3912428.jsonl",
+      "events-3912429.jsonl",
+      "events-3912880.jsonl",
+      "events-3913202.jsonl",
+      "events-3913426.jsonl",
+      "events-3913646.jsonl",
+      "events-3915086.jsonl"
+    ],
+    "forbidden_call_count": 0,
+    "forbidden_labels": [],
+    "independent_conditions": {
+      "candidate_identity_all_bootstraps": true,
+      "exact_inert_error": true,
+      "forbidden_calls_zero": true,
+      "non_target_values": true,
+      "probe_actor_not_used_as_runner": true,
+      "production_runner_actor_bound_by_same_pid_start": true,
+      "real_ray_version": true,
+      "record_and_file_counts_match_result": true,
+      "release_claims": true,
+      "run_task_pair": true,
+      "zero_gpu": true
+    },
+    "invalid_json_lines": [],
+    "kind_counts": {
+      "child_bootstrap_install": 19,
+      "child_observer_install": 12,
+      "observer_hook_ready": 21,
+      "ray_init_runtime_env": 1,
+      "ray_init_wrapper_install": 19,
+      "ray_kill_wrapper_install": 19,
+      "ray_remote_wrapper_install": 19,
+      "runner_release_requested": 4,
+      "target_wrapper_call_after": 2,
+      "target_wrapper_call_before": 2
+    },
+    "persistent_runner_constructor_event_count": 2,
+    "probe_actor": {
+      "bootstrap_count": 1,
+      "is_distinct_from_runner": true,
+      "pid": 3913646,
+      "role_stages": [
+        "ray_worker:ray_actor_method"
+      ]
+    },
+    "raw_result_claims": {
+      "gpu_requested": false,
+      "non_target_results": {
+        "decorated_class": 8,
+        "direct_class_options": 5,
+        "direct_function": 10,
+        "inherited_method": 15,
+        "remote_exception_types": [
+          "AssertionError",
+          "AttributeError"
+        ]
+      },
+      "num_cpus_requested": 3,
+      "ray_version": "2.46.0",
+      "release": {
+        "error": null,
+        "ray_shutdown_called": true,
+        "runner_killed": true
+      },
+      "required_conditions": {
+        "candidate_manifest_preverified": true,
+        "canonical_target": true,
+        "decorated_class_pass_through": true,
+        "direct_class_options_pass_through": true,
+        "direct_function_pass_through": true,
+        "driver_observer_identity": true,
+        "inherited_method_pass_through": true,
+        "no_production_init_model_dataloader_fit_call": true,
+        "production_source_identity": true,
+        "ray_version_exact": true,
+        "remote_exception_passthrough": true,
+        "remote_wrapper_installed": true,
+        "repeat_install_no_new_remote_wrapper_event": true,
+        "run_task_after_is_inert_exception": true,
+        "run_task_before_after_same_call": true,
+        "runner_released": true,
+        "worker_observer_identity": true,
+        "zero_gpu_requested": true
+      },
+      "status": "PASS_REAL_RAY_ZERO_GPU_DISPATCH"
+    },
+    "record_count": 118,
+    "remote_wrapper_install_count": 19,
+    "role_counts": {
+      "production_driver": 108,
+      "ray_runner": 4,
+      "ray_worker": 6
+    },
+    "run_task_after_count": 1,
+    "run_task_before_after": [
+      {
+        "call_id": "3915086:1789807978239168413:f2f92994383f410f9859c9a959d13973",
+        "error": null,
+        "kind": "target_wrapper_call_before",
+        "pid": 3915086,
+        "process_start": "3915086:67472233",
+        "role": "ray_runner"
+      },
+      {
+        "call_id": "3915086:1789807978239168413:f2f92994383f410f9859c9a959d13973",
+        "error": "AttributeError: 'NoneType' object has no attribute '_task_id'",
+        "kind": "target_wrapper_call_after",
+        "pid": 3915086,
+        "process_start": "3915086:67472233",
+        "role": "ray_runner"
+      }
+    ],
+    "run_task_before_count": 1,
+    "run_task_exact_inert_error": true,
+    "run_task_same_call_pid_start": true,
+    "runner_identity": {
+      "candidate_observer_and_manifest": true,
+      "event_files": [
+        "events-3915086.jsonl"
+      ],
+      "matching_bootstrap_count": 2,
+      "matching_bootstrap_roles": [
+        "production_driver"
+      ],
+      "matching_bootstrap_stages": [
+        "sitecustomize"
+      ],
+      "pid": 3915086,
+      "process_start": "3915086:67472233",
+      "target_event_roles": [
+        "ray_runner"
+      ]
+    },
+    "target_event_writer_identity": true
+  },
+  "old_reference_comparison": {
+    "new_manifest_sha": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "new_observer_sha": "e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1",
+    "new_raw_ray_version": "2.46.0",
+    "new_raw_real_ray_status": "PASS_REAL_RAY_ZERO_GPU_DISPATCH",
+    "old_delta_dispatch_ready": false,
+    "old_overall": "PARTIAL_NOT_READY",
+    "old_real_ray_probe": "NOT_RUN_BLOCKED_NO_LOCAL_RAY"
+  },
+  "reviewed_at": "2026-09-19",
+  "schema": "fresh-process-a-observer-runtime-independent-incremental-review-v1",
+  "scope": {
+    "cpu_budget": "necessary local checks only",
+    "gpu": false,
+    "install": false,
+    "model": false,
+    "new_ssh": false,
+    "read_only": true,
+    "training": false
+  },
+  "source_diffs": {
+    "details": {
+      "argv_validate_v9.py": {
+        "candidate_bytes": 15367,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -266 +266,3 @@\n",
+          "     raise SystemExit(main())",
+          "+",
+          "+"
+        ],
+        "diff_lines": 6,
+        "normalized_equal": true,
+        "v9_bytes": 15365
+      },
+      "boundary_evidence_v6.py": {
+        "candidate_bytes": 9968,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -208 +208,3 @@\n",
+          " __all__ = [\"compare\", \"derive_a\", \"derive_b\", \"read_events\"]",
+          "+",
+          "+"
+        ],
+        "diff_lines": 6,
+        "normalized_equal": true,
+        "v9_bytes": 9966
+      },
+      "child_bootstrap_v6.py": {
+        "candidate_bytes": 2024,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -1,2 +1,2 @@\n",
+          "-\"\"\"Install the v6 observer at the start of each real child interpreter.\"\"\"",
+          "+\"\"\"Install the candidate observer at the start of each real child interpreter.\"\"\"",
+          " ",
+          "@@ -16,2 +16,12 @@\n",
+          "     return {\"path\": str(path.resolve()), \"bytes\": path.stat().st_size, \"sha256\": hashlib.sha256(path.read_bytes()).hexdigest()}",
+          "+",
+          "+",
+          "+def _runtime_manifest() -> dict[str, Any] | None:",
+          "+    raw = os.environ.get(\"RAPO_DIAG_RUNTIME_MANIFEST\")",
+          "+    if not raw:",
+          "+        return None",
+          "+    path = Path(raw).resolve()",
+          "+    if not path.is_file():",
+          "+        return {\"path\": str(path), \"available\": False}",
+          "+    return {\"path\": str(path), \"available\": True, \"bytes\": path.stat().st_size, \"sha256\": hashlib.sha256(path.read_bytes()).hexdigest()}",
+          " ",
+          "@@ -38,2 +48,4 @@\n",
+          "         \"observer\": _file(Path(child_observer_v6.__file__)),",
+          "+        \"runtime_root\": os.environ.get(\"RAPO_DIAG_RUNTIME_ROOT\"),",
+          "+        \"runtime_manifest\": _runtime_manifest(),",
+          "         \"hook\": hook,"
+        ],
+        "diff_lines": 28,
+        "normalized_equal": false,
+        "v9_bytes": 1507
+      },
+      "child_observer_v6.py": {
+        "candidate_bytes": 24941,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -59,2 +59,3 @@\n",
+          " _RAY_PATCHED = False",
+          "+_RAY_REMOTE_PATCHED = False",
+          " ",
+          "@@ -292,2 +293,31 @@\n",
+          " ",
+          "+def _patch_remote_source_class(owner: Any) -> None:",
+          "+    \"\"\"Patch a raw class before ray.remote builds its actor dispatch table.\"\"\"",
+          "+    if not inspect.isclass(owner):",
+          "+        return",
+          "+    module_name = str(getattr(owner, \"__module__\", \"\"))",
+          "+    plan = TARGET_PLANS.get(module_name)",
+          "+    if not plan:",
+          "+        return",
+          "+    class_name = str(getattr(owner, \"__name__\", \"\"))",
+          "+    for owner_name, method_name in plan:",
+          "+        if owner_name is None or owner_name != class_name:",
+          "+            continue",
+          "+        if hasattr(owner, method_name):",
+          "+            _patch(owner, method_name, f\"{owner_name}.{method_name}\", module_name)",
+          "+",
+          "+"
+        ],
+        "diff_lines": 87,
+        "normalized_equal": false,
+        "v9_bytes": 21555
+      },
+      "event_writer_v6.py": {
+        "candidate_bytes": 4009,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -129 +129,3 @@\n",
+          " __all__ = [\"SCHEMA_VERSION\", \"process_start\", \"write_event\"]",
+          "+",
+          "+"
+        ],
+        "diff_lines": 6,
+        "normalized_equal": true,
+        "v9_bytes": 4007
+      },
+      "gpu_preflight_v9.py": {
+        "candidate_bytes": 30791,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -537 +537,3 @@\n",
+          "     raise SystemExit(main())",
+          "+",
+          "+"
+        ],
+        "diff_lines": 6,
+        "normalized_equal": true,
+        "v9_bytes": 30789
+      },
+      "identity_v6.py": {
+        "candidate_bytes": 10022,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -193 +193,3 @@\n",
+          " __all__ = [\"IdentityError\", \"binding_hashes\", \"canonical\", \"normalize_config\", \"path_identity\", \"runtime_source_manifest\", \"sha256_bytes\", \"sha256_file\", \"verify_content\"]",
+          "+",
+          "+"
+        ],
+        "diff_lines": 6,
+        "normalized_equal": true,
+        "v9_bytes": 10020
+      },
+      "run_v9.py": {
+        "candidate_bytes": 15263,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -1,2 +1,2 @@\n",
+          "-\"\"\"Complete R3.1 C/A/B launcher with v9 init compatibility wiring.",
+          "+\"\"\"Complete R3.1 C/A/B launcher with candidate-first runtime wiring.",
+          " ",
+          "@@ -159,2 +159,5 @@\n",
+          "     paths = [str(HERE.resolve()), str(source_root.resolve())]",
+          "+    inherited_v9 = os.environ.get(\"RAPO_DIAG_V9_ROOT\")",
+          "+    if inherited_v9:",
+          "+        paths.append(str(Path(inherited_v9).resolve()))",
+          "     if env.get(\"PYTHONPATH\"):",
+          "@@ -162,2 +165,3 @@\n",
+          "     env[\"PYTHONPATH\"] = os.pathsep.join(paths)",
+          "+    env[\"RAPO_DIAG_RUNTIME_ROOT\"] = str(HERE.resolve())",
+          "     return env",
+          "@@ -269 +273,3 @@\n",
+          "     raise SystemExit(main())",
+          "+",
+          "+"
+        ],
+        "diff_lines": 20,
+        "normalized_equal": false,
+        "v9_bytes": 15071
+      },
+      "runtime_entry_v6.py": {
+        "candidate_bytes": 2176,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -1,2 +1,2 @@\n",
+          "-\"\"\"Load the real production entry under its canonical module name.",
+          "+\"\"\"Load production through the acceptance-only candidate runtime first.",
+          " ",
+          "@@ -26,7 +26,10 @@\n",
+          "     root = entry.parents[3]",
+          "-    if str(root) not in sys.path:",
+          "-        sys.path.insert(0, str(root))",
+          "     observer_dir = Path(__file__).resolve().parent",
+          "-    if str(observer_dir) not in sys.path:",
+          "-        sys.path.insert(0, str(observer_dir))",
+          "+    for path in (str(root), str(observer_dir)):",
+          "+        while path in sys.path:",
+          "+            sys.path.remove(path)",
+          "+    # Candidate runtime first; production source second; any inherited path last.",
+          "+    sys.path.insert(0, str(root))",
+          "+    sys.path.insert(0, str(observer_dir))",
+          "+    os.environ.setdefault(\"RAPO_DIAG_RUNTIME_ROOT\", str(observer_dir))",
+          "     os.environ.setdefault(\"RAPO_DIAG_SCHEMA\", \"5\")",
+          "@@ -56 +59,3 @@\n",
+          "     raise SystemExit(main())",
+          "+"
+        ],
+        "diff_lines": 25,
+        "normalized_equal": false,
+        "v9_bytes": 1986
+      },
+      "sitecustomize.py": {
+        "candidate_bytes": 631,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -20 +20,3 @@\n",
+          "             pass",
+          "+",
+          "+"
+        ],
+        "diff_lines": 6,
+        "normalized_equal": true,
+        "v9_bytes": 629
+      },
+      "state_fingerprint_v6.py": {
+        "candidate_bytes": 19263,
+        "diff_head": [
+          "--- \n",
+          "+++ \n",
+          "@@ -439 +439,3 @@\n",
+          " ]",
+          "+",
+          "+"
+        ],
+        "diff_lines": 6,
+        "normalized_equal": true,
+        "v9_bytes": 19261
+      }
+    },
+    "groups": {
+      "added_to_candidate": [
+        "zero_gpu_real_ray_launcher.py",
+        "zero_gpu_real_ray_probe.py"
+      ],
+      "identical": [],
+      "semantic_changed": [
+        "child_bootstrap_v6.py",
+        "child_observer_v6.py",
+        "run_v9.py",
+        "runtime_entry_v6.py"
+      ],
+      "trailing_blank_only": [
+        "argv_validate_v9.py",
+        "boundary_evidence_v6.py",
+        "event_writer_v6.py",
+        "gpu_preflight_v9.py",
+        "identity_v6.py",
+        "sitecustomize.py",
+        "state_fingerprint_v6.py"
+      ]
+    },
+    "v9_entry_count": 205,
+    "v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39"
+  },
+  "static_wiring": {
+    "bootstrap": {
+      "records_manifest": true,
+      "verifies_manifest_contents": false
+    },
+    "candidate_manifest_hash": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "config_resolution": {
+      "candidate_config_files": [
+        [
+          "PPO_CONFIG_TEMPLATE_v9.json",
+          false
+        ],
+        [
+          "EXPECTED_IDENTITY_v9.json",
+          false
+        ]
+      ],
+      "candidate_has_ppo_or_expected": false,
+      "frozen_v9_config_files": [
+        [
+          "PPO_CONFIG_TEMPLATE_v9.json",
+          true
+        ],
+        [
+          "EXPECTED_IDENTITY_v9.json",
+          true
+        ]
+      ],
+      "manifest_path_priority": [
+        "candidate_root",
+        "frozen_v9_root",
+        "production_source_root"
+      ]
+    },
+    "run_v9": {
+      "candidate_root_in_path_list": true,
+      "inherited_v9_appended_after_candidate": true,
+      "manifest_verified_before_subprocess": false,
+      "runtime_manifest_referenced": false,
+      "runtime_root_bound": true,
+      "subprocess_launch_present": true
+    },
+    "runtime_entry": {
+      "candidate_observer_dir_reinserted_first": true,
+      "production_source_inserted_after_candidate": true,
+      "runtime_root_defaulted": true
+    },
+    "runtime_manifest_claim": {
+      "cuda_visible_devices": "",
+      "model_loaded": false,
+      "num_cpus": 3,
+      "num_gpus": 0,
+      "python": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/env/rapo-author/bin/python",
+      "ray_version": "2.46.0",
+      "training_invoked": false
+    },
+    "zero_gpu_probe": {
+      "sets_manifest_env": true,
+      "verifies_manifest": true
+    },
+    "zero_gpu_probe_launcher": {
+      "sets_manifest_env": true,
+      "verifies_manifest": true,
+      "zero_gpu_env": true
+    }
+  },
+  "verdict": {
+    "a_actual_postpublication_driver_rng": "NOT_RUN_AND_REQUIRED",
+    "minimal_actions": [
+      "Add a fail-closed candidate-manifest/content verification in the production run_v9 path before subprocess execution, and set RAPO_DIAG_RUNTIME_MANIFEST there.",
+      "Use frozen v9 PPO_CONFIG_TEMPLATE_v9.json and EXPECTED_IDENTITY_v9.json explicitly from the frozen v9 root; never search candidate or fall back to an old observer.",
+      "Run the new candidate-bound A-only two-step sequence on two GPUs and derive actual post-publication driver_rng_expected from the new observer after-event."
+    ],
+    "overall": "NOT_READY_FOR_BOUNDED_A_ONLY",
+    "production_launcher_manifest_guard": "MISSING_IN_RUN_V9",
+    "real_ray_zero_gpu_dispatch": "INDEPENDENTLY_CORROBORATED",
+    "two_gpu_runtime_wiring": "NOT_ESTABLISHED_BY_ZERO_GPU_MANIFEST"
+  }
+}

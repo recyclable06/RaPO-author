@@ -1,0 +1,48 @@
+{
+  "schema": "fresh-process-a-observer-runtime-independent-incremental-metadata-v1",
+  "reviewed_at": "2026-09-19",
+  "workspace": "C:\\Users\\Administrator\\Desktop\\RaPO-author",
+  "role": "independent_acceptance_review",
+  "source_candidate": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-A-OBSERVER-RUNTIME-CANDIDATE-20260919",
+  "source_frozen_v9": "C:\\Users\\Administrator\\.codex\\worktrees\\14c8\\RaPO-author\\docs\\diagnostics\\fresh-process-resume-20260911\\v9",
+  "source_prior_acceptance": "C:\\Users\\Administrator\\Desktop\\RaPO-author\\docs\\acceptance\\FRESH-PROCESS-A-OBSERVER-DELTA-20260919",
+  "source_identities": {
+    "candidate_manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "candidate_observer_sha256": "e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1",
+    "candidate_hashes_runtime_sha256": "72f53b1238624c9c9b160b856168505cca2ef5b6048fffa567546c1614a6d5b1",
+    "frozen_v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "production_source_sha256_declared": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  },
+  "method": {
+    "probe": "review_probe.py",
+    "probe_output": "raw/independent_review.json",
+    "read_only": true,
+    "new_ssh": false,
+    "gpu": false,
+    "model": false,
+    "training": false,
+    "installation": false,
+    "cpu_checks": ["JSON parse", "AST import-closure check", "Python compile with -B", "hash and raw-event recomputation"]
+  },
+  "raw_source": {
+    "event_count": 118,
+    "event_file_count": 14,
+    "bootstrap_count": 19,
+    "raw_run_status": "PASS_REAL_RAY_ZERO_GPU_DISPATCH",
+    "ray_version": "2.46.0",
+    "num_gpus": 0,
+    "num_cpus": 3
+  },
+  "verdict": "NOT_READY_FOR_BOUNDED_A_ONLY",
+  "writes": [
+    "REPORT.md",
+    "FINDING-A-RUNTIME-MANIFEST-GUARD-001.md",
+    "FINDING-A-TWO-GPU-IDENTITY-002.md",
+    "VERDICT.json",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "HASHES.json",
+    "review_probe.py",
+    "raw/independent_review.json"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "fresh-process-a-observer-runtime-independent-review-hashes-v1",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "FINDING-A-RUNTIME-MANIFEST-GUARD-001.md",
+      "bytes": 1255,
+      "sha256": "3edd37dd433f639f6576ac225f2ce7b64348ea8d2fd20cb481cc75728713d908"
+    },
+    {
+      "path": "FINDING-A-TWO-GPU-IDENTITY-002.md",
+      "bytes": 762,
+      "sha256": "6faef442636086e09fd958e56735b8aeae0496a2002dea17965d6a26434673c7"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 1050,
+      "sha256": "8acb923b32f2ecdb36c1e045ef7833737ddd4f2db4415f13b947aa1e863a825a"
+    },
+    {
+      "path": "raw/independent_review.json",
+      "bytes": 20576,
+      "sha256": "a5fc34c3df20f4ac768005917cebee2cbd74c6f4dbd17aa1f335802d63a15601"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 8417,
+      "sha256": "726cd23ace3fce4204faf79fa5ec71a316ac9275f9c4564e3d69ae04bad1c985"
+    },
+    {
+      "path": "review_probe.py",
+      "bytes": 22299,
+      "sha256": "e24c78be50888254fbb5803f4e9e4453cc5b1773858b2c2469997e4854cb5fdc"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 2103,
+      "sha256": "79d73bec6dff36a7d13fae2188ab5240377c412ac76a93ce0e65e5aa2b7692f7"
+    },
+    {
+      "path": "VERDICT.json",
+      "bytes": 2783,
+      "sha256": "e35543995cd43ed5337d575a88e47cddc13cda3f004d88908694b0236753f533"
+    }
+  ]
+}

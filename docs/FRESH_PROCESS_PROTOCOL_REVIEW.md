@@ -285,3 +285,11 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 共享/mnt/conda容量使用86%、inode78%，剩余1906862348个1KiB块（约1.78TiB），211本地盘剩余298718968个1KiB块（约285GiB）；未见本次所查文件系统耗尽，不推断先前SSH故障原因。三个旧PID1115245/1153372/1152533与两个私有路径cmd查询没有匹配，后者pipeline未pipefail；不等于所有Ray/worker残留均已核查。旧目录保留与当前GPU空闲是不同事实，不再沿用“211不可达、GPU完全未知”的当前摘要；未清理任何资产。
 
 预检建议的长Ray临时路径不直接采用：前次零GPU出现过AF_UNIX长度问题，已告知执行者后续选用户专属短新路径（例如/tmp/zlf-a19r1），先核不存在/归属。A执行仍待runtime独立结论和具体入口身份，沿用1800秒主预算及最多120秒收尾，不自动加时，不重复已接受C。
+
+### 2026-09-19：真实dispatch独立确认，生产启动清单校验待补
+
+独立[新runtime验收](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/REPORT.md)已完成，协调者核对8文件59245bytes全部一致，HASHES.json自身SHA256 `0df8e1ec3ffef5112662efbbf3178ed8d56bebf8ba174b4d633e7d0801071381`。真实Ray零GPUdispatch为INDEPENDENTLY_CORROBORATED，实际生产Runner PID3915086的同PID/start bootstrap及run_task配对事件成立，辅助ProbeActor PID3913646未被用来替代生产actor。非目标透传、重复安装、预期异常和finally收尾亦有独立原件支持。支持文件差异核实包含仅尾空行变化，不能误报为逻辑修订。
+
+整体仍NOT_READY_FOR_BOUNDED_A_ONLY。[GUARD-001](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/FINDING-A-RUNTIME-MANIFEST-GUARD-001.md)：零GPUlauncher有manifest核验，但生产run_v9只设置candidate-first路径及runtime root，没有在Popen前核对/绑定manifest，bootstrap也仅记录传入值。[TWO-GPU-002](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/FINDING-A-TWO-GPU-IDENTITY-002.md)：旧manifest的零GPUmetadata不是A两GPU运行身份；实际发布后driver_rng_expected必须由未来A运行生成，不能据此设置“先有GPU结果才能启动GPU”的循环前置条件。
+
+已派准备者新独立 `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919/` 最小修订，仅run_v9及必要manifest验证support、A运行配置/命令和测试证据。生产R3.1、原v9、旧candidate保持冻结，已确认的observer/event_writer/boundary字节复用。在真实子进程启动前核对runtime完整依赖、冻结v9和91项source身份，并在同一env绑定runtime manifest/root、v9 root及candidate-first路径；正向与缺失/漂移负向检查必须证明拒绝发生在spawn前。配置绑定原v9模板/expected、既有Python、两卡、A两步及1800秒上限；不启动A或新Ray，必要时仅用既有Linux Python做零GPUguard检查。准备后只做变更增量独立验收，C/B/42CPU及已确认真实dispatch均不重复。
