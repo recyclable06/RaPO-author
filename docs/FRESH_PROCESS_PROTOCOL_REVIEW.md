@@ -301,3 +301,9 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 新入口限定A，在Popen前调用标准库guard，核新4文件、父observer13文件、v9完整205文件及91项source；父observer入口/支持按hash引用，未重写。独立任务已续派 `FRESH-PROCESS-A-LAUNCH-GUARD-20260919/` 验实际接线、参数和测试证据。根同时确认预算问题：guard返回timeout_seconds=1920，launcher将其直接用于production communicate，而不是production_timeout_seconds=1800；超时kill后的communicate又无timeout，因此不能声明已实现1800秒运行加最多120秒收尾。
 
 已要求准备者另存r2修正，保持此快照不变：分开主预算和基于monotonic的剩余收尾时限，不做无界communicate；避免TimeoutExpired保存输出与后续communicate重复拼接。用真实轻量子进程验证正常/超时和必要的管道继承情形，禁止模型或Ray。A命令还须明确FRESH_RAY_ADDRESS属于本次专属新Ray，由实际步骤记录身份并有限收尾，不能接共享Ray。独立者并行审其他部分，新版到达只补有关delta，不重复已通过的真实dispatch、C/B或42CPU。
+
+### A launch guard独立验收接收：仅预算和Ray生命周期待修
+
+独立[guard验收](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/REPORT.md)已冻结，协调者核对8文件27677bytes一致，HASHES.json自身SHA256 `9ffee8b7bbcb677e767c176db094154c15dc9529c99a58dbc0b6634b1b397574`。GUARD-001为RESOLVED_FOR_THIS_FROZEN_CANDIDATE：实际入口在Popen前验证并绑定同一子环境，正例与四负例通过，负例Popen=0；既有211Python原件亦通过，未运行Ray/模型/训练。A recipe/path独立比对一致，生产argv与冻结v9仅launch_script路径不同。
+
+整体NOT_READY_FOR_BOUNDED_A_ONLY，新增[003](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/FINDING-A-TIMEOUT-CONTRACT-003.md)和[004](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/FINDING-A-RAY-LIFECYCLE-004.md)均与根已派r2修正范围一致，无额外算法问题。004要求实际专属Ray启动/UID及PID-start/session地址身份/正常和超时收尾的负责人，不是非空地址占位。报告P1为本次运行门的严重度，不升级为论文或生产算法P1。已将独立结论传给正在修r2的准备者，不重启任务、不重复已通过范围；实际A与发布后RNG仍待未来运行。

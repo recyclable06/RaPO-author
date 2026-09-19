@@ -1,0 +1,74 @@
+{
+  "schema": "fresh-process-a-launch-guard-independent-review-raw-v1",
+  "reviewed_at": "2026-09-19",
+  "probe": "review_probe.py",
+  "candidate_hash_check": {
+    "declared_file_count": 14,
+    "declared_total_bytes": 74540,
+    "actual_total_bytes": 74540,
+    "bad_files": [],
+    "hashes_self_sha256": "0bbc37a4a04ef7f2031d9ace2a70444d4271a983e41d9cba7a0cdadbb7fee98d",
+    "self_excluded": true
+  },
+  "local_standard_library_tests": {
+    "status": "PASS_LOCAL_STANDARD_LIBRARY_GUARD_TESTS",
+    "positive": "PASS_LAUNCH_GUARD",
+    "negative_cases": [
+      "missing_manifest",
+      "corrupt_manifest",
+      "production_source_drift",
+      "frozen_v9_drift"
+    ],
+    "negative_popen_calls": 0,
+    "ray_started": false,
+    "model_loaded": false,
+    "training_started": false
+  },
+  "identity_and_recipe": {
+    "parent_manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "frozen_v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "production_source_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "recipe_matches_frozen_expected_identity": true,
+    "model_and_input_paths_match_frozen_expected_identity": true,
+    "candidate_a_argv_matches_frozen_v9_after_launcher_path_normalization": true
+  },
+  "static_timeout_review": {
+    "guard_timeout_seconds": 1920,
+    "declared_production_timeout_seconds": 1800,
+    "declared_cleanup_grace_seconds": 120,
+    "communicate_timeout_line": 354,
+    "post_kill_communicate_line": 358,
+    "uses_separate_deadlines": false,
+    "cleanup_is_bounded": false
+  },
+  "static_ray_lifecycle_review": {
+    "ray_address_nonempty_check_line": 326,
+    "ray_address_command_line": 25,
+    "command_says_existing_ray": true,
+    "dedicated_lifecycle_owner_declared": false,
+    "ray_lifecycle_gap": true
+  },
+  "remote_python_only_evidence": {
+    "status": "PASS_LAUNCH_GUARD",
+    "candidate_manifest_sha256": "072f91694421782b4ba448eaf03785d516ba355f4e319786dfe10f6c43154b10",
+    "v9_package_files": 205,
+    "ray_started": false,
+    "model_loaded": false,
+    "training_started": false,
+    "production_popen_or_a_run": false
+  },
+  "verdict": "NOT_READY_FOR_BOUNDED_A_ONLY",
+  "open_findings": [
+    "FINDING-A-TIMEOUT-CONTRACT-003",
+    "FINDING-A-RAY-LIFECYCLE-004"
+  ],
+  "scope": {
+    "read_only": true,
+    "new_ssh": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_invoked": false,
+    "production_modified": false,
+    "frozen_v9_modified": false
+  }
+}

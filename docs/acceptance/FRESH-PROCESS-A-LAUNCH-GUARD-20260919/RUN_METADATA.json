@@ -1,0 +1,62 @@
+{
+  "schema": "fresh-process-a-launch-guard-independent-review-metadata-v1",
+  "reviewed_at": "2026-09-19",
+  "workspace": "C:/Users/Administrator/Desktop/RaPO-author",
+  "role": "independent_acceptance_review",
+  "source_candidate": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919",
+  "source_frozen_v9": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/diagnostics/fresh-process-resume-20260911/v9",
+  "source_parent_observer": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-CANDIDATE-20260919",
+  "source_identities": {
+    "candidate_hashes_sha256": "0bbc37a4a04ef7f2031d9ace2a70444d4271a983e41d9cba7a0cdadbb7fee98d",
+    "candidate_manifest_sha256": "072f91694421782b4ba448eaf03785d516ba355f4e319786dfe10f6c43154b10",
+    "guard_support_sha256": "2856546e943ed4d5d74ba000a5fcc347658301df10f514702f4a0a6c16738b2f",
+    "run_v9_sha256": "aa6c65a0b410fd9900b6a93c5bbf932067cd76379853cfd099c1607ad4bf93f9",
+    "a_only_contract_sha256": "be5bf76f647c9d93ab01a37e63ba4b29e7a23dba67e088be31e6b619479b1cb4",
+    "parent_manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "frozen_v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "frozen_v9_package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+    "production_source_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3"
+  },
+  "method": {
+    "probe": "review_probe.py",
+    "probe_output": "raw/independent_review.json",
+    "read_only": true,
+    "new_ssh": false,
+    "gpu": false,
+    "model": false,
+    "training": false,
+    "installation": false,
+    "checks": [
+      "independent SHA-256 and byte-count recomputation",
+      "standard-library positive and four negative pre-Popen fixture checks",
+      "frozen-v9 recipe/path and A argv comparison",
+      "AST/source review of timeout and Ray lifecycle behavior",
+      "raw remote Python-only evidence boundary review"
+    ]
+  },
+  "remote_evidence": {
+    "host_alias": "211",
+    "host_check": "HOSTKEY_CHECK_OK",
+    "python_version": "3.11.6",
+    "guard_check": "PASS_LAUNCH_GUARD",
+    "python_only": true,
+    "ray_started": false,
+    "model_loaded": false,
+    "training_started": false,
+    "candidate_root_precheck": "ABSENT",
+    "output_root_precheck": "ABSENT",
+    "ray_tmp_precheck": "ABSENT"
+  },
+  "verdict": "NOT_READY_FOR_BOUNDED_A_ONLY",
+  "writes": [
+    "REPORT.md",
+    "FINDING-A-TIMEOUT-CONTRACT-003.md",
+    "FINDING-A-RAY-LIFECYCLE-004.md",
+    "VERDICT.json",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "HASHES.json",
+    "review_probe.py",
+    "raw/independent_review.json"
+  ]
+}

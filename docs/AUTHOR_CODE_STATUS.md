@@ -19,9 +19,7 @@ v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptan
 
 ## 后续门槛
 
-新观察器的真实Ray零GPU调用已获[独立确认](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/REPORT.md)，但A启动尚未就绪：生产run_v9入口没有在启动子进程前强制核对并绑定新runtime清单；现有manifest仅描述零GPU测试。已派准备者在新副本补启动前校验及明确的A双卡配置，保持观察器已通过字节和历史证据不变。211空闲双卡及空间已现场核实，修订增量独立验收后再执行A两步；实际发布后driver RNG是该GPU运行的验收项，不能由零GPU结果替代。B内部abort原因仍未定，不盲目重跑。
-
-启动guard候选已交付并通过准备者本地/211纯Python检查，协调者核对14文件74540bytes一致，现做独立增量验收。根另外发现实际主超时误用1920秒，kill后communicate无界；已派另存r2修正为1800秒主运行加独立有界120秒收尾，并明确专属新Ray的启动与收尾责任。旧候选保留，尚未启动A。
+新观察器的真实Ray零GPU调用已获[独立确认](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/REPORT.md)，新的[启动guard独立验收](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/REPORT.md)也确认启动前文件校验、子进程环境绑定及A参数与冻结v9一致。A尚未放行：首版仍将1920秒合并预算用于主运行，kill后communicate无界，且未明确专属Ray的生命周期负责人。准备者正另存r2修正这两项；已通过观察器、源码及科学配置保持不变。211空闲双卡及空间已有现场证据，新版增量独立就绪且资源复核后执行A两步。实际发布后driver RNG是该GPU运行的验收项，不能由零GPU结果替代；B内部abort原因仍未定，不盲目重跑。
 
 2026-09-19 22:18:44最新预检中211和207均可SSH访问。211列出的7张RTX3090均仅1MiB占用、0%利用率，无compute-app记录；优先考虑4/5两卡，实际启动前复核。共享/mnt/conda使用86%、剩余约1.78TiB，211本地盘剩余约285GiB。三个已知旧PID及两个私有路径的进程查询未匹配；这不是全部残留进程验收，但旧目录仍存在也不代表GPU仍被占用。没有执行清理，不能将9月17日的不可达状态继续当作当前事实。
 

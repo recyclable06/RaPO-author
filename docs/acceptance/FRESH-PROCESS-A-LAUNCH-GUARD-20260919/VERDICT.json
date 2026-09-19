@@ -1,0 +1,90 @@
+{
+  "schema": "fresh-process-a-launch-guard-independent-verdict-v1",
+  "reviewed_at": "2026-09-19",
+  "overall": "NOT_READY_FOR_BOUNDED_A_ONLY",
+  "launch_guard_identity": "INDEPENDENTLY_CORROBORATED_FOR_FROZEN_CANDIDATE",
+  "a_gate_closed": false,
+  "delta_dispatch_ready": false,
+  "actual_a_run": false,
+  "actual_post_publication_driver_rng_expected": false,
+  "findings": {
+    "FINDING-A-RUNTIME-MANIFEST-GUARD-001": {
+      "status": "RESOLVED_FOR_THIS_FROZEN_CANDIDATE",
+      "summary": "The production A launcher verifies the candidate, parent observer, frozen v9, source, and A contract before Popen, and binds the launch manifest in the child environment."
+    },
+    "FINDING-A-TWO-GPU-IDENTITY-002": {
+      "status": "PENDING_FRESH_RESOURCE_AND_A_RUN",
+      "summary": "Two-GPU resource identity and post-publication driver_rng_expected remain future A-run evidence, not a startup result of this review."
+    },
+    "FINDING-A-TIMEOUT-CONTRACT-003": {
+      "status": "OPEN",
+      "summary": "The launcher uses a combined 1920-second communicate timeout and unbounded post-kill communicate instead of 1800 seconds plus bounded 120-second cleanup."
+    },
+    "FINDING-A-RAY-LIFECYCLE-004": {
+      "status": "OPEN",
+      "summary": "Ray validation is non-empty-address only; the command names an existing-Ray check and does not freeze a dedicated lifecycle owner or teardown."
+    }
+  },
+  "evidence": {
+    "candidate_hashes_sha256": "0bbc37a4a04ef7f2031d9ace2a70444d4271a983e41d9cba7a0cdadbb7fee98d",
+    "candidate_manifest_sha256": "072f91694421782b4ba448eaf03785d516ba355f4e319786dfe10f6c43154b10",
+    "guard_support_sha256": "2856546e943ed4d5d74ba000a5fcc347658301df10f514702f4a0a6c16738b2f",
+    "run_v9_sha256": "aa6c65a0b410fd9900b6a93c5bbf932067cd76379853cfd099c1607ad4bf93f9",
+    "a_only_contract_sha256": "be5bf76f647c9d93ab01a37e63ba4b29e7a23dba67e088be31e6b619479b1cb4",
+    "observer_parent_manifest_sha256": "e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338",
+    "frozen_v9_hashes_sha256": "45f79cbf83d004b6fd05c4e1ef61fe2f5b296dba1771aae24e45e570b890ee39",
+    "frozen_v9_package_manifest_sha256": "3767c12fd6bc90ef43479486a057ae92b557aaa4ec276c12d5713871597bae7a",
+    "production_source_sha256": "3cc1fd18b178d05da6481b64ba55ea87c1f50683a4a3897dea9103372c6583c3",
+    "candidate_declared_file_count": 14,
+    "candidate_declared_total_bytes": 74540,
+    "local_negative_popen_calls": 0,
+    "remote_python_only_guard": "PASS_LAUNCH_GUARD",
+    "remote_ray_started": false,
+    "remote_model_loaded": false,
+    "remote_training_started": false
+  },
+  "scientific_contract": {
+    "world_size": 2,
+    "rollout_n": 4,
+    "total_epochs": 2,
+    "max_steps": 2,
+    "task1_updates": 2,
+    "task2_updates": 2,
+    "save_model_only": false,
+    "model_root": "/home/zhenglifeng/models/Qwen2-VL-2B-Instruct-895c3a4",
+    "input_root": "/mnt/conda/zhenglifeng/t/eu-p1-20260908/inputs",
+    "source_entry": "examples/baselines/img_cls_cil/image_cls_cil_rapo.py",
+    "config_binding": "scripts/image/rapo_cfg.json"
+  },
+  "scope": {
+    "read_only": true,
+    "new_ssh": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_invoked": false,
+    "production_modified": false,
+    "frozen_v9_modified": false,
+    "parent_observer_modified": false,
+    "old_raw_modified": false,
+    "a_output_created": false,
+    "ray_temp_created": false
+  },
+  "next_required": [
+    "Correct and independently review FINDING-A-TIMEOUT-CONTRACT-003.",
+    "Freeze a dedicated Ray lifecycle owner and cleanup contract for FINDING-A-RAY-LIFECYCLE-004; do not use the existing-Ray placeholder.",
+    "Only after those corrections and fresh two-GPU resource checks, run the bounded A-only sequence and derive actual post-publication driver_rng_expected."
+  ],
+  "artifacts": {
+    "report": "REPORT.md",
+    "verdict": "VERDICT.json",
+    "progress": "PROGRESS.md",
+    "run_metadata": "RUN_METADATA.json",
+    "hashes": "HASHES.json",
+    "probe": "review_probe.py",
+    "probe_output": "raw/independent_review.json",
+    "findings": [
+      "FINDING-A-TIMEOUT-CONTRACT-003.md",
+      "FINDING-A-RAY-LIFECYCLE-004.md"
+    ]
+  }
+}
