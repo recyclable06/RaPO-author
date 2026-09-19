@@ -293,3 +293,11 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 整体仍NOT_READY_FOR_BOUNDED_A_ONLY。[GUARD-001](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/FINDING-A-RUNTIME-MANIFEST-GUARD-001.md)：零GPUlauncher有manifest核验，但生产run_v9只设置candidate-first路径及runtime root，没有在Popen前核对/绑定manifest，bootstrap也仅记录传入值。[TWO-GPU-002](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/FINDING-A-TWO-GPU-IDENTITY-002.md)：旧manifest的零GPUmetadata不是A两GPU运行身份；实际发布后driver_rng_expected必须由未来A运行生成，不能据此设置“先有GPU结果才能启动GPU”的循环前置条件。
 
 已派准备者新独立 `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919/` 最小修订，仅run_v9及必要manifest验证support、A运行配置/命令和测试证据。生产R3.1、原v9、旧candidate保持冻结，已确认的observer/event_writer/boundary字节复用。在真实子进程启动前核对runtime完整依赖、冻结v9和91项source身份，并在同一env绑定runtime manifest/root、v9 root及candidate-first路径；正向与缺失/漂移负向检查必须证明拒绝发生在spawn前。配置绑定原v9模板/expected、既有Python、两卡、A两步及1800秒上限；不启动A或新Ray，必要时仅用既有Linux Python做零GPUguard检查。准备后只做变更增量独立验收，C/B/42CPU及已确认真实dispatch均不重复。
+
+### A launch guard候选接收，根发现预算实现与契约不符
+
+14c8 `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919/` 协调者逐项核对14文件74540bytes一致，HASHES_LAUNCH_GUARD.json自身SHA256 `0bbc37a4a04ef7f2031d9ace2a70444d4271a983e41d9cba7a0cdadbb7fee98d`；LAUNCH_GUARD_MANIFEST自身 `072f91694421782b4ba448eaf03785d516ba355f4e319786dfe10f6c43154b10`，guard_support `2856546e943ed4d5d74ba000a5fcc347658301df10f514702f4a0a6c16738b2f`，run_v9 `aa6c65a0b410fd9900b6a93c5bbf932067cd76379853cfd099c1607ad4bf93f9`。准备者本地正例及四个拒绝例、211纯Pythonguard检查通过，未运行Ray/模型/训练；该自测不替代独立验收。
+
+新入口限定A，在Popen前调用标准库guard，核新4文件、父observer13文件、v9完整205文件及91项source；父observer入口/支持按hash引用，未重写。独立任务已续派 `FRESH-PROCESS-A-LAUNCH-GUARD-20260919/` 验实际接线、参数和测试证据。根同时确认预算问题：guard返回timeout_seconds=1920，launcher将其直接用于production communicate，而不是production_timeout_seconds=1800；超时kill后的communicate又无timeout，因此不能声明已实现1800秒运行加最多120秒收尾。
+
+已要求准备者另存r2修正，保持此快照不变：分开主预算和基于monotonic的剩余收尾时限，不做无界communicate；避免TimeoutExpired保存输出与后续communicate重复拼接。用真实轻量子进程验证正常/超时和必要的管道继承情形，禁止模型或Ray。A命令还须明确FRESH_RAY_ADDRESS属于本次专属新Ray，由实际步骤记录身份并有限收尾，不能接共享Ray。独立者并行审其他部分，新版到达只补有关delta，不重复已通过的真实dispatch、C/B或42CPU。
