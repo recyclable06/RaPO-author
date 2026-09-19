@@ -18,9 +18,9 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（A delta未就绪；B日志窄复核已完成） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | A的PARTIAL_NOT_READY保持；B新 `FRESH-PROCESS-R2-B-WORKER-EVIDENCE-20260919/` 为OPEN/NOT_RECOVERED，7文件26614bytes协调者一致，清单self `1cafb14e9ff96b20a7e6e9845381bcd9805759696eb5403d02bdefc7fa088d6d`。无具体日志遗漏路径可补，不再扩搜，待A新runtime实际验证 |
-| 专用诊断准备（新runtime接线与真实零GPU验证进行中） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 原A delta冻结不改；新独立candidate绑定entry/bootstrap/observer/support/manifest和导入优先级。207既有Ray2.46.0最多3CPU/0GPU/600秒+120秒收尾，真实未初始化runner异常验证dispatch，不调用init/model/训练；修正参考probe恒FAIL等问题后独立验收 |
-| 专用诊断执行（B限定日志搜索已结束，未找到） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `R2-B-WORKER-EVIDENCE-20260919/` 20文件13695bytes协调者一致，清单self `4a0783da323cec6858fc8d3729db4909a1a845607d3182dc321b1461d9a902e6`。207连接成功，旧私有session内三个限定搜索无匹配，复制0 worker文件；不继续搜索/训练/清理。B内部原因未知，211释放仍UNCONFIRMED |
+| 独立验收（新A runtime验收进行中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 在新 `FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/` 复核40文件candidate、真实Ray原件、driver和实际Runner身份、生产入口导入优先级及零GPU/两GPU契约。尚无新独立结论。B日志窄复核已结束，OPEN/NOT_RECOVERED，不再扩搜 |
+| 专用诊断准备（新runtime候选冻结，待独立结论） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | 14c8 `FRESH-PROCESS-A-OBSERVER-RUNTIME-CANDIDATE-20260919/` 40文件646309bytes协调者一致，清单self `72f53b1238624c9c9b160b856168505cca2ef5b6048fffa567546c1614a6d5b1`。真实Ray2.46.0零GPU自测PASS不等于独立验收；未产生A实际发布后RNG证据 |
+| 专用诊断执行（当前资源只读预检进行中） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 用户再次继续后，派 `A-ONLY-RESOURCE-PREFLIGHT-20260919/`：211一次有界连接、207备选检查，核实当前两卡/空间/本次旧进程身份，失败不循环。无模型、训练、删除或kill；B日志分支结束，211释放在新证据前仍UNCONFIRMED |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。
 

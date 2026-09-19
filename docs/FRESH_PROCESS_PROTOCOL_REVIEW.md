@@ -267,3 +267,13 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 独立[B日志复核](acceptance/FRESH-PROCESS-R2-B-WORKER-EVIDENCE-20260919/REPORT.md)保持PARTIAL_EVIDENCE_SUPPLEMENT，finding OPEN/NOT_RECOVERED。协调者7文件26614bytes逐项核对一致，HASHES.json自身SHA256 `1cafb14e9ff96b20a7e6e9845381bcd9805759696eb5403d02bdefc7fa088d6d`。既有Ray inventory有318条regular-file记录（56 python-core-worker、112 worker out/err），目标PID只出现在两份observer路径，Ray部分无匹配；旧查询超时/CRLF/pipeline状态与不枚举symlink的限制仍保留，未发现可明确补取的轮转/删除/链接路径，不继续扩大扫描。
 
 后续如进入B诊断，最小新增观察为两目标rank bootstrap时PID/start ticks/Ray worker ID/cwd/fd1-fd2实际目标及exact log path、独立阶段退出状态和有界日志尾；不能用新的概括摘要替代真实记录。该规格已传准备者供后续使用，不扩大当前A零GPU任务，也未启动B。C复用、B内部abort未解、211资源释放UNCONFIRMED。
+
+### 2026-09-19：新runtime真实零GPU自测已交独立验收，资源预检并行
+
+准备者冻结14c8 `docs/acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-CANDIDATE-20260919/`，协调者核对40文件646309bytes一致，HASHES_RUNTIME.json自身SHA256 `72f53b1238624c9c9b160b856168505cca2ef5b6048fffa567546c1614a6d5b1`，RUNTIME_CANDIDATE_MANIFEST.json自身 `e3417329860bbfb4dd43298b4d760e24caff60e39a3f93539d02b5071de7e338`。新observer身份仍为 `e9c2f17115c44348d1e9e056ee8b3b0b691d2f4ce40e3af0f5ca483f4cd53bd1`，生产R3.1和原v9不改。
+
+207远端 `/mnt/conda/zhenglifeng/t/aob2` 自测结果为PASS_REAL_RAY_ZERO_GPU_DISPATCH，Ray2.46.0、零GPU、最多3CPU。原件包含118事件/14事件文件，实际PersistentRunner.run_task的before/after配对call id为 `3915086:1789807978239168413:f2f92994383f410f9859c9a959d13973`，PID3915086；after为未初始化trainer的预期AttributeError。准备报告称禁止初始化/模型/训练调用为0，finally已kill本次runner并shutdown。该报告由准备者产生，其标题或措辞不构成独立验收。
+
+已交独立任务在新 `FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/` 验证driver及真实Runner身份、实际dispatch、非目标透传、重复安装、退出证据、支持文件差异、生产启动链及manifest检查；特别区分零GPUmanifest和后续两GPU A身份。实际post-publication driver RNG仍须A两步验证，零GPUPASS不能替代。准备过程中失败尝试按RUN_METADATA保存，不改写为首次成功。
+
+用户再次要求继续后，专用执行任务同步做211/207一次有界只读预检，输出 `A-ONLY-RESOURCE-PREFLIGHT-20260919/`。只核当前SSH、GPU UUID/占用、容量/inode及本次旧进程身份，211失败不循环；不启Ray/模型/训练，不kill或删旧资产。A尚未调度，独立就绪与现场资源都满足后再冻结具体两步运行。C不重跑，B日志扩搜结束，B内部abort与211释放仍保留未解状态。
