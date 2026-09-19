@@ -18,8 +18,8 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（guard首版已结束，待r2增量） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `FRESH-PROCESS-A-LAUNCH-GUARD-20260919/` 8文件27677bytes根核对，self `9ffee8b7bbcb677e767c176db094154c15dc9529c99a58dbc0b6634b1b397574`。GUARD-001已解决，A参数/argv一致；003预算和004专属Ray生命周期保持OPEN，待r2只审有关delta |
-| 专用诊断准备（guard首版冻结，r2预算修正进行中） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919/` 14文件74540bytes根核对，self `0bbc37a4a04ef7f2031d9ace2a70444d4271a983e41d9cba7a0cdadbb7fee98d`；本地/211纯Python自测通过。另存r2修1800秒主预算/最多120秒收尾，并明确本次私有Ray责任；不改旧快照、不启动A或Ray |
+| 独立验收（R2预算与Ray记录增量进行中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新 `FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/` 只验003/004有关diff、monotonic预算及记录声明边界。根已指出R2尚无可运行supervisor，准备者补实现时先验其余部分，不重复已通过guard/真实dispatch |
+| 专用诊断准备（R2冻结，补实际supervisor） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2/` 15文件94630bytes根核对，self `593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7`。另存具体一次性Ray启动/核验记录/调用R2/有界收尾实现；当前仅标准库测试，不启动Ray/GPU，旧R2不改 |
 | 专用诊断执行（资源预检完成，待A单独调度） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `A-ONLY-RESOURCE-PREFLIGHT-20260919/` 12文件13418bytes协调者一致，清单self `7cfb64dc7ff716ca9c1699ebc357240e5aa9f66d371721e3a13fc31a3f0b8b13`。22:18:44两台SSH成功，211空闲3090及空间可用。旧3PID/私有路径查询未匹配，非完整残留验收；无模型/训练/清理，待新runtime独立结论 |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。

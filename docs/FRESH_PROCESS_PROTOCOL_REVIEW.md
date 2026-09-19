@@ -307,3 +307,9 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 独立[guard验收](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/REPORT.md)已冻结，协调者核对8文件27677bytes一致，HASHES.json自身SHA256 `9ffee8b7bbcb677e767c176db094154c15dc9529c99a58dbc0b6634b1b397574`。GUARD-001为RESOLVED_FOR_THIS_FROZEN_CANDIDATE：实际入口在Popen前验证并绑定同一子环境，正例与四负例通过，负例Popen=0；既有211Python原件亦通过，未运行Ray/模型/训练。A recipe/path独立比对一致，生产argv与冻结v9仅launch_script路径不同。
 
 整体NOT_READY_FOR_BOUNDED_A_ONLY，新增[003](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/FINDING-A-TIMEOUT-CONTRACT-003.md)和[004](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/FINDING-A-RAY-LIFECYCLE-004.md)均与根已派r2修正范围一致，无额外算法问题。004要求实际专属Ray启动/UID及PID-start/session地址身份/正常和超时收尾的负责人，不是非空地址占位。报告P1为本次运行门的严重度，不升级为论文或生产算法P1。已将独立结论传给正在修r2的准备者，不重启任务、不重复已通过范围；实际A与发布后RNG仍待未来运行。
+
+### R2候选已交窄复核，专属Ray须由说明落到可执行实现
+
+14c8 `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2/` 协调者核对15文件94630bytes及全部hash一致，HASHES_LAUNCH_GUARD自身SHA256 `593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7`；LAUNCH_GUARD_MANIFEST自身 `58b2cf82328120c9f4b45d1229684b03940d3f7aef9b36514d25137bc9e0329a`，guard_support `3bc0023bbd67c915c198722f331e78a8a79b6cde79792b1a9dd0880494412dcc`，run_v9 `db64938bb5ae3208187c77295710d8856a8dd173ab0dae3af1337eb178d6beff`。准备者标准库5负例及真实轻量子进程normal/timeout/inherited-pipe测试通过；本版没有远端Ray/GPU/模型/训练运行，R1远端Python证据只作lineage。
+
+根已派独立 `FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/` 核003/004有关diff。R2的PRIVATE_RAY_SUPERVISOR_CONTRACT明确仅schema/example，实际write/verify record与teardown仍是注释，尚不能直接执行A。已同时派准备者保持R2冻结另补具体一次性supervisor：创建私有head、核实际UID/PID-start/session/temp/address、原子记录、调用冻结R2、在正常/失败/timeout/finally核身份停止本次进程。Ray与child收尾共享总计最多120秒，不在两层各追加；禁止共享Ray、全局stop/pkill或删除旧资产。当前仅实现和轻量测试，需真实零GPURay检查时先冻结具体120秒主预算加最多120秒总收尾的命令，再交专用执行角色；不提前启动A。独立者并行审已有R2，其后只补新supervisor增量。
