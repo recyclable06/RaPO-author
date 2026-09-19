@@ -321,3 +321,9 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 [004](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/FINDING-A-PRIVATE-RAY-LIFECYCLE-004.md)保持CONTRACT_BOUND_PENDING_REAL_SUPERVISOR_LIFECYCLE：只有JSON字段检查，独立伪造不存在的temp_root、PID999999999、虚构start及owner仍accepted。已传准备者要求实际live身份及目录核验，并覆盖可能脱离head进程组的本次Ray后代，不能仅凭kill head组声称资源已释放。具体supervisor继续补，不扩大为生产代码问题。
 
 [测试稳定性note](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/TIMEOUT-FIXTURE-STABILITY-NOTE.md)记录50ms fixture五次3通过/2失败，失败是exact timeout-line为0，未见重复；不足以把首次自测PASS当成稳定复现。新补充采用ready握手后计时，保留exact-once断言，不采用削弱断言的修法；旧R2不改。实际命令还需统一a19r1/a19r2历史路径例子，以新冻结短路径为准。无新增SSH/Ray/GPU/模型/训练，A gate仍OPEN。
+
+### 2026-09-20：具体supervisor补充已接收，零GPU命令仍须修正
+
+14c8 `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT/` 协调者核对10文件65323bytes一致，HASHES_SUPERVISOR自身SHA256 `f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9`，SUPERVISOR_MANIFEST自身 `cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119`。补充实际代码包含proc身份、私有目录、原子record、launcher调用及进程树清理；fake-head/launcher标准库测试通过，但没有真实Ray或GPU执行。
+
+已交独立 `FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/` 窄复核004、Linux路径及中断/超时/后代进程收尾，不重复已通过范围。根读到zeroGPU命令仍使用production-timeout1800，Ray head无显式num-gpus=0/CPU上限，动态RayTmp也较长；已派准备者保持旧补充冻结另存新版：空CUDA可见列表、0GPU/最多3CPU，startup/readiness/probe合计120秒加最多120秒共享收尾，短唯一私有路径。A模式仍两GPU/1800秒，两个模式分别绑定；CLI `python -m ray` 的既有环境可执行性不能用fake-head证明，需核实际入口。当前只准备和独立审查，真实零GPU测试命令就绪后再派专用执行者，无A运行。

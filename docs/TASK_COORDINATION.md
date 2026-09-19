@@ -1,6 +1,6 @@
 # RaPO-author 任务协调台账
 
-更新：2026-09-19。当前协调任务：`01a08faa-ba41-73b2-b3d3-e468521682e0`（“规划 RaPO 作者代码复现路线 (3)”）。旧协调任务 `01a070af-8ee0-7641-b712-0cf59648e6ca` 已由用户替换，不再向其自动回报或恢复。
+更新：2026-09-20。当前协调任务：`01a08faa-ba41-73b2-b3d3-e468521682e0`（“规划 RaPO 作者代码复现路线 (3)”）。旧协调任务 `01a070af-8ee0-7641-b712-0cf59648e6ca` 已由用户替换，不再向其自动回报或恢复。
 
 ## 持续授权与回报
 
@@ -18,8 +18,8 @@
 | --- | --- | --- |
 | 独立审查（已完成） | “审查 CIL 任务边界恢复”；thread ID `01a08575-504b-7492-85ab-2fef30c1f5a9` | `C:/Users/Administrator/.codex/worktrees/2d90/RaPO-author`；已回报 confirmed operational gap / P2，协调者28项文件hash核对通过。输出为该工作树 `docs/audit/2026-09-09-cil-resume/` |
 | 独立整改（R3.1已冻结并结束） | “整改 CIL 任务边界恢复”；thread ID `01a08621-da6d-7aa2-bb09-86bcf96d0140` | `C:/Users/Administrator/.codex/worktrees/8ac5/RaPO-author`，分支 `codex/remediate-cil-resume-001`；已停止修改。首次R3交付后补改并覆盖同名证据，登记为R3.1；唯一身份见 [CIL_RESUME_R31_FREEZE.md](CIL_RESUME_R31_FREEZE.md) |
-| 独立验收（R2已接收，待具体supervisor） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | `FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/` 8文件32157bytes根核对，self `4185f3fef432dcc016b67228c5bc1869eb0badd78f2f0ff80d14bd2a5d425c4f`。003通过；004仅JSON约束，伪造PID/owner亦通过，待实际supervisor。50ms fixture偶发失败记测试note，不升级生产finding |
-| 专用诊断准备（R2冻结，补实际supervisor） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2/` 15文件94630bytes根核对，self `593e612c93c55d72104e7ee0aeb29515df78916ed7cd7334a642edb399f53ad7`。另存具体一次性Ray启动/核验记录/调用R2/有界收尾实现；当前仅标准库测试，不启动Ray/GPU，旧R2不改 |
+| 独立验收（可执行supervisor窄复核进行中） | “验收 AUTH-CTAN-001”；thread ID `01a074b8-560b-7be1-8874-1f55a7e1ae10` | 新 `FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/` 核004实际Linux身份、CLI、进程树与中断/超时收尾、总预算和测试证据边界。已通过R2 guard/timeout、observer不重复，不SSH/Ray/GPU |
+| 专用诊断准备（supervisor首版冻结，补零GPU执行配置） | “服务器只读盘点与 GPU 诊断准备”；thread ID `01a07606-d888-7a83-853f-83cf7c65ddf3` | `FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT/` 10文件65323bytes根核对，self `f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9`。另存新版落实零GPU/最多3CPU、含startup的120秒主预算、120秒总收尾及短路径；合并独立具体反馈后再冻结，无实际Ray/训练 |
 | 专用诊断执行（资源预检完成，待A单独调度） | “执行 v5 零 GPU 集成验证”；thread ID `01a098f2-b412-7453-9957-3f88c17fe6f0` | 71a6 `A-ONLY-RESOURCE-PREFLIGHT-20260919/` 12文件13418bytes协调者一致，清单self `7cfb64dc7ff716ca9c1699ebc357240e5aa9f66d371721e3a13fc31a3f0b8b13`。22:18:44两台SSH成功，211空闲3090及空间可用。旧3PID/私有路径查询未匹配，非完整残留验收；无模型/训练/清理，待新runtime独立结论 |
 
 执行任务真实ID与71a6工作区已由桌面日志及read_thread核实。list_threads曾漏列该任务，旧“工作区准备中”状态已纠正；不能因列表漏项重复创建。用户2026-09-14明确恢复推进，收到独立结论后继续既有授权范围内的下一步。

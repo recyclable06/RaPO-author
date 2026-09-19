@@ -1,6 +1,6 @@
 # 作者代码当前状态
 
-更新：2026-09-19。根目录现已整合经过独立代码/CPU验收的修订，逐文件身份见 [INTEGRATION_HASHES.json](INTEGRATION_HASHES.json)。作者原始204文件及论文身份由 [BASELINE.json](BASELINE.json) 和标签 `author-drop-20260904` 保留。
+更新：2026-09-20。根目录现已整合经过独立代码/CPU验收的修订，逐文件身份见 [INTEGRATION_HASHES.json](INTEGRATION_HASHES.json)。作者原始204文件及论文身份由 [BASELINE.json](BASELINE.json) 和标签 `author-drop-20260904` 保留。
 
 **尚未完成论文复现。** 当前上传内容是作者基线、已验收的局部修复和研究过程证据，不包含正式复现结果或模型权重。
 
@@ -22,6 +22,8 @@ v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptan
 新观察器的真实Ray零GPU调用已获[独立确认](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/REPORT.md)，[启动guard](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/REPORT.md)和[R2超时策略](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/REPORT.md)也已独立确认：启动前文件校验、子环境绑定和A参数一致，主运行1800秒与最多120秒收尾分开。A仍未放行，目前只补专属Ray的实际启动、live身份核验及退出实现；R2纯JSON记录可接受伪造PID/owner，不能作为实际归属证明。准备者正在补一次性supervisor，已通过观察器、源码及科学配置保持不变。完成增量复核及实际零GPURay生命周期验证后，再核所选双卡并执行A两步。实际发布后driver RNG仍是A运行验收项；B内部abort原因未定，不盲目重跑。
 
 R2的50毫秒测试存在子进程尚未输出就被杀的偶发失败，独立重复5次为3通过/2失败；这是测试稳定性问题，不是新的生产finding。新补充将先等待子进程就绪再计时，保留原输出断言，旧R2和原始结果不改。
+
+9月20日，可执行supervisor补充已交付，协调者核对10文件65323bytes一致，现交独立复核Linux实际身份/启动/退出路径。准备者轻量fake-head测试通过不等于真实Ray通过；根已要求另存新版修正零GPU命令的资源与预算：显式0GPU、最多3CPU，启动/就绪/probe共120秒加最多120秒总收尾，使用短私有路径。当前仍未执行真实Ray生命周期测试或A训练。
 
 2026-09-19 22:18:44最新预检中211和207均可SSH访问。211列出的7张RTX3090均仅1MiB占用、0%利用率，无compute-app记录；优先考虑4/5两卡，实际启动前复核。共享/mnt/conda使用86%、剩余约1.78TiB，211本地盘剩余约285GiB。三个已知旧PID及两个私有路径的进程查询未匹配；这不是全部残留进程验收，但旧目录仍存在也不代表GPU仍被占用。没有执行清理，不能将9月17日的不可达状态继续当作当前事实。
 
