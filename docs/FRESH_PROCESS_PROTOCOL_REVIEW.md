@@ -247,3 +247,9 @@ A的marker及driver/vLLM/EMA文件齐备，exit0，但boundary-expected仍缺实
 准备者定位为Ray装饰时序：生产模块顶层先创建ActorClass，旧loader在模块执行后才包装修改类，installed=true不能保证dispatch表实际经过wrapper。新副本在ray.remote装饰前包装raw class，返回ActorClass后另有兜底。根已核diff并交独立 `FRESH-PROCESS-A-OBSERVER-DELTA-20260919/` 审查其实际Ray语义和影响范围。
 
 现有CPU脚本用FakeActorClass/fake_remote，事件和RNG采集亦stub，只能作局部分支检查，不构成真实Ray dispatch或实际RNG门通过；不采纳准备报告“无需重跑观察器测试”的默认建议。独立任务须明确最小真实零GPU验证，以及新observer如何绑定新的部署/清单/入口身份，不能覆盖冻结v9后沿用旧清单。若本地环境不具备真实Ray则先提交具体方案，由对应角色使用既有环境完成，不安装新依赖、不直接跳到A GPU重跑。C通过范围继续复用，B证据定位另行推进。
+
+### 2026-09-19：B两worker日志限定搜索无匹配
+
+71a6 `R2-B-WORKER-EVIDENCE-20260919/` 已冻结，协调者逐项核对20文件13695bytes一致，DELIVERY_MANIFEST-R2-B-WORKER-EVIDENCE-20260919.json自身SHA256 `4a0783da323cec6858fc8d3729db4909a1a845607d3182dc321b1461d9a902e6`。207于11:28:59严格hostkey连接成功；针对本次私有Ray session，按PID1161595/1162100文件名、日志内容以及session根文件名做三次限定查询，stdout/stderr均空，记录exit0，无worker文件复制。
+
+协调者读到查询使用pipeline且未启用pipefail，因此exit0不独立证明每个find/grep成功；结论仅为本次限定搜索未找到，不宣称日志从未存在或完整目录已证明为空。已交独立任务在A验收后按既有inventory窄查是否有具体遗漏/轮转/链接线索，无需新增远端搜索；没有明确遗漏则保留内部abort未解，不盲目重跑。已通知执行任务结束本分支。原B阶段勘误有效，211现场资源释放仍UNCONFIRMED。
