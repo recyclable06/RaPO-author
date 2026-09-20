@@ -1,0 +1,29 @@
+{
+  "checked_required_files": [
+    "run_signal_harness.py",
+    "fake_signal_ray.py",
+    "fake_signal_launcher.py",
+    "SIGNAL_HARNESS_COMMAND.md",
+    "REPORT.md",
+    "RUN_METADATA.json"
+  ],
+  "executed_gpu": false,
+  "executed_linux_signal_cases": false,
+  "executed_ray": false,
+  "executed_ssh": false,
+  "parsed_python_files": [
+    "fake_signal_launcher.py",
+    "fake_signal_ray.py",
+    "run_signal_harness.py"
+  ],
+  "schema": "private-ray-final-signal-harness-static-test-v1",
+  "source_sha256": {
+    "REPORT.md": "2abab47903edc13dc4f607a9aeb46153209f0324a95f2f0762ae01ffe9691ff4",
+    "RUN_METADATA.json": "b1a9dce103bef4271ccba4110a03b88134a7a62d9fa26bb7e27f46728c819f69",
+    "SIGNAL_HARNESS_COMMAND.md": "d474a4fa7a375024ef22db31ac1e912eae170ffcd8de76a8b3ac663ebebbff71",
+    "fake_signal_launcher.py": "3a2a898249aa9ddf88a8a443264336f593a79e87c25a8313868deadee1c910e1",
+    "fake_signal_ray.py": "54973ccbcfeddc0c0de17ad3f8f332c16eb56b80b9b2046835e8c70ab2a5385c",
+    "run_signal_harness.py": "82431cdb3453bb293da1c8b80dff869ed3a52fc5c23548b4ea7ca7d7e963ad7d"
+  },
+  "status": "PASS_PRIVATE_RAY_FINAL_SIGNAL_HARNESS_STATIC_TESTS"
+}

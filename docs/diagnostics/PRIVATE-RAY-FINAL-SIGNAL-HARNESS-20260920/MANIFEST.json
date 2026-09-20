@@ -1,0 +1,30 @@
+{
+  "schema": "private-ray-final-signal-harness-manifest-v1",
+  "self_excluded": true,
+  "hashes_file": "HASHES.json",
+  "bundle_role": "external_012_real_linux_signal_evidence_preparation",
+  "does_not_modify": [
+    "FINAL runtime bytes",
+    "parent SUPERVISOR-SUPPLEMENT bytes",
+    "sibling ZEROGPU-SUPPLEMENT bytes",
+    "FINAL/test-results.json"
+  ],
+  "source_runtime_identity": {
+    "runtime_hashes_sha256": "3b9f055da492741754f80b63e2255716e118fe546bca429267c542877136f67",
+    "runtime_manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "parent_hashes_sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9",
+    "parent_manifest_sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119",
+    "zero_gpu_hashes_sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003",
+    "zero_gpu_manifest_sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+  },
+  "files": [
+    {"path": "run_signal_harness.py", "bytes": 30130, "sha256": "82431cdb3453bb293da1c8b80dff869ed3a52fc5c23548b4ea7ca7d7e963ad7d"},
+    {"path": "fake_signal_ray.py", "bytes": 1432, "sha256": "54973ccbcfeddc0c0de17ad3f8f332c16eb56b80b9b2046835e8c70ab2a5385c"},
+    {"path": "fake_signal_launcher.py", "bytes": 1091, "sha256": "3a2a898249aa9ddf88a8a443264336f593a79e87c25a8313868deadee1c910e1"},
+    {"path": "test_signal_harness_static.py", "bytes": 4084, "sha256": "b07e92a395ff5b451a3025c3b3c3a92e379cd28a105fef206a629aaa303ad04e"},
+    {"path": "SIGNAL_HARNESS_COMMAND.md", "bytes": 4582, "sha256": "d474a4fa7a375024ef22db31ac1e912eae170ffcd8de76a8b3ac663ebebbff71"},
+    {"path": "REPORT.md", "bytes": 2358, "sha256": "2abab47903edc13dc4f607a9aeb46153209f0324a95f2f0762ae01ffe9691ff4"},
+    {"path": "RUN_METADATA.json", "bytes": 2910, "sha256": "b1a9dce103bef4271ccba4110a03b88134a7a62d9fa26bb7e27f46728c819f69"},
+    {"path": "newoutput/static-tests.json", "bytes": 1182, "sha256": "4f4d5821997b27bbb77ce853a7c19de6eea13eb5c32e99816e75a36242bfd6ac"}
+  ]
+}

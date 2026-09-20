@@ -1,0 +1,16 @@
+{
+  "schema": "private-ray-final-signal-harness-hashes-v1",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {"path": "MANIFEST.json", "bytes": 2056, "sha256": "db0b82ca428ac204d1285f822237fa4a0de20c1a3db55380f4fff7e24b07e89d"},
+    {"path": "run_signal_harness.py", "bytes": 30130, "sha256": "82431cdb3453bb293da1c8b80dff869ed3a52fc5c23548b4ea7ca7d7e963ad7d"},
+    {"path": "fake_signal_ray.py", "bytes": 1432, "sha256": "54973ccbcfeddc0c0de17ad3f8f332c16eb56b80b9b2046835e8c70ab2a5385c"},
+    {"path": "fake_signal_launcher.py", "bytes": 1091, "sha256": "3a2a898249aa9ddf88a8a443264336f593a79e87c25a8313868deadee1c910e1"},
+    {"path": "test_signal_harness_static.py", "bytes": 4084, "sha256": "b07e92a395ff5b451a3025c3b3c3a92e379cd28a105fef206a629aaa303ad04e"},
+    {"path": "SIGNAL_HARNESS_COMMAND.md", "bytes": 4582, "sha256": "d474a4fa7a375024ef22db31ac1e912eae170ffcd8de76a8b3ac663ebebbff71"},
+    {"path": "REPORT.md", "bytes": 2358, "sha256": "2abab47903edc13dc4f607a9aeb46153209f0324a95f2f0762ae01ffe9691ff4"},
+    {"path": "RUN_METADATA.json", "bytes": 2910, "sha256": "b1a9dce103bef4271ccba4110a03b88134a7a62d9fa26bb7e27f46728c819f69"},
+    {"path": "newoutput/static-tests.json", "bytes": 1182, "sha256": "4f4d5821997b27bbb77ce853a7c19de6eea13eb5c32e99816e75a36242bfd6ac"}
+  ]
+}

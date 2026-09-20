@@ -19,19 +19,13 @@ v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptan
 
 ## 后续门槛
 
-新观察器的真实Ray零GPU调用已获[独立确认](acceptance/FRESH-PROCESS-A-OBSERVER-RUNTIME-20260919/REPORT.md)，[启动guard](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-20260919/REPORT.md)和[R2超时策略](acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-R2-20260919/REPORT.md)也已独立确认：启动前文件校验、子环境绑定和A参数一致，主运行1800秒与最多120秒收尾分开。A仍未放行，目前只补专属Ray的实际启动、live身份核验及退出实现；R2纯JSON记录可接受伪造PID/owner，不能作为实际归属证明。准备者正在补一次性supervisor，已通过观察器、源码及科学配置保持不变。完成增量复核及实际零GPURay生命周期验证后，再核所选双卡并执行A两步。实际发布后driver RNG仍是A运行验收项；B内部abort原因未定，不盲目重跑。
+**当前卡点是启动管理脚本的Linux实际验证，尚未启动新的A训练。** 观察器真实Ray零GPU调用、A启动前文件校验、参数一致性及R2超时helper已获独立确认；FINAL集中修订的005–010亦已[静态复核](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-FINAL-20260920/REPORT.md)。这些结论不等于实际进程生命周期通过。
 
-R2的50毫秒测试存在子进程尚未输出就被杀的偶发失败，独立重复5次为3通过/2失败；这是测试稳定性问题，不是新的生产finding。新补充将先等待子进程就绪再计时，保留原输出断言，旧R2和原始结果不改。
+211已执行外置direct-import的Linux纯Python检查，未覆盖冻结test-results，也未启动真实Ray。实际supervisor在head阶段报 `private Ray executable identity changed`，未写RUNNING record、未进入launcher。外层测试却返回PASS，因为它接受了任意FAIL后的空清理集合；该PASS不采纳。日志未保留前后两个executable值，启动exec切换只是待验证假说。head_returncode为null、owned列表为空，因此all_owned_processes_gone字段也不能单独证明进程已释放。原始日志正在封存并独立定位，原件不改，不无变化重跑。
 
-9月20日，可执行supervisor补充已交付，协调者核对10文件65323bytes一致，现交独立复核Linux实际身份/启动/退出路径。准备者轻量fake-head测试通过不等于真实Ray通过；根已要求另存新版修正零GPU命令的资源与预算：显式0GPU、最多3CPU，启动/就绪/probe共120秒加最多120秒总收尾，使用短私有路径。当前仍未执行真实Ray生命周期测试或A训练。
+真实SIGINT/SIGTERM外置harness已准备，仅语法/静态检查通过，尚未在Linux执行。它要求实际RUNNING及head/launcher/后代身份齐备后才发送信号，不会把提前失败算作通过。下一步按独立finding只修已定位的启动身份与测试判定问题，再执行Linux检查和真实零GPURay生命周期，之后复核双卡并运行A两步。实际发布后driver RNG仍是A运行验收项；B内部abort未解决，C已接受结果不重跑。
 
-零GPU配置sibling也已冻结，协调者核对9文件34234bytes一致，已并入同一次独立组合复核。211于9月20日00:16:48的只读入口检查确认：Ray2.46.0没有ray.__main__，候选使用的python -m ray不可用；同环境bin/ray的start/status help均通过。已要求下一版修改实际启动及状态检查代码，合并独立反馈后冻结；未启动Ray服务。资源、预算和短路径配置的自测仍不等于真实生命周期通过。
-
-最新[supervisor独立组合审查](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/REPORT.md)为NOT_READY_FOR_BOUNDED_ZERO_GPU。准备层尚缺启动前自身hash校验、SIGINT/SIGTERM的finally收尾、launcher派生新session的完整清理和持续日志落盘，CLI亦需修正。已将六项finding集中交准备者在一个新组合runtime内修复；它们不是新的算法问题，已通过的训练参数/观察器/R2超时helper不重复验证。现有测试为fake head且strict_linux=False，不宣称Linux真实Ray路径通过。
-
-最新[FINAL独立复核](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-FINAL-20260920/REPORT.md)确认005–010静态闭合，并提供保留冻结test-results的外置调用方式；原文档命令仍不可直接使用。已安排211的Linux纯Python/procfs实际验证，另准备向真实supervisor发送SIGINT/SIGTERM的外置测试。原任务续派接口返回thread not found（只读仍可找到），改由两个独立子任务执行和准备，未修改原任务设置。真实Ray生命周期和A训练尚未启动。
-
-2026-09-19 22:18:44最新预检中211和207均可SSH访问。211列出的7张RTX3090均仅1MiB占用、0%利用率，无compute-app记录；优先考虑4/5两卡，实际启动前复核。共享/mnt/conda使用86%、剩余约1.78TiB，211本地盘剩余约285GiB。三个已知旧PID及两个私有路径的进程查询未匹配；这不是全部残留进程验收，但旧目录仍存在也不代表GPU仍被占用。没有执行清理，不能将9月17日的不可达状态继续当作当前事实。
+2026-09-19 22:18:44资源快照中211/207均可访问，211七张3090各仅1MiB、无compute-app，/mnt/conda剩余约1.78TiB、211本地盘约285GiB；这是历史快照，实际GPU启动前重核。9月20日211 CLI检查确认应使用既有环境bin/ray，不能用python -m ray。新数据写个人/mnt/conda目录或节点本地盘，不删除旧权重/证据。
 
 旧v9运行的[独立超时复核](acceptance/FRESH-PROCESS-V9-GPU-TIMEOUT-20260916/REPORT.md)已确认Task1两次更新；留存日志未见明确OOM或运行异常，检查点保存约4.4分钟。远端checkpoint目前只有文件名称/大小清单，没有内容完整性验收；新运行需补内容hash与完整结束日志。旧交付JSON格式缺陷已登记，原始证据保持不变。
 

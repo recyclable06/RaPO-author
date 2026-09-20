@@ -1,0 +1,70 @@
+{
+  "schema": "private-ray-final-signal-harness-preparation-metadata-v1",
+  "prepared_at": "2026-09-20",
+  "role": "independent_012_linux_signal_harness_preparation",
+  "workspace": "C:/Users/Administrator/Desktop/RaPO-author",
+  "source_final": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT",
+  "source_parent": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT",
+  "source_zero_gpu": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT",
+  "deployment_basename_contract": {
+    "final": "FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT",
+    "parent": "FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT",
+    "zero_gpu": "FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT",
+    "siblings": true
+  },
+  "identity": {
+    "runtime_hashes_sha256": "3b9f055da492741754f80b63e2255716e118fe546bca429267c542877136f67",
+    "runtime_manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "runtime_file_count": 4,
+    "runtime_total_bytes": 86564,
+    "parent_hashes_sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9",
+    "parent_manifest_sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119",
+    "zero_gpu_hashes_sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003",
+    "zero_gpu_manifest_sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+  },
+  "signal_cases": [
+    {
+      "name": "sigint",
+      "signal": "SIGINT",
+      "ray_tmp": "/tmp/zlf-s20i"
+    },
+    {
+      "name": "sigterm",
+      "signal": "SIGTERM",
+      "ray_tmp": "/tmp/zlf-s20t"
+    }
+  ],
+  "resource_and_budget_contract": {
+    "cuda_visible_devices": "",
+    "num_gpus": 0,
+    "num_cpus": 3,
+    "main_lifecycle_seconds_total": 120,
+    "cleanup_seconds_total_max": 120,
+    "real_ray_started": false,
+    "gpu_started": false,
+    "model_loaded": false,
+    "training_started": false
+  },
+  "local_execution": {
+    "python": "C:/Program Files/Python313/python.exe",
+    "static_tests_executed": true,
+    "static_test_result": "newoutput/static-tests.json",
+    "linux_signal_cases_executed": false,
+    "ssh_used": false,
+    "ray_started": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_started": false,
+    "final_runtime_modified": false,
+    "root_test_results_modified": false
+  },
+  "artifacts": [
+    "run_signal_harness.py",
+    "fake_signal_ray.py",
+    "fake_signal_launcher.py",
+    "test_signal_harness_static.py",
+    "SIGNAL_HARNESS_COMMAND.md",
+    "REPORT.md",
+    "RUN_METADATA.json"
+  ]
+}
