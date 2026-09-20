@@ -29,7 +29,7 @@ R2的50毫秒测试存在子进程尚未输出就被杀的偶发失败，独立�
 
 最新[supervisor独立组合审查](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-SUPERVISOR-20260920/REPORT.md)为NOT_READY_FOR_BOUNDED_ZERO_GPU。准备层尚缺启动前自身hash校验、SIGINT/SIGTERM的finally收尾、launcher派生新session的完整清理和持续日志落盘，CLI亦需修正。已将六项finding集中交准备者在一个新组合runtime内修复；它们不是新的算法问题，已通过的训练参数/观察器/R2超时helper不重复验证。现有测试为fake head且strict_linux=False，不宣称Linux真实Ray路径通过。
 
-集中修订的FINAL候选已交付，根核4个runtime文件86564bytes一致，已派独立增量检查其能否进入211的Linux纯Python进程验证，再进入真实零GPURay验证。文档直接调用测试main会覆盖已冻结的test-results.json，已要求以不改冻结文件的外置调用输出新结果；本地直接调用信号handler也不能冒充真实SIGINT/SIGTERM证据。尚未执行这两阶段或A训练。
+最新[FINAL独立复核](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-FINAL-20260920/REPORT.md)确认005–010静态闭合，并提供保留冻结test-results的外置调用方式；原文档命令仍不可直接使用。已安排211的Linux纯Python/procfs实际验证，另准备向真实supervisor发送SIGINT/SIGTERM的外置测试。原任务续派接口返回thread not found（只读仍可找到），改由两个独立子任务执行和准备，未修改原任务设置。真实Ray生命周期和A训练尚未启动。
 
 2026-09-19 22:18:44最新预检中211和207均可SSH访问。211列出的7张RTX3090均仅1MiB占用、0%利用率，无compute-app记录；优先考虑4/5两卡，实际启动前复核。共享/mnt/conda使用86%、剩余约1.78TiB，211本地盘剩余约285GiB。三个已知旧PID及两个私有路径的进程查询未匹配；这不是全部残留进程验收，但旧目录仍存在也不代表GPU仍被占用。没有执行清理，不能将9月17日的不可达状态继续当作当前事实。
 

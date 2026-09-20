@@ -1,0 +1,52 @@
+{
+  "schema": "fresh-process-a-private-ray-final-independent-review-hashes-v1",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "FINDING-A-FINAL-PHASE1-FROZEN-OUTPUT-011.md",
+      "bytes": 916,
+      "sha256": "bd8a553eb5367d4273b219b49c1d93e44c555a331cd43f8f6972e8ae09261f7c"
+    },
+    {
+      "path": "FINDING-A-FINAL-PHASE1-SIGNAL-COVERAGE-012.md",
+      "bytes": 1096,
+      "sha256": "21d9100a024a848bf0d55ef31acfd5dbc7a190655788655f851a59888c06c58b"
+    },
+    {
+      "path": "PHASE1_DIRECT_CALL.md",
+      "bytes": 2717,
+      "sha256": "32cd1ca5cbacf9aea37b535ae7762d4b48b969ea4dc897c267f47eaaf23a31ca"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 965,
+      "sha256": "9a71eaf0cc9897ec7c7439766e554fc3cab69183adec95be91369a5b69a2f438"
+    },
+    {
+      "path": "raw/independent_review.json",
+      "bytes": 3127,
+      "sha256": "fcb003aa0d0854fee3e78569ed00908684fe4da003a4a91efe3a3cd4635c9e42"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 4532,
+      "sha256": "d3be9c2937110ca177a26965c32c1dadccca24696355606eafc6a82299fe7ec2"
+    },
+    {
+      "path": "review_probe.py",
+      "bytes": 8971,
+      "sha256": "d0347af9352ed6c44d4ff3997b293ac4fdc472fc6f95357b86df3f216d99ebb8"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 3180,
+      "sha256": "97252c9f0342fda7ffbf774ee85c3328a56de80b224e765fc3fb908a885841e9"
+    },
+    {
+      "path": "VERDICT.json",
+      "bytes": 3145,
+      "sha256": "9116df9c0941e61f9c20fcc46613fb72270d5c468b279ce2b8e47ba4a4c6e518"
+    }
+  ]
+}

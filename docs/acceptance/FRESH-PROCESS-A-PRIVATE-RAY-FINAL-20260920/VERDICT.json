@@ -1,0 +1,77 @@
+{
+  "schema": "fresh-process-a-private-ray-final-independent-verdict-v1",
+  "reviewed_at": "2026-09-20",
+  "overall": "NOT_READY_FOR_BOUNDED_LINUX_STDLIB_AS_WRITTEN",
+  "implementation_005_to_010_static_closure": true,
+  "ready_for_linux_stdlib_command_as_written": false,
+  "direct_module_call_preserves_frozen_runtime": true,
+  "linux_process_check_executed": false,
+  "real_ray_lifecycle_executed": false,
+  "resources": {
+    "cuda_visible_devices": "",
+    "num_gpus": 0,
+    "num_cpus": 3,
+    "main_lifecycle_seconds": 120,
+    "cleanup_seconds_max": 120
+  },
+  "identity": {
+    "runtime_hashes_sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67",
+    "runtime_manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "runtime_file_count": 4,
+    "runtime_total_bytes": 86564,
+    "cli_preflight_hashes_sha256": "9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775"
+  },
+  "portable_tests": {
+    "status": "PASS_PRIVATE_RAY_ZERO_GPU_CLI_FINAL_SUPERVISOR_STANDARD_LIBRARY_TESTS",
+    "executed_by_direct_module_run": true,
+    "main_executed": false,
+    "linux_procfs_real_path_executed": false,
+    "real_ray_started": false,
+    "frozen_runtime_unchanged": true
+  },
+  "phase1_scope": {
+    "run_linux_process_check_requires_linux_procfs": true,
+    "run_linux_process_check_starts_fake_new_session_descendants": true,
+    "run_linux_process_check_delivers_real_supervisor_sigint_sigterm": false,
+    "portable_suite_directly_calls_handler_only": true,
+    "documented_main_writes_frozen_test_results": true,
+    "safe_direct_call_contract_recorded": true
+  },
+  "findings": {
+    "FINDING-A-FINAL-PHASE1-FROZEN-OUTPUT-011": {
+      "status": "OPEN_BLOCKING",
+      "summary": "The documented Phase 1 main overwrites frozen test-results.json before Phase 2 hash validation."
+    },
+    "FINDING-A-FINAL-PHASE1-SIGNAL-COVERAGE-012": {
+      "status": "OPEN_EVIDENCE_GAP",
+      "summary": "The Linux process check does not deliver real SIGINT/SIGTERM to the supervisor; portable direct handler calls are not equivalent."
+    }
+  },
+  "scope": {
+    "read_only": true,
+    "ssh_used_here": false,
+    "ray_started": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_started": false,
+    "a_mode_run": false
+  },
+  "next_required": [
+    "Use PHASE1_DIRECT_CALL.md or an equivalent external-output launcher; do not execute the documented Phase 1 main against the frozen bundle.",
+    "Add a Linux signal harness that sends real SIGINT and SIGTERM to the controlled supervisor and verifies final cleanup/record/no descendants.",
+    "Run the direct Linux/procfs fake-child check, then separately run the real bin/ray Ray 2.46.0 zero-GPU lifecycle."
+  ],
+  "artifacts": {
+    "report": "REPORT.md",
+    "verdict": "VERDICT.json",
+    "progress": "PROGRESS.md",
+    "run_metadata": "RUN_METADATA.json",
+    "hashes": "HASHES.json",
+    "probe": "review_probe.py",
+    "phase1_contract": "PHASE1_DIRECT_CALL.md",
+    "findings": [
+      "FINDING-A-FINAL-PHASE1-FROZEN-OUTPUT-011.md",
+      "FINDING-A-FINAL-PHASE1-SIGNAL-COVERAGE-012.md"
+    ]
+  }
+}

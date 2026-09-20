@@ -1,0 +1,82 @@
+{
+  "schema": "fresh-process-a-private-ray-final-independent-review-raw-v1",
+  "reviewed_at": "2026-09-20",
+  "final_hash_check": {
+    "declared_file_count": 4,
+    "declared_total_bytes": 86564,
+    "actual_declared_total_bytes": 86564,
+    "bad_hash_files": [],
+    "hashes_self_sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67",
+    "manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0"
+  },
+  "portable_standard_library_tests": {
+    "status": "PASS_PRIVATE_RAY_ZERO_GPU_CLI_FINAL_SUPERVISOR_STANDARD_LIBRARY_TESTS",
+    "executed_by_direct_module_run": true,
+    "main_executed": false,
+    "manifest_guard_head_spawn_zero": true,
+    "signal_handler_idempotent": true,
+    "file_backed_head_logs": true,
+    "large_head_output_no_pipe_block": true,
+    "launcher_process_tree_cleanup_recorded": true,
+    "shared_cleanup_budget_bounded": true,
+    "linux_procfs_real_path_executed": false,
+    "real_ray_started": false,
+    "frozen_runtime_unchanged": true
+  },
+  "static_review": {
+    "runtime_manifest_guard_before_head": true,
+    "parent_snapshot_guard": true,
+    "zero_gpu_snapshot_guard": true,
+    "record_validation_atomic": true,
+    "signal_handlers_installed": true,
+    "execute_catches_baseexception": true,
+    "execute_finally_restores_signal_handlers": true,
+    "launcher_descendant_monitor": true,
+    "launcher_tree_tracks_after_reparent": true,
+    "file_backed_head_logs": true,
+    "file_backed_launcher_logs": true,
+    "validated_bin_ray_command": true,
+    "python_module_ray_runtime_argv_used": false,
+    "main_budget_capped_at_120": true,
+    "cleanup_budget_capped_at_120": true,
+    "linux_process_check_requires_procfs": true,
+    "linux_process_check_writes_frozen_test_results": false,
+    "main_overwrites_frozen_test_results": true,
+    "linux_process_check_writes_external_result": false,
+    "linux_process_check_delivers_real_supervisor_sigint_sigterm": false,
+    "portable_suite_directly_calls_handler": true,
+    "linux_process_check_starts_fake_new_session_descendants": true,
+    "linux_process_check_calls_real_ray": false
+  },
+  "cli_preflight": {
+    "file_count": 30,
+    "declared_total_bytes": 16933,
+    "actual_total_bytes": 16933,
+    "bad_hash_files": [],
+    "hashes_self_sha256": "9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775",
+    "host": "211",
+    "python_version": "3.11.6",
+    "ray_version": "2.46.0",
+    "python_module_ray_start_help_exit": 1,
+    "python_module_ray_status_help_exit": 1,
+    "ray_script_start_help_exit": 0,
+    "ray_script_status_help_exit": 0,
+    "service_started": false
+  },
+  "verdict": "NOT_READY_FOR_BOUNDED_LINUX_STDLIB_AS_WRITTEN",
+  "open_findings": [
+    "FINDING-A-FINAL-PHASE1-FROZEN-OUTPUT-011",
+    "FINDING-A-FINAL-PHASE1-SIGNAL-COVERAGE-012",
+    "REAL-LINUX-PROCFS-CHECK-NOT-EXECUTED",
+    "REAL-RAY-ZERO-GPU-LIFECYCLE-NOT-EXECUTED"
+  ],
+  "scope": {
+    "read_only": true,
+    "ssh_used_here": false,
+    "ray_started": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_started": false,
+    "a_mode_run": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "fresh-process-a-private-ray-final-independent-review-metadata-v1",
+  "reviewed_at": "2026-09-20",
+  "role": "independent_acceptance_review",
+  "workspace": "C:/Users/Administrator/Desktop/RaPO-author",
+  "source_final": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT",
+  "source_parent": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT",
+  "source_zero_gpu": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT",
+  "source_cli_preflight": "C:/Users/Administrator/.codex/worktrees/71a6/RaPO-author/docs/diagnostics/RAY-CLI-ENTRY-PREFLIGHT-20260920",
+  "identity": {
+    "runtime_hashes_sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67",
+    "runtime_manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "runtime_file_count": 4,
+    "runtime_total_bytes": 86564,
+    "parent_hashes_sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9",
+    "parent_manifest_sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119",
+    "zero_gpu_hashes_sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003",
+    "zero_gpu_manifest_sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed",
+    "cli_preflight_hashes_sha256": "9c8bc7cac8c7c85fd795ab860f8a357c1e4c65461cbbfbff6870c6a72f868775"
+  },
+  "method": {
+    "probe": "review_probe.py",
+    "portable_tests": "direct import and run() call; main not executed",
+    "source_static_review": true,
+    "final_hash_recomputation": true,
+    "cli_preflight_artifact_recomputation": true,
+    "linux_process_check_run_here": false,
+    "new_ssh": false,
+    "ray": false,
+    "gpu": false,
+    "model": false,
+    "training": false
+  },
+  "portable_test_result": {
+    "status": "PASS_PRIVATE_RAY_ZERO_GPU_CLI_FINAL_SUPERVISOR_STANDARD_LIBRARY_TESTS",
+    "manifest_guard_head_spawn_zero": true,
+    "signal_handler_idempotent": true,
+    "file_backed_head_logs": true,
+    "large_head_output_no_pipe_block": true,
+    "launcher_process_tree_cleanup_recorded": true,
+    "shared_cleanup_budget_bounded": true,
+    "linux_procfs_real_path_executed": false,
+    "real_ray_started": false
+  },
+  "phase1_risk": {
+    "documented_command_invokes_main": true,
+    "main_writes_ROOT_test_results": true,
+    "ROOT_test_results_is_frozen_runtime_entry": true,
+    "direct_module_call_writes_final_root": false,
+    "linux_function_delivers_real_supervisor_signals": false,
+    "portable_handler_test_is_direct_call": true
+  },
+  "verdict": "NOT_READY_FOR_BOUNDED_LINUX_STDLIB_AS_WRITTEN",
+  "writes": [
+    "REPORT.md",
+    "VERDICT.json",
+    "PROGRESS.md",
+    "RUN_METADATA.json",
+    "HASHES.json",
+    "review_probe.py",
+    "PHASE1_DIRECT_CALL.md",
+    "FINDING-A-FINAL-PHASE1-FROZEN-OUTPUT-011.md",
+    "FINDING-A-FINAL-PHASE1-SIGNAL-COVERAGE-012.md",
+    "raw/independent_review.json"
+  ]
+}
