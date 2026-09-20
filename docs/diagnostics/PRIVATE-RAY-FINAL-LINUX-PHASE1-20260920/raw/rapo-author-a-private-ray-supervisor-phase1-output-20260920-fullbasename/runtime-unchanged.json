@@ -1,0 +1,597 @@
+{
+  "after": {
+    "final": {
+      "all_entries_match": true,
+      "entries": {
+        "MANIFEST_FINAL.json": {
+          "actual": {
+            "bytes": 1578,
+            "sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0"
+          },
+          "expected": {
+            "bytes": 1578,
+            "sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0"
+          },
+          "matches": true
+        },
+        "private_ray_supervisor.py": {
+          "actual": {
+            "bytes": 68147,
+            "sha256": "fc37f34dd4459fb3050fe7ffee79cfc8d5da1bd69da022ae721fe827486eb302"
+          },
+          "expected": {
+            "bytes": 68147,
+            "sha256": "fc37f34dd4459fb3050fe7ffee79cfc8d5da1bd69da022ae721fe827486eb302"
+          },
+          "matches": true
+        },
+        "run_supervisor_tests.py": {
+          "actual": {
+            "bytes": 16175,
+            "sha256": "f289000c14b57395d9c48aa8d08a8c40d883a26a5f0460ad6cf79875598579d4"
+          },
+          "expected": {
+            "bytes": 16175,
+            "sha256": "f289000c14b57395d9c48aa8d08a8c40d883a26a5f0460ad6cf79875598579d4"
+          },
+          "matches": true
+        },
+        "test-results.json": {
+          "actual": {
+            "bytes": 664,
+            "sha256": "42e73c8befc2dd6a62a96a58da761b67a64d3e8fd876baec657d766881df0158"
+          },
+          "expected": {
+            "bytes": 664,
+            "sha256": "42e73c8befc2dd6a62a96a58da761b67a64d3e8fd876baec657d766881df0158"
+          },
+          "matches": true
+        }
+      },
+      "hashes_file": {
+        "bytes": 800,
+        "sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67"
+      },
+      "manifest_file": {
+        "bytes": 1578,
+        "sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0"
+      },
+      "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT"
+    },
+    "parent": {
+      "all_entries_match": true,
+      "entries": {
+        "DIFF_FROM_R2.md": {
+          "actual": {
+            "bytes": 1478,
+            "sha256": "1ecf492b0f98e341a6a1b5584bccee63c77dafe267756ccccc13c02774870441"
+          },
+          "expected": {
+            "bytes": 1478,
+            "sha256": "1ecf492b0f98e341a6a1b5584bccee63c77dafe267756ccccc13c02774870441"
+          },
+          "matches": true
+        },
+        "REPORT.md": {
+          "actual": {
+            "bytes": 3469,
+            "sha256": "869bf5d20e2e2a99079b9784b2d4794ce8823a5e7ac2073cbfef7ecec5525eff"
+          },
+          "expected": {
+            "bytes": 3469,
+            "sha256": "869bf5d20e2e2a99079b9784b2d4794ce8823a5e7ac2073cbfef7ecec5525eff"
+          },
+          "matches": true
+        },
+        "RUN_METADATA.json": {
+          "actual": {
+            "bytes": 2577,
+            "sha256": "f5cede3ec1079a0e24d905926d77115c9362919fc2f0f2f94688cdeb00a3501a"
+          },
+          "expected": {
+            "bytes": 2577,
+            "sha256": "f5cede3ec1079a0e24d905926d77115c9362919fc2f0f2f94688cdeb00a3501a"
+          },
+          "matches": true
+        },
+        "SUPERVISOR_COMMAND.md": {
+          "actual": {
+            "bytes": 5100,
+            "sha256": "947e3b610f8a74b556124a6d36a9759acec6716958e4a05b7766076f821befb0"
+          },
+          "expected": {
+            "bytes": 5100,
+            "sha256": "947e3b610f8a74b556124a6d36a9759acec6716958e4a05b7766076f821befb0"
+          },
+          "matches": true
+        },
+        "SUPERVISOR_MANIFEST.json": {
+          "actual": {
+            "bytes": 2488,
+            "sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119"
+          },
+          "expected": {
+            "bytes": 2488,
+            "sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119"
+          },
+          "matches": true
+        },
+        "VERDICT.json": {
+          "actual": {
+            "bytes": 2082,
+            "sha256": "39c3ff91499b8142643a052ec40ecbe91653ca3df030a9d354930f570adce8a3"
+          },
+          "expected": {
+            "bytes": 2082,
+            "sha256": "39c3ff91499b8142643a052ec40ecbe91653ca3df030a9d354930f570adce8a3"
+          },
+          "matches": true
+        },
+        "private_ray_supervisor.py": {
+          "actual": {
+            "bytes": 37333,
+            "sha256": "5085be25e96970e6ec9899eee506a113922a611445149b1758ff0dab986147b3"
+          },
+          "expected": {
+            "bytes": 37333,
+            "sha256": "5085be25e96970e6ec9899eee506a113922a611445149b1758ff0dab986147b3"
+          },
+          "matches": true
+        },
+        "ray_lifecycle_probe.py": {
+          "actual": {
+            "bytes": 2104,
+            "sha256": "da0276ba4a08a7a954cee159c0da4bdcfe6913b3e7577862bada5da837fa5266"
+          },
+          "expected": {
+            "bytes": 2104,
+            "sha256": "da0276ba4a08a7a954cee159c0da4bdcfe6913b3e7577862bada5da837fa5266"
+          },
+          "matches": true
+        },
+        "run_supervisor_tests.py": {
+          "actual": {
+            "bytes": 8127,
+            "sha256": "4dfbae874aa3fd85d25c47b888d5436f4caf324b94edd27e0f056b444aee440b"
+          },
+          "expected": {
+            "bytes": 8127,
+            "sha256": "4dfbae874aa3fd85d25c47b888d5436f4caf324b94edd27e0f056b444aee440b"
+          },
+          "matches": true
+        },
+        "test-results.json": {
+          "actual": {
+            "bytes": 565,
+            "sha256": "2937fe629f78e334fba7d114e3f50fcf7fa05a50b84adae8e010b883d912d915"
+          },
+          "expected": {
+            "bytes": 565,
+            "sha256": "2937fe629f78e334fba7d114e3f50fcf7fa05a50b84adae8e010b883d912d915"
+          },
+          "matches": true
+        }
+      },
+      "hashes_file": {
+        "bytes": 1702,
+        "sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9"
+      },
+      "manifest_file": {
+        "bytes": 2488,
+        "sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119"
+      },
+      "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT"
+    },
+    "zero_gpu": {
+      "all_entries_match": true,
+      "entries": {
+        "DIFF_FROM_R2_SUPERVISOR.md": {
+          "actual": {
+            "bytes": 1272,
+            "sha256": "e47e6f2581f345ad78fae94ee73f81b495720f8fbc572826a5362058fccd3b10"
+          },
+          "expected": {
+            "bytes": 1272,
+            "sha256": "e47e6f2581f345ad78fae94ee73f81b495720f8fbc572826a5362058fccd3b10"
+          },
+          "matches": true
+        },
+        "MANIFEST_ZEROGPU.json": {
+          "actual": {
+            "bytes": 2283,
+            "sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+          },
+          "expected": {
+            "bytes": 2283,
+            "sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+          },
+          "matches": true
+        },
+        "REPORT.md": {
+          "actual": {
+            "bytes": 1695,
+            "sha256": "36ebfa44612444489402f78953e710d535e581a7075dbe195cd71912db16fc2f"
+          },
+          "expected": {
+            "bytes": 1695,
+            "sha256": "36ebfa44612444489402f78953e710d535e581a7075dbe195cd71912db16fc2f"
+          },
+          "matches": true
+        },
+        "RUN_METADATA.json": {
+          "actual": {
+            "bytes": 2299,
+            "sha256": "f8c30d295863bdb92683ecd2493d20177a14f2f803ffcaf80511a5b3aede6278"
+          },
+          "expected": {
+            "bytes": 2299,
+            "sha256": "f8c30d295863bdb92683ecd2493d20177a14f2f803ffcaf80511a5b3aede6278"
+          },
+          "matches": true
+        },
+        "VERDICT.json": {
+          "actual": {
+            "bytes": 1068,
+            "sha256": "43018344da3da264f67d870087793ef8e71d14a74aa7b8685ac92ac378a09888"
+          },
+          "expected": {
+            "bytes": 1068,
+            "sha256": "43018344da3da264f67d870087793ef8e71d14a74aa7b8685ac92ac378a09888"
+          },
+          "matches": true
+        },
+        "ZERO_GPU_COMMAND.md": {
+          "actual": {
+            "bytes": 3271,
+            "sha256": "223b7467720edbd5dd5da213b64cf04f5d2eb187291493e91c2d06b5b3d828a9"
+          },
+          "expected": {
+            "bytes": 3271,
+            "sha256": "223b7467720edbd5dd5da213b64cf04f5d2eb187291493e91c2d06b5b3d828a9"
+          },
+          "matches": true
+        },
+        "run_zero_gpu_supervisor_tests.py": {
+          "actual": {
+            "bytes": 7587,
+            "sha256": "17781e561a21a4be05af34d1bed44951566564d60072e49a6d0fa95b1cf07616"
+          },
+          "expected": {
+            "bytes": 7587,
+            "sha256": "17781e561a21a4be05af34d1bed44951566564d60072e49a6d0fa95b1cf07616"
+          },
+          "matches": true
+        },
+        "test-results.json": {
+          "actual": {
+            "bytes": 447,
+            "sha256": "bd059d92935d22e2c6db7ed8c8bc5451840cb62583bdad07f3260a2e01398771"
+          },
+          "expected": {
+            "bytes": 447,
+            "sha256": "bd059d92935d22e2c6db7ed8c8bc5451840cb62583bdad07f3260a2e01398771"
+          },
+          "matches": true
+        },
+        "zero_gpu_supervisor.py": {
+          "actual": {
+            "bytes": 14312,
+            "sha256": "338d49a5c93aaf4938fad86604445b8e97741c16e05e776b39e3d427be46299a"
+          },
+          "expected": {
+            "bytes": 14312,
+            "sha256": "338d49a5c93aaf4938fad86604445b8e97741c16e05e776b39e3d427be46299a"
+          },
+          "matches": true
+        }
+      },
+      "hashes_file": {
+        "bytes": 1553,
+        "sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003"
+      },
+      "manifest_file": {
+        "bytes": 2283,
+        "sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+      },
+      "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT"
+    }
+  },
+  "before": {
+    "final": {
+      "all_entries_match": true,
+      "entries": {
+        "MANIFEST_FINAL.json": {
+          "actual": {
+            "bytes": 1578,
+            "sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0"
+          },
+          "expected": {
+            "bytes": 1578,
+            "sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0"
+          },
+          "matches": true
+        },
+        "private_ray_supervisor.py": {
+          "actual": {
+            "bytes": 68147,
+            "sha256": "fc37f34dd4459fb3050fe7ffee79cfc8d5da1bd69da022ae721fe827486eb302"
+          },
+          "expected": {
+            "bytes": 68147,
+            "sha256": "fc37f34dd4459fb3050fe7ffee79cfc8d5da1bd69da022ae721fe827486eb302"
+          },
+          "matches": true
+        },
+        "run_supervisor_tests.py": {
+          "actual": {
+            "bytes": 16175,
+            "sha256": "f289000c14b57395d9c48aa8d08a8c40d883a26a5f0460ad6cf79875598579d4"
+          },
+          "expected": {
+            "bytes": 16175,
+            "sha256": "f289000c14b57395d9c48aa8d08a8c40d883a26a5f0460ad6cf79875598579d4"
+          },
+          "matches": true
+        },
+        "test-results.json": {
+          "actual": {
+            "bytes": 664,
+            "sha256": "42e73c8befc2dd6a62a96a58da761b67a64d3e8fd876baec657d766881df0158"
+          },
+          "expected": {
+            "bytes": 664,
+            "sha256": "42e73c8befc2dd6a62a96a58da761b67a64d3e8fd876baec657d766881df0158"
+          },
+          "matches": true
+        }
+      },
+      "hashes_file": {
+        "bytes": 800,
+        "sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67"
+      },
+      "manifest_file": {
+        "bytes": 1578,
+        "sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0"
+      },
+      "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT"
+    },
+    "parent": {
+      "all_entries_match": true,
+      "entries": {
+        "DIFF_FROM_R2.md": {
+          "actual": {
+            "bytes": 1478,
+            "sha256": "1ecf492b0f98e341a6a1b5584bccee63c77dafe267756ccccc13c02774870441"
+          },
+          "expected": {
+            "bytes": 1478,
+            "sha256": "1ecf492b0f98e341a6a1b5584bccee63c77dafe267756ccccc13c02774870441"
+          },
+          "matches": true
+        },
+        "REPORT.md": {
+          "actual": {
+            "bytes": 3469,
+            "sha256": "869bf5d20e2e2a99079b9784b2d4794ce8823a5e7ac2073cbfef7ecec5525eff"
+          },
+          "expected": {
+            "bytes": 3469,
+            "sha256": "869bf5d20e2e2a99079b9784b2d4794ce8823a5e7ac2073cbfef7ecec5525eff"
+          },
+          "matches": true
+        },
+        "RUN_METADATA.json": {
+          "actual": {
+            "bytes": 2577,
+            "sha256": "f5cede3ec1079a0e24d905926d77115c9362919fc2f0f2f94688cdeb00a3501a"
+          },
+          "expected": {
+            "bytes": 2577,
+            "sha256": "f5cede3ec1079a0e24d905926d77115c9362919fc2f0f2f94688cdeb00a3501a"
+          },
+          "matches": true
+        },
+        "SUPERVISOR_COMMAND.md": {
+          "actual": {
+            "bytes": 5100,
+            "sha256": "947e3b610f8a74b556124a6d36a9759acec6716958e4a05b7766076f821befb0"
+          },
+          "expected": {
+            "bytes": 5100,
+            "sha256": "947e3b610f8a74b556124a6d36a9759acec6716958e4a05b7766076f821befb0"
+          },
+          "matches": true
+        },
+        "SUPERVISOR_MANIFEST.json": {
+          "actual": {
+            "bytes": 2488,
+            "sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119"
+          },
+          "expected": {
+            "bytes": 2488,
+            "sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119"
+          },
+          "matches": true
+        },
+        "VERDICT.json": {
+          "actual": {
+            "bytes": 2082,
+            "sha256": "39c3ff91499b8142643a052ec40ecbe91653ca3df030a9d354930f570adce8a3"
+          },
+          "expected": {
+            "bytes": 2082,
+            "sha256": "39c3ff91499b8142643a052ec40ecbe91653ca3df030a9d354930f570adce8a3"
+          },
+          "matches": true
+        },
+        "private_ray_supervisor.py": {
+          "actual": {
+            "bytes": 37333,
+            "sha256": "5085be25e96970e6ec9899eee506a113922a611445149b1758ff0dab986147b3"
+          },
+          "expected": {
+            "bytes": 37333,
+            "sha256": "5085be25e96970e6ec9899eee506a113922a611445149b1758ff0dab986147b3"
+          },
+          "matches": true
+        },
+        "ray_lifecycle_probe.py": {
+          "actual": {
+            "bytes": 2104,
+            "sha256": "da0276ba4a08a7a954cee159c0da4bdcfe6913b3e7577862bada5da837fa5266"
+          },
+          "expected": {
+            "bytes": 2104,
+            "sha256": "da0276ba4a08a7a954cee159c0da4bdcfe6913b3e7577862bada5da837fa5266"
+          },
+          "matches": true
+        },
+        "run_supervisor_tests.py": {
+          "actual": {
+            "bytes": 8127,
+            "sha256": "4dfbae874aa3fd85d25c47b888d5436f4caf324b94edd27e0f056b444aee440b"
+          },
+          "expected": {
+            "bytes": 8127,
+            "sha256": "4dfbae874aa3fd85d25c47b888d5436f4caf324b94edd27e0f056b444aee440b"
+          },
+          "matches": true
+        },
+        "test-results.json": {
+          "actual": {
+            "bytes": 565,
+            "sha256": "2937fe629f78e334fba7d114e3f50fcf7fa05a50b84adae8e010b883d912d915"
+          },
+          "expected": {
+            "bytes": 565,
+            "sha256": "2937fe629f78e334fba7d114e3f50fcf7fa05a50b84adae8e010b883d912d915"
+          },
+          "matches": true
+        }
+      },
+      "hashes_file": {
+        "bytes": 1702,
+        "sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9"
+      },
+      "manifest_file": {
+        "bytes": 2488,
+        "sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119"
+      },
+      "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT"
+    },
+    "zero_gpu": {
+      "all_entries_match": true,
+      "entries": {
+        "DIFF_FROM_R2_SUPERVISOR.md": {
+          "actual": {
+            "bytes": 1272,
+            "sha256": "e47e6f2581f345ad78fae94ee73f81b495720f8fbc572826a5362058fccd3b10"
+          },
+          "expected": {
+            "bytes": 1272,
+            "sha256": "e47e6f2581f345ad78fae94ee73f81b495720f8fbc572826a5362058fccd3b10"
+          },
+          "matches": true
+        },
+        "MANIFEST_ZEROGPU.json": {
+          "actual": {
+            "bytes": 2283,
+            "sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+          },
+          "expected": {
+            "bytes": 2283,
+            "sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+          },
+          "matches": true
+        },
+        "REPORT.md": {
+          "actual": {
+            "bytes": 1695,
+            "sha256": "36ebfa44612444489402f78953e710d535e581a7075dbe195cd71912db16fc2f"
+          },
+          "expected": {
+            "bytes": 1695,
+            "sha256": "36ebfa44612444489402f78953e710d535e581a7075dbe195cd71912db16fc2f"
+          },
+          "matches": true
+        },
+        "RUN_METADATA.json": {
+          "actual": {
+            "bytes": 2299,
+            "sha256": "f8c30d295863bdb92683ecd2493d20177a14f2f803ffcaf80511a5b3aede6278"
+          },
+          "expected": {
+            "bytes": 2299,
+            "sha256": "f8c30d295863bdb92683ecd2493d20177a14f2f803ffcaf80511a5b3aede6278"
+          },
+          "matches": true
+        },
+        "VERDICT.json": {
+          "actual": {
+            "bytes": 1068,
+            "sha256": "43018344da3da264f67d870087793ef8e71d14a74aa7b8685ac92ac378a09888"
+          },
+          "expected": {
+            "bytes": 1068,
+            "sha256": "43018344da3da264f67d870087793ef8e71d14a74aa7b8685ac92ac378a09888"
+          },
+          "matches": true
+        },
+        "ZERO_GPU_COMMAND.md": {
+          "actual": {
+            "bytes": 3271,
+            "sha256": "223b7467720edbd5dd5da213b64cf04f5d2eb187291493e91c2d06b5b3d828a9"
+          },
+          "expected": {
+            "bytes": 3271,
+            "sha256": "223b7467720edbd5dd5da213b64cf04f5d2eb187291493e91c2d06b5b3d828a9"
+          },
+          "matches": true
+        },
+        "run_zero_gpu_supervisor_tests.py": {
+          "actual": {
+            "bytes": 7587,
+            "sha256": "17781e561a21a4be05af34d1bed44951566564d60072e49a6d0fa95b1cf07616"
+          },
+          "expected": {
+            "bytes": 7587,
+            "sha256": "17781e561a21a4be05af34d1bed44951566564d60072e49a6d0fa95b1cf07616"
+          },
+          "matches": true
+        },
+        "test-results.json": {
+          "actual": {
+            "bytes": 447,
+            "sha256": "bd059d92935d22e2c6db7ed8c8bc5451840cb62583bdad07f3260a2e01398771"
+          },
+          "expected": {
+            "bytes": 447,
+            "sha256": "bd059d92935d22e2c6db7ed8c8bc5451840cb62583bdad07f3260a2e01398771"
+          },
+          "matches": true
+        },
+        "zero_gpu_supervisor.py": {
+          "actual": {
+            "bytes": 14312,
+            "sha256": "338d49a5c93aaf4938fad86604445b8e97741c16e05e776b39e3d427be46299a"
+          },
+          "expected": {
+            "bytes": 14312,
+            "sha256": "338d49a5c93aaf4938fad86604445b8e97741c16e05e776b39e3d427be46299a"
+          },
+          "matches": true
+        }
+      },
+      "hashes_file": {
+        "bytes": 1553,
+        "sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003"
+      },
+      "manifest_file": {
+        "bytes": 2283,
+        "sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+      },
+      "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT"
+    }
+  },
+  "unchanged": true
+}

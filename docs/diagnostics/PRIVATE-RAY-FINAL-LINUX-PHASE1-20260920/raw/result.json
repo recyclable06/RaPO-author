@@ -1,0 +1,15 @@
+{
+  "failure": null,
+  "result": {
+    "file_backed_head_logs": true,
+    "gpu_started": false,
+    "model_loaded": false,
+    "new_session_launcher_descendant_cleanup": true,
+    "procfs_identity": true,
+    "real_ray_started": false,
+    "schema": "private-ray-zero-gpu-cli-final-supervisor-linux-standard-library-check-v1",
+    "status": "PASS_PRIVATE_RAY_ZERO_GPU_CLI_FINAL_SUPERVISOR_LINUX_STANDARD_LIBRARY_CHECK",
+    "training_started": false
+  },
+  "status": "ok"
+}

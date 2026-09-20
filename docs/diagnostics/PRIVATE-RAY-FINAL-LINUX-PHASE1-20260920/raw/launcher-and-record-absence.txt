@@ -1,0 +1,5 @@
+The supervisor failed during head identity/readiness verification before
+_write_running_record() and before _wait_launcher(). Therefore launcher.stdout,
+launcher.stderr, and private-ray-supervisor-record.json were not created in
+the supervisor root. supervisor-root-listing.json records the observed file
+set; this is evidence of an early failure, not a missing collection step.

@@ -1,0 +1,3 @@
+No Python wrapper traceback was produced: the direct import returned normally.
+The supervisor's controlled failure is recorded in supervisor-result.json:
+SupervisorError: private Ray executable identity changed.

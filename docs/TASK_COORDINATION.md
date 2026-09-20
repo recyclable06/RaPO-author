@@ -12,6 +12,8 @@
 
 用户中止后于2026-09-20明确要求继续。三个子任务上一轮因usage limit中断，原文件保留；已恢复 `/root/linux_phase1_execution` 仅封存已有本地失败证据，以及 `/root/phase1_failure_audit` 独立定位失败与最小修复范围。`/root/linux_signal_harness` 已交付静态准备包及metadata hash勘误，暂不运行。实际Phase1在head身份校验提前失败，外层测试PASS是假阳性；不据此进入真实Ray或A。当前不再SSH、重跑或修改被测subject，先完成独立finding。
 
+独立初步finding已确认后，已启动独立整改 `/root/phase1_identity_remediation`（Luna Max），使用隔离worktree与 `codex/phase1-head-identity-fix-20260920` 分支。允许仅新candidate中的supervisor、Linux check/外置输出契约及必要测试/manifest修订；训练生产/observer/R2/v9/旧快照不改。先完成身份稳定与空集合清理/测试假阳性的最小修复，Windows自测不算Linux通过，不SSH或实际Ray执行。审查任务继续冻结正式报告，执行任务只收口本地证据，角色保持分离。
+
 2026-09-20最新调度：FINAL静态005–010已通过，独立目录 `FRESH-PROCESS-A-PRIVATE-RAY-FINAL-20260920/` 9文件28649bytes，self `ad74c5411b33c88c8d659ae4dcae5eda8ca1ef3df232d4db5412f5e97940a6de`。向原准备/执行任务续派均返回thread not found，read_thread仍显示notLoaded，显式local重试准备者亦失败；这些send未成功，不能算派发。现由当前任务子Agent `/root/linux_phase1_execution` 实际执行独立direct-call Linux纯Python阶段，`/root/linux_signal_harness` 只准备012真实OS信号harness；两者Luna Max、角色分开，不更改原任务模型。输出分别为根docs/diagnostics/PRIVATE-RAY-FINAL-LINUX-PHASE1-20260920/和PRIVATE-RAY-FINAL-SIGNAL-HARNESS-20260920/。既有任务表保留上下文，不能据此重复在原任务派执行；无实际Ray/GPU/A启动。
 
 用户另要求正式复现启动前整理根目录并尝试上传 `https://github.com/recyclable06/RaPO-author.git`，覆盖本次整合、提交和push。协调者在 `codex/repository-publication-20260914` 整理根目录，精确复制8ac5已验收生产/测试字节，原工作树和作者标签保留；记录见 [INTEGRATION_HANDOFF.md](INTEGRATION_HANDOFF.md)。此授权不扩大正式规模训练范围。

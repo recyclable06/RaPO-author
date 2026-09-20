@@ -1,0 +1,97 @@
+{
+  "schema": "private-ray-final-linux-phase1-direct-call-metadata-v1",
+  "recorded_at": "2026-09-20",
+  "role": "linux_phase1_diagnostic_execution",
+  "status": "BLOCKED_EARLY_HEAD_IDENTITY",
+  "host_alias": "211",
+  "hostname": "gpu-211",
+  "user": "zhenglifeng",
+  "uid": 1115,
+  "python_executable": "/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/env/rapo-author/bin/python",
+  "python_version": "3.11.6",
+  "ray_version_preflight": "2.46.0",
+  "deployment": {
+    "final": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT",
+    "parent": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT",
+    "zero_gpu": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT",
+    "siblings_by_exact_source_basename": true,
+    "no_pycache_deployed": true
+  },
+  "output": "/mnt/conda/zhenglifeng/t/rapo-author-a-private-ray-supervisor-phase1-output-20260920-fullbasename",
+  "short_paths": {
+    "supervisor_root": "/tmp/zlf-s20p",
+    "ray_tmp": "/tmp/zlf-s20l",
+    "ray_tmp_absent_after_cleanup": true
+  },
+  "environment": {
+    "path_prefixed_with_env_bin": true,
+    "cuda_visible_devices": "",
+    "pythondontwritebytecode": "1",
+    "python_no_user_site": "1",
+    "python_B": true
+  },
+  "method": {
+    "direct_import": true,
+    "called": "run_linux_process_check",
+    "main_invoked": false,
+    "real_ray_started": false,
+    "gpu_started": false,
+    "model_loaded": false,
+    "training_started": false,
+    "signals_tested": false
+  },
+  "observed": {
+    "wrapper_exit": 0,
+    "function_status": "PASS_PRIVATE_RAY_ZERO_GPU_CLI_FINAL_SUPERVISOR_LINUX_STANDARD_LIBRARY_CHECK",
+    "supervisor_status": "FAIL_ZERO_GPU_SUPERVISOR_LIFECYCLE",
+    "supervisor_failure": "SupervisorError: private Ray executable identity changed",
+    "head_started": true,
+    "head_pid": 299497,
+    "head_returncode_reported": null,
+    "launcher_started": false,
+    "running_record_written": false,
+    "head_stdout_bytes": 250019,
+    "head_stderr_bytes": 0,
+    "all_owned_processes_gone_reported": true,
+    "temp_root_removed_reported": true,
+    "head_resource_release_verified": false,
+    "post_run_procfs_query_saved": false,
+    "cleanup_unowned_action_used": false,
+    "global_pkill_used": false,
+    "global_ray_stop_used": false,
+    "runtime_unchanged": true
+  },
+  "identity": {
+    "runtime_hashes_sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67",
+    "runtime_manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "runtime_file_count": 4,
+    "runtime_total_bytes": 86564,
+    "parent_hashes_sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9",
+    "parent_manifest_sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119",
+    "zero_gpu_hashes_sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003",
+    "zero_gpu_manifest_sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed"
+  },
+  "attempts": [
+    {
+      "number": 1,
+      "deployment_layout": "short rapo-author-a-* aliases",
+      "outcome": "FileNotFoundError before fake child start",
+      "runtime_unchanged": true
+    },
+    {
+      "number": 2,
+      "deployment_layout": "exact source basenames as siblings",
+      "outcome": "early head executable identity failure; evidence frozen",
+      "blind_rerun": false
+    }
+  ],
+  "raw_evidence": {
+    "command_stdout": "raw/command.stdout",
+    "command_stderr": "raw/command.stderr",
+    "command_exit": "raw/command.exit",
+    "runtime_before": "raw/runtime-identity-before.json",
+    "runtime_after": "raw/runtime-identity-after.json",
+    "supervisor_result": "raw/supervisor-result.json",
+    "procfs": "raw/procfs-evidence.json"
+  }
+}

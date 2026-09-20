@@ -1,0 +1,28 @@
+Phase 1 was executed by direct import, with no call to run_supervisor_tests.py:main().
+
+Attempt 1 (prepared but rejected before child start):
+  Final=/mnt/conda/zhenglifeng/t/rapo-author-a-private-ray-supervisor-final-20260920
+  Output=/mnt/conda/zhenglifeng/t/rapo-author-a-private-ray-supervisor-phase1-output-20260920
+  Python=/mnt/conda/zhenglifeng/rapo-author-diagnostic-20260908/env/rapo-author/bin/python
+  Parent/ZeroGpu were deployed under rapo-author-a-* aliases. The imported
+  module resolved ROOT.parent/PARENT_ROOT and ROOT.parent/ZERO_GPU_ROOT using
+  the source basenames, then raised FileNotFoundError before fake-child start.
+  The finally block saved before/after identities; they were unchanged.
+
+Attempt 2 (recorded call):
+  Final=/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT
+  Parent=/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT
+  ZeroGpu=/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT
+  Output=/mnt/conda/zhenglifeng/t/rapo-author-a-private-ray-supervisor-phase1-output-20260920-fullbasename
+  Environment: PATH prefixed with the diagnostic environment bin; CUDA_VISIBLE_DEVICES=;
+  PYTHONDONTWRITEBYTECODE=1; PYTHONNOUSERSITE=1; python -B.
+  The wrapper invocation was:
+    "$Python" -B - "$Final" "$Parent" "$ZeroGpu" "$Output"
+  with an inline finally block that wrote runtime-identity-before.json,
+  runtime-identity-after.json, runtime-unchanged.json, result.json,
+  supervisor-root-listing.json, and copied the supervisor root into raw/.
+  The wrapper exit was 0 and the direct function returned its named PASS
+  result; raw/supervisor-result.json records the actual early lifecycle FAIL.
+
+The frozen contract and full direct-call source remain in
+docs/acceptance/FRESH-PROCESS-A-PRIVATE-RAY-FINAL-20260920/PHASE1_DIRECT_CALL.md.

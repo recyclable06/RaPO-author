@@ -1,0 +1,35 @@
+{
+  "combined_runtime": {
+    "file_count": 4,
+    "hashes_path": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT/HASHES_FINAL.json",
+    "hashes_sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67",
+    "manifest_path": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT/MANIFEST_FINAL.json",
+    "manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "role": "combined_runtime",
+    "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT",
+    "total_bytes": 86564
+  },
+  "frozen_parent_supervisor": {
+    "file_count": 10,
+    "hashes_path": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT/HASHES_SUPERVISOR.json",
+    "hashes_sha256": "f4914b91d91b1b31873457e195805762c930b89c656fe09115d25b9502ee98d9",
+    "manifest_path": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT/SUPERVISOR_MANIFEST.json",
+    "manifest_sha256": "cac9d08d0c3b68d47218183ca21d61cb944d647d15d15746ec01ed350a84c119",
+    "role": "frozen_parent_supervisor",
+    "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-SUPERVISOR-SUPPLEMENT",
+    "total_bytes": 65323
+  },
+  "frozen_zero_gpu_delta": {
+    "file_count": 9,
+    "hashes_path": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT/HASHES_ZEROGPU.json",
+    "hashes_sha256": "3635a3afd975d35770a1e9c41841da62fe3051be37ff95d39ffeeb5d19e3a003",
+    "manifest_path": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT/MANIFEST_ZEROGPU.json",
+    "manifest_sha256": "eae681218644bd759152658d425777b7cc3c6e80869a681e1415b01da104c4ed",
+    "role": "frozen_zero_gpu_delta",
+    "root": "/mnt/conda/zhenglifeng/t/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-SUPPLEMENT",
+    "total_bytes": 34234
+  },
+  "schema": "private-ray-supervisor-runtime-validation-v1",
+  "validated_before_head_start": true,
+  "validated_unix": 1789872551.7029064
+}

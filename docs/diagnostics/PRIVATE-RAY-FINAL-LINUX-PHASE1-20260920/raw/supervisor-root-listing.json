@@ -1,0 +1,26 @@
+{
+  "exists": true,
+  "files": [
+    {
+      "bytes": 0,
+      "name": "ray-head.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 250019,
+      "name": "ray-head.stdout.log",
+      "sha256": "15ddc5d3c0a13bb6da6551bdb5d95faef030be906b117c7339b418f78dd2002f"
+    },
+    {
+      "bytes": 2235,
+      "name": "runtime-validation.json",
+      "sha256": "86cba336ec74da696eb0dda4f444660ef7c53e33e8db16ad891037c4473c1d51"
+    },
+    {
+      "bytes": 5155,
+      "name": "supervisor-result.json",
+      "sha256": "70dfa9018d5536efa0c51fb2a66088f0a3a2d07b92b860030c1fae6f1d2ef1c7"
+    }
+  ],
+  "root": "/tmp/zlf-s20p"
+}

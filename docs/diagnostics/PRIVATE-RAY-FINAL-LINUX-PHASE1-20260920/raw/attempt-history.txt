@@ -1,0 +1,13 @@
+Attempt 1 (not the accepted execution): the final bundle was invoked with
+rapo-author-a-* sibling aliases. run_supervisor_tests.py resolved its fixed
+PARENT_ROOT/ZERO_GPU_ROOT basenames under ROOT.parent and raised
+FileNotFoundError before any fake child was started. The wrapper finally
+recorded unchanged runtime hashes. No subject process was started.
+
+Attempt 2 (the recorded execution): the three source basenames were deployed
+as exact siblings and the direct import called run_linux_process_check(). The
+wrapper exited 0 and the function returned its standard-library PASS result,
+but supervisor-result.json records FAIL_ZERO_GPU_SUPERVISOR_LIFECYCLE with
+SupervisorError: private Ray executable identity changed. This is the actual
+phase result; the function's assertion treats that controlled failure as the
+expected test condition and therefore is not a full-lifecycle pass.
