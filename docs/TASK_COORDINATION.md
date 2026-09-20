@@ -12,6 +12,8 @@
 
 ## 当前活动任务
 
+2026-09-20收尾进展：`/root/linux_phase1_execution` 已封存本地原始证据；`/root/phase1_failure_audit` 已交付并暂停。正式审查目录为 `docs/acceptance/PRIVATE-RAY-FINAL-LINUX-PHASE1-20260920/`，5项文件加HASHES，HASHES自身SHA256 `8b8949d9578e9660f3475fca885e074acf8bfd2acb320a3b1a6b03374b13d417`；协调者5/5字节/hash核对一致。结论 `FAIL_EARLY_HEAD_IDENTITY_NOT_PHASE1_PASS`，资源释放UNKNOWN，013/014保持开放。仅本地整改候选仍在完成；收到候选后记录交付，不派新验收或执行。
+
 用户中止后于2026-09-20明确要求继续。三个子任务上一轮因usage limit中断，原文件保留；已恢复 `/root/linux_phase1_execution` 仅封存已有本地失败证据，以及 `/root/phase1_failure_audit` 独立定位失败与最小修复范围。`/root/linux_signal_harness` 已交付静态准备包及metadata hash勘误，暂不运行。实际Phase1在head身份校验提前失败，外层测试PASS是假阳性；不据此进入真实Ray或A。当前不再SSH、重跑或修改被测subject，先完成独立finding。
 
 独立初步finding已确认后，已启动独立整改 `/root/phase1_identity_remediation`（Luna Max），使用隔离worktree与 `codex/phase1-head-identity-fix-20260920` 分支。允许仅新candidate中的supervisor、Linux check/外置输出契约及必要测试/manifest修订；训练生产/observer/R2/v9/旧快照不改。先完成身份稳定与空集合清理/测试假阳性的最小修复，Windows自测不算Linux通过，不SSH或实际Ray执行。审查任务继续冻结正式报告，执行任务只收口本地证据，角色保持分离。

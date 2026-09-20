@@ -23,7 +23,7 @@ v9及奖励身份补充已获独立组合结论 [READY_FOR_BOUNDED_GPU](acceptan
 
 **当前卡点是启动管理脚本的Linux实际验证，尚未启动新的A训练。** 观察器真实Ray零GPU调用、A启动前文件校验、参数一致性及R2超时helper已获独立确认；FINAL集中修订的005–010亦已[静态复核](acceptance/FRESH-PROCESS-A-PRIVATE-RAY-FINAL-20260920/REPORT.md)。这些结论不等于实际进程生命周期通过。
 
-211已执行外置direct-import的Linux纯Python检查，未覆盖冻结test-results，也未启动真实Ray。实际supervisor在head阶段报 `private Ray executable identity changed`，未写RUNNING record、未进入launcher。外层测试却返回PASS，因为它接受了任意FAIL后的空清理集合；该PASS不采纳。日志未保留前后两个executable值，启动exec切换只是待验证假说。head_returncode为null、owned列表为空，因此all_owned_processes_gone字段也不能单独证明进程已释放。原始日志正在封存并独立定位，原件不改，不无变化重跑。
+211已执行外置direct-import的Linux纯Python检查，未覆盖冻结test-results，也未启动真实Ray。实际supervisor在head阶段报 `private Ray executable identity changed`，未写RUNNING record、未进入launcher。外层测试却返回PASS，因为它接受了任意FAIL后的空清理集合；该PASS不采纳。日志未保留前后两个executable值，启动exec切换只是待验证假说。head_returncode为null、owned列表为空，因此all_owned_processes_gone字段也不能单独证明进程已释放。原始日志已封存，[独立失败审查](acceptance/PRIVATE-RAY-FINAL-LINUX-PHASE1-20260920/REPORT.md)确认013/014仍为阻断项，资源释放为UNKNOWN。协调者核对报告5项文件字节与hash一致；原件不改，不无变化重跑。
 
 真实SIGINT/SIGTERM外置harness已准备，仅语法/静态检查通过，尚未在Linux执行。它要求实际RUNNING及head/launcher/后代身份齐备后才发送信号，不会把提前失败算作通过。独立审查已确认最小修复范围，已派独立整改子任务在隔离分支另存新candidate：启动exec身份稳定后锚定且持续严格核验、head已启动时不得把空登记集合当清理成功、Linux测试必须证明实际ready/launcher/后代和预期timeout。训练源码/观察器/旧证据保持不变。修订增量验收后执行Linux检查和真实零GPURay生命周期，之后复核双卡并运行A两步。实际发布后driver RNG仍是A运行验收项；B内部abort未解决，C已接受结果不重跑。
 

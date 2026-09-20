@@ -1,0 +1,32 @@
+{
+  "schema": "private-ray-final-linux-phase1-independent-failure-audit-hashes-v1",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "FINDING-A-FINAL-LINUX-PHASE1-CLEANUP-TEST-014.md",
+      "bytes": 2401,
+      "sha256": "076400f3023ef9aabc5b5341ccfcf0f5f0550c565f14a5bec206497b89ab7eb9"
+    },
+    {
+      "path": "FINDING-A-FINAL-LINUX-PHASE1-IDENTITY-013.md",
+      "bytes": 2171,
+      "sha256": "73bba651d8e377341cb619af4002646d07834cabea2e596663cf2064f0ae7c8c"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 7775,
+      "sha256": "90ea8db4a8eb87edd96a70ac3c83cb5a4d4e8a08cdfbdefa676a5502df386a6e"
+    },
+    {
+      "path": "RUN_METADATA.json",
+      "bytes": 1991,
+      "sha256": "0cbcdae74484c9aff0178f0f1d930d6ed07408c1a58600555024cebeae6613a1"
+    },
+    {
+      "path": "VERDICT.json",
+      "bytes": 2548,
+      "sha256": "c2281058fbc8c6eaab61c2b09fe5600dea7c3d301cde25a138127e5478e67e7e"
+    }
+  ]
+}

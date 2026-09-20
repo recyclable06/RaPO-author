@@ -1,0 +1,47 @@
+{
+  "schema": "private-ray-final-linux-phase1-independent-failure-audit-metadata-v1",
+  "recorded_at": "2026-09-20",
+  "role": "independent_read_only_failure_audit",
+  "workspace": "C:/Users/Administrator/Desktop/RaPO-author",
+  "source_subject": "C:/Users/Administrator/.codex/worktrees/14c8/RaPO-author/docs/acceptance/FRESH-PROCESS-A-LAUNCH-GUARD-CANDIDATE-20260919-R2-ZEROGPU-CLI-FINAL-SUPPLEMENT",
+  "raw_bundle": "C:/Users/Administrator/Desktop/RaPO-author/docs/diagnostics/PRIVATE-RAY-FINAL-LINUX-PHASE1-20260920",
+  "method": {
+    "local_read_only_review": true,
+    "source_static_review": true,
+    "raw_reparsed": true,
+    "new_ssh": false,
+    "ray_started": false,
+    "gpu_started": false,
+    "model_loaded": false,
+    "training_started": false,
+    "rerun": false
+  },
+  "subject_identity": {
+    "runtime_hashes_sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67",
+    "runtime_manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "private_ray_supervisor_sha256": "fc37f34dd4459fb3050fe7ffee79cfc8d5da1bd69da022ae721fe827486eb302"
+  },
+  "raw_identity": {
+    "hashes_sha256": "f1f9573c831ce802f40e8975a110452c749cfbf1d2e2893bdf53e931ffbba2ef",
+    "file_count": 34,
+    "total_bytes": 608549
+  },
+  "observed": {
+    "wrapper_exit": 0,
+    "wrapper_status": "PASS_PRIVATE_RAY_ZERO_GPU_CLI_FINAL_SUPERVISOR_LINUX_STANDARD_LIBRARY_CHECK",
+    "supervisor_status": "FAIL_ZERO_GPU_SUPERVISOR_LIFECYCLE",
+    "supervisor_failure": "SupervisorError: private Ray executable identity changed",
+    "head_spawned": true,
+    "head_pid": 299497,
+    "launcher_started": false,
+    "running_record_written": false,
+    "head_returncode": null,
+    "head_stdout_bytes": 250019,
+    "head_stderr_bytes": 0,
+    "owned_process_lists_empty": true,
+    "all_owned_processes_gone_reported": true,
+    "temp_root_removed_reported": true,
+    "resource_release_verified": false,
+    "executable_before_after_saved": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "private-ray-final-linux-phase1-independent-failure-audit-v1",
+  "reviewed_at": "2026-09-20",
+  "overall": "FAIL_EARLY_HEAD_IDENTITY_NOT_PHASE1_PASS",
+  "a_started": false,
+  "real_ray_started": false,
+  "gpu_started": false,
+  "model_loaded": false,
+  "training_started": false,
+  "resource_release": "UNKNOWN",
+  "wrapper_result_is_phase1_pass": false,
+  "findings": {
+    "FINDING-A-FINAL-LINUX-PHASE1-IDENTITY-013": {
+      "status": "OPEN_BLOCKING",
+      "summary": "The fake Linux head failed executable identity verification before readiness and launcher start; executable before/after values were not retained, so the exec-race mechanism is unproven."
+    },
+    "FINDING-A-FINAL-LINUX-PHASE1-CLEANUP-TEST-014": {
+      "status": "OPEN_BLOCKING",
+      "summary": "The Linux test accepts an expected early FAIL with empty ownership sets and cleanup booleans, so the wrapper PASS is a false positive for lifecycle and cleanup."
+    }
+  },
+  "evidence": {
+    "raw_bundle": "docs/diagnostics/PRIVATE-RAY-FINAL-LINUX-PHASE1-20260920/",
+    "raw_hashes_sha256": "f1f9573c831ce802f40e8975a110452c749cfbf1d2e2893bdf53e931ffbba2ef",
+    "raw_file_count": 34,
+    "raw_total_bytes": 608549,
+    "supervisor_result_sha256": "70dfa9018d5536efa0c51fb2a66088f0a3a2d07b92b860030c1fae6f1d2ef1c7",
+    "final_runtime_hashes_sha256": "3b9f055da492741754f80b63e2255716e118fea546bca429267c542877136f67",
+    "final_runtime_manifest_sha256": "fc97026c8e51f137d3106d0f918ff3577d8a2886b230f443023e2579d08de0b0",
+    "final_supervisor_source_sha256": "fc37f34dd4459fb3050fe7ffee79cfc8d5da1bd69da022ae721fe827486eb302",
+    "head_pid": 299497,
+    "head_stdout_bytes": 250019,
+    "head_stderr_bytes": 0,
+    "launcher_started": false,
+    "running_record_written": false,
+    "owned_process_lists_empty": true,
+    "head_returncode": null,
+    "post_cleanup_procfs_query_saved": false
+  },
+  "scope": {
+    "read_only": true,
+    "ssh_used": false,
+    "ray_started": false,
+    "gpu_used": false,
+    "model_loaded": false,
+    "training_started": false,
+    "subject_modified": false,
+    "production_modified": false,
+    "raw_execution_evidence_modified": false
+  },
+  "next_required": [
+    "Stabilize and record post-exec head identity without weakening PID/start/UID/session/process-group/argv checks.",
+    "Make the Linux test require real head readiness, launcher and descendant observation, expected timeout, and post-cleanup identity proof.",
+    "Run the separate real Ray 2.46.0 zero-GPU lifecycle before any A-mode dispatch."
+  ]
+}
